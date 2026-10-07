@@ -1,0 +1,124 @@
+{
+  "preprocessing": {
+    "imputer_medians": [
+      694.0,
+      91.5
+    ],
+    "scaler_mean": [
+      675.53125,
+      105.78125
+    ],
+    "scaler_scale": [
+      284.2570342549811,
+      36.212682839545316
+    ]
+  },
+  "train_ids": [
+    "12044999_t1",
+    "12050527_t1",
+    "12068956_t1",
+    "12095059_t1",
+    "12100982_t1",
+    "12110584_t1",
+    "12292346_t1",
+    "12320570_t1",
+    "12323135_t1",
+    "12362857_t1",
+    "12427402_t1",
+    "12428314_t1",
+    "12431066_t1",
+    "12518829_t1",
+    "12570813_t1",
+    "12599615_t1",
+    "12729026_t1",
+    "12764539_t1",
+    "12785847_t1",
+    "12799646_t1",
+    "12813013_t1",
+    "12833764_t1",
+    "12839299_t1",
+    "12844263_t1",
+    "12858323_t1",
+    "12883255_t1",
+    "13043628_t1",
+    "13079536_t1",
+    "13151368_t1",
+    "13241198_t1",
+    "13293637_t1",
+    "13312797_t1"
+  ],
+  "test_ids": [
+    "13151341_t1",
+    "13575141_t1",
+    "13577408_t1",
+    "13587693_t1",
+    "13697289_t1",
+    "13769419_t1",
+    "14031839_t1",
+    "14130025_t1",
+    "14157613_t1",
+    "14229448_t1",
+    "14239985_t1",
+    "14355074_t1",
+    "14401783_t1",
+    "14420580_t1",
+    "14460009_t1",
+    "14482153_t1",
+    "14523635_t1",
+    "14543665_t1",
+    "14622198_t1",
+    "14665041_t1",
+    "14723918_t1",
+    "14816491_t1",
+    "14838440_t1",
+    "14857422_t1",
+    "14950996_t1"
+  ],
+  "train_positive_prior": 0.625,
+  "train_counts": {
+    "N": 32,
+    "positive": 20,
+    "negative": 12
+  },
+  "test_counts": {
+    "N": 25,
+    "positive": 17,
+    "negative": 8
+  },
+  "experiment": "INTERNAL_TIME_HOLDOUT_58_A_SAMPLES",
+  "train_observation_end": "2013-12-31",
+  "split_rule": "calendar boundary fixed before model fit; no test-based tuning",
+  "split_counts": {
+    "train": 32,
+    "excluded_boundary": 1,
+    "test": 25
+  },
+  "feature_columns": [
+    "days_filing_to_o1",
+    "days_o1_to_reply"
+  ],
+  "threshold": 0.5,
+  "sklearn_version": "1.9.1",
+  "label_verification_owner": "A",
+  "B_independent_document_verification": false,
+  "local_family_disjoint_check": true,
+  "source_urls": {
+    "folder": "https://drive.google.com/drive/folders/1vKxKX9sETlSo5C-E7CnZKLbnQofY-76w",
+    "verification": "https://drive.google.com/file/d/1mLy5RSl5WE8KhxC9r7RzGR9DijyI_D-1/view"
+  },
+  "input_sha256": {
+    "labels.csv": "96499a227e5cf3504673899e960877d60d795e0935c739c450131984600df69d",
+    "sample_ids.csv": "f8a07874eba26452a9e9ac178f8adf78db0f477ccc8b3ce24320b0d555ac818c",
+    "A_label_verification.csv": "094651a65ca9ce95abe960b08e30f416c85fe4ddaaed602eee284dacccb4cbc6",
+    "split_manifest.csv": "b908333ec155af62d954f84ee945bbb050ba77b5365587215b0d6dd49a9457c2",
+    "features.csv": "5e5b656ab8518577709e199dd4918abfe971df602b0b7fd4fb8b2f1b9cbe6908"
+  },
+  "limitations": [
+    "Internal holdout only; not evaluation on all 58 shared cases.",
+    "Small test set; one fixed split does not establish robust effectiveness.",
+    "Two date intervals only; no TC, art unit, or O1 grounds used.",
+    "A verification flags record reply correspondence, not comprehensive independent expert review.",
+    "Local historical continuity cannot establish complete global family relationships.",
+    "Balanced document-verification batches outside this A dataset are not used."
+  ]
+}

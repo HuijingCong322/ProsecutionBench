@@ -1,0 +1,4 @@
+method,N,Acc,F1_positive,Brier,status
+majority,25,0.68,0.8095238095238095,0.220625,completed
+lr,25,0.6,0.75,0.25764078528415074,completed
+LLM zero-shot,25,,,,pending_C_run
