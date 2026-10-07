@@ -16,3 +16,9 @@
 此结果是小样本内部时间留出试跑，测试集只有上述数量，不能作为全部 58 件共同评测结果。如果与 C 比较，C 必须使用同一 test IDs、训练截止日及可用数据规则。正类表示 CTNF/CTFR 文书事件，不保证文书实际包含驳回（14723918 为已知例外）。
 
 文件：split_all_58.csv 保留全部候选的去向；experiment_labels.csv 保留核验来源；两份 predictions.csv 是逐件正类概率；metrics.json 和 run_config.json 保存评分和运行记录。原始 A 标签未改动。
+
+## LR-content 探索性补充
+
+保持原切分与参数不变，新增 O1 的101/102/103/112明确驳回标记与正文长度。N=25、Acc=0.32、正类F1=0.4516、Brier=0.4164。原 LR-time 为 Acc0.60/F1=0.7500/Brier0.2576；Majority 为 Acc0.68/F1=0.8095/Brier0.2206。新增配置未提升当前测试集表现，未据此继续调参。
+
+因特征扩展在原测试结果已被检查后提出，此行标为探索性补充，不替换原三方法主表的 LR-time，也不构成内容特征有效或无效的可靠结论。详见 lr_content/RESULTS.md；代码与固定特征复现入口为 scripts/reproduce_lr_content.py。

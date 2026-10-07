@@ -11,7 +11,8 @@ Positive means the next relevant notification is CTNF/CTFR; negative means NOA. 
 | Method | Test N | Accuracy | Positive F1 | Brier ↓ |
 |---|---:|---:|---:|---:|
 | Majority prior | 25 | 0.68 | 0.8095 | 0.220625 |
-| Logistic regression | 25 | 0.60 | 0.75 | 0.257641 |
+| LR-time | 25 | 0.60 | 0.75 | 0.257641 |
+| LR-content (exploratory) | 25 | 0.32 | 0.4516 | 0.416368 |
 | LLM zero-shot | 25 | pending | pending | pending |
 
 These are small-sample internal holdout results, not scores on all 58 cases or evidence of benchmark-wide effectiveness. LR did not outperform Majority in this run.
@@ -47,3 +48,17 @@ Labels use A's reply/date correspondence verification records. `document_verifie
 B's two baselines and test checks are complete. LLM classification, G0/G1/G2 generation, text/judge metrics, five-case human checks and the merged weekly presentation remain pending with C/team coordination. Related work is outside the requested scope.
 
 No full PatEx CSVs, PDF corpus, API credentials or serialized model are committed. The small committed CSVs contain patent application IDs, dates and research annotations needed for this run. Fixtures are for code testing and must not be reported as model evaluation data.
+
+## Exploratory O1-content extension
+
+LR-content adds explicit O1 rejection-language indicators under Sections 101, 102, 103 and 112, plus whitespace-normalized native OA body length, to the two time intervals (seven features). The split, C=1, solver, iteration limit, seed and threshold are unchanged. All preprocessing is fitted on the 32 training cases. No next-action text is used. The original LR-time remains the primary LR baseline; no model is selected based on the test score.
+
+The new configuration was specified after the original test scores were inspected. Its lower accuracy (32%) and higher Brier (0.416368) are exploratory observations, not evidence that content features are generally ineffective. Statute flags are rule-based and do not cover all grounds: 13293637 contains a nonstatutory double-patenting rejection, so all four fixed statute flags are zero. The extraction patterns and edge-case tests are versioned; raw O1 texts, quotations and Drive access links are not published.
+
+```sh
+python scripts/reproduce_lr_content.py
+```
+
+This verifies the saved 25 per-case probabilities and metrics using the frozen feature table, and writes a new ignored `outputs/reproduced_lr_content/` directory. It does not require access to the shared Drive. The default output directory must not already exist; use `--output-dir` for another run.
+
+See `results/week_2026_10_05/lr_content/` for features, derived predictions, aggregate metrics, parameters and O1 content hashes, and `docs/LR_CONTENT_BRIEFING.md` for the updated presentation. LLM and generation results are still pending.

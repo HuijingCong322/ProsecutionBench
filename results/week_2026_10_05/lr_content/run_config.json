@@ -1,0 +1,148 @@
+{
+  "experiment": "EXPLORATORY_FIXED_O1_CONTENT_EXTENSION",
+  "features": [
+    "days_filing_to_o1",
+    "days_o1_to_reply",
+    "o1_has_101",
+    "o1_has_102",
+    "o1_has_103",
+    "o1_has_112",
+    "o1_body_characters"
+  ],
+  "feature_definition": "Explicit rejection under statutory section, or Claim Rejections heading; length in Unicode characters after whitespace normalization. No bare citation flags.",
+  "ground_regex": "(?:\\brejected\\s+under\\b|\\brejections?\\s+(?:under\\b|[-\u2013\u2014:]\\s*))\\s*(?:35\\s*U\\s*\\.?\\s*S\\s*\\.?\\s*C\\s*\\.?(?:\\s*[\u00a7:]+)?\\s*)?(?P<section>10[123]|112)(?!\\d)",
+  "training_observation_end": "2013-12-31",
+  "train_ids": [
+    "12044999_t1",
+    "12050527_t1",
+    "12068956_t1",
+    "12095059_t1",
+    "12100982_t1",
+    "12110584_t1",
+    "12292346_t1",
+    "12320570_t1",
+    "12323135_t1",
+    "12362857_t1",
+    "12427402_t1",
+    "12428314_t1",
+    "12431066_t1",
+    "12518829_t1",
+    "12570813_t1",
+    "12599615_t1",
+    "12729026_t1",
+    "12764539_t1",
+    "12785847_t1",
+    "12799646_t1",
+    "12813013_t1",
+    "12833764_t1",
+    "12839299_t1",
+    "12844263_t1",
+    "12858323_t1",
+    "12883255_t1",
+    "13043628_t1",
+    "13079536_t1",
+    "13151368_t1",
+    "13241198_t1",
+    "13293637_t1",
+    "13312797_t1"
+  ],
+  "test_ids": [
+    "13151341_t1",
+    "13575141_t1",
+    "13577408_t1",
+    "13587693_t1",
+    "13697289_t1",
+    "13769419_t1",
+    "14031839_t1",
+    "14130025_t1",
+    "14157613_t1",
+    "14229448_t1",
+    "14239985_t1",
+    "14355074_t1",
+    "14401783_t1",
+    "14420580_t1",
+    "14460009_t1",
+    "14482153_t1",
+    "14523635_t1",
+    "14543665_t1",
+    "14622198_t1",
+    "14665041_t1",
+    "14723918_t1",
+    "14816491_t1",
+    "14838440_t1",
+    "14857422_t1",
+    "14950996_t1"
+  ],
+  "lr_parameters": {
+    "C": 1,
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "random_state": 42
+  },
+  "threshold": 0.5,
+  "sklearn_version": "1.9.1",
+  "split_changed": false,
+  "post_test_inspection": true,
+  "preprocessing": {
+    "medians": [
+      694.0,
+      91.5,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      10981.5
+    ],
+    "mean": [
+      675.53125,
+      105.78125,
+      0.09375,
+      0.4375,
+      0.75,
+      0.25,
+      14191.78125
+    ],
+    "scale": [
+      284.2570342549811,
+      36.212682839545316,
+      0.2914805954090255,
+      0.49607837082461076,
+      0.4330127018922193,
+      0.4330127018922193,
+      10165.613501328802
+    ]
+  },
+  "ground_prevalence": {
+    "train": {
+      "o1_has_101": 3,
+      "o1_has_102": 14,
+      "o1_has_103": 24,
+      "o1_has_112": 8
+    },
+    "test": {
+      "o1_has_101": 2,
+      "o1_has_102": 11,
+      "o1_has_103": 18,
+      "o1_has_112": 10
+    }
+  },
+  "no_ground_match_ids": [
+    "13293637_t1"
+  ],
+  "source_sha256": {
+    "experiment_labels.csv": "b8d3a25cc1d778f7d01c78ecbc865c3aa314cd43d2fc6a20d9e5312c648dd19a",
+    "split_manifest.csv": "b908333ec155af62d954f84ee945bbb050ba77b5365587215b0d6dd49a9457c2",
+    "features.csv": "5e5b656ab8518577709e199dd4918abfe971df602b0b7fd4fb8b2f1b9cbe6908"
+  },
+  "limitations": [
+    "57 O1 native texts read; no next-action text used.",
+    "Rule-based grounds flags can miss atypical wording; matched statutory language is not a legal interpretation.",
+    "New model specified after original test scores were inspected; exploratory comparison, not fresh confirmatory evaluation.",
+    "No feature or parameter changes based on new test metrics.",
+    "32 training and25 testing cases; unstable estimates, no causal content-effect claim."
+  ],
+  "reviewed_zero_flag_case": {
+    "app_id": "13293637",
+    "finding": "O1 native text contains nonstatutory obviousness-type double patenting rejection; not covered by four fixed statute flags. No feature change applied."
+  }
+}
