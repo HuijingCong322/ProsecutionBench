@@ -25,16 +25,18 @@
 
 ## B 已完成与后续
 
-已完成 Majority/LR、逐件概率、Acc/F1/Brier、切分与家族检查、A 标签一致性检查。两个时间间隔特征；训练内拟合中位数和缩放；LR C=1/lbfgs/max_iter=1000/seed=42。
+已完成 Majority/LR、逐件概率、Acc/F1/Brier、切分与家族检查、A 标签一致性检查。当前LR为LR-reply：两个时间间隔，加A1 remarks长度、claims修改/新增标记及取消状态标记，共5个特征；训练内拟合中位数和缩放；LR C=1/lbfgs/max_iter=1000/seed=42。
 
 Majority：N25、Acc0.68、F1=0.8095、Brier0.220625。
-LR：N25、Acc0.60、F1=0.75、Brier0.257641。
+LR-reply（当前主展示基线）：N25、Acc0.64、F1=0.780488、Brier0.264450。
+LR-time和LR-content保留为补充结果。LR-reply仍标为查看原测试结果后新增的探索版本；当前选择基于回复信息与任务匹配度，不声称预先固定或可靠提升。
+本次只更新B模型展示，C的25件测试ID、cutoff、阈值及输入规则不变。当前LR预测使用lr_reply_predictions.csv；lr_predictions.csv为原LR-time历史文件，勿混用。
 
 B 的正式三方法表需等 C 的 LLM 输出；目前不应写三方法公平比较已完成。本次为内部小样本时间留出，不是全部 58 件共同 benchmark 结果。用户明确不做 related work，本次不列 PatRe/PANORAMA 为待办；大 cohort 是可选补充，不是本周必交。
 
 评分入口：
 ```sh
-cd <repository-root>
+cd /path/to/ProsecutionBench
 export PYTHONPATH="$PWD/src"
 .venv/bin/python -m prosecution_data.pilot score --labels results/week_2026_10_05/C_handoff/classification_gold_for_scoring_only.csv --predictions /path/to/llm_predictions.csv --output /path/to/llm_metrics.json
 ```

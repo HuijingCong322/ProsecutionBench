@@ -1,0 +1,122 @@
+{
+  "experiment": "EXPLORATORY_FIXED_A1_REPLY_EXTENSION",
+  "base": "LR-time plus 3 fixed A1 features; independent of LR-content",
+  "features": [
+    "days_filing_to_o1",
+    "days_o1_to_reply",
+    "a1_remarks_characters",
+    "a1_claim_change_present",
+    "a1_canceled_status_present"
+  ],
+  "definitions": {
+    "a1_remarks_characters": "Whitespace-normalized full REM character count; includes any residual headers, not a measure of argument quality.",
+    "a1_claim_change_present": "Reviewed claim markup has ins/del tags or Currently Amended/Amended/New status.",
+    "a1_canceled_status_present": "Reviewed A1 listing includes numbered claim/range Canceled/Cancelled status; does not prove a newly canceled claim relative to O1."
+  },
+  "training_observation_end": "2013-12-31",
+  "train_ids": [
+    "12044999_t1",
+    "12050527_t1",
+    "12068956_t1",
+    "12095059_t1",
+    "12100982_t1",
+    "12110584_t1",
+    "12292346_t1",
+    "12320570_t1",
+    "12323135_t1",
+    "12362857_t1",
+    "12427402_t1",
+    "12428314_t1",
+    "12431066_t1",
+    "12518829_t1",
+    "12570813_t1",
+    "12599615_t1",
+    "12729026_t1",
+    "12764539_t1",
+    "12785847_t1",
+    "12799646_t1",
+    "12813013_t1",
+    "12833764_t1",
+    "12839299_t1",
+    "12844263_t1",
+    "12858323_t1",
+    "12883255_t1",
+    "13043628_t1",
+    "13079536_t1",
+    "13151368_t1",
+    "13241198_t1",
+    "13293637_t1",
+    "13312797_t1"
+  ],
+  "test_ids": [
+    "13151341_t1",
+    "13575141_t1",
+    "13577408_t1",
+    "13587693_t1",
+    "13697289_t1",
+    "13769419_t1",
+    "14031839_t1",
+    "14130025_t1",
+    "14157613_t1",
+    "14229448_t1",
+    "14239985_t1",
+    "14355074_t1",
+    "14401783_t1",
+    "14420580_t1",
+    "14460009_t1",
+    "14482153_t1",
+    "14523635_t1",
+    "14543665_t1",
+    "14622198_t1",
+    "14665041_t1",
+    "14723918_t1",
+    "14816491_t1",
+    "14838440_t1",
+    "14857422_t1",
+    "14950996_t1"
+  ],
+  "parameters": {
+    "C": 1,
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "random_state": 42
+  },
+  "threshold": 0.5,
+  "post_test_inspection": true,
+  "sklearn_version": "1.9.1",
+  "source_documents": 116,
+  "missing_claim_markup": [
+    "14950996"
+  ],
+  "missing_handling": "Blank, imputed with training median only; never interpreted as verified absence.",
+  "preprocessing": {
+    "medians": [
+      694.0,
+      91.5,
+      6286.0,
+      1.0,
+      1.0
+    ],
+    "mean": [
+      675.53125,
+      105.78125,
+      6845.40625,
+      0.9375,
+      0.65625
+    ],
+    "scale": [
+      284.2570342549811,
+      36.212682839545316,
+      3869.7125931664405,
+      0.24206145913796356,
+      0.47495887979908324
+    ]
+  },
+  "limitations": [
+    "Exploratory experiment proposed after viewing earlier test results.",
+    "Reply content enters through coarse proxies, not semantic modeling of claim responses.",
+    "No examiner effect feature or causal control; historical examiner metadata audit remains separate.",
+    "Evaluation excludes pending outcomes, not a censoring-aware survival model.",
+    "No feature changes or tuning after new test metrics."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "A_label_rows": 59,
+  "observed_binary": 58,
+  "other": 0,
+  "censored_flagged": 0,
+  "negative_non_NOA": [],
+  "excluded_sample_reasons": {
+    "12472799": "no_reply_to_O1",
+    "12250112": "no_reply_to_O1",
+    "13296992": "no_reply_to_O1",
+    "14633262": "no_reply_to_O1",
+    "14283810": "no_reply_to_O1"
+  },
+  "pending_cases_evaluated": false,
+  "missing_outcomes_not_recoded_as_zero": true
+}
