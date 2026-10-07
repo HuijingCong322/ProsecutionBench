@@ -1,5 +1,4 @@
 method,N,Acc,F1_positive,Brier,status
-majority,25,0.68,0.8095238095238095,0.220625,completed
-lr,25,0.6,0.75,0.25764078528415074,completed
-LR-content exploratory,25,0.32,0.45161290322580644,0.41636780901342063,completed_exploratory_not_primary_LR
+Majority prior,25,0.68,0.8095238095238095,0.220625,completed
+LR-reply,25,0.64,0.7804878048780488,0.2644503445198787,current_LR_baseline_exploratory
 LLM zero-shot,25,,,,pending_C_run

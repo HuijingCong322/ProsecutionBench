@@ -62,3 +62,7 @@ Majority 的概率为训练集正类比例，统一阈值 0.5；平票时预测 
 - 真实训练 cohort、family 构建与固定时间切分。
 - 本地交易文件与官方 release 描述的来源差异。
 - 扩充正式 labels 后运行，C 复用相同 test IDs。
+
+## Current presentation update (2026-10-07)
+
+LR-reply is now the structured baseline in the main presentation table, by explicit user decision to include reply information. LR-time and LR-content remain supplementary. LR-reply is still exploratory because it was proposed after inspecting the original test scores. See results/week_2026_10_05/primary_baseline.json and docs/B_BRIEFING_EN.md. Original lr_predictions.csv and root metrics.json describe LR-time, not the current baseline. Reproduce the current LR with python scripts/reproduce_lr_reply.py.

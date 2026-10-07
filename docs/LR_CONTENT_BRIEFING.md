@@ -13,4 +13,8 @@ Adding this fixed feature set did not improve performance on this test set. We d
 
 The statute indicators are rule-based and omit grounds such as nonstatutory double patenting. Zero statute flags do not imply an absence of rejections. Majority predicts every case as positive, so its 68% accuracy reflects the positive fraction of this test set.
 
-Next, score C's LLM on the same 25 IDs. Keep Majority, LR-time and LLM as the originally planned main comparison; report LR-content as an additional exploratory row. Generation and uncalibrated judge results remain pending.
+Next, score C's LLM on the same 25 IDs. The current main presentation uses Majority, LR-reply and LLM; retain LR-time and LR-content as supplementary results. LR-reply remains exploratory. Generation and uncalibrated judge results remain pending.
+
+## Current presentation update (2026-10-07)
+
+LR-reply is now the structured baseline in the main presentation table, by explicit user decision to include reply information. LR-time and LR-content remain supplementary. LR-reply is still exploratory because it was proposed after inspecting the original test scores. See results/week_2026_10_05/primary_baseline.json and docs/B_BRIEFING_EN.md. Original lr_predictions.csv and root metrics.json describe LR-time, not the current baseline. Reproduce the current LR with python scripts/reproduce_lr_reply.py.

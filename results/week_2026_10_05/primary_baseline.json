@@ -1,0 +1,21 @@
+{
+  "current_LR": "LR-reply",
+  "decision_date": "2026-10-07",
+  "decision_source": "User explicitly requested LR-reply replace LR-time",
+  "reason": "Include verified-cutoff reply proxies for task alignment",
+  "exploratory": true,
+  "original_primary_LR": "LR-time",
+  "predictions": "lr_reply/lr_reply_predictions.csv",
+  "model": "not_committed_reproduce_from_features",
+  "run_config": "lr_reply/run_config.json",
+  "train_N": 32,
+  "test_N": 25,
+  "training_observation_end": "2013-12-31",
+  "threshold": 0.5,
+  "supplementary": [
+    "LR-time",
+    "LR-content"
+  ],
+  "prediction_sha256": "aaccb167022426d393b9235b405b619332e337ec927a64afd9369c89b9cc832b",
+  "model_retrained": false
+}
