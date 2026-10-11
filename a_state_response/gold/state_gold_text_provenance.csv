@@ -1,0 +1,518 @@
+app_id,stage,list,claim_id,status,version_id,text_source
+13151341,A1_cutoff,entered_claims,1,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,2,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,3,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 2)
+13151341,A1_cutoff,entered_claims,4,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 3)
+13151341,A1_cutoff,entered_claims,5,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 6)
+13151341,A1_cutoff,entered_claims,6,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 7)
+13151341,A1_cutoff,entered_claims,7,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,8,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,9,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,10,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 9)
+13151341,A1_cutoff,entered_claims,11,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,12,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 10)
+13151341,A1_cutoff,entered_claims,13,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,14,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_v3_done.xlsx#C row 2)
+13151341,A1_cutoff,entered_claims,15,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,16,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,17,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,18,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,19,new,GOFSOWMHPPOPPY2,model (gold_review_yellow_done.xlsx row 11)
+13151341,A1_cutoff,entered_claims,20,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,entered_claims,21,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,1,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,2,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,3,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,4,currently_amended,I2DT63PHPXXIFW3,model (gold_review_yellow_done.xlsx row 4)
+13151341,A1_cutoff,proposed_claims,5,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,6,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,7,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,8,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,9,currently_amended,I2DT63PHPXXIFW3,ok (gold_review_v3_done.xlsx#C row 3)
+13151341,A1_cutoff,proposed_claims,10,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,11,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,12,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,13,currently_amended,I2DT63PHPXXIFW3,ok (gold_review_v3_done.xlsx#C row 4)
+13151341,A1_cutoff,proposed_claims,14,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,15,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,16,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,17,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,18,previously_presented,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,19,currently_amended,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,20,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,21,canceled,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,A1_cutoff,proposed_claims,22,new,I2DT63PHPXXIFW3,model (gold_review_yellow_done.xlsx row 12)
+13151341,A1_cutoff,proposed_claims,23,new,I2DT63PHPXXIFW3,auto_unreviewed
+13151341,O1_cutoff,entered_claims,1,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,2,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,3,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 2)
+13151341,O1_cutoff,entered_claims,4,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 3)
+13151341,O1_cutoff,entered_claims,5,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 6)
+13151341,O1_cutoff,entered_claims,6,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 7)
+13151341,O1_cutoff,entered_claims,7,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,8,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,9,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,10,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 9)
+13151341,O1_cutoff,entered_claims,11,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,12,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_yellow_done.xlsx row 10)
+13151341,O1_cutoff,entered_claims,13,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,14,currently_amended,GOFSOWMHPPOPPY2,fix (gold_review_v3_done.xlsx#C row 2)
+13151341,O1_cutoff,entered_claims,15,currently_amended,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,16,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,17,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,18,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,19,new,GOFSOWMHPPOPPY2,model (gold_review_yellow_done.xlsx row 11)
+13151341,O1_cutoff,entered_claims,20,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13151341,O1_cutoff,entered_claims,21,new,GOFSOWMHPPOPPY2,auto_unreviewed
+13575141,A1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,8,original,as_filed,ok (gold_review_v3_done.xlsx#C row 5)
+13575141,A1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,1,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,2,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,3,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,4,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,5,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,6,original,as_filed,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,7,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,8,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,9,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,10,currently_amended,I2YYHZE4PXXIFW3,auto_unreviewed
+13575141,A1_cutoff,proposed_claims,11,currently_amended,I2YYHZE4PXXIFW3,fix (gold_review_v3_done.xlsx#C row 6)
+13575141,A1_cutoff,proposed_claims,12,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,8,original,as_filed,ok (gold_review_v3_done.xlsx#C row 5)
+13575141,O1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+13575141,O1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,1,original,as_filed,ok (gold_review_v3_done.xlsx#C row 7)
+14031839,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,9,original,as_filed,ok (gold_review_v3_done.xlsx#C row 8)
+14031839,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,15,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,16,original,as_filed,fix (gold_review_v3_done.xlsx#C row 9)
+14031839,A1_cutoff,entered_claims,17,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,1,original,as_filed,ok (gold_review_v3_done.xlsx#C row 7)
+14031839,A1_cutoff,proposed_claims,2,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,3,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,4,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,5,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,6,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,7,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,8,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,9,currently_amended,I6O2B53SPXXIFW3,fix (gold_review_yellow_done.xlsx row 13)
+14031839,A1_cutoff,proposed_claims,10,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,11,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,12,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,13,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,14,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,15,currently_amended,I6O2B53SPXXIFW3,fix (gold_review_yellow_done.xlsx row 14)
+14031839,A1_cutoff,proposed_claims,16,original,as_filed,fix (gold_review_v3_done.xlsx#C row 9)
+14031839,A1_cutoff,proposed_claims,17,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,18,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,19,original,as_filed,auto_unreviewed
+14031839,A1_cutoff,proposed_claims,20,withdrawn,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,1,original,as_filed,ok (gold_review_v3_done.xlsx#C row 7)
+14031839,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,9,original,as_filed,ok (gold_review_v3_done.xlsx#C row 8)
+14031839,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,15,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,16,original,as_filed,fix (gold_review_v3_done.xlsx#C row 9)
+14031839,O1_cutoff,entered_claims,17,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14031839,O1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,7,original,as_filed,ok (gold_review_v3_done.xlsx#C row 10)
+14229448,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,15,original,as_filed,ok (gold_review_v3_done.xlsx#C row 11)
+14229448,A1_cutoff,entered_claims,16,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,17,original,as_filed,ok (gold_review_v3_done.xlsx#C row 12)
+14229448,A1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,entered_claims,20,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,1,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,2,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,3,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,4,canceled,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,5,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,6,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,7,original,as_filed,ok (gold_review_v3_done.xlsx#C row 10)
+14229448,A1_cutoff,proposed_claims,8,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,9,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,10,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,11,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,12,canceled,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,13,currently_amended,IJEENGQYPXXIFW1,auto (gold_review_yellow_done.xlsx row 15)
+14229448,A1_cutoff,proposed_claims,14,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,15,original,as_filed,ok (gold_review_v3_done.xlsx#C row 11)
+14229448,A1_cutoff,proposed_claims,16,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,17,currently_amended,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,18,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,19,original,as_filed,ok (gold_review_v3_done.xlsx#C row 13)
+14229448,A1_cutoff,proposed_claims,20,original,as_filed,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,21,new,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,A1_cutoff,proposed_claims,22,new,IJEENGQYPXXIFW1,auto_unreviewed
+14229448,O1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,7,original,as_filed,ok (gold_review_v3_done.xlsx#C row 10)
+14229448,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,15,original,as_filed,ok (gold_review_v3_done.xlsx#C row 11)
+14229448,O1_cutoff,entered_claims,16,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,17,original,as_filed,ok (gold_review_v3_done.xlsx#C row 12)
+14229448,O1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14229448,O1_cutoff,entered_claims,20,original,as_filed,auto_unreviewed
+14239985,A1_cutoff,entered_claims,1,original,as_filed,model (claim absent from auto reference)
+14239985,A1_cutoff,entered_claims,2,original,as_filed,ok (gold_review_v3_done.xlsx#C row 14)
+14239985,A1_cutoff,entered_claims,3,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,A1_cutoff,entered_claims,4,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14239985,A1_cutoff,entered_claims,6,currently_amended,HRWM0Y3XPXXIFW3,model (gold_review_yellow_done.xlsx row 16)
+14239985,A1_cutoff,entered_claims,7,currently_amended,HRWM0Y3XPXXIFW3,model (claim absent from auto reference)
+14239985,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14239985,A1_cutoff,entered_claims,9,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,A1_cutoff,entered_claims,10,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,1,currently_amended,ICG4M1DRPXXIFW4,fix (gold_review_v3_done.xlsx#C row 15)
+14239985,A1_cutoff,proposed_claims,2,currently_amended,ICG4M1DRPXXIFW4,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,3,currently_amended,ICG4M1DRPXXIFW4,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,4,currently_amended,ICG4M1DRPXXIFW4,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,5,currently_amended,ICG4M1DRPXXIFW4,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,6,currently_amended,ICG4M1DRPXXIFW4,ok (gold_review_v3_done.xlsx#C row 16)
+14239985,A1_cutoff,proposed_claims,7,currently_amended,ICG4M1DRPXXIFW4,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,8,original,as_filed,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,9,previously_presented,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,A1_cutoff,proposed_claims,10,currently_amended,ICG4M1DRPXXIFW4,ok (gold_review_v3_done.xlsx#C row 17)
+14239985,O1_cutoff,entered_claims,1,original,as_filed,model (claim absent from auto reference)
+14239985,O1_cutoff,entered_claims,2,original,as_filed,ok (gold_review_v3_done.xlsx#C row 14)
+14239985,O1_cutoff,entered_claims,3,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,O1_cutoff,entered_claims,4,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14239985,O1_cutoff,entered_claims,6,currently_amended,HRWM0Y3XPXXIFW3,model (gold_review_yellow_done.xlsx row 16)
+14239985,O1_cutoff,entered_claims,7,currently_amended,HRWM0Y3XPXXIFW3,model (claim absent from auto reference)
+14239985,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14239985,O1_cutoff,entered_claims,9,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14239985,O1_cutoff,entered_claims,10,currently_amended,HRWM0Y3XPXXIFW3,auto_unreviewed
+14420580,A1_cutoff,entered_claims,1,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,2,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,3,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,4,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,5,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,6,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,7,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,8,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,9,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,10,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,A1_cutoff,entered_claims,11,new,I5ZFW6ZCPXXIFW1,fix (gold_review_yellow_done.xlsx row 17)
+14420580,A1_cutoff,entered_claims,12,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 18)
+14420580,A1_cutoff,entered_claims,13,new,I5ZFW6ZCPXXIFW1,model (gold_review_yellow_done.xlsx row 20)
+14420580,A1_cutoff,entered_claims,14,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 21)
+14420580,A1_cutoff,entered_claims,15,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 22)
+14420580,A1_cutoff,entered_claims,16,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 23)
+14420580,A1_cutoff,entered_claims,17,new,I5ZFW6ZCPXXIFW1,ok (gold_review_v3_done.xlsx#C row 18)
+14420580,A1_cutoff,entered_claims,18,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 24)
+14420580,A1_cutoff,entered_claims,19,new,I5ZFW6ZCPXXIFW1,fix (gold_review_yellow_done.xlsx row 25)
+14420580,A1_cutoff,entered_claims,20,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 26)
+14420580,A1_cutoff,proposed_claims,1,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,2,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,3,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,4,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,5,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,6,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,7,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,8,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,9,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,10,canceled,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,11,currently_amended,IJA916JSPXXIFW1,fix (gold_review_v3_done.xlsx#C row 19)
+14420580,A1_cutoff,proposed_claims,12,previously_presented,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 18)
+14420580,A1_cutoff,proposed_claims,13,previously_presented,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,14,previously_presented,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 21)
+14420580,A1_cutoff,proposed_claims,15,previously_presented,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 22)
+14420580,A1_cutoff,proposed_claims,16,previously_presented,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 23)
+14420580,A1_cutoff,proposed_claims,17,previously_presented,I5ZFW6ZCPXXIFW1,ok (gold_review_v3_done.xlsx#C row 18)
+14420580,A1_cutoff,proposed_claims,18,previously_presented,I5ZFW6ZCPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,19,currently_amended,IJA916JSPXXIFW1,auto_unreviewed
+14420580,A1_cutoff,proposed_claims,20,currently_amended,IJA916JSPXXIFW1,auto_unreviewed
+14420580,O1_cutoff,entered_claims,1,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,2,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,3,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,4,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,5,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,6,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,7,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,8,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,9,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,10,canceled,I5ZFW6ZCPXXIFW1,canceled
+14420580,O1_cutoff,entered_claims,11,new,I5ZFW6ZCPXXIFW1,fix (gold_review_yellow_done.xlsx row 17)
+14420580,O1_cutoff,entered_claims,12,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 18)
+14420580,O1_cutoff,entered_claims,13,new,I5ZFW6ZCPXXIFW1,model (gold_review_yellow_done.xlsx row 20)
+14420580,O1_cutoff,entered_claims,14,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 21)
+14420580,O1_cutoff,entered_claims,15,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 22)
+14420580,O1_cutoff,entered_claims,16,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 23)
+14420580,O1_cutoff,entered_claims,17,new,I5ZFW6ZCPXXIFW1,ok (gold_review_v3_done.xlsx#C row 18)
+14420580,O1_cutoff,entered_claims,18,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 24)
+14420580,O1_cutoff,entered_claims,19,new,I5ZFW6ZCPXXIFW1,fix (gold_review_yellow_done.xlsx row 25)
+14420580,O1_cutoff,entered_claims,20,new,I5ZFW6ZCPXXIFW1,auto (gold_review_yellow_done.xlsx row 26)
+14460009,A1_cutoff,entered_claims,1,previously_presented,as_filed,auto_unreviewed + listing header/label removed
+14460009,A1_cutoff,entered_claims,2,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,3,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,4,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,5,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,6,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,7,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,8,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,9,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,10,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,11,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,12,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,13,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,14,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,15,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,16,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,17,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,18,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,19,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,entered_claims,21,withdrawn,IJQ5KBY5PXXIFW3,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,1,currently_amended,ISW9CHPTRXEAPX2,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,2,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,3,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,4,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,5,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,6,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,7,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,8,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,9,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,10,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,11,currently_amended,ISW9CHPTRXEAPX2,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,12,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,13,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,14,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,15,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,16,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,17,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,18,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,19,previously_presented,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,20,withdrawn,as_filed,auto_unreviewed
+14460009,A1_cutoff,proposed_claims,21,withdrawn,IJQ5KBY5PXXIFW3,auto_unreviewed
+14460009,O1_cutoff,entered_claims,1,previously_presented,as_filed,auto_unreviewed + listing header/label removed
+14460009,O1_cutoff,entered_claims,2,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,3,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,4,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,5,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,6,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,7,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,8,withdrawn,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,9,withdrawn,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,10,withdrawn,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,11,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,12,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,13,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,14,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,15,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,16,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,17,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,18,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,19,previously_presented,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14460009,O1_cutoff,entered_claims,21,withdrawn,IJQ5KBY5PXXIFW3,auto_unreviewed
+14723918,A1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,3,original,as_filed,ok (gold_review_v3_done.xlsx#C row 20)
+14723918,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,5,original,as_filed,ok (gold_review_v3_done.xlsx#C row 21)
+14723918,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,1,currently_amended,ISS0O53CRXEAPX3,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,2,currently_amended,ISS0O53CRXEAPX3,auto (gold_review_yellow_done.xlsx row 27)
+14723918,A1_cutoff,proposed_claims,3,currently_amended,ISS0O53CRXEAPX3,auto (gold_review_yellow_done.xlsx row 28)
+14723918,A1_cutoff,proposed_claims,4,currently_amended,ISS0O53CRXEAPX3,auto (gold_review_yellow_done.xlsx row 29)
+14723918,A1_cutoff,proposed_claims,5,original,as_filed,ok (gold_review_v3_done.xlsx#C row 21)
+14723918,A1_cutoff,proposed_claims,6,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,7,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,8,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,9,original,as_filed,auto_unreviewed
+14723918,A1_cutoff,proposed_claims,10,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,3,original,as_filed,ok (gold_review_v3_done.xlsx#C row 20)
+14723918,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,5,original,as_filed,ok (gold_review_v3_done.xlsx#C row 21)
+14723918,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14723918,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,14,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,15,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,16,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,17,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,18,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,19,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,21,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,22,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,entered_claims,23,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,1,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,2,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,3,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,4,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,5,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,6,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,7,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,8,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,9,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,10,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,11,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,12,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,13,original,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,14,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,15,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,16,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,17,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,18,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,19,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,20,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,21,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,22,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,23,withdrawn,as_filed,auto_unreviewed
+14838440,A1_cutoff,proposed_claims,24,new,IUYJEAEIRXEAPX3,model (gold_review_v3_done.xlsx#A row 16)
+14838440,A1_cutoff,proposed_claims,25,new,IUYJEAEIRXEAPX3,auto_unreviewed
+14838440,O1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,14,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,15,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,16,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,17,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,18,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,19,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,20,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,21,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,22,withdrawn,as_filed,auto_unreviewed
+14838440,O1_cutoff,entered_claims,23,withdrawn,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,15,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,16,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,17,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14950996,A1_cutoff,entered_claims,20,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,1,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,2,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,3,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,4,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,5,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,6,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,7,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,8,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,9,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,10,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,11,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,12,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,13,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,14,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,15,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,16,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,17,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,18,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,19,original,as_filed,auto_unreviewed
+14950996,O1_cutoff,entered_claims,20,original,as_filed,auto_unreviewed

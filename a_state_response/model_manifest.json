@@ -1,0 +1,14 @@
+{
+ "owner": "A",
+ "model": "gpt-5-mini-2025-08-07 (own Azure deployment)",
+ "api": "Chat Completions, response_format json_object, no temperature",
+ "reasoning_effort": "low (chosen on dev+tune cases, A/README.md; team uses low)",
+ "max_completion_tokens": "8192, retried at 16384 then 32768 on length cut-off",
+ "tasks": {
+  "state_tracking": {"prompt": "prompts/state_extraction.txt (= variants/p3.txt)", "inputs": "inputs/state_inputs.jsonl", "outputs": "outputs/state_predictions.jsonl", "n": "gold 10 apps x O1/A1 + test_core 90 apps at A1"},
+  "applicant_response": {"prompt": "prompts/applicant_response.txt (hash b5ab5de0e7)", "inputs": "inputs/response_inputs.jsonl", "outputs": "outputs/applicant_response.jsonl", "n": "gold 10 (record + predicted O1 state) + test_core 90 (record only, supplementary Strat) + 3 dev"},
+  "support_judge": {"prompt": "prompts/support_judge.txt", "outputs": "gold/argument_support_judge.jsonl", "n": "40 cited units of the 10 gold replies"}
+ },
+ "cost_usd_logged": {"state_tracking_incl_prompt_variants": 5.69, "applicant_response": 1.78, "support_judge": "< 0.10 (not logged)"},
+ "optional_models": "not run (gpt-oss-120b, Llama-4-Scout: N/A this week)"
+}

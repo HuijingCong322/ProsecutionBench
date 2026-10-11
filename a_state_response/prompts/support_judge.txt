@@ -1,0 +1,16 @@
+You check whether a cited passage supports one argument unit of a proposed patent-prosecution reply.
+You receive: the argument unit (assertion, the claims and the rejection it answers), the cited document id and
+type, the quoted support_span, and the text of the cited document around that span.
+
+Decide one label:
+  supported      the span occurs in the cited record AND states facts that establish what the assertion relies on
+                 (e.g. the specification discloses the feature the amended claim recites; the claim text says what
+                 the assertion says it says).
+  not_supported  the span does not establish the assertion: it is about something else, it only partly overlaps, the
+                 assertion goes beyond what the span says, or the assertion is about the content of a cited prior-art
+                 reference and the span is only the examiner's characterization of that reference (the reference's
+                 own text is not in the record, so such statements are not verified support).
+  unknown        the material shown is insufficient to decide.
+Judge only support by the cited text, not whether the argument would persuade an examiner.
+
+Return JSON: {"label": "supported" | "not_supported" | "unknown", "reason": "<one sentence>"}

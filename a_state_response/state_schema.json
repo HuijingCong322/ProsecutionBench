@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProsecutionBench prosecution state S_t (week-3 pilot, v1)",
+  "description": "State of one application at one cutoff. stage O1_cutoff = record through the O1 mail date; A1_cutoff = record through the A1 filing date (actual A1 included). Every claim and rejection points to its source document and passage.",
+  "type": "object",
+  "required": ["sample_id", "app_id", "stage", "cutoff", "entered_claims", "proposed_claims", "rejections"],
+  "properties": {
+    "sample_id": {"type": "string", "description": "<app_id>_t1"},
+    "app_id": {"type": "string"},
+    "stage": {"enum": ["O1_cutoff", "A1_cutoff"]},
+    "cutoff": {"type": "string", "format": "date"},
+    "entered_claims": {
+      "description": "Claim set of record (what the examiner examines). At O1_cutoff: the claims examined in O1. At A1_cutoff: the same set unless an A1 amendment is entered (see entry_status rules).",
+      "type": "array", "items": {"$ref": "#/definitions/claim"}
+    },
+    "proposed_claims": {
+      "description": "Claims as listed in a reply that is not (yet) known to be entered. Empty at O1_cutoff. At A1_cutoff: the A1 claim listing (empty when A1 has no claim listing, e.g. argument-only reply).",
+      "type": "array", "items": {"$ref": "#/definitions/claim"}
+    },
+    "rejections": {"type": "array", "items": {"$ref": "#/definitions/rejection"}},
+    "notes": {"type": "string"}
+  },
+  "definitions": {
+    "source": {
+      "type": "object", "required": ["doc_id"],
+      "properties": {
+        "doc_id": {"type": "string"},
+        "span": {"type": "string", "description": "short verbatim quote (<= 30 words) or paragraph/page locator from the source text"}
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "version_id", "text", "dependencies", "status", "entry_status", "source"],
+      "properties": {
+        "claim_id": {"type": "integer", "description": "claim number as filed; canceled numbers are never reused"},
+        "version_id": {"type": "string", "description": "doc_id of the document that introduced this text version ('as_filed' for the application as filed / PGPUB)"},
+        "text": {"type": "string", "description": "clean claim text of this version (inserted text kept, deleted text removed, no status label); empty for canceled claims"},
+        "dependencies": {"type": "array", "items": {"type": "integer"}},
+        "status": {"enum": ["original", "currently_amended", "previously_presented", "new", "canceled", "withdrawn", "not_entered"]},
+        "entry_status": {"enum": ["entered", "not_entered", "unknown"]},
+        "source": {"$ref": "#/definitions/source"}
+      }
+    },
+    "rejection": {
+      "type": "object",
+      "required": ["claim_id", "ground", "status", "evidence"],
+      "properties": {
+        "claim_id": {"type": "integer"},
+        "ground": {"enum": ["101", "102", "103", "112a", "112b", "112c", "112d", "112f", "112", "dp", "objection"],
+                   "description": "112 subsection from the action ('first paragraph' = 112a, 'second paragraph' = 112b); 112 when not stated; dp = double patenting; objection = claim objection (not a rejection)"},
+        "status": {"enum": ["outstanding", "withdrawn", "overcome", "moot", "unknown"]},
+        "references": {"type": "array", "items": {"type": "string"}, "description": "cited references for 102/103/dp, as named in the action"},
+        "evidence": {"type": "array", "items": {"$ref": "#/definitions/source"}, "description": "where the ground is stated (the action) and, for a status other than outstanding, the record that changed it"}
+      }
+    }
+  }
+}

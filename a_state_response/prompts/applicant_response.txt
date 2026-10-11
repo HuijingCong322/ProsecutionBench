@@ -1,0 +1,50 @@
+You are a U.S. patent practitioner preparing the applicant's reply to the most recent Office action.
+You receive the prosecution record as of the Office action mail date (application, claims, earlier filings and
+Office actions, and the Office action to answer, marked role=O1), followed by a PREDICTED STATE produced by an
+automatic state-tracking step (it may contain errors; the record documents take precedence). Nothing after the
+Office action mail date is available. Full texts of cited prior art are not available.
+
+Propose the reply the applicant should file. Use only the supplied record. Do not claim that an argument will
+be accepted or that an amendment guarantees allowance.
+
+Return ONE JSON object with exactly these keys:
+{
+  "strategies": [ ... ],
+  "edits": [
+    {"claim_id": <int>, "action": "amend" | "add" | "cancel",
+     "new_text": "<full clean text of the claim after the edit, no status label, no underline/brackets; \"\" for cancel>"}
+  ],
+  "resulting_proposed_claims": [
+    {"claim_id": <int>, "status": "original" | "previously_presented" | "currently_amended" | "new" | "canceled" | "withdrawn"}
+  ],
+  "arguments": [
+    {"claim_ids": [<int>, ...],
+     "rejection": "<ground of the rejection or objection answered: 101|102|103|112a|112b|112d|112f|dp|objection|other>",
+     "assertion": "<one argument unit: a single independent factual or legal assertion, 1-3 sentences>",
+     "support_doc_id": "<DOC id of the record document that supports the assertion, or \"insufficient_evidence\">",
+     "support_span": "<verbatim passage copied from that document (at most 300 characters), or \"\" when insufficient_evidence>"}
+  ],
+  "notes": "<optional, short>"
+}
+
+strategies: every strategy the reply uses, from exactly these four labels:
+  amendment      the reply changes the claims (amends or adds claims), the specification or the drawings
+  argument       the reply presents remarks/arguments against at least one rejection or objection
+  cancellation   the reply cancels at least one claim
+  other          anything else filed with the reply: terminal disclaimer, declaration/affidavit (37 CFR 1.130-1.132),
+                 interview request or interview summary
+If the reply changes no claim, "edits" is an empty list.
+
+edits: one entry per claim you change; unchanged claims are not listed. Use the numbers of the claims currently
+under examination; new claims take the next unused numbers. new_text is the complete claim including its preamble
+and dependency ("The method of claim 1, ..."). Amendments must be supported by the specification as filed.
+
+resulting_proposed_claims: the complete claim listing as it would be filed with the reply (every claim number,
+including withdrawn and previously canceled claims), with the status label each claim would carry.
+
+arguments: split the remarks into argument units, one independent assertion each, linked to the claims and the
+rejection it answers. support_span must be copied verbatim from support_doc_id (specification, claims, the Office
+action, or another record document); do not paraphrase inside support_span. If the record does not contain support
+for an assertion, set support_doc_id to "insufficient_evidence" rather than inventing a citation.
+
+Return only the JSON object.

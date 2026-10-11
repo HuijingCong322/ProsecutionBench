@@ -1,0 +1,167 @@
+[
+ {
+  "unit_id": "13151341_u3",
+  "app_id": "13151341",
+  "unit": 3,
+  "claim_ids": [
+   15
+  ],
+  "rejection": "112b",
+  "assertion": "Claim 15 is amended to correct 'each traverse row' to 'each transverse row' and to explicitly recite 'the bottles (F) in each transverse row', providing proper antecedent basis consistent with claim 1 and the specification.",
+  "support_doc_id": "GOFSOX2PPPOPPY2",
+  "found_in": "GOFSOX2PPPOPPY2",
+  "doc_type": "SPEC",
+  "support_span": "As outlined in Fig. 2 in a front view, the bottles F can be conveyed mutually spaced apart with gaps 12."
+ },
+ {
+  "unit_id": "13575141_u1",
+  "app_id": "13575141",
+  "unit": 1,
+  "claim_ids": [
+   1,
+   5
+  ],
+  "rejection": "objection",
+  "assertion": "The correction of the term 'copy designation' to 'copy destination' in claims 1 and 5 is a formal correction to resolve the informal wording identified by the examiner and does not introduce new subject matter.",
+  "support_doc_id": "HZCRBTS5PXXIFW4",
+  "found_in": "HZCRBTS5PXXIFW4",
+  "doc_type": "CTNF",
+  "support_span": "In claim 1, it appears that “copy designation” should be changed to –copy destination--. Appropriate correction is required."
+ },
+ {
+  "unit_id": "14031839_u2",
+  "app_id": "14031839",
+  "unit": 2,
+  "claim_ids": [
+   1,
+   3,
+   10,
+   11,
+   12,
+   17,
+   18
+  ],
+  "rejection": "103",
+  "assertion": "The examiner's combination does not teach or suggest performing a non-mechanical, chemical etch of the overburden that avoids mechanical planarization (CMP) so as to prevent grain lifting and to produce metal gate upper surfaces having RMS roughness less than about 0.5 nm, a feature central to the claimed methods.",
+  "support_doc_id": "HLSGYF7RPXXIFW3",
+  "found_in": "HLSGYF7RPXXIFW3",
+  "doc_type": "SPEC",
+  "support_span": "the chemical, non-mechanical removal of the overburden portion described herein does not cause grain removal and results m a metal gate with a smoother surface Further processing of the gate metal substantially retains the smooth surface achieved by the chemical, non-mechanical etch"
+ },
+ {
+  "unit_id": "14229448_u3",
+  "app_id": "14229448",
+  "unit": 3,
+  "claim_ids": [
+   1,
+   9,
+   17
+  ],
+  "rejection": "103",
+  "assertion": "The specification describes that corrective action is taken based on faster, more granular KPI analysis and that the presented (derived) KPI data shown to the subscriber may indicate no SLA violation because of that corrective action, supporting the claimed causal relationship between corrective action and the post-action presented KPI.",
+  "support_doc_id": "HTBZU49QPXXIFW3",
+  "found_in": "HTBZU49QPXXIFW3",
+  "doc_type": "SPEC",
+  "support_span": "\"the NMS may be able to forecast potential SLA violations before the subscriber receives any indication that an SLA was violated, and may take corrective action, such that the subscriber does not receive an indication that an SLA was violated.\""
+ },
+ {
+  "unit_id": "14239985_u4",
+  "app_id": "14239985",
+  "unit": 4,
+  "claim_ids": [
+   1,
+   9,
+   47
+  ],
+  "rejection": "112b",
+  "assertion": "The claims' recitation of control operations (rotational speed control, torque control, estimations and calculations of target rotational speed based on estimated transfer-path and external input torque) are supported by detailed control structure and algorithms in the specification, demonstrating the claims are definite and enabled.",
+  "support_doc_id": "HRWM0ZK2PXXIFW3",
+  "found_in": "pgpub_claims",
+  "doc_type": "CLM",
+  "support_span": "the rotational speed control includes: estimating transfer path input torque that is torque input to the power transfer path on the basis of variations in rotational speed of the rotary electric machine; estimating external input torque input from the wheels to the power transfer path by subtracting at least the output torque of the rotary electric machine from the transfer path input torque; and calculating the target rotational speed on the basis of the external input torque and vehicle required torque that is torque required to drive the wheels."
+ },
+ {
+  "unit_id": "14420580_u4",
+  "app_id": "14420580",
+  "unit": 4,
+  "claim_ids": [
+   13
+  ],
+  "rejection": "103",
+  "assertion": "Applicant respectfully disputes the Examiner's prima facie obviousness combination of Szoke and Soma for claim 13 because the Examiner has not established that Soma's placement of a resistor in a charging socket would have provided the requisite motivation to modify Szoke's arrangement in the specific manner recited in claim 13.",
+  "support_doc_id": "IF9UWYX9PXXIFW4",
+  "found_in": "IF9UWYX9PXXIFW4",
+  "doc_type": "CTNF",
+  "support_span": "Claim 13 is rejected under 35 U.S.C. 103(a) as being unpatentable over Szoke in view of Soma (Pub. No.: US 2009/0039703; hereinafter mentioned as “Soma”)."
+ },
+ {
+  "unit_id": "14460009_u3",
+  "app_id": "14460009",
+  "unit": 3,
+  "claim_ids": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "rejection": "102",
+  "assertion": "The examiner equates selection of an 'amount' in Hutchins with the claimed selection of a 'ratio'; but the claims recite selection of ratios to achieve controllable gel time and gel properties and the specification supports that ratio selection among components (silicate, polymer, initiator) and temperature interplay uniquely control gelation — a factual distinction not accounted for by the examiner's summary of Hutchins.",
+  "support_doc_id": "HYUKW4LHPXXIFW3",
+  "found_in": "HYUKW4LHPXXIFW3",
+  "doc_type": "SPEC",
+  "support_span": "The ingredients of the compositions described herein may be combined in predetermined orders or in predetermined ratios to achieve desired results. For example, the concentration of silicate (component A) in the gel solution may be used to control gelation time and gel properties. The concentration of polymer (component B) in the gel solution may also be used to control gelation time and gel properties. Similarly, the concentration of initiator (component C) in the gel solution may be used to control gelation time and gel properties. Temperature may also be used to control gel time and gel properties of the solution."
+ },
+ {
+  "unit_id": "14723918_u4",
+  "app_id": "14723918",
+  "unit": 4,
+  "claim_ids": [
+   6
+  ],
+  "rejection": "103",
+  "assertion": "Young (as relied on by the examiner) concerns structural support units and plates but the examiner has not shown that Young suggests the particular combination of one or more shells made from multiple shell sectors together with a plurality of radial plates connected mechanically or thermally for both load and thermal management as claimed.",
+  "support_doc_id": "INUFX76HRXEAPX2",
+  "found_in": "INUFX76HRXEAPX2",
+  "doc_type": "CTNF",
+  "support_span": "Regarding claim 6, MIT teaches the superconducting magnet of claim 1, but is silent regarding comprising one or more shells made from multiple shell sectors, and a plurality of radial plates connected mechanically or thermally for load and thermal management."
+ },
+ {
+  "unit_id": "14838440_u5",
+  "app_id": "14838440",
+  "unit": 5,
+  "claim_ids": [
+   1
+  ],
+  "rejection": "103",
+  "assertion": "Claims amended to include the sub upper face and the space limitation correspond to features the Examiner characterized as novel/allowable in dependent claim 2 (OA states those features were not found in the prior art); incorporating those features into claim 1 overcomes the Examiner's primary basis for the obviousness rejection.",
+  "support_doc_id": "IR4WGVTCRXEAPX1",
+  "found_in": "IR4WGVTCRXEAPX1",
+  "doc_type": "CTNF",
+  "support_span": "The primary reason for the allowance of Claims 2 and 5 is the inclusion of the limitations wherein the upper face comprises a sub upper face positioned further in the downward direction than the operation surface, wherein when the liquid cartridge is in the first attitude, the operation surface and the sub upper face at least partly overlap in the downward direction, and a space is formed between the operation surface and the sub upper face in the downward direction."
+ },
+ {
+  "unit_id": "14950996_u4",
+  "app_id": "14950996",
+  "unit": 4,
+  "claim_ids": [
+   4,
+   5,
+   6,
+   7,
+   9,
+   10,
+   14,
+   15,
+   16,
+   17,
+   19,
+   20
+  ],
+  "rejection": "other",
+  "assertion": "The Office action itself recognizes claims 4-7, 9-10, 14-17 and 19-20 are dependent on a rejected base claim and would be allowable if rewritten in independent form including all limitations of the base claim and intervening claims; this confirms these dependent limitations are not shown in the Tamura paragraphs relied upon for the 102 rejection.",
+  "support_doc_id": "IVI8GOYKRXEAPX5",
+  "found_in": "IVI8GOYKRXEAPX5",
+  "doc_type": "CTNF",
+  "support_span": "Claims 4-7, 9-10, 14-17 and 19-20 are objected to as being dependent upon a rejected base claim, but would be allowable if rewritten in independent form including all of the limitations of the base claim and any intervening claims. Regarding claims 4-5 and 14-15, the prior arts of record do not teach wherein the control module receives selection information indicating at least one of a service contract option and a communication profile selected from the subscription support information received from the external electronic device, as specified in Claims 4-5 and 14-15. Regarding claims 6-7 and 16-17, the prior arts of record do not teach wherein the control module controls transmission of provisioning-related information to the subscription support server device, wherein the provisioning-related information is related to access to a subscription support server device that supports subscription for the communication service based on the base station, as specified in Claims 6-7 and 16-17. Regarding claims 9-10 and 19-20, the prior arts of record do not teach wherein the control module controls to output a specified normal user interface (UI) when the communication profile exists, or a specified provisioning UI related to proceeding with a provisioning procedure when the communication profile is not stored in the electronic device, as specified in Claims 9-10 and 19-20."
+ }
+]

@@ -1,0 +1,58 @@
+You are reconstructing the prosecution state of a U.S. patent application from its file-wrapper record.
+You see only documents dated on or before the cutoff. Report what the record shows at the cutoff; do not
+predict later events.
+
+Return ONE JSON object with exactly these keys:
+{
+  "entered_claims": [CLAIM, ...],
+  "proposed_claims": [CLAIM, ...],
+  "rejections": [REJECTION, ...],
+  "notes": "short free text, or empty"
+}
+CLAIM = {"claim_id": int, "version_id": str, "text": str, "dependencies": [int], "status": str,
+         "entry_status": str, "source": {"doc_id": str, "span": str}}
+REJECTION = {"claim_id": int, "ground": str, "status": str, "references": [str],
+             "evidence": [{"doc_id": str, "span": str}]}
+
+Rules
+1. Claims
+ - One CLAIM per claim number, including canceled and withdrawn claims. Canceled numbers are never reused.
+   List EVERY claim number of the set individually; expand ranges into one CLAIM per number. Example:
+   a listing line "1 to 13 (Cancelled)." followed by "14. (Currently Amended) ..." gives 14 CLAIMs:
+   claims 1, 2, ..., 13 each with status "canceled" and empty text, and claim 14. Do not skip claims
+   whose text is long or unchanged.
+ - text = clean text of that version: keep inserted (underlined) wording, drop deleted wording (struck
+   through or in [[ ]]), drop the "N. (Status)" label. Empty string for a canceled claim.
+   Claim listings were OCRed: strike-through words may appear in the text; remove words the listing
+   marks as deleted when you can tell, otherwise copy the text as listed.
+ - version_id = "as_filed" for claims as filed (the pgpub_claims document, or the claims filed on the
+   filing date), otherwise the doc_id of the CLAIM LISTING (CLM) document that last changed the claim
+   (amended it, added it, or canceled it). Never use an Office action's doc_id as a version_id.
+   A claim listed as "original" or "previously presented" keeps the version_id of its last change.
+ - dependencies = claim numbers the claim refers to.
+ - status in {original, currently_amended, previously_presented, new, canceled, withdrawn, not_entered},
+   taken from the latest claim listing that contains the claim; "original" for unamended claims as filed.
+   Withdrawn (not examined after a restriction) is NOT canceled.
+ - entered_claims = the claim set the examiner examined in the last Office action before the cutoff,
+   entry_status "entered". Take these versions from the documents filed BEFORE that Office action; never
+   take text, status or version_id for entered_claims from a reply filed after it.
+ - proposed_claims = a claim listing filed by the applicant AFTER that Office action (the reply), with
+   entry_status "unknown" (entry is confirmed only by a later Office document). Empty if the reply has
+   no claim listing or there is no reply.
+2. Rejections
+ - One REJECTION per (claim, ground) stated in the most recent Office action on the merits before the
+   cutoff, for claims (not drawings, specification or abstract).
+ - ground in {101, 102, 103, 112a, 112b, 112c, 112d, 112f, 112, dp, objection}:
+   "112, first paragraph" = 112a, "second paragraph" = 112b, "fourth" = 112d, "sixth" = 112f,
+   "112" alone = 112; dp = (nonstatutory/obviousness-type) double patenting; objection = a claim
+   objected to (e.g. dependent upon a rejected base claim). A claim rejected under 102 and, in the
+   alternative, 103 gets both grounds.
+ - A list of allowable claims or a summary form line alone does not create a rejection.
+ - status in {outstanding, withdrawn, overcome, moot, unknown}: "outstanding" unless an Office document
+   dated on or before the cutoff states that the rejection is withdrawn or overcome. Applicant arguments
+   or amendments in a reply do NOT make a rejection overcome; a canceling amendment that is not yet
+   entered does not make it moot.
+ - references = cited references named for that ground (empty for 101/112).
+ - evidence = the Office action doc_id and a short verbatim quote (<= 30 words) of the rejection
+   statement.
+3. Use only the given documents. Spans are short verbatim quotes. Output JSON only.

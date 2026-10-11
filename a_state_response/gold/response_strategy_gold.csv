@@ -1,0 +1,11 @@
+app_id,strategies,strategies_fine,no_edit,source,auto_fine
+13151341,amendment;argument;cancellation,add_claims;amend_claims;argue;cancel_claims,False,human ok (response_strategy_review_v2_done.xlsx),add_claims;amend_claims;argue;cancel_claims
+13575141,amendment;argument,amend_claims;amend_specification;argue,False,human ok (response_strategy_review_v2_done.xlsx),amend_claims;amend_specification;argue
+14031839,amendment;argument,amend_claims;argue,False,human ok (response_strategy_review_v2_done.xlsx),amend_claims;argue
+14229448,amendment;argument;cancellation;other,add_claims;amend_claims;amend_specification;argue;cancel_claims;interview,False,human ok (response_strategy_review_v2_done.xlsx),add_claims;amend_claims;amend_specification;argue;cancel_claims;interview
+14239985,amendment;other,amend_claims;interview,False,human fix (response_strategy_review_v2_done.xlsx),amend_claims;argue
+14420580,amendment;argument,amend_claims;argue,False,human fix (response_strategy_review_v2_done.xlsx),amend_claims;argue;cancel_claims
+14460009,amendment;argument;other,amend_claims;argue;declaration_affidavit,False,human ok (response_strategy_review_v2_done.xlsx),amend_claims;argue;declaration_affidavit
+14723918,amendment;argument,amend_claims;argue,False,human ok (response_strategy_review_v2_done.xlsx),amend_claims;argue
+14838440,amendment;argument;other,add_claims;argue;terminal_disclaimer,False,human ok (response_strategy_review_v2_done.xlsx),add_claims;argue;terminal_disclaimer
+14950996,argument,argue,True,human ok (response_strategy_review_v2_done.xlsx),argue
