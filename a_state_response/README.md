@@ -6,7 +6,7 @@
 > Not committed: raw model responses / API cache (`outputs/*_raw/`) and the USPTO review PDFs (`gold/pdf/`, list in
 > `gold/pdf_needed.txt`, re-download with `scripts/fetch_review_pdfs.py`). The repo `.gitignore` ignores `outputs/`;
 > the committed `outputs/*.jsonl|csv` files were added on purpose.
-> Summary figure: `results/A_results_plot.pdf` (`python3 a_state_response/scripts/plot_results.py`, no API needed).
+> Summary figure: `results/A_results_plot.pdf` (`python3 a_state_response/scripts/plot_results.py`); intervals: `scripts/bootstrap_ci.py`. Neither needs an API key.
 > Language: the human review worksheets in `gold/*.xlsx` (and the sheet names / evidence strings the gold scripts read
 > from them, e.g. `integrate_gold.py`, `strategy_evidence.py`) are A's original review records and are partly in Chinese;
 > they are kept as-is so the gold can be rebuilt exactly. All final gold, provenance and metrics files are in English.
@@ -14,6 +14,55 @@
 > 3 state snapshots (`B_state_review.xlsx`), A/C Supp judge calibration (`gold/support_calibration_*`).
 
 ![A results](results/A_results_plot.png)
+
+## Results and analysis (10 human-reviewed gold apps)
+All numbers below are computed from files in this folder (`state_metrics.json`, `response_metrics.json`,
+`outputs/state_scores_per_record.csv`, `results/A_bootstrap_ci.json`). 95% intervals are app-level bootstrap
+(`scripts/bootstrap_ci.py`, 10,000 draws, seed 20261011). With 10 applications, all intervals are wide; these are pilot results.
+The prompt was chosen on 12 dev+tune apps that do not overlap with the 10 gold apps.
+
+| Task | Metric | Value | 95% CI | n |
+|---|---|---|---|---|
+| State tracking | Claim, O1 cutoff | 0.633 | [0.388, 0.875] | 177 claim records |
+| State tracking | Claim, A1 cutoff | 0.777 | [0.573, 0.912] | 340 claim records |
+| State tracking | Rej, O1 / A1 cutoff | 1.000 / 0.997 | – | 155 / 155 rejection tuples |
+| Applicant response | Strat (macro-F1, 4 labels) | 0.522 | – | 10 replies |
+| Applicant response | Edit P / R / F1 | 0.450 / 0.099 / 0.162 | F1 [0.088, 0.239] | 182 ref / 40 pred units |
+| Applicant response | Supp | 0.531 (26/49) | – | 53 argument units |
+
+**What the numbers say**
+1. **Rej near 1.0 does not show that rejection-status tracking is solved.** In the gold, all 352 rejection and objection tuples at
+   the O1 and A1 cutoffs have status `outstanding`: at O1 the rejections were just issued, and the USPTO file-wrapper catalog has
+   no examiner document between O1 and the A1 cutoff (`gold/GOLD_README.md`). Rej therefore reduces to (claim, ground) F1 at these
+   cutoffs. Testing status changes (withdrawn / overcome / moot) needs a cutoff after a later examiner action.
+2. **Claim errors are mostly about versions and status labels, not about finding the claims.** Of 141 wrong claim records, 12 are
+   claims missing from the output (all at O1, mainly claims withdrawn after a restriction); the rest are found but have a wrong
+   version, status or text. At O1, status is wrong for 32 found records (e.g. `original` instead of `previously_presented`);
+   at A1, version is wrong for 52 of 76 wrong records. Text alone fails (similarity < 0.90) for 35 records.
+   Details and sourced examples: `state_error_examples.md`.
+3. **One application accounts for 57 of the 141 wrong records (14420580).** Claims 1-10 were canceled by a same-day preliminary
+   amendment whose cancellation appears only as an image; the model dates the cancellation to the A1 listing, and the version
+   error propagates to the claims that amendment added. As a diagnostic only (not a reported score), Claim without this app is
+   0.713 (O1) and 0.870 (A1). This concentration is one reason the intervals are wide.
+4. **Automatic labels cannot replace the human gold for Claim.** The automatic reference scored against the gold reaches only
+   Claim 0.776 (Rej 0.977) (`gold/GOLD_README.md`), so Claim is reported on the 10 gold apps only, not on test_core.
+5. **Strategy: frequent labels are easy, rare labels decide the macro-F1.** Per-label F1: amendment 0.889, argument 0.947,
+   other 0.250, cancellation 0.000. Cancellation occurs in 2 gold replies; the model predicts it for 3 other replies and
+   misses both, so its F1 rests on 5 applications. The supplementary test_core value (0.658, 90 apps) is not comparable: it uses
+   automatic labels (whose `argue` label is too loose) and a record-only input.
+6. **Edit: the model proposes far fewer changes than applicants made.** 40 predicted vs 182 reference limitation units;
+   precision 0.45 [0.23, 0.74], recall 0.10 [0.05, 0.16]. Three applications hold 130 of the 182 reference units
+   (13151341, 13575141, 14229448). Edit measures agreement with the applicant's actual amendment, not the legal quality of the
+   proposal; a rejection can be answered by different valid amendments, so low recall is expected.
+7. **Supp: about half of the cited arguments are supported, and some citations cannot be located.** 26 of 49 cited units are
+   supported; for 9 of the 49 (18%) the cited span is not found verbatim (case/punctuation-insensitive) in the cited document;
+   4 units carry no citation. Support is judged by GPT-5-mini; the judge is not yet calibrated against human labels, so Supp
+   is provisional.
+8. **Objections are rarely carried forward.** Objections are excluded from Rej and reported separately: recall 0.667 at O1
+   (14 of 21) but 0.048 at A1 (1 of 21), precision 1.0 at both.
+
+Downstream use: D's trajectory forecasting used these predicted A1 states as input; adding them did not improve forecasts on
+test_core (difference within noise; `../d_trajectory/results/weekly_summary.md`, section 3).
 
 Data: `data_v1_share/` (same package as everyone). All A files live in this folder (`A/` in the local workspace).
 

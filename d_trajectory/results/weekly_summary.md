@@ -49,7 +49,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
   On the 300-case extension, Cox reaches C-idx 0.591 [0.554, 0.627] (LLM not run on the extension).
 
 ## 4. Most common errors (one or more sourced examples each)
-- State: **[A]**
+- State (A): errors are mostly wrong versions or status labels of found claims, not missing claims (12 of 141 wrong records are missing claims, all at O1, mainly withdrawn claims). One app (14420580, a cancellation shown only as an image in a preliminary amendment) causes 57 of the 141. Rej ≈ 1.0 is uninformative at O1/A1 because every gold status there is `outstanding`. Objections are rarely carried to A1 (recall 0.05). Sourced examples: `a_state_response/state_error_examples.md`; analysis: `a_state_response/README.md`.
 - Evidence / generation: **[C]**; D's review of 5 OAs: see `review/oa_review_D.csv`
 - Prediction: **[B]**
 - Trajectory: the model predicts prosecution as too slow (fast allowances are missed); it seldom predicts abandonment after a substantive reply; adding the state did not help.

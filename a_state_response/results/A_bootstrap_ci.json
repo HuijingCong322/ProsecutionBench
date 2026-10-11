@@ -1,0 +1,39 @@
+{
+ "method": "app-level bootstrap, 10000 draws, seed 20261011, percentile 95% interval",
+ "n_apps": 10,
+ "claim_O1_cutoff": {
+  "value": 0.6328,
+  "ci95": [
+   0.388,
+   0.875
+  ]
+ },
+ "claim_A1_cutoff": {
+  "value": 0.7765,
+  "ci95": [
+   0.573,
+   0.912
+  ]
+ },
+ "edit_precision": {
+  "value": 0.45,
+  "ci95": [
+   0.229,
+   0.737
+  ]
+ },
+ "edit_recall": {
+  "value": 0.0989,
+  "ci95": [
+   0.052,
+   0.162
+  ]
+ },
+ "edit_f1": {
+  "value": 0.1622,
+  "ci95": [
+   0.088,
+   0.239
+  ]
+ }
+}
