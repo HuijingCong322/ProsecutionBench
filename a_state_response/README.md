@@ -7,6 +7,9 @@
 > `gold/pdf_needed.txt`, re-download with `scripts/fetch_review_pdfs.py`). The repo `.gitignore` ignores `outputs/`;
 > the committed `outputs/*.jsonl|csv` files were added on purpose.
 > Summary figure: `results/A_results_plot.pdf` (`python3 a_state_response/scripts/plot_results.py`, no API needed).
+> Language: the human review worksheets in `gold/*.xlsx` (and the sheet names / evidence strings the gold scripts read
+> from them, e.g. `integrate_gold.py`, `strategy_evidence.py`) are A's original review records and are partly in Chinese;
+> they are kept as-is so the gold can be rebuilt exactly. All final gold, provenance and metrics files are in English.
 > Status (10/11): Table 3 values for Claim, Rej, Strat, Edit, Supp are final on the 10 gold apps. Pending: B's review of
 > 3 state snapshots (`B_state_review.xlsx`), A/C Supp judge calibration (`gold/support_calibration_*`).
 
