@@ -1,0 +1,34 @@
+### SYSTEM
+You forecast how U.S. patent prosecution will continue. You read the public record of one application up to a cutoff date and return calibrated probabilities as a json object only.
+
+### USER
+Estimate how the prosecution of this U.S. utility application will continue after the cutoff date {cutoff_date}.
+
+Inputs
+- Filing date: {filing_date}. Art unit: {art_unit}.
+- First Office Action on the merits (O1): {o1_code} mailed {o1_date}.
+- The applicant's reply to O1 (A1) was filed on {cutoff_date}. This is the cutoff: nothing dated after it is available.
+- Prosecution state at the cutoff: {state}
+- Prosecution record through the cutoff, oldest first. Each document starts with a header line [doc_id | document code | date | role | text source]. The text is machine-extracted, so ignore spacing, line-break and recognition artifacts.
+
+{history}
+
+Task
+For each month m = 1, 2, ..., 24 after the cutoff, give the probability that, by the end of month m, the FIRST of these two events has happened:
+- allowance: the USPTO mails a Notice of Allowance;
+- abandonment: the USPTO mails a notice that the application is abandoned (for example, failure to reply to an Office Action, express abandonment, or abandonment after an appeal).
+Only the first of the two counts, so they are competing events. Further Office Actions, advisory actions, interviews, requests for continued examination (RCE), appeals and petitions are NOT events; prosecution simply continues through them.
+
+Procedural facts
+- A reply to an Office Action is due within 3 months, extendable to 6 months with fees. If no reply is filed, the application becomes abandoned and the notice is usually mailed some weeks later.
+- After a final rejection the applicant typically files an RCE, an appeal, an after-final reply, or lets the application go abandoned.
+
+Rules
+- Use only the supplied documents. Do not use anything you may remember about this application or patent.
+- F_allowance and F_abandonment are cumulative: each list must be non-decreasing in m.
+- For every month, F_allowance[m] + F_abandonment[m] must be at most 1. The remainder is the probability that neither event has happened yet.
+- Express uncertainty through the probabilities.
+
+Output
+Return a json object only, with exactly these keys. Each list has 24 numbers between 0 and 1; position 1 is month 1 and position 24 is month 24.
+{"F_allowance": [24 numbers], "F_abandonment": [24 numbers], "rationale": "at most three sentences"}

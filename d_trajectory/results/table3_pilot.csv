@@ -1,0 +1,14 @@
+owner,table3_column,model,input_setting,sample_set,value,eligible_n,scored_n,failed_n,excluded_reason,split_detail,prompt_version,run_id,source_file,notes
+D,C-idx,reference: cox_ph_cutoff_features,cutoff features,test_core,0.5386345053147997,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,IBS,reference: cox_ph_cutoff_features,cutoff features,test_core,0.19225359360184208,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,C-idx,gpt-5-mini,history_only,test_core,0.5486508585445625,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,IBS,gpt-5-mini,history_only,test_core,0.22349694022681757,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,C-idx,gpt-5-mini,state_with_history,test_core,0.4933565004088307,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,IBS,gpt-5-mini,state_with_history,test_core,0.24843204997692858,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,C-idx,reference: km_aalen_johansen,no covariates,test_core,0.5,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+D,IBS,reference: km_aalen_johansen,no covariates,test_core,0.18821612664651416,100,100,0,,test_core 100; train <= 2013-12-31,,,metrics/D/trajectory_metrics.json,
+A,Strat.,gpt-5-mini,record + predicted O1 state,gold 10,0.5216,10,10,0,,gold_subset,b5ab5de0e7,,"A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)","macro-F1 over amendment/argument/cancellation/other; supplementary test_core 90 (record only, auto labels) = 0.658"
+A,Edit,gpt-5-mini,record + predicted O1 state,gold 10,0.1622,10,10,0,,gold_subset,b5ab5de0e7,,"A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)","limitation-unit micro P/R/F1 = 0.45/0.10/0.16 (182 ref units, 40 predicted)"
+A,Supp.,gpt-5-mini,record + predicted O1 state,gold 10 (49 verifiable units),0.5306,53,49,0,4 units without citation (unknown),gold_subset,support_judge,,"A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",26/49 supported; span by rule + GPT-5-mini judge; uncalibrated until 10-unit A/C calibration is done
+A,Claim,gpt-5-mini,record,gold 10 (A1 cutoff),0.7765,10,10,0,,gold_subset,829dea35c8,,"A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",claim-version accuracy at A1 cutoff (340 records); O1 cutoff = 0.633
+A,Rej.,gpt-5-mini,record,gold 10 (A1 cutoff),0.9968,10,10,0,,gold_subset,829dea35c8,,"A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)","rejection-status macro-F1, objections excluded (objection recall 0.05 at A1); O1 cutoff = 1.000"

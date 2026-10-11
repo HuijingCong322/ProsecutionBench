@@ -1,0 +1,161 @@
+{
+ "test_set": "test (300, optional extension)",
+ "endpoint": "time from A1 filing (cutoff) to the first mailed Notice of Allowance or mailed abandonment notice",
+ "metric_notes": {
+  "c_index": "IPCW concordance (sksurv concordance_index_ipcw), tau = 730 days, risk = 1 - S(730)",
+  "ibs": "integrated Brier score over the frozen monthly grid (months 1..24)",
+  "primary_censoring_weights": "from the evaluation labels; test_core has no censored case, so all weights are 1",
+  "sensitivity_suffix_trainG": "censoring weights estimated from training labels censored at 2013-12-31"
+ },
+ "scikit_survival_version": "0.28.0",
+ "results": [
+  {
+   "method": "cox_ph_cutoff_features",
+   "model": "none (Cox PH, ridge alpha=1)",
+   "input_setting": "cutoff features",
+   "eligible_n": 299,
+   "scored_n": 299,
+   "failed_n": 0,
+   "missing_n": 0,
+   "excluded_n": 1,
+   "excluded_reason": "incomplete_record",
+   "events_scored": {
+    "allowance": 218,
+    "abandonment": 81
+   },
+   "horizon_days": 730.0,
+   "grid_days": [
+    30.0,
+    61.0,
+    91.0,
+    122.0,
+    152.0,
+    183.0,
+    213.0,
+    244.0,
+    274.0,
+    304.0,
+    335.0,
+    365.0,
+    396.0,
+    426.0,
+    457.0,
+    487.0,
+    517.0,
+    548.0,
+    578.0,
+    609.0,
+    639.0,
+    670.0,
+    700.0,
+    730.0
+   ],
+   "repairs": {},
+   "failed_ids": [],
+   "missing_ids": [],
+   "c_index": 0.5907447246761569,
+   "ibs": 0.19442399022996015,
+   "brier_12m": 0.21672936487940966,
+   "brier_24m": 0.12703337337039078,
+   "c_index_trainG": 0.56073677389872,
+   "ibs_trainG": 0.29392130857161824,
+   "brier_12m_trainG": 0.3175354107677099,
+   "brier_24m_trainG": 0.32823881471891464,
+   "c_index_ci95": [
+    0.5541130249222534,
+    0.6272180437235956
+   ],
+   "ibs_ci95": [
+    0.17970571554662199,
+    0.20927568423227474
+   ],
+   "n_boot_used": 1000,
+   "harrell_c_trunc": 0.5907447246761569,
+   "calibration": {
+    "pred_any_12m": 0.6703272752412737,
+    "obs_any_12m": 0.6755852842809364,
+    "pred_any_24m": 0.8166923612702615,
+    "obs_any_24m": 0.8662207357859532
+   },
+   "predictions_file": "outputs/D/trajectory_predictions_cox_test300.jsonl"
+  },
+  {
+   "method": "km_aalen_johansen",
+   "model": "none (train KM/AJ)",
+   "input_setting": "no covariates",
+   "eligible_n": 299,
+   "scored_n": 299,
+   "failed_n": 0,
+   "missing_n": 0,
+   "excluded_n": 1,
+   "excluded_reason": "incomplete_record",
+   "events_scored": {
+    "allowance": 218,
+    "abandonment": 81
+   },
+   "horizon_days": 730.0,
+   "grid_days": [
+    30.0,
+    61.0,
+    91.0,
+    122.0,
+    152.0,
+    183.0,
+    213.0,
+    244.0,
+    274.0,
+    304.0,
+    335.0,
+    365.0,
+    396.0,
+    426.0,
+    457.0,
+    487.0,
+    517.0,
+    548.0,
+    578.0,
+    609.0,
+    639.0,
+    670.0,
+    700.0,
+    730.0
+   ],
+   "repairs": {},
+   "failed_ids": [],
+   "missing_ids": [],
+   "c_index": 0.5,
+   "ibs": 0.1974586286825536,
+   "brier_12m": 0.21978252857227262,
+   "brier_24m": 0.12123459318203719,
+   "c_index_trainG": 0.5,
+   "ibs_trainG": 0.2933131834013173,
+   "brier_12m_trainG": 0.3191445685380248,
+   "brier_24m_trainG": 0.3115106739492337,
+   "c_index_ci95": [
+    0.5,
+    0.5
+   ],
+   "ibs_ci95": [
+    0.18704083273030056,
+    0.20789654542287497
+   ],
+   "n_boot_used": 1000,
+   "harrell_c_trunc": 0.5,
+   "calibration": {
+    "pred_any_12m": 0.6508320899761629,
+    "obs_any_12m": 0.6755852842809364,
+    "pred_any_24m": 0.7930618641322563,
+    "obs_any_24m": 0.8662207357859532
+   },
+   "cause_specific_24m": {
+    "brier_allowance": 0.22503668582134773,
+    "brier_abandonment": 0.1675644690706566,
+    "pred_allowance": 0.6423069325148812,
+    "obs_allowance": 0.6588628762541806,
+    "pred_abandonment": 0.1507549316173762,
+    "obs_abandonment": 0.20735785953177258
+   },
+   "predictions_file": "outputs/D/trajectory_predictions_km_test300.jsonl"
+  }
+ ]
+}

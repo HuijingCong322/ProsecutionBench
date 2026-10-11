@@ -1,0 +1,317 @@
+{
+ "columns": [
+  {
+   "column": "Occ.",
+   "owner": "B",
+   "category": "Examiner Prediction",
+   "definition": "AUROC of next-OA occurrence probability"
+  },
+  {
+   "column": "Type",
+   "owner": "B",
+   "category": "Examiner Prediction",
+   "definition": "macro-F1 over CTNF/CTFR/NOA"
+  },
+  {
+   "column": "Grnd.",
+   "owner": "B",
+   "category": "Examiner Prediction",
+   "definition": "micro-F1 of verifiable claim-ground pairs (NOA = empty set)"
+  },
+  {
+   "column": "R-L",
+   "owner": "C",
+   "category": "Examiner Generation",
+   "definition": "ROUGE-L of generated OA vs actual O2, per-case mean"
+  },
+  {
+   "column": "MET.",
+   "owner": "C",
+   "category": "Examiner Generation",
+   "definition": "METEOR of generated OA vs actual O2, per-case mean"
+  },
+  {
+   "column": "Judge",
+   "owner": "C",
+   "category": "Examiner Generation",
+   "definition": "fixed GPT-5-mini judge, overall score mean, 1-5"
+  },
+  {
+   "column": "Strat.",
+   "owner": "A",
+   "category": "Applicant Response",
+   "definition": "multi-label macro-F1 over fixed strategy labels"
+  },
+  {
+   "column": "Edit",
+   "owner": "A",
+   "category": "Applicant Response",
+   "definition": "micro-F1 of frozen limitation edit units"
+  },
+  {
+   "column": "Supp.",
+   "owner": "A",
+   "category": "Applicant Response",
+   "definition": "supported / verifiable argument units; GPT-5-mini judge with a fixed rubric, calibrated on 10 student-labelled units (not expert validation)"
+  },
+  {
+   "column": "C-idx",
+   "owner": "D",
+   "category": "Trajectory Forecasting",
+   "definition": "IPCW concordance, first NOA or abandonment, tau = 24 months"
+  },
+  {
+   "column": "IBS",
+   "owner": "D",
+   "category": "Trajectory Forecasting",
+   "definition": "integrated Brier score, monthly grid to 24 months (lower is better)"
+  },
+  {
+   "column": "Claim",
+   "owner": "A",
+   "category": "State Tracking",
+   "definition": "share of verifiable claim records with matching ID, version, text, status"
+  },
+  {
+   "column": "Rej.",
+   "owner": "A",
+   "category": "State Tracking",
+   "definition": "macro-F1 of claim-ground-status tuples"
+  },
+  {
+   "column": "dOcc.",
+   "owner": "B",
+   "category": "Personalized Modeling",
+   "definition": "profile AUROC - no-profile AUROC, same paired subset"
+  },
+  {
+   "column": "dR-L",
+   "owner": "B",
+   "category": "Personalized Modeling",
+   "definition": "profile ROUGE-L - no-profile ROUGE-L, same paired subset"
+  }
+ ],
+ "entries": [
+  {
+   "owner": "D",
+   "table3_column": "C-idx",
+   "model": "reference: cox_ph_cutoff_features",
+   "input_setting": "cutoff features",
+   "sample_set": "test_core",
+   "value": 0.5386345053,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "IBS",
+   "model": "reference: cox_ph_cutoff_features",
+   "input_setting": "cutoff features",
+   "sample_set": "test_core",
+   "value": 0.1922535936,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "C-idx",
+   "model": "gpt-5-mini",
+   "input_setting": "history_only",
+   "sample_set": "test_core",
+   "value": 0.5486508585,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "IBS",
+   "model": "gpt-5-mini",
+   "input_setting": "history_only",
+   "sample_set": "test_core",
+   "value": 0.2234969402,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "C-idx",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history",
+   "sample_set": "test_core",
+   "value": 0.4933565004,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "IBS",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history",
+   "sample_set": "test_core",
+   "value": 0.24843205,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "C-idx",
+   "model": "reference: km_aalen_johansen",
+   "input_setting": "no covariates",
+   "sample_set": "test_core",
+   "value": 0.5,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "D",
+   "table3_column": "IBS",
+   "model": "reference: km_aalen_johansen",
+   "input_setting": "no covariates",
+   "sample_set": "test_core",
+   "value": 0.1882161266,
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "test_core 100; train <= 2013-12-31",
+   "prompt_version": "",
+   "run_id": "",
+   "source_file": "metrics/D/trajectory_metrics.json",
+   "notes": ""
+  },
+  {
+   "owner": "A",
+   "table3_column": "Strat.",
+   "model": "gpt-5-mini",
+   "input_setting": "record + predicted O1 state",
+   "sample_set": "gold 10",
+   "value": 0.5216,
+   "eligible_n": 10,
+   "scored_n": 10,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "gold_subset",
+   "prompt_version": "b5ab5de0e7",
+   "run_id": "",
+   "source_file": "A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",
+   "notes": "macro-F1 over amendment/argument/cancellation/other; supplementary test_core 90 (record only, auto labels) = 0.658"
+  },
+  {
+   "owner": "A",
+   "table3_column": "Edit",
+   "model": "gpt-5-mini",
+   "input_setting": "record + predicted O1 state",
+   "sample_set": "gold 10",
+   "value": 0.1622,
+   "eligible_n": 10,
+   "scored_n": 10,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "gold_subset",
+   "prompt_version": "b5ab5de0e7",
+   "run_id": "",
+   "source_file": "A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",
+   "notes": "limitation-unit micro P/R/F1 = 0.45/0.10/0.16 (182 ref units, 40 predicted)"
+  },
+  {
+   "owner": "A",
+   "table3_column": "Supp.",
+   "model": "gpt-5-mini",
+   "input_setting": "record + predicted O1 state",
+   "sample_set": "gold 10 (49 verifiable units)",
+   "value": 0.5306,
+   "eligible_n": 53,
+   "scored_n": 49,
+   "failed_n": 0,
+   "excluded_reason": "4 units without citation (unknown)",
+   "split_detail": "gold_subset",
+   "prompt_version": "support_judge",
+   "run_id": "",
+   "source_file": "A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",
+   "notes": "26/49 supported; span by rule + GPT-5-mini judge; uncalibrated until 10-unit A/C calibration is done"
+  },
+  {
+   "owner": "A",
+   "table3_column": "Claim",
+   "model": "gpt-5-mini",
+   "input_setting": "record",
+   "sample_set": "gold 10 (A1 cutoff)",
+   "value": 0.7765,
+   "eligible_n": 10,
+   "scored_n": 10,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "gold_subset",
+   "prompt_version": "829dea35c8",
+   "run_id": "",
+   "source_file": "A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",
+   "notes": "claim-version accuracy at A1 cutoff (340 records); O1 cutoff = 0.633"
+  },
+  {
+   "owner": "A",
+   "table3_column": "Rej.",
+   "model": "gpt-5-mini",
+   "input_setting": "record",
+   "sample_set": "gold 10 (A1 cutoff)",
+   "value": 0.9968,
+   "eligible_n": 10,
+   "scored_n": 10,
+   "failed_n": 0,
+   "excluded_reason": "",
+   "split_detail": "gold_subset",
+   "prompt_version": "829dea35c8",
+   "run_id": "",
+   "source_file": "A/A_week3_2026_10_10.zip (response_metrics.json, state_metrics.json)",
+   "notes": "rejection-status macro-F1, objections excluded (objection recall 0.05 at A1); O1 cutoff = 1.000"
+  }
+ ]
+}

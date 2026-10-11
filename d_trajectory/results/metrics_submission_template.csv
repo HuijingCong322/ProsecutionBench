@@ -1,0 +1,9 @@
+owner,table3_column,model,input_setting,sample_set,value,eligible_n,scored_n,failed_n,excluded_reason,split_detail,prompt_version,run_id,source_file,notes
+B,Occ.,gpt-5-mini,state_with_history,test_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+B,Type,gpt-5-mini,state_with_history,test_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+B,Grnd.,gpt-5-mini,state_with_history,test_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+B,dOcc.,gpt-5-mini,state_with_history+profile,test_core (profile subset),,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+B,dR-L,gpt-5-mini,state_with_history+profile,gen_core (profile subset),,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+C,R-L,gpt-5-mini,state_with_history,gen_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+C,MET.,gpt-5-mini,state_with_history,gen_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
+C,Judge,gpt-5-mini,state_with_history,gen_core,,,,,,,,,,"fill value + eligible_n + scored_n + failed_n; if not run, leave value empty and write why here"
