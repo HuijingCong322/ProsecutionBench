@@ -14,12 +14,12 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 
 | Category | Columns | Status | N |
 |---|---|---|---|
-| Examiner Prediction (B) | Occ., Type, Grnd. | **[B]** | |
+| Examiner Prediction (B) | GPT Occ.0.5481, Type0.1803, Grnd.0.2242 | Runs complete; automatic-gold draft; B review pending | 99 / 99 / 62 |
 | Examiner Generation (C) | R-L 0.1678, MET. 0.2202, Judge 2.0513/5 | 39 scored / 50 eligible |
 | Applicant Response (A) | Strat. 0.52, Edit 0.16, Supp. 0.53 (judge uncalibrated until the 10-unit A/C labels are done) | 10 gold |
 | Trajectory (D) | C-idx 0.49, IBS 0.25 (state + history); history only 0.55 / 0.22 | 100 |
 | State Tracking (A) | Claim 0.78, Rej. 1.00 at A1 cutoff (O1: 0.63 / 1.00); objections excluded | 10 gold |
-| Personalized (B) | ΔOcc., ΔR-L | **[B]** | |
+| Personalized (B) | GPT ΔOcc.−0.1111; Qwen ΔOcc.+0.2667; ΔR-L N/A | Prediction pairs complete; paired generation pending | 14 pairs;8 generation IDs ready |
 
 ## 3. Trajectory Forecasting (D)
 - Endpoint: days from A1 to the first mailed Notice of Allowance or abandonment notice. test_core: 76 allowances, 24 abandonments,
@@ -51,22 +51,28 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 ## 4. Most common errors (one or more sourced examples each)
 - State (A): errors are mostly wrong versions or status labels of found claims, not missing claims (12 of 141 wrong records are missing claims, all at O1, mainly withdrawn claims). One app (14420580, a cancellation shown only as an image in a preliminary amendment) causes 57 of the 141. Rej ≈ 1.0 is uninformative at O1/A1 because every gold status there is `outstanding`. Objections are rarely carried to A1 (recall 0.05). Sourced examples: `a_state_response/state_error_examples.md`; analysis: `a_state_response/README.md`.
 - Evidence / generation (C): the model often carries forward earlier rejections instead of updating its assessment after A1. For example, in `14723918_t1`, the generated action maintains the 102/103 rejections, whereas actual O2 (`IWNJSWTWRXEAPX5`) withdraws the rejections, allows claims 1–9, and raises only an informality objection to claim 10. Among the 39 schema-valid cases, the model predicts CTNF in 37 cases, compared with 4 CTNF reference codes; overall code agreement is 6/39 (15.4%). This measures agreement with document codes, not substantive allowance/rejection accuracy. Citation-location checks match 181/314 passages (57.6%) to their named input documents; matching establishes location, not evidential support. Eleven outputs fail schema validation because of unsupported ground categories or ambiguous combined labels/statuses. Conservative format normalization recovers none. Examples: `c_examiner_generation/results/generation_examples.md`.
-- Prediction: **[B]**
+- Prediction (B): GPT-5-mini predicts CTNF for 50 of 59 actual CTFR cases (Type macro-F1 0.1803); Qwen predicts CTFR for 46 of 59. Of 36 NOA cases, GPT and Qwen correctly predict 6 and 16, respectively. Gold labels remain automatic/unreviewed. Confusion matrices: `b_examiner_prediction/results/*_core_metrics.draft.json`. In the source-check example `14723918_t1`, O2 is an objection-only CTFR: document type and substantive rejection must be distinguished. Independent human ground review is pending.
 - Trajectory: the model predicts prosecution as too slow (fast allowances are missed); it seldom predicts abandonment after a substantive reply; adding the state did not help.
 
 ## 5. Cost (GPT-5-mini)
 | Member | Calls | Tokens in / out | Cost (USD) |
 |---|---|---|---|
 | A | (see A/model_manifest.json) | | $5.69 state (incl. prompt variants) + $1.78 response, as logged by A |
-| B | | | **[B]** |
+| B | 208 logged GPT attempts;122 responses with usage;86 HTTP429 errors;includes dev/retries | 5.188500M / 0.083497M;0.209792M cached input included | Not estimated;verify Azure bill. Final core100 and profile14 successful |
 | C | 103 logged model responses (including dev and retries) | 4.866M / 0.337M | ≈ $1.882 logged estimate; check the Azure bill |
 | D | 203 (3 dev + 2 × 100 test), 0 cut-off answers | 8.22M / 0.19M | ≈ $2.4 at list price ($0.25 / $2.00 per 1M); check the Azure bill |
 
 ## 6. Extra models
 - A: not run (N/A this week).
-- **[B]**,
+- B: Qwen3.6-27B on Azure, with provider-default thinking and sampling rather than GPT's low reasoning effort, using the same frozen prompt and fixed GPT-derived state. All 100 core and 14 profile outputs ultimately succeeded; one ReadTimeout was resolved by explicit cached resume. Core Occ./Type/Grnd. are 0.6495/0.4081/0.2944 (N=99/99/62), versus GPT's 0.5481/0.1803/0.2242. On the same 14 Qwen pairs, profile changes Occ. from 0.4000 to 0.6667, Type from 0.2939 to 0.4474, and Grnd. from 0.2080 to 0.3802 (ground N=8), giving ΔOcc.=+0.2667. GPT's paired Occ. changes from 0.6000 to 0.4889 (ΔOcc.=−0.1111). The small conditional subset and different inference settings prevent claims of universal or statistically significant improvement. Qwen logs contain 118 attempts and 117 responses with usage: 5.567196M input and 0.287218M output tokens; cost is unestimated. See `b_examiner_prediction/results/metric_provenance.json`.
 - C: not run. The pilot uses GPT-5-mini for both generation and judging; cross-model comparisons are deferred to the next phase.
 - D: not run; GPT-5-mini results came in Saturday night and the extra deployments were not set up.
+
+## B: baselines and review status
+
+Using the same 99 test IDs and 445 eligible training examples with the fixed training-information cutoff of 2013-12-31, Occ. AUROC is 0.5000 for Majority, 0.5780 for LR-reply-v1.2-raw, 0.5608 for LR-time, 0.5481 for GPT, and 0.6495 for Qwen. LR uses fixed C=1 and train-only imputation/scaling, with no tuning on the current test results. Raw A1 status proxies differ from the old reviewed-markup implementation; the binary baselines do not generate Type/Grnd. predictions. Source: `b_examiner_prediction/results/baseline_comparison.draft.csv`.
+
+All B metrics are **automatic-gold drafts**. B must independently review 13151341, 14229448 and 14420580 at both O1 and A1 (6 states), and manually check 5 ground-gold cases. A/C's 10-unit support calibration is separate. Ground scoring leaves 36 missing-gold cases unknown and excludes the 112d taxonomy conflict in 14012315 (original gold preserved), giving N=62. This differs from a fully verified reference with NOA ground labels explicitly empty. ΔR-L is N/A, not zero: 8 paired gen_core IDs are prepared, but compatible generation outputs for both conditions have not been supplied. Known PatEx families show no train-test overlap; 143/445 training and 25/99 test applications have unknown local family coverage, not proven global singleton status.
 
 ## 7. What the formal experiment still needs
 See `results/next_week_actions.md`.

@@ -1,0 +1,81 @@
+{
+  "usage": {
+    "GPT": {
+      "attempts": 208,
+      "responses_with_usage": 122,
+      "api_error_attempts": 86,
+      "prompt_tokens": 5188500,
+      "completion_tokens": 83497,
+      "cached_prompt_tokens": 209792,
+      "cost_usd": null,
+      "cost_reason": "No verified Azure price or bill supplied;timeouts may be billed without usage returned",
+      "local_log_paths": [
+        "week10_11/B/outputs/dev_state/state_run/usage_log.jsonl",
+        "week10_11/B/outputs/dev_prediction/usage_log.jsonl",
+        "week10_11/B/outputs/core/usage_log.jsonl",
+        "week10_11/B/outputs/paired/with_profile/usage_log.jsonl"
+      ]
+    },
+    "Qwen": {
+      "attempts": 118,
+      "responses_with_usage": 117,
+      "api_error_attempts": 1,
+      "prompt_tokens": 5567196,
+      "completion_tokens": 287218,
+      "cached_prompt_tokens": 0,
+      "cost_usd": null,
+      "cost_reason": "No verified Azure price or bill supplied;timeouts may be billed without usage returned",
+      "local_log_paths": [
+        "week10_11/B/outputs/qwen36_27b/dev/usage_log.jsonl",
+        "week10_11/B/outputs/qwen36_27b/core/usage_log.jsonl",
+        "week10_11/B/outputs/qwen36_27b/profile/usage_log.jsonl"
+      ]
+    }
+  },
+  "gold_status": "automatic_unreviewed",
+  "human_review": "B6 states and5 ground cases pending;A/C support calibration separate",
+  "GPT": {
+    "run_id": "20261011T230738Z_65d3f1ea",
+    "eligible_n": 100,
+    "success_n": 100,
+    "failed_n": 0,
+    "configuration": {
+      "deployment": "gpt-5-mini",
+      "expected_model": "gpt-5-mini-2025-08-07",
+      "deployment_type": "Global Standard",
+      "task": "prediction",
+      "reasoning_effort": "low",
+      "initial_max_completion_tokens": 8192,
+      "retry_max_completion_tokens": 16384,
+      "content_attempt_limit": 2,
+      "temperature": "omitted",
+      "transport_retries": 0,
+      "response_format": {
+        "type": "json_object"
+      },
+      "implementation_hash": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d"
+    }
+  },
+  "Qwen": {
+    "run_id": "20261013T003432Z_2b34cd1d",
+    "eligible_n": 100,
+    "success_n": 100,
+    "failed_n": 0,
+    "configuration": {
+      "deployment": "qwen--qwen36-27b",
+      "expected_model": "qwen--qwen3.6-27b",
+      "deployment_type": "not_verified_Qwen_Azure_deployment",
+      "task": "prediction",
+      "reasoning_effort": "omitted_provider_default",
+      "thinking": "provider_default_not_claimed_equivalent_to_GPT_low",
+      "initial_max_tokens": 8192,
+      "retry_max_tokens": 16384,
+      "content_attempt_limit": 2,
+      "temperature": "omitted_provider_default",
+      "transport_retries": 0,
+      "response_format": "omitted_JSON_prompt_only",
+      "state_provider": "fixed_previously_generated_GPT5mini_states",
+      "implementation_hash": "4e77238bd49d6085e6ec6337c08617f69b06bbde54253444eebd1c10f5c94d35"
+    }
+  }
+}

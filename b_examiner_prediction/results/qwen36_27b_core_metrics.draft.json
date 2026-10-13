@@ -1,0 +1,118 @@
+{
+  "Occ": {
+    "eligible_n": 99,
+    "scored_n": 99,
+    "failed_n": 0,
+    "failed_ids": [],
+    "excluded_ids": [
+      "14572445_t1"
+    ],
+    "coverage_status": "complete",
+    "gold_status": "automatic_unreviewed",
+    "value": 0.6494708994708994,
+    "reason": "",
+    "positive_n": 63,
+    "negative_n": 36
+  },
+  "Type": {
+    "eligible_n": 99,
+    "scored_n": 99,
+    "failed_n": 0,
+    "failed_ids": [],
+    "excluded_ids": [
+      "14572445_t1"
+    ],
+    "coverage_status": "complete",
+    "gold_status": "automatic_unreviewed",
+    "value": 0.40813648293963256,
+    "labels": [
+      "CTNF",
+      "CTFR",
+      "NOA"
+    ],
+    "confusion_matrix": [
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        3,
+        46,
+        10
+      ],
+      [
+        0,
+        20,
+        16
+      ]
+    ],
+    "support": {
+      "CTNF": 4,
+      "CTFR": 59,
+      "NOA": 36
+    }
+  },
+  "Grnd": {
+    "eligible_n": 62,
+    "scored_n": 62,
+    "failed_n": 0,
+    "unknown_gold_ids": [
+      "13414384_t1",
+      "13421826_t1",
+      "13627444_t1",
+      "13631237_t1",
+      "13682630_t1",
+      "13699383_t1",
+      "13752885_t1",
+      "13789830_t1",
+      "13812396_t1",
+      "13828188_t1",
+      "13902081_t1",
+      "13941735_t1",
+      "14012315_t1",
+      "14017838_t1",
+      "14164014_t1",
+      "14176833_t1",
+      "14229448_t1",
+      "14239985_t1",
+      "14282017_t1",
+      "14355074_t1",
+      "14401783_t1",
+      "14420580_t1",
+      "14468217_t1",
+      "14479147_t1",
+      "14511386_t1",
+      "14516500_t1",
+      "14521920_t1",
+      "14543665_t1",
+      "14588659_t1",
+      "14622198_t1",
+      "14641622_t1",
+      "14665041_t1",
+      "14681300_t1",
+      "14699515_t1",
+      "14795997_t1",
+      "14939994_t1",
+      "14961825_t1"
+    ],
+    "coverage_status": "complete",
+    "tp": 199,
+    "fp": 130,
+    "fn": 824,
+    "precision": 0.6048632218844985,
+    "recall": 0.19452590420332355,
+    "value": 0.2943786982248521,
+    "reason": "",
+    "gold_status": "automatic_unreviewed"
+  },
+  "auxiliary": {
+    "Accuracy": 0.6767676767676768,
+    "positive_F1": 0.7611940298507462,
+    "Brier": 0.23410808080808077
+  },
+  "scoring_library": {
+    "scikit-learn": "1.9.1"
+  },
+  "failure_reasons": {}
+}

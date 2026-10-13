@@ -1,0 +1,184 @@
+{
+  "paired_eligible_n": 14,
+  "paired_scored_n": 14,
+  "paired_failed_n": 0,
+  "paired_failed_ids": [],
+  "positive_n": 9,
+  "negative_n": 5,
+  "coverage_status": "complete",
+  "delta_occ": {
+    "value": -0.1111111111111111,
+    "reason": ""
+  },
+  "no_profile_metrics": {
+    "Occ": {
+      "eligible_n": 14,
+      "scored_n": 14,
+      "failed_n": 0,
+      "failed_ids": [],
+      "excluded_ids": [],
+      "coverage_status": "complete",
+      "gold_status": "automatic_unreviewed",
+      "value": 0.6,
+      "reason": "",
+      "positive_n": 9,
+      "negative_n": 5
+    },
+    "Type": {
+      "eligible_n": 14,
+      "scored_n": 14,
+      "failed_n": 0,
+      "failed_ids": [],
+      "excluded_ids": [],
+      "coverage_status": "complete",
+      "gold_status": "automatic_unreviewed",
+      "value": 0.27777777777777773,
+      "labels": [
+        "CTNF",
+        "CTFR",
+        "NOA"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          3,
+          0
+        ],
+        [
+          4,
+          0,
+          1
+        ]
+      ],
+      "support": {
+        "CTNF": 0,
+        "CTFR": 9,
+        "NOA": 5
+      }
+    },
+    "Grnd": {
+      "eligible_n": 8,
+      "scored_n": 8,
+      "failed_n": 0,
+      "unknown_gold_ids": [
+        "14012315_t1",
+        "14164014_t1",
+        "14282017_t1",
+        "14516500_t1",
+        "14521920_t1",
+        "14699515_t1"
+      ],
+      "coverage_status": "complete",
+      "tp": 18,
+      "fp": 4,
+      "fn": 67,
+      "precision": 0.8181818181818182,
+      "recall": 0.21176470588235294,
+      "value": 0.3364485981308411,
+      "reason": "",
+      "gold_status": "automatic_unreviewed"
+    },
+    "auxiliary": {
+      "Accuracy": 0.7142857142857143,
+      "positive_F1": 0.8181818181818182,
+      "Brier": 0.22910714285714287
+    },
+    "scoring_library": {
+      "scikit-learn": "1.9.1"
+    },
+    "failure_reasons": {}
+  },
+  "profile_metrics": {
+    "Occ": {
+      "eligible_n": 14,
+      "scored_n": 14,
+      "failed_n": 0,
+      "failed_ids": [],
+      "excluded_ids": [],
+      "coverage_status": "complete",
+      "gold_status": "automatic_unreviewed",
+      "value": 0.4888888888888889,
+      "reason": "",
+      "positive_n": 9,
+      "negative_n": 5
+    },
+    "Type": {
+      "eligible_n": 14,
+      "scored_n": 14,
+      "failed_n": 0,
+      "failed_ids": [],
+      "excluded_ids": [],
+      "coverage_status": "complete",
+      "gold_status": "automatic_unreviewed",
+      "value": 0.34920634920634924,
+      "labels": [
+        "CTNF",
+        "CTFR",
+        "NOA"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          5,
+          0
+        ],
+        [
+          4,
+          0,
+          1
+        ]
+      ],
+      "support": {
+        "CTNF": 0,
+        "CTFR": 9,
+        "NOA": 5
+      }
+    },
+    "Grnd": {
+      "eligible_n": 8,
+      "scored_n": 8,
+      "failed_n": 0,
+      "unknown_gold_ids": [
+        "14012315_t1",
+        "14164014_t1",
+        "14282017_t1",
+        "14516500_t1",
+        "14521920_t1",
+        "14699515_t1"
+      ],
+      "coverage_status": "complete",
+      "tp": 32,
+      "fp": 10,
+      "fn": 53,
+      "precision": 0.7619047619047619,
+      "recall": 0.3764705882352941,
+      "value": 0.5039370078740157,
+      "reason": "",
+      "gold_status": "automatic_unreviewed"
+    },
+    "auxiliary": {
+      "Accuracy": 0.7142857142857143,
+      "positive_F1": 0.8181818181818182,
+      "Brier": 0.24999999999999997
+    },
+    "scoring_library": {
+      "scikit-learn": "1.9.1"
+    },
+    "failure_reasons": {}
+  },
+  "delta_rouge_l": {
+    "value": null,
+    "reason": "compatible_C_generation_prompt_config_and_results_not_supplied"
+  },
+  "interpretation": "Uncalibrated local-family subset; no independent examiner effect claimed."
+}

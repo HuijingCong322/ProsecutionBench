@@ -1,0 +1,3 @@
+# B examiner-prediction results
+
+Real GPT/Qwen core100 and profile14 runs. Scores are automatic-gold drafts: B independently reviewing6 states and5 ground cases remains pending. Occ/TypeN99,GrndN62. Qwen uses same frozen prompt/GPT-derived states,provider-default thinking/sampling rather than GPT low. Within-model14-pairΔOcc;ΔR-L awaiting8 paired generation outputs. MetricJSON includes scoring coverage and confusion matrices;metric_provenance.json contains aggregate attempt usage,model IDs and settings. No keys/raw requests uploaded;local traces remain withB. Binary baselines train445/test99,raw LR-reply separately labelled,no Type/Grnd. B_metrics.csv is in d_trajectory/results/submissions/. C's original submission mirrored verbatim there for rebuild.
