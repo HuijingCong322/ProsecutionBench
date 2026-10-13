@@ -6,7 +6,7 @@
 - Data: `data_v1_share` v1.2 (A). One example = one application at t = 1. The cutoff is the A1 filing date, and no document dated after it is a model input.
 - Samples: `test_core` 100 (all 26 data_v0 test cases included), `gen_core` 50 (all 17 data_v0 generation cases), `gold_subset` 10.
   Training information cutoff 2013-12-31; families disjoint between train and test.
-- Inputs are identical across members: the `input_hash` matches A's `sample_manifest.csv` for all 100 test_core cases (checked by D).
+- Data alignment: members use the same `data_v1_share` v1.2 snapshot and A's `sample_manifest.csv`. D verified that the `input_hash` values match the manifest for all 100 `test_core` cases. Prompts and model-input payloads depend on the task and input condition; matching dataset hashes do not imply identical full model inputs.
 - Model: GPT-5-mini on each member's own Azure deployment, `reasoning_effort = low` (team decision 10/10). Main input setting: structured state (A's predicted A1 state) + history; history-only reported as a comparison.
 
 ## 2. Table 3 status (15 columns)
@@ -15,7 +15,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 | Category | Columns | Status | N |
 |---|---|---|---|
 | Examiner Prediction (B) | Occ., Type, Grnd. | **[B]** | |
-| Examiner Generation (C) | R-L, MET., Judge | **[C]** | |
+| Examiner Generation (C) | R-L 0.1678, MET. 0.2202, Judge 2.0513/5 | 39 scored / 50 eligible |
 | Applicant Response (A) | Strat. 0.52, Edit 0.16, Supp. 0.53 (judge uncalibrated until the 10-unit A/C labels are done) | 10 gold |
 | Trajectory (D) | C-idx 0.49, IBS 0.25 (state + history); history only 0.55 / 0.22 | 100 |
 | State Tracking (A) | Claim 0.78, Rej. 1.00 at A1 cutoff (O1: 0.63 / 1.00); objections excluded | 10 gold |
@@ -50,7 +50,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 
 ## 4. Most common errors (one or more sourced examples each)
 - State (A): errors are mostly wrong versions or status labels of found claims, not missing claims (12 of 141 wrong records are missing claims, all at O1, mainly withdrawn claims). One app (14420580, a cancellation shown only as an image in a preliminary amendment) causes 57 of the 141. Rej ≈ 1.0 is uninformative at O1/A1 because every gold status there is `outstanding`. Objections are rarely carried to A1 (recall 0.05). Sourced examples: `a_state_response/state_error_examples.md`; analysis: `a_state_response/README.md`.
-- Evidence / generation: **[C]**; D's review of 5 OAs: see `review/oa_review_D.csv`
+- Evidence / generation (C): the model often carries forward earlier rejections instead of updating its assessment after A1. For example, in `14723918_t1`, the generated action maintains the 102/103 rejections, whereas actual O2 (`IWNJSWTWRXEAPX5`) withdraws the rejections, allows claims 1–9, and raises only an informality objection to claim 10. Among the 39 schema-valid cases, the model predicts CTNF in 37 cases, compared with 4 CTNF reference codes; overall code agreement is 6/39 (15.4%). This measures agreement with document codes, not substantive allowance/rejection accuracy. Citation-location checks match 181/314 passages (57.6%) to their named input documents; matching establishes location, not evidential support. Eleven outputs fail schema validation because of unsupported ground categories or ambiguous combined labels/statuses. Conservative format normalization recovers none. Examples: `c_examiner_generation/results/generation_examples.md`.
 - Prediction: **[B]**
 - Trajectory: the model predicts prosecution as too slow (fast allowances are missed); it seldom predicts abandonment after a substantive reply; adding the state did not help.
 
@@ -59,11 +59,14 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 |---|---|---|---|
 | A | (see A/model_manifest.json) | | $5.69 state (incl. prompt variants) + $1.78 response, as logged by A |
 | B | | | **[B]** |
-| C | | | **[C]** |
+| C | 103 logged model responses (including dev and retries) | 4.866M / 0.337M | ≈ $1.882 logged estimate; check the Azure bill |
 | D | 203 (3 dev + 2 × 100 test), 0 cut-off answers | 8.22M / 0.19M | ≈ $2.4 at list price ($0.25 / $2.00 per 1M); check the Azure bill |
 
 ## 6. Extra models
-- A: not run (N/A this week). D: not run; GPT-5-mini results came in Saturday night and the extra deployments were not set up. **[B]**, **[C]**: fill in.
+- A: not run (N/A this week).
+- **[B]**,
+- C: not run. The pilot uses GPT-5-mini for both generation and judging; cross-model comparisons are deferred to the next phase.
+- D: not run; GPT-5-mini results came in Saturday night and the extra deployments were not set up.
 
 ## 7. What the formal experiment still needs
 See `results/next_week_actions.md`.
