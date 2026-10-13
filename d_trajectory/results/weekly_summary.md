@@ -19,7 +19,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 | Applicant Response (A) | Strat. 0.52, Edit 0.16, Supp. 0.53 (judge uncalibrated until the 10-unit A/C labels are done) | 10 gold |
 | Trajectory (D) | C-idx 0.49, IBS 0.25 (state + history); history only 0.55 / 0.22 | 100 |
 | State Tracking (A) | Claim 0.78, Rej. 1.00 at A1 cutoff (O1: 0.63 / 1.00); objections excluded | 10 gold |
-| Personalized (B) | GPT ΔOcc.−0.1111; Qwen ΔOcc.+0.2667; ΔR-L N/A | Prediction pairs complete; paired generation pending | 14 pairs;8 generation IDs ready |
+| Personalized (B) | GPT ΔOcc.−0.1111, ΔR-L−0.0063; Qwen ΔOcc.+0.2667, ΔR-L N/A | Prediction pairs complete; GPT generation pairs scored; Qwen generation pending | 14 prediction pairs; GPT generation6/8 |
 
 ## 3. Trajectory Forecasting (D)
 - Endpoint: days from A1 to the first mailed Notice of Allowance or abandonment notice. test_core: 76 allowances, 24 abandonments,
@@ -58,7 +58,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 | Member | Calls | Tokens in / out | Cost (USD) |
 |---|---|---|---|
 | A | (see A/model_manifest.json) | | $5.69 state (incl. prompt variants) + $1.78 response, as logged by A |
-| B | 208 logged GPT attempts;122 responses with usage;86 HTTP429 errors;includes dev/retries | 5.188500M / 0.083497M;0.209792M cached input included | Not estimated;verify Azure bill. Final core100 and profile14 successful |
+| B | 215 logged GPT attempts;129 responses with usage;86 prior HTTP429 errors;includes dev/retries and generation | 5.539572M / 0.115934M;0.209792M cached input included | Not estimated;verify Azure bill. Core100,prediction-profile14,generation-profile6 successful |
 | C | 103 logged model responses (including dev and retries) | 4.866M / 0.337M | ≈ $1.882 logged estimate; check the Azure bill |
 | D | 203 (3 dev + 2 × 100 test), 0 cut-off answers | 8.22M / 0.19M | ≈ $2.4 at list price ($0.25 / $2.00 per 1M); check the Azure bill |
 
@@ -72,7 +72,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 
 Using the same 99 test IDs and 445 eligible training examples with the fixed training-information cutoff of 2013-12-31, Occ. AUROC is 0.5000 for Majority, 0.5780 for LR-reply-v1.2-raw, 0.5608 for LR-time, 0.5481 for GPT, and 0.6495 for Qwen. LR uses fixed C=1 and train-only imputation/scaling, with no tuning on the current test results. Raw A1 status proxies differ from the old reviewed-markup implementation; the binary baselines do not generate Type/Grnd. predictions. Source: `b_examiner_prediction/results/baseline_comparison.draft.csv`.
 
-All B metrics are **automatic-gold drafts**. B must independently review 13151341, 14229448 and 14420580 at both O1 and A1 (6 states), and manually check 5 ground-gold cases. A/C's 10-unit support calibration is separate. Ground scoring leaves 36 missing-gold cases unknown and excludes the 112d taxonomy conflict in 14012315 (original gold preserved), giving N=62. This differs from a fully verified reference with NOA ground labels explicitly empty. ΔR-L is N/A, not zero: 8 paired gen_core IDs are prepared, but compatible generation outputs for both conditions have not been supplied. Known PatEx families show no train-test overlap; 143/445 training and 25/99 test applications have unknown local family coverage, not proven global singleton status.
+All B metrics are **automatic-gold drafts**. B must independently review 13151341, 14229448 and 14420580 at both O1 and A1 (6 states), and manually check 5 ground-gold cases. A/C's 10-unit support calibration is separate. Ground scoring leaves 36 missing-gold cases unknown and excludes the 112d taxonomy conflict in 14012315 (original gold preserved), giving N=62. This differs from a fully verified reference with NOA ground labels explicitly empty. GPT ΔR-L is −0.0063 on 6 common valid pairs out of 8 fixed candidates: full-text R-L changes from 0.1859 to 0.1796. Two original C schema failures are retained, with no replacement or baseline rerun. All 6 new profile candidates succeeded,with one 8192→16384 truncation retry. The same C prompt, base input, Porter scoring and surface_format_v1 were used; this is a partial-coverage pilot with no significance claim. Qwen ΔR-L remains N/A; neither Qwen generation condition has been run. Known PatEx families show no train-test overlap; 143/445 training and 25/99 test applications have unknown local family coverage, not proven global singleton status.
 
 ## 7. What the formal experiment still needs
 See `results/next_week_actions.md`.

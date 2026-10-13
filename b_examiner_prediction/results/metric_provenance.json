@@ -1,11 +1,11 @@
 {
   "usage": {
     "GPT": {
-      "attempts": 208,
-      "responses_with_usage": 122,
+      "attempts": 215,
+      "responses_with_usage": 129,
       "api_error_attempts": 86,
-      "prompt_tokens": 5188500,
-      "completion_tokens": 83497,
+      "prompt_tokens": 5539572,
+      "completion_tokens": 115934,
       "cached_prompt_tokens": 209792,
       "cost_usd": null,
       "cost_reason": "No verified Azure price or bill supplied;timeouts may be billed without usage returned",
@@ -13,7 +13,8 @@
         "week10_11/B/outputs/dev_state/state_run/usage_log.jsonl",
         "week10_11/B/outputs/dev_prediction/usage_log.jsonl",
         "week10_11/B/outputs/core/usage_log.jsonl",
-        "week10_11/B/outputs/paired/with_profile/usage_log.jsonl"
+        "week10_11/B/outputs/paired/with_profile/usage_log.jsonl",
+        "week10_11/B/outputs/gpt_generation_profile/logs/C/usage_log.jsonl"
       ]
     },
     "Qwen": {
@@ -77,5 +78,22 @@
       "state_provider": "fixed_previously_generated_GPT5mini_states",
       "implementation_hash": "4e77238bd49d6085e6ec6337c08617f69b06bbde54253444eebd1c10f5c94d35"
     }
+  },
+  "GPT_generation_profile": {
+    "responses_with_usage": 7,
+    "input_tokens": 351072,
+    "output_tokens": 32437,
+    "cached_input_tokens": 0,
+    "api_error_attempts": 0,
+    "pacing_seconds_reported_by_user": 15,
+    "reasoning": "low",
+    "prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+    "config_sha256": "7f1840baeabea1fcc934aea42c1688cbda716f7a901b43328e0678b39bf9b1ff",
+    "run_id": "20261013T145730Z_5441a696",
+    "C_no_profile_run_ids": [
+      "C_core_state_with_history_f858c657bb_low8192r16384"
+    ],
+    "billing": "not_verified",
+    "local_raw_attempts": "outputs/gpt_generation_profile/outputs/C/cache/B_generation_profile"
   }
 }

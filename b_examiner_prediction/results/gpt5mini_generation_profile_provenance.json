@@ -1,0 +1,17 @@
+{
+  "responses_with_usage": 7,
+  "input_tokens": 351072,
+  "output_tokens": 32437,
+  "cached_input_tokens": 0,
+  "api_error_attempts": 0,
+  "pacing_seconds_reported_by_user": 15,
+  "reasoning": "low",
+  "prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "config_sha256": "7f1840baeabea1fcc934aea42c1688cbda716f7a901b43328e0678b39bf9b1ff",
+  "run_id": "20261013T145730Z_5441a696",
+  "C_no_profile_run_ids": [
+    "C_core_state_with_history_f858c657bb_low8192r16384"
+  ],
+  "billing": "not_verified",
+  "local_raw_attempts": "outputs/gpt_generation_profile/outputs/C/cache/B_generation_profile"
+}
