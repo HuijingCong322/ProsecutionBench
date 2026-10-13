@@ -1,0 +1,26 @@
+{
+  "eligible_n": 8,
+  "scored_n": 6,
+  "failed_n": 2,
+  "coverage_status": "partial",
+  "no_profile_mean": 0.1859246913566791,
+  "with_profile_mean": 0.17958825768206865,
+  "delta_rouge_l": -0.006336433674610444,
+  "diagnostic_delta_rouge_l": -0.006336433674610444,
+  "reason": "",
+  "failed_cases": [
+    {
+      "sample_id": "13086389_t1",
+      "baseline_status": "invalid_output",
+      "profile_status": "not_run_baseline_invalid"
+    },
+    {
+      "sample_id": "14157613_t1",
+      "baseline_status": "invalid_output",
+      "profile_status": "not_run_baseline_invalid"
+    }
+  ],
+  "score": "C matching full-text Porter-stemmed rouge_l;office_action strings only",
+  "human_gold_review_status": "pending",
+  "interpretation": "Small same-ID valid intersection;two original baseline failures retained;not expert validation"
+}
