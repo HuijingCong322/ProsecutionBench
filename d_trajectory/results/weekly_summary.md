@@ -21,7 +21,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`.
 | Applicant Response (A) | Strat. 0.52, Edit 0.16, Supp. 0.53 | Support judge remains uncalibrated until the 10-unit A/C labels are incorporated | 10 gold |
 | Trajectory (D) | C-idx 0.49, IBS 0.25 (state + history); history only 0.55 / 0.22 | Both GPT input settings scored | 100 |
 | State Tracking (A) | Claim 0.78, Rej. 1.00 at A1 cutoff (O1: 0.63 / 1.00) | Reported; objections excluded | 10 gold |
-| Personalized (B) | GPT ΔOcc.−0.1111, ΔR-L−0.0063; Qwen ΔOcc.+0.2667, ΔR-L N/A | Prediction pairs complete; GPT generation pairs scored; Qwen generation scored (6/8) | 14 prediction pairs; GPT generation 6/8 |
+| Personalized (B) | GPT ΔOcc.−0.1111, ΔR-L−0.0063; Qwen ΔOcc.+0.2667, ΔR-L +0.0435 | Prediction pairs complete; GPT generation pairs scored; Qwen generation scored (6/8) | 14 prediction pairs; GPT/Qwen generation 6/8 each |
 
 ## 3. Trajectory Forecasting (D)
 - Endpoint: days from A1 to the first mailed Notice of Allowance or abandonment notice. test_core: 76 allowances, 24 abandonments,
