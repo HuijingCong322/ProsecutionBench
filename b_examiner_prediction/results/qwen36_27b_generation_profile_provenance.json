@@ -1,0 +1,18 @@
+{
+  "logged_attempts": 8,
+  "responses_with_usage": 6,
+  "input_tokens": 380927,
+  "output_tokens": 37317,
+  "api_failed_attempts": 2,
+  "interval_initial_seconds": 10,
+  "interval_resume_seconds": 15,
+  "billing": "B_resource_billing_not_verified",
+  "source_runner_billing_note": "legacy C billing labels do not verify B billing",
+  "run_id": "20261014T171143Z_2358434a",
+  "baseline_run_ids": [
+    "C_Qwen36_27B_core_f858c657bb_provider_default_8192r16384"
+  ],
+  "prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "config_sha256": "245b99036ef0edb5db678b17e15c22da8c1c21f34760a2f0fcd2a5d98ef117fc",
+  "checkpoint_confirmation": "user_confirmed_registry_version4_nonFP8"
+}

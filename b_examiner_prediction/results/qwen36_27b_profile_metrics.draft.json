@@ -177,8 +177,13 @@
     "failure_reasons": {}
   },
   "delta_rouge_l": {
-    "value": null,
-    "reason": "compatible_C_generation_prompt_config_and_results_not_supplied"
+    "value": 0.04352890674611721,
+    "reason": "",
+    "eligible_n": 8,
+    "scored_n": 6,
+    "failed_n": 2,
+    "coverage_status": "partial",
+    "source": "outputs/qwen_generation_profile/paired_generation_metrics.draft.json"
   },
   "interpretation": "Uncalibrated local-family subset; no independent examiner effect claimed."
 }

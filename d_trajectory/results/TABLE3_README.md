@@ -10,3 +10,8 @@ Qwen shares GPT-derived states/frozen prediction prompt but uses provider-defaul
 
 
 C generation coverage: GPT 39/50; Qwen 44/50 (5 invalid outputs, 1 API failure). Means are over each model’s scored cases; paired model comparisons use 37 common valid cases. Qwen-minus-GPT differences are not the profile dR-L metric. Both generators use GPT-derived state and the fixed GPT-5-mini judge; provider settings differ. The two Qwen example explanations are record-based AI-assisted review, not expert validation.
+
+
+### B Qwen personalized generation update (2026-10-14)
+
+Qwen ΔR-L = +0.0435289067: no-profile 0.1462454992 → profile 0.1897744060, on 6 common valid pairs of 8 fixed candidates. Original C baseline failures 14122074_t1 (API) and 14157613_t1 (schema) remain excluded without replacement. All 6 new profile candidates succeeded; 2 ReadTimeouts were explicitly resumed. Matching registry version 4/non-FP8 was user-confirmed; B billing/hardware is unverified. Exact C prompt/base/scoring and provider defaults were retained. GPT and Qwen valid-six subsets differ; this small pilot does not establish a significant model effect. B independent 6-state and 5-ground human reviews are still pending.
