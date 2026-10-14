@@ -497,7 +497,7 @@
    "split_detail": "data_v1 v1.2; fixed nested gen_core 50; no post-cutoff generation inputs",
    "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
    "run_id": "C_core_state_with_history_f858c657bb_low8192r16384_surface_format_v1",
-   "source_file": "metrics/C/generation_metrics_core_state_with_history.json",
+   "source_file": "c_examiner_generation/gpt5mini/metrics/generation_metrics_core_state_with_history.json",
    "notes": "Full-text primary; low; 8192 with one 16384 retry; no temperature; unknown evidence retained; same-model judge is not expert validation; Post-hoc surface-format normalization surface_format_v1; original strict status counts {'success': 39, 'invalid_output': 11}; recovered 0; raw model text unchanged. Same rule required for paired conditions."
   },
   {
@@ -514,7 +514,7 @@
    "split_detail": "data_v1 v1.2; fixed nested gen_core 50; no post-cutoff generation inputs",
    "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
    "run_id": "C_core_state_with_history_f858c657bb_low8192r16384_surface_format_v1",
-   "source_file": "metrics/C/generation_metrics_core_state_with_history.json",
+   "source_file": "c_examiner_generation/gpt5mini/metrics/generation_metrics_core_state_with_history.json",
    "notes": "Full-text primary; low; 8192 with one 16384 retry; no temperature; unknown evidence retained; same-model judge is not expert validation; Post-hoc surface-format normalization surface_format_v1; original strict status counts {'success': 39, 'invalid_output': 11}; recovered 0; raw model text unchanged. Same rule required for paired conditions."
   },
   {
@@ -531,8 +531,59 @@
    "split_detail": "data_v1 v1.2; fixed nested gen_core 50; no post-cutoff generation inputs",
    "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
    "run_id": "C_core_state_with_history_f858c657bb_low8192r16384_surface_format_v1",
-   "source_file": "metrics/C/generation_metrics_core_state_with_history.json",
+   "source_file": "c_examiner_generation/gpt5mini/metrics/generation_metrics_core_state_with_history.json",
    "notes": "Full-text primary; low; 8192 with one 16384 retry; no temperature; unknown evidence retained; same-model judge is not expert validation; Post-hoc surface-format normalization surface_format_v1; original strict status counts {'success': 39, 'invalid_output': 11}; recovered 0; raw model text unchanged. Same rule required for paired conditions."
+  },
+  {
+   "owner": "C",
+   "table3_column": "R-L",
+   "model": "qwen3.6-27b",
+   "input_setting": "state_with_history",
+   "sample_set": "gen_core",
+   "value": 0.1452744037,
+   "eligible_n": 50,
+   "scored_n": 44,
+   "failed_n": 6,
+   "excluded_reason": "{\"invalid_output\": 5, \"api_failed\": 1}",
+   "split_detail": "data_v1 v1.2; fixed same 50 core cases; GPT-derived state",
+   "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+   "run_id": "C_Qwen36_27B_core_f858c657bb_provider_default_8192r16384",
+   "source_file": "c_examiner_generation/qwen36_27b/metrics/C/qwen_generation_metrics_core.json",
+   "notes": "Qwen provider-default thinking/sampling; JSON prompt only; 8192/one16384 retry; judge GPT-5-mini low; coverage reported; student review pending"
+  },
+  {
+   "owner": "C",
+   "table3_column": "MET.",
+   "model": "qwen3.6-27b",
+   "input_setting": "state_with_history",
+   "sample_set": "gen_core",
+   "value": 0.1124227746,
+   "eligible_n": 50,
+   "scored_n": 44,
+   "failed_n": 6,
+   "excluded_reason": "{\"invalid_output\": 5, \"api_failed\": 1}",
+   "split_detail": "data_v1 v1.2; fixed same 50 core cases; GPT-derived state",
+   "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+   "run_id": "C_Qwen36_27B_core_f858c657bb_provider_default_8192r16384",
+   "source_file": "c_examiner_generation/qwen36_27b/metrics/C/qwen_generation_metrics_core.json",
+   "notes": "Qwen provider-default thinking/sampling; JSON prompt only; 8192/one16384 retry; judge GPT-5-mini low; coverage reported; student review pending"
+  },
+  {
+   "owner": "C",
+   "table3_column": "Judge",
+   "model": "qwen3.6-27b",
+   "input_setting": "state_with_history",
+   "sample_set": "gen_core",
+   "value": 2.5,
+   "eligible_n": 50,
+   "scored_n": 44,
+   "failed_n": 6,
+   "excluded_reason": "{\"generation_invalid\": 6}",
+   "split_detail": "data_v1 v1.2; fixed same 50 core cases; GPT-derived state",
+   "prompt_version": "generation:f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f; judge:b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+   "run_id": "C_Qwen36_27B_core_f858c657bb_provider_default_8192r16384",
+   "source_file": "c_examiner_generation/qwen36_27b/metrics/C/qwen_generation_metrics_core.json",
+   "notes": "Qwen provider-default thinking/sampling; JSON prompt only; 8192/one16384 retry; judge GPT-5-mini low; coverage reported; student review pending"
   }
  ]
 }
