@@ -1,0 +1,203 @@
+{
+  "data_version": "data_v1_share v1.2",
+  "gen_core_n": 50,
+  "dev_n": 3,
+  "shared_input_hash_matches": 66,
+  "A_state_hash_matches": 63,
+  "future_input_documents": 0,
+  "target_documents_in_inputs": 0,
+  "extension_ready_n": 13,
+  "extension_unavailable": [
+    {
+      "app_id": "13835876",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14197399",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13933443",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13760331",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14841310",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14067612",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14401504",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14772955",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13618710",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14096933",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14647693",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13909315",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13788902",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13871248",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14454096",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14324405",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13870609",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13858281",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13262479",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14543757",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14399991",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14449473",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13492908",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14289438",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14102118",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13355773",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13606861",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13274856",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14628862",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13809883",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13703158",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14363770",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13066446",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13852697",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14179963",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "14399063",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    },
+    {
+      "app_id": "13222031",
+      "reason": "A1_state_not_delivered",
+      "group": "extension"
+    }
+  ],
+  "source_state_predictions_sha256": "4a847b6effc4c03cd9f4224817ec4083ab4467413d9237a941dfdb5b6c15e8b4",
+  "source_sample_manifest_sha256": "98f731e9e137c94b6b57040bb090bafdfd15cd7c080a070eb9817daa3c1991a5",
+  "target_type_counts": {
+    "CTNF": 4,
+    "CTFR": 46
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "model": "Qwen3.6-27B",
+  "actual_model": "qwen--qwen3.6-27b",
+  "judge_model": "gpt-5-mini-2025-08-07",
+  "sample_set": "gen_core",
+  "input_setting": "state_with_history",
+  "full_text_primary": {
+    "R-L": {
+      "value": 0.14527440366538436,
+      "eligible_n": 50,
+      "scored_n": 44,
+      "failed_n": 6,
+      "failure_reasons": {
+        "invalid_output": 5,
+        "api_failed": 1
+      },
+      "bootstrap_95_ci": [
+        0.13303632319350858,
+        0.15835241033975878
+      ]
+    },
+    "MET.": {
+      "value": 0.11242277459542982,
+      "eligible_n": 50,
+      "scored_n": 44,
+      "failed_n": 6,
+      "failure_reasons": {
+        "invalid_output": 5,
+        "api_failed": 1
+      },
+      "bootstrap_95_ci": [
+        0.09818156777281689,
+        0.1277478135891059
+      ]
+    },
+    "Judge": {
+      "value": 2.5,
+      "eligible_n": 50,
+      "scored_n": 44,
+      "failed_n": 6,
+      "failure_reasons": {
+        "generation_invalid": 6
+      },
+      "bootstrap_95_ci": [
+        2.0454545454545454,
+        2.9545454545454546
+      ]
+    }
+  },
+  "status_counts": {
+    "success": 44,
+    "invalid_output": 5,
+    "api_failed": 1
+  },
+  "strict_final_json_schema_valid_n": 44,
+  "surface_normalized_valid_n": 0,
+  "paired_comparison": {
+    "R-L": {
+      "value": -0.022338031467926265,
+      "eligible_n": 50,
+      "scored_n": 37,
+      "failed_n": 13,
+      "failure_reasons": {
+        "pair_unavailable": 13
+      },
+      "bootstrap_95_ci": [
+        -0.034181731760528584,
+        -0.009500558874674903
+      ],
+      "paired_sample_ids": [
+        "14130025_t1",
+        "14723918_t1",
+        "13575141_t1",
+        "14523635_t1",
+        "14950996_t1",
+        "14031839_t1",
+        "14838440_t1",
+        "13577408_t1",
+        "14857422_t1",
+        "13587693_t1",
+        "13769419_t1",
+        "14482153_t1",
+        "13826133_t1",
+        "14022347_t1",
+        "13542146_t1",
+        "13486305_t1",
+        "14353039_t1",
+        "14053364_t1",
+        "14012315_t1",
+        "14286565_t1",
+        "13865629_t1",
+        "13816667_t1",
+        "13773735_t1",
+        "13698575_t1",
+        "13981387_t1",
+        "14935107_t1",
+        "13446990_t1",
+        "14949549_t1",
+        "13986738_t1",
+        "14400543_t1",
+        "14622961_t1",
+        "14824811_t1",
+        "14506249_t1",
+        "14553940_t1",
+        "14801887_t1",
+        "14747108_t1",
+        "14584946_t1"
+      ],
+      "difference": "Qwen minus GPT on the same scored cases"
+    },
+    "MET.": {
+      "value": -0.10732793629182091,
+      "eligible_n": 50,
+      "scored_n": 37,
+      "failed_n": 13,
+      "failure_reasons": {
+        "pair_unavailable": 13
+      },
+      "bootstrap_95_ci": [
+        -0.12635512481124678,
+        -0.08824800133603847
+      ],
+      "paired_sample_ids": [
+        "14130025_t1",
+        "14723918_t1",
+        "13575141_t1",
+        "14523635_t1",
+        "14950996_t1",
+        "14031839_t1",
+        "14838440_t1",
+        "13577408_t1",
+        "14857422_t1",
+        "13587693_t1",
+        "13769419_t1",
+        "14482153_t1",
+        "13826133_t1",
+        "14022347_t1",
+        "13542146_t1",
+        "13486305_t1",
+        "14353039_t1",
+        "14053364_t1",
+        "14012315_t1",
+        "14286565_t1",
+        "13865629_t1",
+        "13816667_t1",
+        "13773735_t1",
+        "13698575_t1",
+        "13981387_t1",
+        "14935107_t1",
+        "13446990_t1",
+        "14949549_t1",
+        "13986738_t1",
+        "14400543_t1",
+        "14622961_t1",
+        "14824811_t1",
+        "14506249_t1",
+        "14553940_t1",
+        "14801887_t1",
+        "14747108_t1",
+        "14584946_t1"
+      ],
+      "difference": "Qwen minus GPT on the same scored cases"
+    },
+    "Judge": {
+      "value": 0.5945945945945946,
+      "eligible_n": 50,
+      "scored_n": 37,
+      "failed_n": 13,
+      "failure_reasons": {
+        "pair_unavailable": 13
+      },
+      "bootstrap_95_ci": [
+        0.08108108108108109,
+        1.1081081081081081
+      ],
+      "paired_sample_ids": [
+        "14130025_t1",
+        "14723918_t1",
+        "13575141_t1",
+        "14523635_t1",
+        "14950996_t1",
+        "14031839_t1",
+        "14838440_t1",
+        "13577408_t1",
+        "14857422_t1",
+        "13587693_t1",
+        "13769419_t1",
+        "14482153_t1",
+        "13826133_t1",
+        "14022347_t1",
+        "13542146_t1",
+        "13486305_t1",
+        "14353039_t1",
+        "14053364_t1",
+        "14012315_t1",
+        "14286565_t1",
+        "13865629_t1",
+        "13816667_t1",
+        "13773735_t1",
+        "13698575_t1",
+        "13981387_t1",
+        "14935107_t1",
+        "13446990_t1",
+        "14949549_t1",
+        "13986738_t1",
+        "14400543_t1",
+        "14622961_t1",
+        "14824811_t1",
+        "14506249_t1",
+        "14553940_t1",
+        "14801887_t1",
+        "14747108_t1",
+        "14584946_t1"
+      ],
+      "difference": "Qwen minus GPT on the same scored cases"
+    }
+  },
+  "generator_settings": "provider-default thinking/sampling; max_tokens 8192 with one 16384 length retry; JSON prompt only",
+  "notes": [
+    "Means are over successfully scored cases; coverage and all failures retained.",
+    "All generators use fixed GPT-derived state and identical cutoff-visible base inputs.",
+    "Same GPT-5-mini judge is used for both generators; possible self-preference and student-review limits remain.",
+    "GPT baseline statuses are retained; no schema failures reassigned to zero or rerun.",
+    "No claim that Qwen provider defaults equal GPT low reasoning effort."
+  ]
+}

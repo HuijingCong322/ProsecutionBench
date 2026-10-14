@@ -1,0 +1,50 @@
+{
+  "Qwen": {
+    "logged_responses": 67,
+    "api_error_records": 1,
+    "input_tokens": 3299891,
+    "output_tokens": 461783,
+    "by_task": {
+      "qwen_connection": 1,
+      "qwen_generation_dev": 3,
+      "qwen_generation_core": 63
+    },
+    "estimated_cost_usd": null,
+    "billing": "Qwen: hourly accelerator deployment charges, not token charges; check Azure"
+  },
+  "GPT_judge": {
+    "logged_responses": 45,
+    "api_error_records": 0,
+    "input_tokens": 2340070,
+    "output_tokens": 57402,
+    "by_task": {
+      "judge_state_with_history": 45
+    },
+    "estimated_cost_usd": 0.6998215,
+    "billing": "Logged estimate only; reconcile Azure"
+  },
+  "qwen_deployment": {
+    "base_url": "https://pb-c-pilot-crissy-7.services.ai.azure.com/openai/v1/",
+    "deployment": "qwen--qwen36-27b",
+    "expected_model_family": "Qwen3.6-27B_non_FP8",
+    "catalog_model": "qwen--qwen3.6-27b",
+    "catalog_registry_version": "4",
+    "deployment_type": "GlobalManagedCompute",
+    "model_instances": 1,
+    "accelerator_family": "H100_80GB",
+    "total_gpus": 1,
+    "model_id": "azureml://registries/azure-huggingface/models/qwen--qwen3.6-27b/versions/4",
+    "template_id": "azureml://registries/azure-huggingface/deploymenttemplates/qwen--qwen3-6-27b--256k-max256seqs-nvidia-h100/labels/latest",
+    "context_window_tokens": 262144,
+    "initial_max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "thinking": "provider_default",
+    "sampling": "omitted_provider_default",
+    "response_format": "omitted_JSON_prompt_only",
+    "timeout_seconds": 600,
+    "transport_retries": 0,
+    "billing": "hourly_per_accelerator; actual_cost_requires_Azure_reconciliation",
+    "input_setting": "state_with_history",
+    "state_provider": "fixed_previously_generated_GPT5mini_states"
+  }
+}

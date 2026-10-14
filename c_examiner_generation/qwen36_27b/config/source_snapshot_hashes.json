@@ -1,0 +1,12 @@
+{
+  "inputs/generation_core.jsonl": "15df78f3f9e9ef0e2ca1183c1f96b77f2ff31cb107086d2b344b838c7eae268e",
+  "inputs/generation_dev.jsonl": "1787f496ebe0342235b037a9f0ad15a663084629a9e57c9d7a011a4e37d3b1dd",
+  "gold/generation_targets.jsonl": "06db204dfae127906d69d6becf21a5438ffb7711cc3e3b1ff1f59f4605a4e97f",
+  "prompts/examiner_generation.txt": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "prompts/generation_judge.txt": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+  "baseline/gpt_generation_core.jsonl": "821ccc1eb26f902e3f2ade2a5667e9fc67fc8bd8260a98ba1b07be197a987917",
+  "baseline/gpt_judge_core.jsonl": "310b85dd6d4793f1d43e71807eb242f78b9e0988dde1217cfbc9b9294a1f2406",
+  "code/legacy/common.py": "b8ebfa890e0dc61f2efc6e42ace424d9a32acb23f0d38ec111594f7193d6a4ea",
+  "code/legacy/run_experiments.py": "c13363defbfb998d0769ce005ad740680bdb8bb94c873023200e9286b3eee334",
+  "code/legacy/score_generation.py": "140805bb03bdbd3e265a526e92d26f90be524f5e55d9dac4f3a4441a6b23eddf"
+}

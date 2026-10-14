@@ -1,0 +1,19 @@
+{
+  "base_url": "https://pb-c-pilot-crissy-7.services.ai.azure.com/openai/v1/",
+  "deployment": "c-pilot-gpt5-mini",
+  "expected_model": "gpt-5-mini-2025-08-07",
+  "deployment_type": "Global Standard",
+  "reasoning_effort": "low",
+  "max_completion_tokens": 8192,
+  "truncation_retry_tokens": 16384,
+  "transport_retries": 2,
+  "timeout_seconds": 300,
+  "context_window_tokens": 400000,
+  "input_price_per_million_usd": 0.25,
+  "cached_input_price_per_million_usd": 0.025,
+  "output_price_per_million_usd": 2.0,
+  "price_source": "A model runner's estimate; verify your Azure deployment's billing before running",
+  "session_budget_usd": 10.0,
+  "input_setting": "state_with_history",
+  "score_view": "full"
+}

@@ -1,0 +1,77 @@
+{
+  "generation_prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "judge_prompt_hash": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+  "generator_actual_model": "qwen--qwen3.6-27b",
+  "generator_label": "Qwen3.6-27B",
+  "judge_model": "gpt-5-mini-2025-08-07",
+  "generator_configuration": {
+    "base_url": "https://pb-c-pilot-crissy-7.services.ai.azure.com/openai/v1/",
+    "deployment": "qwen--qwen36-27b",
+    "expected_model_family": "Qwen3.6-27B_non_FP8",
+    "catalog_model": "qwen--qwen3.6-27b",
+    "catalog_registry_version": "4",
+    "deployment_type": "GlobalManagedCompute",
+    "model_instances": 1,
+    "accelerator_family": "H100_80GB",
+    "total_gpus": 1,
+    "model_id": "azureml://registries/azure-huggingface/models/qwen--qwen3.6-27b/versions/4",
+    "template_id": "azureml://registries/azure-huggingface/deploymenttemplates/qwen--qwen3-6-27b--256k-max256seqs-nvidia-h100/labels/latest",
+    "context_window_tokens": 262144,
+    "initial_max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "thinking": "provider_default",
+    "sampling": "omitted_provider_default",
+    "response_format": "omitted_JSON_prompt_only",
+    "timeout_seconds": 600,
+    "transport_retries": 0,
+    "billing": "hourly_per_accelerator; actual_cost_requires_Azure_reconciliation",
+    "input_setting": "state_with_history",
+    "state_provider": "fixed_previously_generated_GPT5mini_states"
+  },
+  "judge_configuration": {
+    "base_url": "https://pb-c-pilot-crissy-7.services.ai.azure.com/openai/v1/",
+    "deployment": "c-pilot-gpt5-mini",
+    "expected_model": "gpt-5-mini-2025-08-07",
+    "deployment_type": "Global Standard",
+    "reasoning_effort": "low",
+    "max_completion_tokens": 8192,
+    "truncation_retry_tokens": 16384,
+    "transport_retries": 2,
+    "timeout_seconds": 300,
+    "context_window_tokens": 400000,
+    "input_price_per_million_usd": 0.25,
+    "cached_input_price_per_million_usd": 0.025,
+    "output_price_per_million_usd": 2.0,
+    "price_source": "A model runner's estimate; verify your Azure deployment's billing before running",
+    "session_budget_usd": 10.0,
+    "input_setting": "state_with_history",
+    "score_view": "full"
+  },
+  "implementation_hash": "5b890ecd4316edc7d1b7a892001730c59995d9b44c301d9947853e9a745e5a19",
+  "dev_status_counts": {
+    "success": 3
+  },
+  "dev_ids": [
+    "11968167_t1",
+    "11968173_t1",
+    "11968176_t1"
+  ],
+  "parser_policy": "final answer only; explicit think envelope/code fence removal; surface_format_v1 aliases; original schema unchanged",
+  "state_provider": "fixed_previously_generated_GPT5mini_states",
+  "input_setting": "state_with_history",
+  "data_version": "v1.2",
+  "runtime_versions": {
+    "openai": "2.54.0",
+    "nltk": "3.9.2",
+    "rouge-score": "0.1.2",
+    "tiktoken": "0.12.0",
+    "tokenizers": "0.23.3",
+    "huggingface-hub": "2.2.0"
+  },
+  "tokenizer": {
+    "model": "Qwen/Qwen3.6-27B",
+    "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+    "tokenizer_sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+    "counting": "tokenizer content count plus 512 template-overhead reserve"
+  }
+}

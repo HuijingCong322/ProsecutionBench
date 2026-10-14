@@ -1,0 +1,19 @@
+{
+  "generation_prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "judge_prompt_hash": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+  "settings": {
+    "model": "gpt-5-mini-2025-08-07",
+    "reasoning_effort": "low",
+    "max_completion_tokens": 8192,
+    "truncation_retry_tokens": 16384,
+    "temperature": "not_set"
+  },
+  "primary_score_view": "full",
+  "substantive_score_view": "diagnostic",
+  "dev_ids": [
+    "11968167_t1",
+    "11968173_t1",
+    "11968176_t1"
+  ],
+  "data_version": "v1.2"
+}

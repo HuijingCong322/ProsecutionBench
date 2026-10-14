@@ -1,0 +1,12 @@
+{
+  "core_attempts_recorded": 50,
+  "status_counts": {
+    "success": 44,
+    "invalid_output": 5,
+    "api_failed": 1
+  },
+  "automated_scoring": "completed",
+  "Qwen_student_OA_review": "not_performed_optional",
+  "example_analysis": "provided; provenance follows the author",
+  "A_review": "already completed in the original GPT task; not rerun or relabelled here"
+}
