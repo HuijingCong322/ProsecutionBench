@@ -1,0 +1,26 @@
+{
+  "eligible_n": 8,
+  "scored_n": 6,
+  "failed_n": 2,
+  "coverage_status": "partial",
+  "no_profile_mean": 0.1462454992204188,
+  "with_profile_mean": 0.18977440596653603,
+  "delta_rouge_l": 0.04352890674611721,
+  "diagnostic_delta_rouge_l": 0.04352890674611721,
+  "reason": "",
+  "failed_cases": [
+    {
+      "sample_id": "14122074_t1",
+      "baseline_status": "api_failed",
+      "profile_status": "not_run_baseline_failed"
+    },
+    {
+      "sample_id": "14157613_t1",
+      "baseline_status": "invalid_output",
+      "profile_status": "not_run_baseline_failed"
+    }
+  ],
+  "metric": "C full-text Porter-stemmed rouge_l on office_action only",
+  "checkpoint_confirmation": "user_confirmed_registry_version4_nonFP8",
+  "interpretation": "Small common-valid subset;fixed minimum5-pair gate;not expert validation;B human reviews pending"
+}
