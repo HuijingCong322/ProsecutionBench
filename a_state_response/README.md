@@ -15,6 +15,11 @@
 > (`gold/support_calibration_C_done.csv`) and a check of 3 apps' edit gold (`gold/edits_review_C_done.csv`). Pending: B's review
 > of 3 state snapshots (`B_state_review.xlsx`).
 
+**Team Table 3 overview** (all members' current results, laid out like Table 3 in the paper draft; built from
+`d_trajectory/results/table3_pilot.csv` by `scripts/plot_table3_overview.py`, no API key):
+
+![Table 3 pilot overview](results/table3_pilot_overview.png)
+
 ![A results](results/A_results_plot.png)
 
 ## Results and analysis (10 human-reviewed gold apps)

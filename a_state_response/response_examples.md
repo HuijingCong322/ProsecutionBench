@@ -3,7 +3,8 @@
 Input: record up to the O1 mail date + predicted O1 state (state-tracking step); no A1 material; no prior-art full text.
 Scores on the 10 gold apps: Strat macro-F1 0.52 (amendment 0.89, argument 0.95, cancellation 0.00, other 0.25);
 Edit P/R/F1 0.45 / 0.10 / 0.16 (182 reference limitation units, 40 predicted); Supp 0.53 (26 of 49 cited units supported;
-4 units 'insufficient_evidence'; support judged by an uncalibrated GPT-5-mini judge, span existence by rule).
+4 units 'insufficient_evidence'; support judged by a GPT-5-mini judge, span existence by rule; on C's 10 calibration labels the judge agrees on 6 and is
+lenient in all 4 disagreements).
 
 ## Strategy
 - 14838440 (good): real reply = new claims 24-25 + arguments + terminal disclaimer for the double-patenting rejection.

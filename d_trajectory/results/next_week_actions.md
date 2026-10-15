@@ -25,6 +25,12 @@
 10. **Memorization check:** the LLM may recognize issued patents. Compare scores on cases whose application number is masked in the text vs left in
     (a small ablation on about 20 cases).
 
+## A items (added by A)
+- **Rej needs a later cutoff to be informative.** At O1 and A1 every gold rejection status is `outstanding`, so Rej (≈1.0 for GPT-5-mini) only measures (claim, ground) recovery. Status changes (withdrawn / overcome / moot) appear only after a later examiner action. Mentor question: add a post-O2 cutoff for State Tracking?
+- **Output cap for thinking models.** Qwen3.6-27B hit the team cap (one retry at 16,384 tokens) in 6 of 20 state snapshots, because its thinking text counts against the cap. The formal run needs one team-wide cap that fits the longest state outputs.
+- **Gold size.** A's gold covers 10 applications; the automatic reference agrees with it only at Claim 0.776, so a larger human gold (or a validated reference) is needed before scoring State Tracking at scale.
+- **Open review:** B's independent check of 3 A state snapshots (`a_state_response/B_state_review.xlsx`).
+
 ## Process
 11. Each member saves metrics in the shared template (`results/metrics_submission_template.csv` → `results/submissions/<X>_metrics.csv`),
     so Table 3 merges automatically (`code/build_table3.py`).
