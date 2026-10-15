@@ -10,5 +10,5 @@
   "support_judge": {"prompt": "prompts/support_judge.txt", "outputs": "gold/argument_support_judge.jsonl", "n": "40 cited units of the 10 gold replies"}
  },
  "cost_usd_logged": {"state_tracking_incl_prompt_variants": 5.69, "applicant_response": 1.78, "support_judge": "< 0.10 (not logged)"},
- "optional_models": "not run (gpt-oss-120b, Llama-4-Scout: N/A this week)"
+ "optional_models": "Qwen3.6-27B run 2026-10-14 on gold 10 (outputs/qwen36_27b/, scripts/run_qwen.py, README 'Qwen3.6-27B run'); gpt-oss-120b and Llama-4-Scout not run"
 }

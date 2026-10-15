@@ -1,0 +1,19 @@
+{
+ "model": "Qwen3.6-27B (non-FP8)",
+ "catalog_model": "qwen--qwen3.6-27b",
+ "registry_version": "4",
+ "deployment_type": "GlobalManagedCompute",
+ "instances": 1,
+ "accelerator": "1 x H100 80GB",
+ "thinking": "provider_default",
+ "sampling": "omitted (provider default)",
+ "reasoning_effort": "omitted",
+ "response_format": "omitted (JSON requested by prompt only)",
+ "max_tokens": [
+  8192,
+  16384
+ ],
+ "timeout_seconds": 600,
+ "transport_retries": 0,
+ "deployment": "qwen--qwen36-27b"
+}

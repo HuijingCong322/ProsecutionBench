@@ -1,0 +1,25 @@
+{
+  "n": 10,
+  "agreement_n": 6,
+  "agreement": 0.6,
+  "C_unknown_n": 0,
+  "judge_unknown_n": 0,
+  "confusion_matrix": [
+    {
+      "C_label": "not_supported",
+      "judge_label": "not_supported",
+      "n": 4
+    },
+    {
+      "C_label": "not_supported",
+      "judge_label": "supported",
+      "n": 4
+    },
+    {
+      "C_label": "supported",
+      "judge_label": "supported",
+      "n": 2
+    }
+  ],
+  "note": "10 units from 10 apps, selected among span-found units; student judgement, not expert validation. This agreement does not calibrate the numeric OA generation Judge and does not change A's Supp numerator."
+}

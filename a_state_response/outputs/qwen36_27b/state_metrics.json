@@ -1,0 +1,90 @@
+{
+ "gold_snapshots": 20,
+ "predicted_snapshots": 14,
+ "missing_or_unparsable": [
+  "13151341:A1_cutoff",
+  "13151341:O1_cutoff",
+  "14239985:A1_cutoff",
+  "14420580:A1_cutoff",
+  "14723918:A1_cutoff",
+  "14838440:A1_cutoff"
+ ],
+ "O1_cutoff": {
+  "n_snapshots": 10,
+  "n_records": 177,
+  "claim_version_accuracy": 0.8192,
+  "id_found": 0.8814,
+  "version_acc": 0.8249,
+  "status_acc": 0.8814,
+  "text_acc": 0.8757,
+  "n_gold_tuples": 155,
+  "rejection_status_macro_f1": 0.9123,
+  "per_status": {
+   "outstanding": {
+    "gold": 155,
+    "pred": 130,
+    "f1": 0.9123
+   }
+  },
+  "claim_ground_micro_f1": 0.9123,
+  "objections_excluded": true,
+  "objection_diag": {
+   "gold": 21,
+   "pred": 20,
+   "recall": 0.952,
+   "precision": 1.0
+  }
+ },
+ "A1_cutoff": {
+  "n_snapshots": 10,
+  "n_records": 340,
+  "claim_version_accuracy": 0.4265,
+  "id_found": 0.4941,
+  "version_acc": 0.4882,
+  "status_acc": 0.4471,
+  "text_acc": 0.4794,
+  "n_gold_tuples": 155,
+  "rejection_status_macro_f1": 0.6695,
+  "per_status": {
+   "outstanding": {
+    "gold": 155,
+    "pred": 78,
+    "f1": 0.6695
+   }
+  },
+  "claim_ground_micro_f1": 0.6695,
+  "objections_excluded": true,
+  "objection_diag": {
+   "gold": 21,
+   "pred": 13,
+   "recall": 0.619,
+   "precision": 1.0
+  }
+ },
+ "all": {
+  "n_snapshots": 20,
+  "n_records": 517,
+  "claim_version_accuracy": 0.5609,
+  "id_found": 0.6267,
+  "version_acc": 0.6035,
+  "status_acc": 0.5957,
+  "text_acc": 0.6151,
+  "n_gold_tuples": 310,
+  "rejection_status_macro_f1": 0.8031,
+  "per_status": {
+   "outstanding": {
+    "gold": 310,
+    "pred": 208,
+    "f1": 0.8031
+   }
+  },
+  "claim_ground_micro_f1": 0.8031,
+  "objections_excluded": true,
+  "objection_diag": {
+   "gold": 42,
+   "pred": 33,
+   "recall": 0.786,
+   "precision": 1.0
+  }
+ }
+}

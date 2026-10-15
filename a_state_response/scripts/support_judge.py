@@ -10,6 +10,11 @@ from pathlib import Path
 A = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(A / "scripts"))
 PROMPT = (A / "prompts" / "support_judge.txt").read_text(); PH = hashlib.sha1(PROMPT.encode()).hexdigest()[:10]
+import argparse
+_p = argparse.ArgumentParser()
+_p.add_argument("--pred", default=str(A / "outputs" / "applicant_response.jsonl"), help="replies to judge (Qwen: outputs/qwen36_27b/applicant_response.jsonl)")
+_p.add_argument("--out", default=str(A / "gold" / "argument_support_judge.jsonl"))
+ARGS = _p.parse_args()
 inputs = {r["app_id"]: r for r in map(json.loads, open(A / "inputs" / "response_inputs.jsonl"))}
 def norm(t): return " ".join(re.sub(r"[^a-z0-9 ]+", " ", (t or "").lower()).split())
 def blocks(app):
@@ -26,7 +31,7 @@ def window(text, span, w=3000):
     pos = int(i / max(1, len(nt)) * len(t))
     return t[max(0, pos - w): pos + w]
 units = []
-for p in map(json.loads, open(A / "outputs" / "applicant_response.jsonl")):
+for p in map(json.loads, open(ARGS.pred)):
     if p["group"] != "gold" or not p["parse_ok"]: continue
     d = blocks(p["app_id"])
     for k, u in enumerate(p["response"].get("arguments") or []):
@@ -37,7 +42,7 @@ for p in map(json.loads, open(A / "outputs" / "applicant_response.jsonl")):
                       "rejection": u.get("rejection"), "assertion": u.get("assertion", ""), "support_doc_id": did,
                       "support_span": span, "found_in": found, "doc_type": d[found][0] if found else "",
                       "context": window(d[found][1], span) if found else ""})
-out = A / "gold" / "argument_support_judge.jsonl"
+out = Path(ARGS.out)
 cache = {}
 if out.exists():
     for x in map(json.loads, open(out)): cache[(x["unit_id"], x.get("prompt_hash"))] = x

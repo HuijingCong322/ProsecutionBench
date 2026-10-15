@@ -25,9 +25,13 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from openpyxl import load_workbook
 A = Path(__file__).resolve().parent.parent; S = A.parent / "data_v1_share"; G = A / "gold"
+import argparse as _ap
+_p = _ap.ArgumentParser(); _p.add_argument("--pred", default=str(A / "outputs" / "applicant_response.jsonl"))
+_p.add_argument("--judge", default=str(G / "argument_support_judge.jsonl")); _p.add_argument("--out", default=str(A / "response_metrics.json"))
+ARGS = _p.parse_args()
 SAME, MATCH = 1.0, 0.6
 LABELS = ["amendment", "argument", "cancellation", "other"]
-pred = {p["app_id"]: p for p in map(json.loads, open(A / "outputs" / "applicant_response.jsonl"))}
+pred = {p["app_id"]: p for p in map(json.loads, open(ARGS.pred))}
 inputs = {r["app_id"]: r for r in map(json.loads, open(A / "inputs" / "response_inputs.jsonl"))}
 
 def tok(t): return re.sub(r"[^a-z0-9 ]+", " ", (t or "").lower()).split()
@@ -142,7 +146,7 @@ for app, p in pred.items():
 tot = len(supp_rows); unk = sum(r["unknown"] for r in supp_rows)
 out["supp_auto"] = {"units": tot, "unknown": unk, "coverage": round((tot - unk) / tot, 4) if tot else None,
                     "span_found_rate": round(sum(r["span_found"] for r in supp_rows) / max(1, tot - unk), 4)}
-jf = G / "argument_support_judge.jsonl"
+jf = Path(ARGS.judge)
 if jf.exists():
     J = [json.loads(l) for l in open(jf)]
     cited = [x for x in J if x["source"] != "rule: insufficient_evidence"]
@@ -160,12 +164,27 @@ if jf.exists():
     jl = {x["unit_id"]: x["label"] for x in J}; ann = {}
     for who in ("A", "C"):
         f = G / f"support_calibration_{who}_done.xlsx"
+        fc = G / f"support_calibration_{who}_done.csv"     # C returned a CSV (C_to_A_review_return.zip, 2026-10-12)
         if f.exists(): ann[who] = {k: v for k, v in labels(f).items() if v in ("supported", "not_supported", "unknown")}
+        elif fc.exists():
+            import csv as _csv
+            rows = list(_csv.DictReader(open(fc, encoding="utf-8-sig")))
+            ann[who] = {r["unit_id"]: r[f"{who}_label"].strip().lower() for r in rows
+                        if r[f"{who}_label"].strip().lower() in ("supported", "not_supported", "unknown")}
     def agree(a, b):
         ks = [k for k in a if k in b]
         return {"n": len(ks), "agreement": round(sum(a[k] == b[k] for k in ks) / len(ks), 4) if ks else None}
+    if Path(ARGS.judge) != G / "argument_support_judge.jsonl":
+        ann = {}   # the 10 calibration labels belong to the GPT-5-mini replies' units; other runs have different units
     if ann:
         out["supp_calibration"] = {f"{w}_vs_judge": agree(ann[w], jl) for w in ann}
+        for w in ann:
+            cm = {}
+            for k in ann[w]:
+                if k in jl: cm[f"{w}={ann[w][k]} / judge={jl[k]}"] = cm.get(f"{w}={ann[w][k]} / judge={jl[k]}", 0) + 1
+            out["supp_calibration"][f"{w}_vs_judge"]["confusion"] = cm
+        out["supp_calibration"]["note"] = ("10 units, one per gold app (seed 20261010), labelled by a student annotator; "
+                                           "not expert validation. Calibration is reported alongside Supp and does not change its value.")
         if len(ann) == 2: out["supp_calibration"]["A_vs_C"] = agree(ann["A"], ann["C"])
         out["supp"]["method"] = "span existence by rule; support by GPT-5-mini judge, calibrated on 10 units labelled by " + " and ".join(sorted(ann))
 done = G / "argument_support_review_done.xlsx"
@@ -177,5 +196,5 @@ if done.exists():
     out["supp"] = {"units": len(vals), "verifiable": len(ver), "supported": sum(v == "supported" for v in ver),
                    "unknown": sum(v in ("unknown", "") for v in vals), "coverage": round(len(ver) / len(vals), 4) if vals else None,
                    "supp": round(sum(v == "supported" for v in ver) / len(ver), 4) if ver else None}
-(A / "response_metrics.json").write_text(json.dumps(out, indent=1))
+Path(ARGS.out).write_text(json.dumps(out, indent=1))
 print(json.dumps({k: (v if not isinstance(v, dict) else {kk: vv for kk, vv in v.items() if kk not in ("per_app",)}) for k, v in out.items()}, indent=1))

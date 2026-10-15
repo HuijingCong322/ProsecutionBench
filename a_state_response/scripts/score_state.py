@@ -18,6 +18,8 @@ A = Path(__file__).resolve().parent.parent
 ap = argparse.ArgumentParser()
 ap.add_argument("--gold", default=str(A / "gold" / "state_gold.jsonl"))
 ap.add_argument("--pred", default=str(A / "outputs" / "state_predictions.jsonl"))
+ap.add_argument("--out", default=str(A / "state_metrics.json"))
+ap.add_argument("--per-record", default=str(A / "outputs" / "state_scores_per_record.csv"))
 ap.add_argument("--include-objections", action="store_true",
                 help="count claim objections as rejection records (default: Rej covers rejections only; "
                      "objections are not rejections under 35 U.S.C. and are scored separately as a diagnostic)")
@@ -119,8 +121,8 @@ for stage in ("O1_cutoff", "A1_cutoff", "all"):
                   "objections_excluded": not ARGS_INCLUDE_OBJ,
                   "objection_diag": {"gold": len(og), "pred": len(op), "recall": round(tp / len(og), 3) if og else None,
                                      "precision": round(tp / len(op), 3) if op else None}}
-(A / "state_metrics.json").write_text(json.dumps(out, indent=1))
-with open(A / "outputs" / "state_scores_per_record.csv", "w", newline="") as f:
+Path(a.out).write_text(json.dumps(out, indent=1))
+with open(a.per_record, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
 print(json.dumps({s: {k: out[s][k] for k in ("n_snapshots", "claim_version_accuracy", "rejection_status_macro_f1")}
                   for s in ("O1_cutoff", "A1_cutoff", "all")}, indent=1))

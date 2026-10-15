@@ -1,0 +1,224 @@
+{
+ "n_predictions": 10,
+ "parse_failures": [],
+ "gold_label_sources": [
+  "human fix (response_strategy_review_v2_done.xlsx)",
+  "human ok (response_strategy_review_v2_done.xlsx)"
+ ],
+ "strat": {
+  "n": 10,
+  "macro_f1": 0.5424,
+  "per_label": {
+   "amendment": 0.8889,
+   "argument": 0.9474,
+   "cancellation": 0.0,
+   "other": 0.3333
+  },
+  "per_app": {
+   "13151341": {
+    "gold": [
+     "amendment",
+     "argument",
+     "cancellation"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "13575141": {
+    "gold": [
+     "amendment",
+     "argument"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "14031839": {
+    "gold": [
+     "amendment",
+     "argument"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "14229448": {
+    "gold": [
+     "amendment",
+     "argument",
+     "cancellation",
+     "other"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "14239985": {
+    "gold": [
+     "amendment",
+     "other"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "14420580": {
+    "gold": [
+     "amendment",
+     "argument"
+    ],
+    "pred": [
+     "argument",
+     "other"
+    ]
+   },
+   "14460009": {
+    "gold": [
+     "amendment",
+     "argument",
+     "other"
+    ],
+    "pred": [
+     "amendment",
+     "argument",
+     "cancellation"
+    ]
+   },
+   "14723918": {
+    "gold": [
+     "amendment",
+     "argument"
+    ],
+    "pred": [
+     "amendment",
+     "argument"
+    ]
+   },
+   "14838440": {
+    "gold": [
+     "amendment",
+     "argument",
+     "other"
+    ],
+    "pred": [
+     "amendment",
+     "argument",
+     "cancellation",
+     "other"
+    ]
+   },
+   "14950996": {
+    "gold": [
+     "argument"
+    ],
+    "pred": [
+     "amendment",
+     "argument",
+     "cancellation"
+    ]
+   }
+  }
+ },
+ "edit_no_edit_apps": {
+  "n": 1,
+  "correct_empty": 0
+ },
+ "edit_gold": {
+  "precision": 0.3684,
+  "recall": 0.1923,
+  "f1": 0.2527,
+  "ref_units": 182,
+  "pred_units": 95,
+  "per_app": {
+   "13151341": {
+    "ref_units": 37,
+    "pred_units": 16,
+    "tp": 6,
+    "no_edit_gold": false
+   },
+   "13575141": {
+    "ref_units": 47,
+    "pred_units": 10,
+    "tp": 6,
+    "no_edit_gold": false
+   },
+   "14031839": {
+    "ref_units": 4,
+    "pred_units": 4,
+    "tp": 4,
+    "no_edit_gold": false
+   },
+   "14229448": {
+    "ref_units": 46,
+    "pred_units": 12,
+    "tp": 12,
+    "no_edit_gold": false
+   },
+   "14239985": {
+    "ref_units": 19,
+    "pred_units": 14,
+    "tp": 5,
+    "no_edit_gold": false
+   },
+   "14420580": {
+    "ref_units": 9,
+    "pred_units": 0,
+    "tp": 0,
+    "no_edit_gold": false
+   },
+   "14460009": {
+    "ref_units": 13,
+    "pred_units": 1,
+    "tp": 0,
+    "no_edit_gold": false
+   },
+   "14723918": {
+    "ref_units": 5,
+    "pred_units": 4,
+    "tp": 2,
+    "no_edit_gold": false
+   },
+   "14838440": {
+    "ref_units": 2,
+    "pred_units": 12,
+    "tp": 0,
+    "no_edit_gold": false
+   },
+   "14950996": {
+    "ref_units": 0,
+    "pred_units": 22,
+    "tp": 0,
+    "no_edit_gold": true
+   }
+  },
+  "same": 1.0,
+  "match": 0.6
+ },
+ "supp_auto": {
+  "units": 26,
+  "unknown": 3,
+  "coverage": 0.8846,
+  "span_found_rate": 0.9565
+ },
+ "supp": {
+  "units": 26,
+  "with_citation": 23,
+  "coverage": 0.8846,
+  "verifiable": 23,
+  "supported": 11,
+  "unknown": 3,
+  "supp": 0.4783,
+  "by_source": {
+   "rule: insufficient": 3,
+   "rule: span not found": 1,
+   "llm judge": 22
+  },
+  "method": "span existence by rule; support by GPT-5-mini judge (prompts/support_judge.txt), uncalibrated unless gold/support_calibration_done.xlsx exists"
+ }
+}

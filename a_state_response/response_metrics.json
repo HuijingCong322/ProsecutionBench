@@ -233,6 +233,18 @@
    "rule: span not found": 9,
    "llm judge": 40
   },
-  "method": "span existence by rule; support by GPT-5-mini judge (prompts/support_judge.txt), uncalibrated unless gold/support_calibration_done.xlsx exists"
+  "method": "span existence by rule; support by GPT-5-mini judge, calibrated on 10 units labelled by C"
+ },
+ "supp_calibration": {
+  "C_vs_judge": {
+   "n": 10,
+   "agreement": 0.6,
+   "confusion": {
+    "C=not_supported / judge=not_supported": 4,
+    "C=not_supported / judge=supported": 4,
+    "C=supported / judge=supported": 2
+   }
+  },
+  "note": "10 units, one per gold app (seed 20261010), labelled by a student annotator; not expert validation. Calibration is reported alongside Supp and does not change its value."
  }
 }

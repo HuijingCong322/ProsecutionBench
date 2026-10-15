@@ -10,8 +10,10 @@
 > Language: the human review worksheets in `gold/*.xlsx` (and the sheet names / evidence strings the gold scripts read
 > from them, e.g. `integrate_gold.py`, `strategy_evidence.py`) are A's original review records and are partly in Chinese;
 > they are kept as-is so the gold can be rebuilt exactly. All final gold, provenance and metrics files are in English.
-> Status (10/11): Table 3 values for Claim, Rej, Strat, Edit, Supp are final on the 10 gold apps. Pending: B's review of
-> 3 state snapshots (`B_state_review.xlsx`), A/C Supp judge calibration (`gold/support_calibration_*`).
+> Status (10/14): Table 3 values for Claim, Rej, Strat, Edit, Supp are final on the 10 gold apps for GPT-5-mini and for
+> Qwen3.6-27B (extra model, see "Qwen3.6-27B run" below). C's reviews are in: Supp judge calibration on 10 units
+> (`gold/support_calibration_C_done.csv`) and a check of 3 apps' edit gold (`gold/edits_review_C_done.csv`). Pending: B's review
+> of 3 state snapshots (`B_state_review.xlsx`).
 
 ![A results](results/A_results_plot.png)
 
@@ -56,8 +58,9 @@ The prompt was chosen on 12 dev+tune apps that do not overlap with the 10 gold a
    proposal; a rejection can be answered by different valid amendments, so low recall is expected.
 7. **Supp: about half of the cited arguments are supported, and some citations cannot be located.** 26 of 49 cited units are
    supported; for 9 of the 49 (18%) the cited span is not found verbatim (case/punctuation-insensitive) in the cited document;
-   4 units carry no citation. Support is judged by GPT-5-mini; the judge is not yet calibrated against human labels, so Supp
-   is provisional.
+   4 units carry no citation. Support is judged by GPT-5-mini. On 10 units labelled by C (one per gold app), judge and C agree
+   on 6; in all 4 disagreements the judge says `supported` and C says `not_supported`, so the judge is lenient and Supp is
+   likely an upper estimate (student labels, not expert validation).
 8. **Objections are rarely carried forward.** Objections are excluded from Rej and reported separately: recall 0.667 at O1
    (14 of 21) but 0.048 at A1 (1 of 21), precision 1.0 at both.
 
@@ -141,9 +144,49 @@ resulting_proposed_claims, arguments with support_doc_id/support_span). No A1 ma
   - Supp (changed from the plan, agreed 10/10): span existence by rule (verbatim, case/punctuation-insensitive);
     support by a GPT-5-mini judge (`prompts/support_judge.txt`, `scripts/support_judge.py`); insufficient_evidence = unknown.
     The 53-unit manual first pass was dropped because judging support needs patent/technical expertise; the judge is
-    reported as uncalibrated (like the generation Judge) until the calibration is done: the same 10 units (seed 20261010,
-    one per gold app) are labelled independently by A (`gold/support_calibration_A_done.xlsx`) and C
-    (`gold/support_calibration_C_done.xlsx`); `score_response.py` then reports A-vs-judge, C-vs-judge and A-vs-C agreement.
-    The Supp value itself does not change with calibration.
+    checked on 10 units (seed 20261010, one per gold app) labelled by C (`gold/support_calibration_C_done.csv`, returned
+    10/12; A's own labelling was dropped as agreed). `score_response.py` reports C-vs-judge agreement 6/10 with the confusion
+    matrix in `response_metrics.json` (`supp_calibration`). The Supp value itself does not change with calibration.
 - Results (10 gold): Strat 0.52; Edit P/R/F1 0.45 / 0.10 / 0.16; Supp 0.53 (26/49), coverage 0.92, span found 0.82.
 - Cross-review: `B_state_review.xlsx` (B checks 3 gold apps: 13151341, 14229448, 14420580, both cutoffs).
+  C checked the edit gold of 13151341, 13575141, 14229448 (`gold/edits_review_C_done.csv`): claim versions and change contents
+  confirmed (Y/Y for all 3); the GPT-5-mini edits agree with the actual amendment only partly (2 apps) or not (13151341),
+  in line with the low Edit recall. C's notes are in Chinese and kept as-is.
+
+## Qwen3.6-27B run (extra model, 2026-10-14)
+Same setting as B and C (`outputs/qwen36_27b/run_config.json`): catalog `qwen--qwen3.6-27b` registry version 4 (non-FP8),
+GlobalManagedCompute, 1 x H100 80GB; provider-default thinking and sampling; reasoning_effort, temperature and response_format not
+sent (JSON requested by the prompt); max_tokens 8192 with one retry at 16384 on a length cut; 600 s timeout; no transport retries.
+Text before an explicit `</think>` and one ```json fence are removed; no other repair.
+- Scope: gold 10 only (State 10 x O1/A1 = 20 calls, Response 10 calls), the same frozen inputs and prompts as the GPT-5-mini
+  run (`inputs/*.jsonl`, prompt hashes 829dea35c8 / b5ab5de0e7). The Response input keeps the frozen GPT-5-mini predicted O1
+  state, as B and C use fixed GPT-derived state. Supp is scored by the same frozen GPT-5-mini judge; C's 10 calibration labels
+  belong to the GPT run's argument units and are not applied to Qwen's units.
+- Run: `scripts/run_qwen.py --task ping|state|response` (env QWEN_AZURE_ENDPOINT, QWEN_AZURE_API_KEY, QWEN_DEPLOYMENT), then
+  `scripts/support_judge.py --pred outputs/qwen36_27b/applicant_response.jsonl --out outputs/qwen36_27b/argument_support_judge.jsonl`,
+  `scripts/score_state.py --pred outputs/qwen36_27b/state_predictions.jsonl --out outputs/qwen36_27b/state_metrics.json
+  --per-record outputs/qwen36_27b/state_scores_per_record.csv` and `scripts/score_response.py --pred outputs/qwen36_27b/applicant_response.jsonl
+  --judge outputs/qwen36_27b/argument_support_judge.jsonl --out outputs/qwen36_27b/response_metrics.json`. Every attempt is in
+  `logs/qwen_usage_log.jsonl`; raw responses (with thinking text) are not committed.
+- Check before the paid run: feeding GPT-5-mini's own gold outputs through the Qwen parsing and scoring path reproduced the
+  GPT-5-mini values exactly.
+
+| Metric | GPT-5-mini | Qwen3.6-27B |
+|---|---|---|
+| Claim, O1 / A1 cutoff | 0.633 / 0.777 | 0.819 / 0.427 |
+| Rej, O1 / A1 cutoff | 1.000 / 0.997 | 0.912 / 0.670 |
+| Strat (macro-F1) | 0.522 | 0.542 |
+| Edit P / R / F1 | 0.450 / 0.099 / 0.162 | 0.368 / 0.192 / 0.253 |
+| Supp | 0.531 (26/49) | 0.478 (11/23) |
+
+**What the numbers say**
+1. **Truncation drives Qwen's A1 state scores.** Every state call was cut at 8192 tokens; after the one 16384 retry, 6 of 20
+   snapshots were still cut (13151341 O1 and A1; 14239985, 14420580, 14723918, 14838440 at A1) and count as empty predictions,
+   the same rule as for GPT-5-mini. All 10 Response calls parsed.
+2. **On the snapshots both models parsed, Qwen tracks claims at least as well.** On those 14 snapshots (diagnostic only,
+   `outputs/qwen36_27b/state_matched_subset_diagnostic.json`), Claim is 0.895 (Qwen) vs 0.796 (GPT-5-mini): O1 0.930 vs 0.654,
+   A1 0.863 vs 0.929. Rej is 1.000 for both, so the Rej gap in Table 3 is truncation.
+3. **Qwen proposes more edits.** 95 predicted limitation units vs 40, so recall roughly doubles (0.19 vs 0.10) at lower
+   precision (0.37 vs 0.45). It also writes fewer argument units (26 vs 53); 22 of its 23 cited spans are found in the record.
+4. With 10 applications and different inference settings (provider-default thinking vs GPT-5-mini low), these are pilot
+   observations, not a model ranking.
