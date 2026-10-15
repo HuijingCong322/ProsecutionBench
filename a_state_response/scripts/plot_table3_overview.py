@@ -32,6 +32,7 @@ MAIN = {"state_with_history", "state_with_history+profile", "record", "record + 
 ROWS = [("Proprietary", "gpt-5-mini", "gpt-5-mini", MAIN),
         ("Open-weight", "Qwen3.6-27B", "qwen3.6-27b", MAIN),
         ("Input ablation", "gpt-5-mini, history only", "gpt-5-mini", {"history_only"}),
+        ("Input ablation", "Qwen3.6-27B, history only", "qwen3.6-27b", {"history_only"}),
         ("Reference (no language model)", "Cox PH, cutoff features", "reference: cox_ph_cutoff_features", None),
         ("Reference (no language model)", "Kaplan-Meier / Aalen-Johansen", "reference: km_aalen_johansen", None)]
 FLAG = {("qwen3.6-27b", "Claim"): "*", ("qwen3.6-27b", "Rej."): "*"}
@@ -52,7 +53,7 @@ def cell(model, col, settings):
 
 INK, MUTED, RULE = "#0b0b0b", "#6b6a66", "#bdbcb7"
 plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 10})
-fig = plt.figure(figsize=(17, 6.4))
+fig = plt.figure(figsize=(17, 7.0))
 ax = fig.add_axes([0, 0, 1, 1]); ax.set_axis_off(); ax.set_xlim(0, 100); ax.set_ylim(0, 100)
 
 x0, label_w = 1.5, 17.0

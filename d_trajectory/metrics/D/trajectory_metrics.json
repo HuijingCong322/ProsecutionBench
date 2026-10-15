@@ -318,6 +318,168 @@
     "obs_abandonment": 0.18
    },
    "predictions_file": "outputs/D/trajectory_predictions_km.jsonl"
+  },
+  {
+   "method": "llm_history_only",
+   "model": "Qwen3.6-27B",
+   "input_setting": "history_only",
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "missing_n": 0,
+   "excluded_n": 0,
+   "excluded_reason": "",
+   "events_scored": {
+    "allowance": 76,
+    "abandonment": 24
+   },
+   "horizon_days": 730.0,
+   "grid_days": [
+    30.0,
+    61.0,
+    91.0,
+    122.0,
+    152.0,
+    183.0,
+    213.0,
+    244.0,
+    274.0,
+    304.0,
+    335.0,
+    365.0,
+    396.0,
+    426.0,
+    457.0,
+    487.0,
+    517.0,
+    548.0,
+    578.0,
+    609.0,
+    639.0,
+    670.0,
+    700.0,
+    730.0
+   ],
+   "failed_ids": [],
+   "missing_ids": [],
+   "n_boot_used": 1000,
+   "repairs": {
+    "monotone": 19,
+    "renormalized": 19
+   },
+   "c_index": 0.5327064595257563,
+   "ibs": 0.18206852374635646,
+   "brier_12m": 0.20165196249999998,
+   "brier_24m": 0.103935000009,
+   "c_index_trainG": 0.5233631569867456,
+   "ibs_trainG": 0.29969351496303037,
+   "brier_12m_trainG": 0.32168159531504054,
+   "brier_24m_trainG": 0.31950671031385086,
+   "c_index_ci95": [
+    0.45601250034732765,
+    0.6013941721280713
+   ],
+   "ibs_ci95": [
+    0.1460482447633171,
+    0.22417528118519744
+   ],
+   "harrell_c_trunc": 0.5327064595257563,
+   "calibration": {
+    "pred_any_12m": 0.8907050000000001,
+    "obs_any_12m": 0.74,
+    "pred_any_24m": 0.9789996999999999,
+    "obs_any_24m": 0.89
+   },
+   "cause_specific_24m": {
+    "brier_allowance": 0.24811485142949694,
+    "brier_abandonment": 0.16344718411026013,
+    "pred_allowance": 0.932135669476368,
+    "obs_allowance": 0.71,
+    "pred_abandonment": 0.04686403054754132,
+    "obs_abandonment": 0.18
+   },
+   "predictions_file": "outputs/D/trajectory_predictions_qwen3.6-27b.jsonl"
+  },
+  {
+   "method": "llm_state_with_history",
+   "model": "Qwen3.6-27B",
+   "input_setting": "state_with_history",
+   "eligible_n": 100,
+   "scored_n": 100,
+   "failed_n": 0,
+   "missing_n": 0,
+   "excluded_n": 0,
+   "excluded_reason": "",
+   "events_scored": {
+    "allowance": 76,
+    "abandonment": 24
+   },
+   "horizon_days": 730.0,
+   "grid_days": [
+    30.0,
+    61.0,
+    91.0,
+    122.0,
+    152.0,
+    183.0,
+    213.0,
+    244.0,
+    274.0,
+    304.0,
+    335.0,
+    365.0,
+    396.0,
+    426.0,
+    457.0,
+    487.0,
+    517.0,
+    548.0,
+    578.0,
+    609.0,
+    639.0,
+    670.0,
+    700.0,
+    730.0
+   ],
+   "failed_ids": [],
+   "missing_ids": [],
+   "n_boot_used": 1000,
+   "repairs": {
+    "monotone": 22,
+    "renormalized": 23
+   },
+   "c_index": 0.5886140637775961,
+   "ibs": 0.1868981170017857,
+   "brier_12m": 0.18434964,
+   "brier_24m": 0.10776875999999998,
+   "c_index_trainG": 0.5780098092817434,
+   "ibs_trainG": 0.2995278720777899,
+   "brier_12m_trainG": 0.2889968452756029,
+   "brier_24m_trainG": 0.32827530661935067,
+   "c_index_ci95": [
+    0.5324659081153044,
+    0.6436017930888978
+   ],
+   "ibs_ci95": [
+    0.1526389389290625,
+    0.22343724340227678
+   ],
+   "harrell_c_trunc": 0.5886140637775961,
+   "calibration": {
+    "pred_any_12m": 0.86588,
+    "obs_any_12m": 0.74,
+    "pred_any_24m": 0.9746400000000002,
+    "obs_any_24m": 0.89
+   },
+   "cause_specific_24m": {
+    "brier_allowance": 0.23066057475622556,
+    "brier_abandonment": 0.1599227347260611,
+    "pred_allowance": 0.9210558711703569,
+    "obs_allowance": 0.71,
+    "pred_abandonment": 0.05358412888215119,
+    "obs_abandonment": 0.18
+   },
+   "predictions_file": "outputs/D/trajectory_predictions_qwen3.6-27b_state.jsonl"
   }
  ]
 }

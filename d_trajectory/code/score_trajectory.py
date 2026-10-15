@@ -26,7 +26,7 @@ def main():
         r = score(recs, G, TR)
         r["predictions_file"] = os.path.relpath(f, R)
         results.append(r)
-        print(f"{r['method']:<28} scored {r['scored_n']}/{r['eligible_n']}  "
+        print(f"{r['method']:<26} {str(r.get('model') or ''):<14} scored {r['scored_n']}/{r['eligible_n']}  "
               f"C-idx {r.get('c_index')}  IBS {r.get('ibs')}")
     os.makedirs(os.path.join(R, "metrics", "D"), exist_ok=True)
     suffix = "" if a.which == "core" else "_test300"
