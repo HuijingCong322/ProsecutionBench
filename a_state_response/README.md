@@ -133,7 +133,7 @@ resulting_proposed_claims, arguments with support_doc_id/support_span). No A1 ma
     (`gold/response_strategy_review_v2_done.xlsx`, evidence = file + line); 2 of 10 corrected (14239985: no argument,
     interview added; 14420580: no new cancellation). 9 fine labels mapped to the plan's 4: amendment / argument /
     cancellation / other.
-  - Edits (`gold/claim_edits_gold.jsonl`): human-reviewed data_v0 claims_markup (<ins>/<del>, checked against page images);
+  - Edits (`gold/claim_edits_gold.jsonl`): human-reviewed data_v0 claims_markup (`<ins>`/`<del>` tags, checked against page images);
     page headers removed by rule (`scripts/markup_edits.py`); amend/add sets must equal the state gold; cancellations from the state gold.
 - Score: `scripts/score_response.py` -> `response_metrics.json`.
   - Strat: macro-F1 over amendment/argument/cancellation/other on the 10 gold apps. Supplementary: 90 test_core apps vs
@@ -154,6 +154,13 @@ resulting_proposed_claims, arguments with support_doc_id/support_span). No A1 ma
   in line with the low Edit recall. C's notes are in Chinese and kept as-is.
 
 ## Qwen3.6-27B run (extra model, 2026-10-14)
+
+![GPT-5-mini vs Qwen3.6-27B](results/A_model_comparison.png)
+
+Same summary layout as the GPT-5-mini figure: `results/A_results_plot_qwen36_27b.png`. Both figures are rebuilt from the
+committed result files without an API key: `python3 a_state_response/scripts/plot_model_comparison.py` and
+`python3 a_state_response/scripts/plot_results.py --model qwen`.
+
 Same setting as B and C (`outputs/qwen36_27b/run_config.json`): catalog `qwen--qwen3.6-27b` registry version 4 (non-FP8),
 GlobalManagedCompute, 1 x H100 80GB; provider-default thinking and sampling; reasoning_effort, temperature and response_format not
 sent (JSON requested by the prompt); max_tokens 8192 with one retry at 16384 on a length cut; 600 s timeout; no transport retries.
