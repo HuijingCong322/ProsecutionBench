@@ -1,6 +1,4 @@
-# C examiner generation: additional tables from Week 3
-
-This package reformats the existing GPT-5-mini and Qwen3.6-27B results. It contains **no new model runs, no new examples, and no text-metric rescoring**. Means, counts, and bootstrap intervals are calculated from the saved records. Original predictions, prompts, labels, and statuses are unchanged.
+# C examiner generation: additional tables
 
 ## Main findings
 
@@ -51,12 +49,8 @@ The full-text metrics compare generated prose with the full historical O2. Copy 
 - `data/verification.json`: reconciliation checks and code agreement.
 - `data/analysis_summary.json`: full-precision aggregated values.
 - `previews/`: six PNG previews generated from the LaTeX PDF.
-- `tables_preview.pdf`: readable preview of the exact LaTeX tables, one per page.
-- `tables_preview.tex`: standalone preview source.
 - `all_tables.tex`: optional include file for all six tables.
-- `paper_results_paragraph.tex`: optional short results paragraph for adaptation.
 - `scripts/build_tables.py`: standard-library-only table builder. It imports no model SDK and makes no network calls.
-- `UPLOAD_GUIDE_CN.md`: GitHub and Overleaf instructions.
 
 ## Rebuild without original archives
 
@@ -85,17 +79,6 @@ python scripts/build_tables.py \
 
 The archive route checks IDs, input/prompt equality, paired input hashes, judge-to-candidate linkage, original metric means, duplicated GPT baseline scores, and the saved paired intervals. The bundled data route preserves the resulting checks and rechecks aggregate consistency.
 
-## Overleaf
-
-Upload this directory as `C_Week4_Tables/` at the paper root. Add `\usepackage{booktabs}` to the preamble if needed. At the desired point in the results section:
-
-```latex
-\input{C_Week4_Tables/tables/t02_paired_comparison}
-\input{C_Week4_Tables/tables/t03_judge_dimensions}
-\input{C_Week4_Tables/tables/t04_action_confusion}
-```
-
-The fragments use `table*` for a two-column paper. Floats may move to the next page; do not put them inside another `table` environment. Table labels are `tab:cgen-t01` through `tab:cgen-t06`. Each table can be included independently. To include all six, use `\input{C_Week4_Tables/all_tables}` instead of the individual inputs. Renumbering is automatic. Do not manually name them Table 4/5/6.
 
 ## Preview
 
