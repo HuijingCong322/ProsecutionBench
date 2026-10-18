@@ -1,0 +1,5 @@
+﻿model,reference_code,reference_n,pred_CTNF,pred_CTFR,pred_NOA
+GPT-5-mini,CTNF,4,4,0,0
+GPT-5-mini,CTFR,33,31,2,0
+Qwen3.6-27B,CTNF,4,1,1,2
+Qwen3.6-27B,CTFR,33,8,18,7

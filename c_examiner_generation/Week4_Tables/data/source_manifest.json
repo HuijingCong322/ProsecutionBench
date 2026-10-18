@@ -1,0 +1,481 @@
+{
+  "dataset": "data_v1 v1.2",
+  "cohort": "gen_core",
+  "eligible_n": 50,
+  "inputs_and_gold_identical_bytes": true,
+  "both_prompts_identical_bytes": true,
+  "generation_prompt_hash": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+  "judge_prompt_hash": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+  "settings": {
+    "GPT-5-mini": {
+      "model": "gpt-5-mini-2025-08-07",
+      "reasoning_effort": "low",
+      "output_tokens": "8192; one length retry at 16384",
+      "temperature": "not set"
+    },
+    "Qwen3.6-27B": {
+      "model": "qwen--qwen3.6-27b",
+      "catalog_version": "4",
+      "precision_variant": "non-FP8",
+      "thinking_sampling": "provider defaults",
+      "output_tokens": "8192; one length retry at 16384"
+    },
+    "judge": "gpt-5-mini-2025-08-07; low; same frozen rubric for both generators",
+    "state": "fixed GPT-derived A1 state for both generators"
+  },
+  "archive_sha256": {
+    "C_gpt5mini_Week3_Submission.zip": "b6d87404938a7fbbbda84719cea2eddf917009daf5eaa5a6ad1172532eef6058",
+    "C_Qwen36_Week3_Submission.zip": "d92e8091ad37dcfe430df177aaf7d6e0af8a66f0c2809de4314af3c863bb02d0"
+  },
+  "source_files": [
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/inputs/generation_core.jsonl",
+      "sha256": "15df78f3f9e9ef0e2ca1183c1f96b77f2ff31cb107086d2b344b838c7eae268e",
+      "bytes": 10835024
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/inputs/generation_core.jsonl",
+      "sha256": "15df78f3f9e9ef0e2ca1183c1f96b77f2ff31cb107086d2b344b838c7eae268e",
+      "bytes": 10835024
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/gold/generation_targets.jsonl",
+      "sha256": "06db204dfae127906d69d6becf21a5438ffb7711cc3e3b1ff1f59f4605a4e97f",
+      "bytes": 2589039
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/gold/generation_targets.jsonl",
+      "sha256": "06db204dfae127906d69d6becf21a5438ffb7711cc3e3b1ff1f59f4605a4e97f",
+      "bytes": 2589039
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/outputs/C/examiner_generation_core_state_with_history.jsonl",
+      "sha256": "821ccc1eb26f902e3f2ade2a5667e9fc67fc8bd8260a98ba1b07be197a987917",
+      "bytes": 3010743
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/outputs/C/examiner_generation_core_state_with_history.jsonl",
+      "sha256": "0001a0061e2d43f0e9983768599e9e2861669b12c6dc4d9c73efa24e2fdf052b",
+      "bytes": 2924301
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/outputs/C/judge_core_state_with_history.jsonl",
+      "sha256": "310b85dd6d4793f1d43e71807eb242f78b9e0988dde1217cfbc9b9294a1f2406",
+      "bytes": 522273
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/outputs/C/judge_core_state_with_history.jsonl",
+      "sha256": "6e880b0ed70310f5c6138da9231340862d92214badd95ba46607ef70ec1b9922",
+      "bytes": 601749
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/metrics/C/generation_scores_core_state_with_history.csv",
+      "sha256": "bc687112643a1c01c6f1881fc60b97b67cd3a6b85fb078f844b06adf0c6db7f0",
+      "bytes": 23421
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/metrics/C/qwen_generation_scores_core.csv",
+      "sha256": "d27b80bc50f15e8c160eac699da6552b56b87bf04c732bd33e55ee876048c5fd",
+      "bytes": 19047
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/metrics/C/generation_metrics_core_state_with_history.json",
+      "sha256": "001fd9925d8ecd3abbeab60708b1174edea503baee8b4c64e32a523ffc5e66e8",
+      "bytes": 8944
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/metrics/C/qwen_generation_metrics_core.json",
+      "sha256": "8603e8e473c06269b6c3d11c2fbe2391ae7e9d46872e5055089e8433cab68797",
+      "bytes": 5593
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/config/frozen_protocol.json",
+      "sha256": "66975d29ca6a1cf433eac1378422eee75951b610eadab3321813785ed0e27f2d",
+      "bytes": 557
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/config/frozen_protocol.json",
+      "sha256": "0277de09b9dbef2ee006d68cb094716b165503c934dfe82ff46c5c298867b4cb",
+      "bytes": 3181
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/prompts/examiner_generation.txt",
+      "sha256": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+      "bytes": 3625
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/prompts/examiner_generation.txt",
+      "sha256": "f858c657bbda21bd1a534ea718c9fdb814ceea8a1e3780e0fa2aec3197aa359f",
+      "bytes": 3625
+    },
+    {
+      "archive": "C_gpt5mini_Week3_Submission.zip",
+      "member": "C_Examiner_Generation_Week3/prompts/generation_judge.txt",
+      "sha256": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+      "bytes": 3618
+    },
+    {
+      "archive": "C_Qwen36_Week3_Submission.zip",
+      "member": "C_Qwen36_Week3/prompts/generation_judge.txt",
+      "sha256": "b67effde9337707f6a8980bb4fa6f77e7da4601d6a4a446b0c33c3148fb19367",
+      "bytes": 3618
+    }
+  ],
+  "original_metrics": {
+    "gpt": {
+      "full_text_primary": {
+        "R-L": {
+          "value": 0.1677730975488901,
+          "eligible_n": 50,
+          "scored_n": 39,
+          "failed_n": 11,
+          "failure_reasons": {
+            "invalid_output": 11
+          },
+          "bootstrap_95_ci": [
+            0.15713615996268526,
+            0.17821628837197628
+          ]
+        },
+        "MET.": {
+          "value": 0.22024385633879942,
+          "eligible_n": 50,
+          "scored_n": 39,
+          "failed_n": 11,
+          "failure_reasons": {
+            "invalid_output": 11
+          },
+          "bootstrap_95_ci": [
+            0.1982906722002816,
+            0.24325735117120367
+          ]
+        },
+        "Judge": {
+          "value": 2.051282051282051,
+          "eligible_n": 50,
+          "scored_n": 39,
+          "failed_n": 11,
+          "failure_reasons": {
+            "generation_invalid": 11
+          },
+          "bootstrap_95_ci": [
+            1.8205128205128205,
+            2.3333333333333335
+          ]
+        }
+      },
+      "G0_copy_O1": {
+        "full": {
+          "R-L": {
+            "value": 0.5991144762460942,
+            "eligible_n": 50,
+            "scored_n": 50,
+            "failed_n": 0,
+            "failure_reasons": {},
+            "bootstrap_95_ci": [
+              0.5515918024199779,
+              0.6446960910896891
+            ]
+          },
+          "MET.": {
+            "value": 0.5900706070377306,
+            "eligible_n": 50,
+            "scored_n": 50,
+            "failed_n": 0,
+            "failure_reasons": {},
+            "bootstrap_95_ci": [
+              0.5542471874006071,
+              0.6242986257049895
+            ]
+          }
+        },
+        "substantive": {
+          "R-L": {
+            "value": 0.5672392656009603,
+            "eligible_n": 50,
+            "scored_n": 50,
+            "failed_n": 0,
+            "failure_reasons": {},
+            "bootstrap_95_ci": [
+              0.5097968961671819,
+              0.6257022352163131
+            ]
+          },
+          "MET.": {
+            "value": 0.5272181802081104,
+            "eligible_n": 50,
+            "scored_n": 50,
+            "failed_n": 0,
+            "failure_reasons": {},
+            "bootstrap_95_ci": [
+              0.4783057064190676,
+              0.5775338518910889
+            ]
+          }
+        }
+      },
+      "substantive_diagnostic": {
+        "R-L": {
+          "value": 0.16176096434004014,
+          "eligible_n": 50,
+          "scored_n": 39,
+          "failed_n": 11,
+          "failure_reasons": {
+            "invalid_output": 11
+          },
+          "bootstrap_95_ci": [
+            0.15029360002478603,
+            0.1729380573855624
+          ]
+        },
+        "MET.": {
+          "value": 0.231408722463178,
+          "eligible_n": 50,
+          "scored_n": 39,
+          "failed_n": 11,
+          "failure_reasons": {
+            "invalid_output": 11
+          },
+          "bootstrap_95_ci": [
+            0.2058447119267697,
+            0.257250440592158
+          ]
+        }
+      }
+    },
+    "qwen": {
+      "full_text_primary": {
+        "R-L": {
+          "value": 0.14527440366538436,
+          "eligible_n": 50,
+          "scored_n": 44,
+          "failed_n": 6,
+          "failure_reasons": {
+            "invalid_output": 5,
+            "api_failed": 1
+          },
+          "bootstrap_95_ci": [
+            0.13303632319350858,
+            0.15835241033975878
+          ]
+        },
+        "MET.": {
+          "value": 0.11242277459542982,
+          "eligible_n": 50,
+          "scored_n": 44,
+          "failed_n": 6,
+          "failure_reasons": {
+            "invalid_output": 5,
+            "api_failed": 1
+          },
+          "bootstrap_95_ci": [
+            0.09818156777281689,
+            0.1277478135891059
+          ]
+        },
+        "Judge": {
+          "value": 2.5,
+          "eligible_n": 50,
+          "scored_n": 44,
+          "failed_n": 6,
+          "failure_reasons": {
+            "generation_invalid": 6
+          },
+          "bootstrap_95_ci": [
+            2.0454545454545454,
+            2.9545454545454546
+          ]
+        }
+      },
+      "paired_comparison": {
+        "R-L": {
+          "value": -0.022338031467926265,
+          "eligible_n": 50,
+          "scored_n": 37,
+          "failed_n": 13,
+          "failure_reasons": {
+            "pair_unavailable": 13
+          },
+          "bootstrap_95_ci": [
+            -0.034181731760528584,
+            -0.009500558874674903
+          ],
+          "paired_sample_ids": [
+            "14130025_t1",
+            "14723918_t1",
+            "13575141_t1",
+            "14523635_t1",
+            "14950996_t1",
+            "14031839_t1",
+            "14838440_t1",
+            "13577408_t1",
+            "14857422_t1",
+            "13587693_t1",
+            "13769419_t1",
+            "14482153_t1",
+            "13826133_t1",
+            "14022347_t1",
+            "13542146_t1",
+            "13486305_t1",
+            "14353039_t1",
+            "14053364_t1",
+            "14012315_t1",
+            "14286565_t1",
+            "13865629_t1",
+            "13816667_t1",
+            "13773735_t1",
+            "13698575_t1",
+            "13981387_t1",
+            "14935107_t1",
+            "13446990_t1",
+            "14949549_t1",
+            "13986738_t1",
+            "14400543_t1",
+            "14622961_t1",
+            "14824811_t1",
+            "14506249_t1",
+            "14553940_t1",
+            "14801887_t1",
+            "14747108_t1",
+            "14584946_t1"
+          ],
+          "difference": "Qwen minus GPT on the same scored cases"
+        },
+        "MET.": {
+          "value": -0.10732793629182091,
+          "eligible_n": 50,
+          "scored_n": 37,
+          "failed_n": 13,
+          "failure_reasons": {
+            "pair_unavailable": 13
+          },
+          "bootstrap_95_ci": [
+            -0.12635512481124678,
+            -0.08824800133603847
+          ],
+          "paired_sample_ids": [
+            "14130025_t1",
+            "14723918_t1",
+            "13575141_t1",
+            "14523635_t1",
+            "14950996_t1",
+            "14031839_t1",
+            "14838440_t1",
+            "13577408_t1",
+            "14857422_t1",
+            "13587693_t1",
+            "13769419_t1",
+            "14482153_t1",
+            "13826133_t1",
+            "14022347_t1",
+            "13542146_t1",
+            "13486305_t1",
+            "14353039_t1",
+            "14053364_t1",
+            "14012315_t1",
+            "14286565_t1",
+            "13865629_t1",
+            "13816667_t1",
+            "13773735_t1",
+            "13698575_t1",
+            "13981387_t1",
+            "14935107_t1",
+            "13446990_t1",
+            "14949549_t1",
+            "13986738_t1",
+            "14400543_t1",
+            "14622961_t1",
+            "14824811_t1",
+            "14506249_t1",
+            "14553940_t1",
+            "14801887_t1",
+            "14747108_t1",
+            "14584946_t1"
+          ],
+          "difference": "Qwen minus GPT on the same scored cases"
+        },
+        "Judge": {
+          "value": 0.5945945945945946,
+          "eligible_n": 50,
+          "scored_n": 37,
+          "failed_n": 13,
+          "failure_reasons": {
+            "pair_unavailable": 13
+          },
+          "bootstrap_95_ci": [
+            0.08108108108108109,
+            1.1081081081081081
+          ],
+          "paired_sample_ids": [
+            "14130025_t1",
+            "14723918_t1",
+            "13575141_t1",
+            "14523635_t1",
+            "14950996_t1",
+            "14031839_t1",
+            "14838440_t1",
+            "13577408_t1",
+            "14857422_t1",
+            "13587693_t1",
+            "13769419_t1",
+            "14482153_t1",
+            "13826133_t1",
+            "14022347_t1",
+            "13542146_t1",
+            "13486305_t1",
+            "14353039_t1",
+            "14053364_t1",
+            "14012315_t1",
+            "14286565_t1",
+            "13865629_t1",
+            "13816667_t1",
+            "13773735_t1",
+            "13698575_t1",
+            "13981387_t1",
+            "14935107_t1",
+            "13446990_t1",
+            "14949549_t1",
+            "13986738_t1",
+            "14400543_t1",
+            "14622961_t1",
+            "14824811_t1",
+            "14506249_t1",
+            "14553940_t1",
+            "14801887_t1",
+            "14747108_t1",
+            "14584946_t1"
+          ],
+          "difference": "Qwen minus GPT on the same scored cases"
+        }
+      },
+      "status_counts": {
+        "success": 44,
+        "invalid_output": 5,
+        "api_failed": 1
+      }
+    }
+  },
+  "postprocessing": {
+    "model_calls": 0,
+    "text_metric_rescoring": false,
+    "bootstrap_seed": 20261012,
+    "bootstrap_resamples": 3000,
+    "analysis": "Means, counts, and paired case-bootstrap intervals from saved scores only"
+  }
+}

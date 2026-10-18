@@ -1,0 +1,22 @@
+% Generated from saved Week 3 outputs; no model calls.
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabular}{lrrrr}
+\toprule
+Metric & Copy O1 & GPT-5-mini & Qwen3.6-27B & $\Delta$ [95\% CI] \\
+\midrule
+ROUGE-L & 0.615 & 0.168 & 0.145 & $-0.022\;[-0.034, -0.010]$ \\
+METEOR & 0.591 & 0.218 & 0.111 & $-0.107\;[-0.126, -0.088]$ \\
+Overall judge & n/a & 2.08 & 2.68 & $+0.595\;[0.081, 1.108]$ \\
+\bottomrule
+\end{tabular}
+\caption{Matched comparison on the 37 cases successfully scored for both generators. All entries in a row use the same cases.}
+\label{tab:cgen-t02}
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\footnotesize $\Delta$ is Qwen minus GPT. Intervals resample paired cases (3,000 draws; seed 20261012). They are conditional on joint success and are not adjusted for multiple comparisons. Both generators receive the same GPT-derived state; their reasoning and sampling settings differ. Both are scored by the same GPT-5-mini judge. Copy O1 has no judge score.
+\end{minipage}
+\end{table*}
