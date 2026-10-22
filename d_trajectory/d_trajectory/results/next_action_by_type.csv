@@ -1,4 +1,0 @@
-next_letter,n,real_median_days,KM | median guess,KM | MAE,Cox | median guess,Cox | MAE,"GPT-5-mini, history | median guess","GPT-5-mini, history | MAE","GPT-5-mini, state+history | median guess","GPT-5-mini, state+history | MAE","Qwen3.6-27B, history | median guess","Qwen3.6-27B, history | MAE","Qwen3.6-27B, state+history | median guess","Qwen3.6-27B, state+history | MAE"
-final_rejection,60,81.0,62.0,41.21666666666667,66.5,42.666666666666664,82.5,40.266666666666666,75.0,40.53333333333333,100.0,51.766666666666666,110.0,53.35
-allowance,36,46.0,62.0,28.666666666666668,62.0,28.77777777777778,60.0,31.72222222222222,75.0,33.138888888888886,85.0,43.25,95.0,40.888888888888886
-other,4,47.0,62.0,30.25,60.5,28.25,67.5,38.0,75.0,26.75,87.5,34.25,100.0,40.5
