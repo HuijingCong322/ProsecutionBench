@@ -1,0 +1,817 @@
+{
+ "cause_specific": [
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": 0.5506471917118843,
+   "brier": 0.23534509284625965,
+   "auroc": 0.5,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": 0.6423069325148812,
+   "brier": 0.21048235138554489,
+   "auroc": 0.5,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": 0.10018489826427986,
+   "brier": 0.06601112808322492,
+   "auroc": 0.5,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": 0.15075493161737616,
+   "brier": 0.14845527402470438,
+   "auroc": 0.5,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "Cox",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": null,
+   "brier": null,
+   "auroc": null,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "Cox",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": null,
+   "brier": null,
+   "auroc": null,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "Cox",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": null,
+   "brier": null,
+   "auroc": null,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "Cox",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": null,
+   "brier": null,
+   "auroc": null,
+   "auroc_lo": null,
+   "auroc_hi": null
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": 0.4498376100000001,
+   "brier": 0.27352062214121,
+   "auroc": 0.6103573043871552,
+   "auroc_lo": 0.4893458305337901,
+   "auroc_hi": 0.7222268154884939
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": 0.62108841622593,
+   "brier": 0.23831040035371356,
+   "auroc": 0.5857212238950947,
+   "auroc_lo": 0.4713295375702491,
+   "auroc_hi": 0.6869962637362637
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": 0.07429623,
+   "brier": 0.06582806035669,
+   "auroc": 0.6121351766513057,
+   "auroc_lo": 0.4178244064645309,
+   "auroc_hi": 0.7987635778275476
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": 0.13417158378221855,
+   "brier": 0.14125492035513823,
+   "auroc": 0.7066395663956639,
+   "auroc_lo": 0.5673293723739495,
+   "auroc_hi": 0.8313122140970298
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": 0.4050672764477667,
+   "brier": 0.3133707468267532,
+   "auroc": 0.5526910900045229,
+   "auroc_lo": 0.43542532917532917,
+   "auroc_hi": 0.6655629051633404
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": 0.5367789588422773,
+   "brier": 0.2754377942759714,
+   "auroc": 0.5573093734822729,
+   "auroc_lo": 0.44546462277933613,
+   "auroc_hi": 0.6805982620320855
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": 0.09501672355223334,
+   "brier": 0.06994696682675322,
+   "auroc": 0.4508448540706605,
+   "auroc_lo": 0.24466145833333333,
+   "auroc_hi": 0.6666666666666666
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": 0.16751504115772267,
+   "brier": 0.16050873787597142,
+   "auroc": 0.4752710027100271,
+   "auroc_lo": 0.3389394190579535,
+   "auroc_hi": 0.5964448304305066
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": 0.8569393735635477,
+   "brier": 0.22959919318996022,
+   "auroc": 0.7150610583446404,
+   "auroc_lo": 0.5923797502170574,
+   "auroc_hi": 0.820316270511583
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": 0.932135669476368,
+   "brier": 0.24811485142949694,
+   "auroc": 0.6012627489072365,
+   "auroc_lo": 0.4628932247851651,
+   "auroc_hi": 0.7205429053646776
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": 0.033765626448867075,
+   "brier": 0.06683013600538094,
+   "auroc": 0.5729646697388633,
+   "auroc_lo": 0.3652461622807018,
+   "auroc_hi": 0.750898329093432
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": 0.04686403054754132,
+   "brier": 0.16344718411026013,
+   "auroc": 0.5860433604336044,
+   "auroc_lo": 0.4385278758305648,
+   "auroc_hi": 0.7184168328274986
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "cause": "allowance",
+   "month": 12,
+   "real_share": 0.67,
+   "pred_share": 0.8292135017512688,
+   "brier": 0.22498823846869165,
+   "auroc": 0.7406151062867481,
+   "auroc_lo": 0.6392354035364146,
+   "auroc_hi": 0.8342998821924603
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "cause": "allowance",
+   "month": 24,
+   "real_share": 0.71,
+   "pred_share": 0.9210558711703569,
+   "brier": 0.23066057475622556,
+   "auroc": 0.7433220009713453,
+   "auroc_lo": 0.6360979447325064,
+   "auroc_hi": 0.8366377961527678
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "cause": "abandonment",
+   "month": 12,
+   "real_share": 0.07,
+   "pred_share": 0.036666498266439584,
+   "brier": 0.06471419846925475,
+   "auroc": 0.7089093701996928,
+   "auroc_lo": 0.543152830529933,
+   "auroc_hi": 0.8621190288901601
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "cause": "abandonment",
+   "month": 24,
+   "real_share": 0.18,
+   "pred_share": 0.05358412888215119,
+   "brier": 0.1599227347260611,
+   "auroc": 0.6500677506775068,
+   "auroc_lo": 0.5081039362281057,
+   "auroc_hi": 0.7791946231617647
+  }
+ ],
+ "calibration": [
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "month": 12,
+   "pred_share": 0.6508320899761629,
+   "real_share": 0.74,
+   "log_loss": 0.591405273578707,
+   "log_loss_lo": 0.5415893728917739,
+   "log_loss_hi": 0.6474481618515066,
+   "ece_5bins": 0.08916791002383695,
+   "brier": 0.20035091617801895
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "month": 24,
+   "pred_share": 0.7930618641322563,
+   "real_share": 0.89,
+   "log_loss": 0.37963699537752227,
+   "log_loss_lo": 0.31246292821183363,
+   "log_loss_hi": 0.4736806894094864,
+   "ece_5bins": 0.09693813586774358,
+   "brier": 0.10729700218551312
+  },
+  {
+   "method": "Cox",
+   "month": 12,
+   "pred_share": 0.6572060952498425,
+   "real_share": 0.74,
+   "log_loss": 0.5989866498771188,
+   "log_loss_lo": 0.5314672673155489,
+   "log_loss_hi": 0.6817426679516987,
+   "ece_5bins": 0.10128921979414197,
+   "brier": 0.20714855280330005
+  },
+  {
+   "method": "Cox",
+   "month": 24,
+   "pred_share": 0.8088416745908589,
+   "real_share": 0.89,
+   "log_loss": 0.37845698354156637,
+   "log_loss_lo": 0.2891569886825643,
+   "log_loss_hi": 0.4897504257863001,
+   "ece_5bins": 0.08317152662511199,
+   "brier": 0.11094193097238234
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "month": 12,
+   "pred_share": 0.52413384,
+   "real_share": 0.74,
+   "log_loss": 0.666747682989917,
+   "log_loss_lo": 0.589317355267185,
+   "log_loss_hi": 0.7465622054452211,
+   "ece_5bins": 0.21586615999999995,
+   "brier": 0.24074021750376004
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "month": 24,
+   "pred_share": 0.7552599999999999,
+   "real_share": 0.89,
+   "log_loss": 0.4432902927582201,
+   "log_loss_lo": 0.35074120110003065,
+   "log_loss_hi": 0.5443373298727631,
+   "ece_5bins": 0.17078000000000007,
+   "brier": 0.14998478
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "month": 12,
+   "pred_share": 0.500084,
+   "real_share": 0.74,
+   "log_loss": 0.7620097276617073,
+   "log_loss_lo": 0.6703582253741125,
+   "log_loss_hi": 0.8594673602493162,
+   "ece_5bins": 0.23991600000000005,
+   "brier": 0.279869612
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "month": 24,
+   "pred_share": 0.7042939999999999,
+   "real_share": 0.89,
+   "log_loss": 0.6376573538876623,
+   "log_loss_lo": 0.43290428334072595,
+   "log_loss_hi": 0.9871151521989987,
+   "ece_5bins": 0.22102600000000003,
+   "brier": 0.1806528156
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "month": 12,
+   "pred_share": 0.8907050000000001,
+   "real_share": 0.74,
+   "log_loss": 0.9751328862403373,
+   "log_loss_lo": 0.5431433556465429,
+   "log_loss_hi": 1.5284071292329144,
+   "ece_5bins": 0.150705,
+   "brier": 0.20165196249999998
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "month": 24,
+   "pred_share": 0.9789996999999999,
+   "real_share": 0.89,
+   "log_loss": 1.084576690073947,
+   "log_loss_lo": 0.45689915182150664,
+   "log_loss_hi": 1.8817077128990292,
+   "ece_5bins": 0.0889997,
+   "brier": 0.103935000009
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "month": 12,
+   "pred_share": 0.86588,
+   "real_share": 0.74,
+   "log_loss": 0.7770107942221947,
+   "log_loss_lo": 0.432425068260654,
+   "log_loss_hi": 1.2234188188478845,
+   "ece_5bins": 0.12588000000000002,
+   "brier": 0.18434964
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "month": 24,
+   "pred_share": 0.9746400000000002,
+   "real_share": 0.89,
+   "log_loss": 0.5339215857015949,
+   "log_loss_lo": 0.25454316281716766,
+   "log_loss_hi": 0.9324473360429557,
+   "ece_5bins": 0.08463999999999999,
+   "brier": 0.10776875999999998
+  }
+ ],
+ "rank_check": [
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "risk_month": 6,
+   "c_index": 0.5,
+   "lo": null,
+   "hi": null
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "risk_month": 12,
+   "c_index": 0.5,
+   "lo": null,
+   "hi": null
+  },
+  {
+   "method": "KM / Aalen\u2013Johansen",
+   "risk_month": 24,
+   "c_index": 0.5,
+   "lo": null,
+   "hi": null
+  },
+  {
+   "method": "Cox",
+   "risk_month": 6,
+   "c_index": 0.5386345053147997,
+   "lo": 0.4667163305779218,
+   "hi": 0.6038692339445827
+  },
+  {
+   "method": "Cox",
+   "risk_month": 12,
+   "c_index": 0.5386345053147997,
+   "lo": 0.4667163305779218,
+   "hi": 0.6038692339445827
+  },
+  {
+   "method": "Cox",
+   "risk_month": 24,
+   "c_index": 0.5386345053147997,
+   "lo": 0.4667163305779218,
+   "hi": 0.6038692339445827
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "risk_month": 6,
+   "c_index": 0.6037408013082584,
+   "lo": 0.5392233879222108,
+   "hi": 0.6731161368846276
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "risk_month": 12,
+   "c_index": 0.5869787408013083,
+   "lo": 0.5164579047333635,
+   "hi": 0.6554523415888017
+  },
+  {
+   "method": "GPT-5-mini, history only",
+   "risk_month": 24,
+   "c_index": 0.5494685200327064,
+   "lo": 0.48064666713974424,
+   "hi": 0.6176637037690792
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "risk_month": 6,
+   "c_index": 0.5122649223221586,
+   "lo": 0.4380418776716519,
+   "hi": 0.5860231587715204
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "risk_month": 12,
+   "c_index": 0.5162510220768601,
+   "lo": 0.44031116016465216,
+   "hi": 0.5918421438994874
+  },
+  {
+   "method": "GPT-5-mini, state + history",
+   "risk_month": 24,
+   "c_index": 0.4937653311529027,
+   "lo": 0.4280516792642173,
+   "hi": 0.5684670244219255
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "risk_month": 6,
+   "c_index": 0.6725265739983647,
+   "lo": 0.6131844595554965,
+   "hi": 0.7305430340795772
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "risk_month": 12,
+   "c_index": 0.6379803761242846,
+   "lo": 0.5773172574327947,
+   "hi": 0.69665816422322
+  },
+  {
+   "method": "Qwen3.6-27B, history only",
+   "risk_month": 24,
+   "c_index": 0.5396565821749796,
+   "lo": 0.4632102438152562,
+   "hi": 0.6125363532898833
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "risk_month": 6,
+   "c_index": 0.6472812755519215,
+   "lo": 0.5817961241426554,
+   "hi": 0.7057055261371582
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "risk_month": 12,
+   "c_index": 0.6272485690923958,
+   "lo": 0.5611544593535864,
+   "hi": 0.6890684518028432
+  },
+  {
+   "method": "Qwen3.6-27B, state + history",
+   "risk_month": 24,
+   "c_index": 0.5839125102207686,
+   "lo": 0.5286561292026698,
+   "hi": 0.6405129394156832
+  }
+ ],
+ "calibration_bins": {
+  "KM / Aalen\u2013Johansen | 12m": [
+   [
+    0.650832089976163,
+    0.74,
+    100
+   ]
+  ],
+  "KM / Aalen\u2013Johansen | 24m": [
+   [
+    0.7930618641322564,
+    0.89,
+    100
+   ]
+  ],
+  "Cox | 12m": [
+   [
+    0.4769550080527827,
+    0.65,
+    20
+   ],
+   [
+    0.5644760022421069,
+    0.85,
+    20
+   ],
+   [
+    0.6483611783443619,
+    0.65,
+    20
+   ],
+   [
+    0.7383269749326586,
+    0.7,
+    20
+   ],
+   [
+    0.8579113126773027,
+    0.85,
+    20
+   ]
+  ],
+  "Cox | 24m": [
+   [
+    0.648481918145892,
+    0.75,
+    20
+   ],
+   [
+    0.7396791303067145,
+    1.0,
+    20
+   ],
+   [
+    0.8153846097607446,
+    0.85,
+    20
+   ],
+   [
+    0.8856297117010161,
+    0.9,
+    20
+   ],
+   [
+    0.955033003039927,
+    0.95,
+    20
+   ]
+  ],
+  "GPT-5-mini, history only | 12m": [
+   [
+    0.2684587,
+    0.65,
+    20
+   ],
+   [
+    0.3793,
+    0.8,
+    20
+   ],
+   [
+    0.4962000000000001,
+    0.6,
+    20
+   ],
+   [
+    0.6470104999999999,
+    0.7,
+    20
+   ],
+   [
+    0.8297000000000001,
+    0.95,
+    20
+   ]
+  ],
+  "GPT-5-mini, history only | 24m": [
+   [
+    0.4341000000000001,
+    0.9,
+    20
+   ],
+   [
+    0.6131499999999999,
+    0.9,
+    20
+   ],
+   [
+    0.80475,
+    0.75,
+    20
+   ],
+   [
+    0.9353500000000002,
+    0.9,
+    20
+   ],
+   [
+    0.98895,
+    1.0,
+    20
+   ]
+  ],
+  "GPT-5-mini, state + history | 12m": [
+   [
+    0.23364,
+    0.8,
+    20
+   ],
+   [
+    0.35717999999999994,
+    0.6,
+    20
+   ],
+   [
+    0.4694999999999999,
+    0.65,
+    20
+   ],
+   [
+    0.615,
+    0.8,
+    20
+   ],
+   [
+    0.8251,
+    0.85,
+    20
+   ]
+  ],
+  "GPT-5-mini, state + history | 24m": [
+   [
+    0.39442000000000005,
+    0.95,
+    20
+   ],
+   [
+    0.54505,
+    0.85,
+    20
+   ],
+   [
+    0.702,
+    0.8,
+    20
+   ],
+   [
+    0.8916999999999998,
+    0.95,
+    20
+   ],
+   [
+    0.9883,
+    0.9,
+    20
+   ]
+  ],
+  "Qwen3.6-27B, history only | 12m": [
+   [
+    0.6744999999999999,
+    0.6,
+    20
+   ],
+   [
+    0.85375,
+    0.6,
+    20
+   ],
+   [
+    0.9387500000000001,
+    0.8,
+    20
+   ],
+   [
+    0.986525,
+    0.85,
+    20
+   ],
+   [
+    1.0,
+    0.85,
+    20
+   ]
+  ],
+  "Qwen3.6-27B, history only | 24m": [
+   [
+    0.9245000000000001,
+    0.85,
+    20
+   ],
+   [
+    0.9759999999999998,
+    0.95,
+    20
+   ],
+   [
+    0.9944985,
+    0.95,
+    20
+   ],
+   [
+    1.0,
+    0.85,
+    20
+   ],
+   [
+    1.0,
+    0.85,
+    20
+   ]
+  ],
+  "Qwen3.6-27B, state + history | 12m": [
+   [
+    0.5685,
+    0.45,
+    20
+   ],
+   [
+    0.8315000000000001,
+    0.6,
+    20
+   ],
+   [
+    0.9369999999999999,
+    0.85,
+    20
+   ],
+   [
+    0.9924,
+    0.8,
+    20
+   ],
+   [
+    1.0,
+    1.0,
+    20
+   ]
+  ],
+  "Qwen3.6-27B, state + history | 24m": [
+   [
+    0.9034999999999999,
+    0.85,
+    20
+   ],
+   [
+    0.9770000000000001,
+    0.8,
+    20
+   ],
+   [
+    0.9926999999999999,
+    0.85,
+    20
+   ],
+   [
+    1.0,
+    0.95,
+    20
+   ],
+   [
+    1.0,
+    1.0,
+    20
+   ]
+  ]
+ },
+ "notes": "harrell C here truncated at 730 days, risk = 1 - S(month); month 24 equals the Table 3 C-idx up to tie handling"
+}
