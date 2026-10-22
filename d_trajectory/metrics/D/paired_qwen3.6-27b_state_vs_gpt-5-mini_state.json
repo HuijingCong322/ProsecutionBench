@@ -1,0 +1,26 @@
+{
+ "a": "outputs/D/trajectory_predictions_qwen3.6-27b_state.jsonl",
+ "b": "outputs/D/trajectory_predictions_gpt-5-mini_state.jsonl",
+ "a_label": "Qwen3.6-27B (state_with_history)",
+ "b_label": "gpt-5-mini (state_with_history)",
+ "eligible_n": 100,
+ "shared_n": 100,
+ "a_only_failed": [],
+ "b_only_failed": [],
+ "c_index_a": 0.5886140637775961,
+ "c_index_b": 0.4933565004088307,
+ "ibs_a": 0.1868981170017857,
+ "ibs_b": 0.24843204997692858,
+ "delta_c_index": 0.09525756336876534,
+ "delta_c_index_ci95": [
+  0.011654635971628644,
+  0.1717729175518068
+ ],
+ "delta_ibs": -0.06153393297514287,
+ "delta_ibs_ci95": [
+  -0.10233991256324461,
+  -0.013991514006582155
+ ],
+ "n_boot_used": 1000,
+ "note": "delta = a minus b on shared valid cases; C-idx higher is better, IBS lower is better"
+}

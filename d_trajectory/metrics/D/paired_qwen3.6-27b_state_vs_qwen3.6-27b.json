@@ -1,0 +1,26 @@
+{
+ "a": "outputs/D/trajectory_predictions_qwen3.6-27b_state.jsonl",
+ "b": "outputs/D/trajectory_predictions_qwen3.6-27b.jsonl",
+ "a_label": "Qwen3.6-27B (state_with_history)",
+ "b_label": "Qwen3.6-27B (history_only)",
+ "eligible_n": 100,
+ "shared_n": 100,
+ "a_only_failed": [],
+ "b_only_failed": [],
+ "c_index_a": 0.5886140637775961,
+ "c_index_b": 0.5327064595257563,
+ "ibs_a": 0.1868981170017857,
+ "ibs_b": 0.18206852374635646,
+ "delta_c_index": 0.055907604251839715,
+ "delta_c_index_ci95": [
+  -0.03512952648403016,
+  0.15259125209252367
+ ],
+ "delta_ibs": 0.004829593255429254,
+ "delta_ibs_ci95": [
+  -0.01491163598919645,
+  0.025494297736907444
+ ],
+ "n_boot_used": 1000,
+ "note": "delta = a minus b on shared valid cases; C-idx higher is better, IBS lower is better"
+}

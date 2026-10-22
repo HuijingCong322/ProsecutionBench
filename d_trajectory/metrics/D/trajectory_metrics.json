@@ -360,13 +360,12 @@
     700.0,
     730.0
    ],
-   "failed_ids": [],
-   "missing_ids": [],
-   "n_boot_used": 1000,
    "repairs": {
     "monotone": 19,
     "renormalized": 19
    },
+   "failed_ids": [],
+   "missing_ids": [],
    "c_index": 0.5327064595257563,
    "ibs": 0.18206852374635646,
    "brier_12m": 0.20165196249999998,
@@ -383,6 +382,7 @@
     0.1460482447633171,
     0.22417528118519744
    ],
+   "n_boot_used": 1000,
    "harrell_c_trunc": 0.5327064595257563,
    "calibration": {
     "pred_any_12m": 0.8907050000000001,
@@ -441,13 +441,12 @@
     700.0,
     730.0
    ],
-   "failed_ids": [],
-   "missing_ids": [],
-   "n_boot_used": 1000,
    "repairs": {
     "monotone": 22,
     "renormalized": 23
    },
+   "failed_ids": [],
+   "missing_ids": [],
    "c_index": 0.5886140637775961,
    "ibs": 0.1868981170017857,
    "brier_12m": 0.18434964,
@@ -464,6 +463,7 @@
     0.1526389389290625,
     0.22343724340227678
    ],
+   "n_boot_used": 1000,
    "harrell_c_trunc": 0.5886140637775961,
    "calibration": {
     "pred_any_12m": 0.86588,

@@ -29,7 +29,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`. Overview figure of
 ## 3. Trajectory Forecasting (D)
 - Endpoint: days from A1 to the first mailed Notice of Allowance or abandonment notice. test_core: 76 allowances, 24 abandonments,
   0 censored. 11 cases resolve after 24 months.
-- Labels re-derived independently from USPTO transactions: **100/100 match A's labels**. Traps that are documented:
+- Labels re-derived independently from USPTO transactions: **100/100 test and 478/478 training labels match A's labels**. Traps that are documented:
   `ABN9` = an RCE entry, not abandonment; abandonment date = date the notice was mailed; 3 abandonments were later revived (they stay abandonment).
 - Results on test_core (100 cases, 0 failed, 95% bootstrap intervals). Lower IBS is better.
 
@@ -45,7 +45,7 @@ See `results/task_status.csv` and `results/table3_pilot.tex`. Overview figure of
   2. Calibration: both GPT-5-mini runs predict prosecution as too slow. By 12 months they expect 52% / 50% of cases to be resolved;
      74% actually were. By 24 months they expect 76% / 70%; 89% were. So their IBS is worse than the simple training curve (0.188).
   3. By outcome: allowance is under-predicted (predicted 0.62 / 0.54 by 24 months vs 0.71 observed); abandonment is close (0.13 / 0.17 vs 0.18).
-  4. Adding A's predicted state did not help: state − history = −0.056 C-idx [−0.134, 0.028] and +0.025 IBS [−0.006, 0.055].
+  4. Adding A's predicted state did not help: state − history = −0.055 C-idx [−0.131, +0.032] and +0.025 IBS [−0.008, +0.055] (paired bootstrap, `compare_trajectory_models.py`, same seed as all paired results).
      The difference is within noise on 100 cases. The two runs' risk scores agree only weakly (correlation 0.23), so the model's case-level signal is unstable.
 - **Examples.**
   - 13752885: allowed 11 days after A1. The model gave only a 10–19% chance of any outcome within 12 months. It treats a fresh reply as the start of a long process.

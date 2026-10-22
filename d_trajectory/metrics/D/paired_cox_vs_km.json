@@ -1,0 +1,26 @@
+{
+ "a": "outputs/D/trajectory_predictions_cox.jsonl",
+ "b": "outputs/D/trajectory_predictions_km.jsonl",
+ "a_label": "none (Cox PH, ridge alpha=1) (cutoff features)",
+ "b_label": "none (train KM/AJ) (no covariates)",
+ "eligible_n": 100,
+ "shared_n": 100,
+ "a_only_failed": [],
+ "b_only_failed": [],
+ "c_index_a": 0.5386345053147997,
+ "c_index_b": 0.5,
+ "ibs_a": 0.19225359360184208,
+ "ibs_b": 0.18821612664651416,
+ "delta_c_index": 0.03863450531479973,
+ "delta_c_index_ci95": [
+  -0.03004563118828688,
+  0.10237366691796779
+ ],
+ "delta_ibs": 0.0040374669553279174,
+ "delta_ibs_ci95": [
+  -0.011246972825762234,
+  0.020411870192751192
+ ],
+ "n_boot_used": 1000,
+ "note": "delta = a minus b on shared valid cases; C-idx higher is better, IBS lower is better"
+}

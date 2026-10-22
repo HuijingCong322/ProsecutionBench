@@ -1,0 +1,151 @@
+method,real,predicted,n
+KM,0,0,0
+KM,0,1,36
+KM,0,2,0
+KM,0,3,0
+KM,0,4+,0
+KM,1,0,0
+KM,1,1,37
+KM,1,2,0
+KM,1,3,0
+KM,1,4+,0
+KM,2,0,0
+KM,2,1,7
+KM,2,2,0
+KM,2,3,0
+KM,2,4+,0
+KM,3,0,0
+KM,3,1,11
+KM,3,2,0
+KM,3,3,0
+KM,3,4+,0
+KM,4+,0,0
+KM,4+,1,9
+KM,4+,2,0
+KM,4+,3,0
+KM,4+,4+,0
+Cox,0,0,0
+Cox,0,1,29
+Cox,0,2,7
+Cox,0,3,0
+Cox,0,4+,0
+Cox,1,0,0
+Cox,1,1,27
+Cox,1,2,10
+Cox,1,3,0
+Cox,1,4+,0
+Cox,2,0,0
+Cox,2,1,7
+Cox,2,2,0
+Cox,2,3,0
+Cox,2,4+,0
+Cox,3,0,0
+Cox,3,1,8
+Cox,3,2,3
+Cox,3,3,0
+Cox,3,4+,0
+Cox,4+,0,1
+Cox,4+,1,8
+Cox,4+,2,0
+Cox,4+,3,0
+Cox,4+,4+,0
+"GPT-5-mini, history",0,0,10
+"GPT-5-mini, history",0,1,26
+"GPT-5-mini, history",0,2,0
+"GPT-5-mini, history",0,3,0
+"GPT-5-mini, history",0,4+,0
+"GPT-5-mini, history",1,0,3
+"GPT-5-mini, history",1,1,34
+"GPT-5-mini, history",1,2,0
+"GPT-5-mini, history",1,3,0
+"GPT-5-mini, history",1,4+,0
+"GPT-5-mini, history",2,0,1
+"GPT-5-mini, history",2,1,6
+"GPT-5-mini, history",2,2,0
+"GPT-5-mini, history",2,3,0
+"GPT-5-mini, history",2,4+,0
+"GPT-5-mini, history",3,0,2
+"GPT-5-mini, history",3,1,9
+"GPT-5-mini, history",3,2,0
+"GPT-5-mini, history",3,3,0
+"GPT-5-mini, history",3,4+,0
+"GPT-5-mini, history",4+,0,1
+"GPT-5-mini, history",4+,1,8
+"GPT-5-mini, history",4+,2,0
+"GPT-5-mini, history",4+,3,0
+"GPT-5-mini, history",4+,4+,0
+"GPT-5-mini, state+history",0,0,8
+"GPT-5-mini, state+history",0,1,27
+"GPT-5-mini, state+history",0,2,1
+"GPT-5-mini, state+history",0,3,0
+"GPT-5-mini, state+history",0,4+,0
+"GPT-5-mini, state+history",1,0,4
+"GPT-5-mini, state+history",1,1,33
+"GPT-5-mini, state+history",1,2,0
+"GPT-5-mini, state+history",1,3,0
+"GPT-5-mini, state+history",1,4+,0
+"GPT-5-mini, state+history",2,0,1
+"GPT-5-mini, state+history",2,1,6
+"GPT-5-mini, state+history",2,2,0
+"GPT-5-mini, state+history",2,3,0
+"GPT-5-mini, state+history",2,4+,0
+"GPT-5-mini, state+history",3,0,1
+"GPT-5-mini, state+history",3,1,10
+"GPT-5-mini, state+history",3,2,0
+"GPT-5-mini, state+history",3,3,0
+"GPT-5-mini, state+history",3,4+,0
+"GPT-5-mini, state+history",4+,0,1
+"GPT-5-mini, state+history",4+,1,8
+"GPT-5-mini, state+history",4+,2,0
+"GPT-5-mini, state+history",4+,3,0
+"GPT-5-mini, state+history",4+,4+,0
+"Qwen3.6-27B, history",0,0,28
+"Qwen3.6-27B, history",0,1,8
+"Qwen3.6-27B, history",0,2,0
+"Qwen3.6-27B, history",0,3,0
+"Qwen3.6-27B, history",0,4+,0
+"Qwen3.6-27B, history",1,0,22
+"Qwen3.6-27B, history",1,1,15
+"Qwen3.6-27B, history",1,2,0
+"Qwen3.6-27B, history",1,3,0
+"Qwen3.6-27B, history",1,4+,0
+"Qwen3.6-27B, history",2,0,4
+"Qwen3.6-27B, history",2,1,3
+"Qwen3.6-27B, history",2,2,0
+"Qwen3.6-27B, history",2,3,0
+"Qwen3.6-27B, history",2,4+,0
+"Qwen3.6-27B, history",3,0,8
+"Qwen3.6-27B, history",3,1,3
+"Qwen3.6-27B, history",3,2,0
+"Qwen3.6-27B, history",3,3,0
+"Qwen3.6-27B, history",3,4+,0
+"Qwen3.6-27B, history",4+,0,5
+"Qwen3.6-27B, history",4+,1,4
+"Qwen3.6-27B, history",4+,2,0
+"Qwen3.6-27B, history",4+,3,0
+"Qwen3.6-27B, history",4+,4+,0
+"Qwen3.6-27B, state+history",0,0,27
+"Qwen3.6-27B, state+history",0,1,9
+"Qwen3.6-27B, state+history",0,2,0
+"Qwen3.6-27B, state+history",0,3,0
+"Qwen3.6-27B, state+history",0,4+,0
+"Qwen3.6-27B, state+history",1,0,15
+"Qwen3.6-27B, state+history",1,1,22
+"Qwen3.6-27B, state+history",1,2,0
+"Qwen3.6-27B, state+history",1,3,0
+"Qwen3.6-27B, state+history",1,4+,0
+"Qwen3.6-27B, state+history",2,0,3
+"Qwen3.6-27B, state+history",2,1,4
+"Qwen3.6-27B, state+history",2,2,0
+"Qwen3.6-27B, state+history",2,3,0
+"Qwen3.6-27B, state+history",2,4+,0
+"Qwen3.6-27B, state+history",3,0,3
+"Qwen3.6-27B, state+history",3,1,8
+"Qwen3.6-27B, state+history",3,2,0
+"Qwen3.6-27B, state+history",3,3,0
+"Qwen3.6-27B, state+history",3,4+,0
+"Qwen3.6-27B, state+history",4+,0,4
+"Qwen3.6-27B, state+history",4+,1,4
+"Qwen3.6-27B, state+history",4+,2,1
+"Qwen3.6-27B, state+history",4+,3,0
+"Qwen3.6-27B, state+history",4+,4+,0

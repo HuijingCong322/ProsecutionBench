@@ -1,0 +1,26 @@
+{
+ "a": "outputs/D/trajectory_predictions_gpt-5-mini_state.jsonl",
+ "b": "outputs/D/trajectory_predictions_km.jsonl",
+ "a_label": "gpt-5-mini (state_with_history)",
+ "b_label": "none (train KM/AJ) (no covariates)",
+ "eligible_n": 100,
+ "shared_n": 100,
+ "a_only_failed": [],
+ "b_only_failed": [],
+ "c_index_a": 0.4933565004088307,
+ "c_index_b": 0.5,
+ "ibs_a": 0.24843204997692858,
+ "ibs_b": 0.18821612664651416,
+ "delta_c_index": -0.006643499591169277,
+ "delta_c_index_ci95": [
+  -0.07335707032845305,
+  0.06696839085924376
+ ],
+ "delta_ibs": 0.06021592333041442,
+ "delta_ibs_ci95": [
+  0.024513829118391738,
+  0.09348074049499758
+ ],
+ "n_boot_used": 1000,
+ "note": "delta = a minus b on shared valid cases; C-idx higher is better, IBS lower is better"
+}

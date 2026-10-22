@@ -1,0 +1,26 @@
+{
+ "a": "outputs/D/trajectory_predictions_qwen3.6-27b_state.jsonl",
+ "b": "outputs/D/trajectory_predictions_km.jsonl",
+ "a_label": "Qwen3.6-27B (state_with_history)",
+ "b_label": "none (train KM/AJ) (no covariates)",
+ "eligible_n": 100,
+ "shared_n": 100,
+ "a_only_failed": [],
+ "b_only_failed": [],
+ "c_index_a": 0.5886140637775961,
+ "c_index_b": 0.5,
+ "ibs_a": 0.1868981170017857,
+ "ibs_b": 0.18821612664651416,
+ "delta_c_index": 0.08861406377759606,
+ "delta_c_index_ci95": [
+  0.03246590811530433,
+  0.14360179308889773
+ ],
+ "delta_ibs": -0.0013180096447284462,
+ "delta_ibs_ci95": [
+  -0.02524658791193395,
+  0.024858372580065517
+ ],
+ "n_boot_used": 1000,
+ "note": "delta = a minus b on shared valid cases; C-idx higher is better, IBS lower is better"
+}
