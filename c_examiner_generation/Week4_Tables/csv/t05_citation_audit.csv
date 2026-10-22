@@ -1,3 +1,0 @@
-﻿model,paired_n,quoted_units,matched_units,unmatched_units,pooled_match_rate,flagged_cases,flagged_case_rate,zero_quote_cases
-GPT-5-mini,37,300,167,133,0.5566666666666666,32,0.8648648648648649,0
-Qwen3.6-27B,37,167,129,38,0.7724550898203593,21,0.5675675675675675,0

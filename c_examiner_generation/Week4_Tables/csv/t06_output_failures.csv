@@ -1,8 +1,0 @@
-﻿category,group,eligible_n,gpt_n,qwen_n
-Attempted,cohort,50,50,50
-Successfully scored,status,50,39,44
-Invalid output,status,50,11,5
-API failure,status,50,0,1
-Invalid ground only,schema_detail,50,8,5
-Invalid ground status only,schema_detail,50,2,0
-Both schema errors,schema_detail,50,1,0
