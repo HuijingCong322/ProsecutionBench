@@ -1,0 +1,36 @@
+{
+ "episodes": 8364,
+ "applications": 5369,
+ "cases": 100,
+ "cards": 300,
+ "case_episode_rows": 14056,
+ "leak_rows": 300,
+ "leak_pass": 300,
+ "episodes_by_next_type": {
+  "allowance": 2893,
+  "final_rejection": 2817,
+  "nonfinal_rejection": 1304,
+  "advisory_action": 866,
+  "none_shipped": 446,
+  "abandonment": 9,
+  "restriction": 11,
+  "quayle_action": 18
+ },
+ "signature_basis": {
+  "assigned_examiner_unverified": 3797,
+  "actions_csv_signed_by_other": 60,
+  "actions_csv_verified": 3965,
+  "none": 446,
+  "no_uspto_text_unverified": 96
+ },
+ "reply_text_available": 7306,
+ "first_reply_episodes": 4407,
+ "k_shrink": 5,
+ "inputs_sha1": {
+  "cases.csv": "31913688b92437cebba59cb6bacd5cbbc74729c7",
+  "profile_index.csv": "4cbe10c3bcd9824fc000feb2301d7ca41fcfe1a2",
+  "actions.csv": "d129a0f9d2eaf67af188e0cd9029102b29e76c16",
+  "checks.json": "ea13473a349ab285b922d9fd794e63600786e649"
+ },
+ "builder_sha1": "8e266c78502e1d9e998f5c5c1ec1b4bdb470c864"
+}
