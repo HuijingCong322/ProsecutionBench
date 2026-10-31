@@ -1,0 +1,13 @@
+Examiner history reference available before {cutoff}
+
+Historical statistics
+{D_verified_statistics_with_denominators}
+
+Retrieved historical episodes
+{three_retrieved_two_line_case_summaries_with_sources}
+
+Use this reference to inform the task while grounding the prediction in the current application's record. Read each statistic with its stated denominator, time window, and raw or adjusted definition. Pending or censored outcomes remain unknown at the cutoff. The downloaded reference sample may not represent the examiner's full workload.
+
+Respect the stated attribution limits. A notice attributed through application assignment has weaker examiner attribution than a signature-verified action. Communication-type codes describe procedure; determine claim-level allowance, rejection, and amendment entry from the current record.
+
+Use the retrieved examples as historical comparisons. Support claim-specific statements with the current application's evidence, and retain uncertainty when the necessary evidence is missing. Use only the supplied examples and keep the task's required output format.

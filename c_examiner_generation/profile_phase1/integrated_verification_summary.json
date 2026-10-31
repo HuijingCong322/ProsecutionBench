@@ -1,0 +1,38 @@
+{
+  "profiles_checked": 300,
+  "profiles_passed": 300,
+  "selected_source_hash_references_checked": 2779,
+  "selected_excerpts_checked": 1437,
+  "artunit_pool_equals_single_mismatched_examiner": 81,
+  "artunit_retrieved_episodes_equal_mismatched": 86,
+  "raw_A_manifest": {
+    "A_manifest_files_verified": 79531,
+    "failures": [],
+    "source_A_zip_sha256": "9f889f13fccd71fd27f24d936e8fba85099b12e1e011c9febe1c311e57392500"
+  },
+  "D_rebuild": [
+    {
+      "file": "episodes.csv",
+      "byte_identical": true,
+      "sha1": "c5f52284903dc353a6be13fbf1718f627eb1b1ec"
+    },
+    {
+      "file": "case_episodes.csv",
+      "byte_identical": true,
+      "sha1": "e9ab55a2cfa7dbb46032a440df7335e77a02352d"
+    },
+    {
+      "file": "stats_cards.jsonl",
+      "byte_identical": true,
+      "sha1": "5d165efb31b444277eab3fced47807863b149d04"
+    },
+    {
+      "file": "leak_check.csv",
+      "byte_identical": true,
+      "sha1": "00d5c1ae91bb42d5016cf354be698448bcc1d3db"
+    }
+  ],
+  "failures": [],
+  "human_review_completed": false,
+  "frozen": false
+}

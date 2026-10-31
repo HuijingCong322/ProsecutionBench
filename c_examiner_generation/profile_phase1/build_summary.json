@@ -1,0 +1,71 @@
+{
+  "cases": 100,
+  "candidate_profiles": 300,
+  "fixed_review_cases": [
+    "13817797",
+    "13986738",
+    "14353039",
+    "14482153",
+    "13484627",
+    "13773735",
+    "14031839",
+    "14045655",
+    "13334748",
+    "13577408"
+  ],
+  "review_rows": 30,
+  "k3_profiles": 298,
+  "short_profiles": [
+    {
+      "sample_id": "13484627",
+      "setting": "own",
+      "profile_path": "candidate_profiles/own/13484627.json",
+      "profile_sha1": "a795fce4ab90df18c2417cde932bc40d29112d89",
+      "profile_text_sha1": "a1dc31ee32c2d8a46a6621c072eb3eca7cefceee",
+      "D_card_sha1": "ff25054b24455006960af0e4eaad8a509b273014",
+      "statistics_text_sha1": "06189a544a642205a554af3085964a47ee7e5b43",
+      "cutoff": "2015-04-03",
+      "retrieved_k": 1,
+      "candidate_episode_n": 1,
+      "max_profile_token_upper_bound": 3713,
+      "dates_ok": true,
+      "families_ok": true,
+      "status": "candidate_not_frozen"
+    },
+    {
+      "sample_id": "13627444",
+      "setting": "mismatched",
+      "profile_path": "candidate_profiles/mismatched/13627444.json",
+      "profile_sha1": "29369ff55e7e6f989eaca38098ba8cce81901a1c",
+      "profile_text_sha1": "287557ada10ab205c2323f9d13c625bb1fd978e2",
+      "D_card_sha1": "d87f3303c5bff0cf6a25b29ef38520cec4c02c32",
+      "statistics_text_sha1": "34be2a480e2bd5546f030a3f9c998b4a4e76bd6c",
+      "cutoff": "2014-03-24",
+      "retrieved_k": 2,
+      "candidate_episode_n": 2,
+      "max_profile_token_upper_bound": 4420,
+      "dates_ok": true,
+      "families_ok": true,
+      "status": "candidate_not_frozen"
+    }
+  ],
+  "max_token_upper_bound_utf8_bytes": 5794,
+  "all_profile_dates_ok": true,
+  "all_declared_families_ok": true,
+  "human_review_completed": false,
+  "frozen": false,
+  "new_model_calls": 0,
+  "retrieved_next_types": {
+    "allowance": 405,
+    "advisory_action": 93,
+    "final_rejection": 326,
+    "nonfinal_rejection": 67,
+    "restriction": 1,
+    "quayle_action": 5
+  },
+  "source_gate_exclusions": {
+    "no_readable_pre_outcome_context": 505,
+    "known_other_examiner_prior_OA": 168
+  },
+  "profile_block_sha1": "56b15acb8760f8e4a9924948751992c245a23ee4"
+}
