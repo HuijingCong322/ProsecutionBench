@@ -1,5 +1,10 @@
 # ProsecutionBench — weekly classification pilot
 
+## Reviewed examiner profiles — November 2, 2026
+
+The latest B/D/C shared-profile technical handoff is indexed at [B reviewed v4](b_examiner_prediction/profile_phase1/reviewed_v4/README.md). It records 300 per-case/variant profile hashes, actual retrieval coverage, D-card provenance, contact-examiner attribution and user-delegated technical review scope. This repository keeps the source-free code, prompt, manifests and audit summaries; raw text/extracts and the full review ZIP remain team-only. Start with dev format checks before any production phase-2 run.
+
+
 Work for the October 5–11, 2026 revised plan, focusing on B's labels, classification baselines and C handoff. No independent training cohort or new USPTO downloads are required for this pilot.
 
 ## Completed experiment
@@ -76,3 +81,4 @@ python scripts/reproduce_lr_reply.py
 ```
 
 Reproduces the saved probabilities from committed derived features without Drive or API access. See `results/week_2026_10_05/lr_reply/`, `primary_metrics.json`, `primary_baseline.json`, and `docs/B_BRIEFING_DRAFT.md` / `docs/B_BRIEFING_EN.md`. Root `metrics.json` and `lr_predictions.csv` retain LR-time history. Raw reply/O1 text, excerpts, model binaries and source-access URLs are not added.
+

@@ -1,0 +1,11 @@
+{
+  "reviewer": "Codex, user-delegated technical review; no D-person signature",
+  "cards_checked": 300,
+  "card_sha1_verified": 300,
+  "next_action_counts_shares_KM_upper_median": "pass",
+  "first_reply_counts_cumulative_incidence_RCE": "pass",
+  "stored_rate_log_median_shrinkage": "pass (200 cards; k=5)",
+  "upper_median_fields_different_from_average_median": 239,
+  "source_numeric_change_required_for_contact_attribution": false,
+  "rounds_all_censored_interpretation_requires_caveat": true
+}

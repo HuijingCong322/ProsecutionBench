@@ -1,0 +1,30 @@
+{
+  "status": "PASS_WITH_DOCUMENTED_LIMITS",
+  "profiles": 300,
+  "D_cards_unchanged": 300,
+  "D_source_numeric_changes": 0,
+  "retrieved_references_checked": 882,
+  "source_file_hash_references_checked": 2738,
+  "extractive_source_spans_checked": 1415,
+  "original_10_case_review_spans_checked": 122,
+  "delegated_re_review_rows": 30,
+  "actual_k_distribution": {
+    "3": 293,
+    "0": 5,
+    "2": 1,
+    "1": 1
+  },
+  "restored_original_episode_verified": true,
+  "contact_identity_evidence_sha1": {
+    "A_corpus/apps/13482424/text/2015-02-11_CTFR_I5XVMRV0PXXIFW4.txt": "0294eeb01aae016d101d5f2e0aa3b6c3a7fb5a04",
+    "A_corpus/apps/13482424/text/2014-08-25_CTNF_HZ41B2FBPXXIFW4.txt": "dda163e5575338d4567e9945baa0ba4876b60b1f",
+    "benchmark/apps/13484627/text/2014-11-05_CTNF_I24QZV4QPXXIFW4.txt": "5ce9a344f5b11b51f56b74de1f4b9b5698c5c9b4"
+  },
+  "signature_authority_or_draft_authorship_inference": false,
+  "reviewer": "Codex — explicit user-delegated technical re-review",
+  "human_D_C_signatures_claimed": false,
+  "ready_for": "3–5 dev format checks",
+  "production_phase2_started": false,
+  "verifier_sha1": "9f1ef853424805ce08fa09bff809a7fc8f699d2f",
+  "public_export_note": "Source paths normalized for portability; source-document hashes unchanged. Raw texts and excerpts are not included."
+}

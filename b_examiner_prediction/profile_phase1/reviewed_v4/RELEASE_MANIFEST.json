@@ -1,0 +1,33 @@
+{
+  "release_id": "B_D_C_v4_reviewed_2026_11_02",
+  "technical_status": "locked_after_user_delegated_D_C_scope_reviews",
+  "reviewer": "Codex under explicit user delegation in this chat",
+  "human_D_or_C_signature_claimed": false,
+  "statistics_policy": "raw display; adjusted metadata retained; upper-median and contact-attribution labels explicit; all-censored rounds tail qualified",
+  "retrieval_policy": "D per-case variant pools plus deterministic C TF-IDF; original Chu case restored; 5 C-rejected retrieval blocks omitted without replacements",
+  "coverage_policy": "user accepted partial-k and statistics-only; report actual retrieved_k",
+  "profiles": 300,
+  "actual_k_counts": {
+    "3": 293,
+    "2": 1,
+    "1": 1,
+    "0": 5
+  },
+  "source_D_statistics_modified": false,
+  "C_relevance_judgments_overridden": false,
+  "technical_re_review_rows": 30,
+  "profile_manifest_sha256": "33441c94fe1f1aaa243420bb8b05ef4f85cb5235209d7aeeffa552a16257f986",
+  "prompt_sha1": "28cae91a24298803fd84c8e932f4d010e63f938a",
+  "D_source_cards_sha1": "5d165efb31b444277eab3fced47807863b149d04",
+  "delegated_review_csv_sha256": "1237b92c08f1373c19a8524faf3f2cf9b49af6e8f29a4bb26ea282953794193e",
+  "allowed_next_step": "3–5 dev format checks; production phase2 not started",
+  "api_calls": 0,
+  "team_member_human_signoffs": "not represented; original C judgments are archived unchanged",
+  "limitations": [
+    "documented A O1-examiner fallback retained",
+    "limited overlapping art-unit control pool",
+    "contact/assignment attribution is not physical-signatory verification",
+    "ground frequencies approximate",
+    "censored tails do not establish finite future-round probabilities"
+  ]
+}

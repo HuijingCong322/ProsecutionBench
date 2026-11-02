@@ -1,0 +1,5 @@
+setting,profiles,k0,k1,k2,k3,full_k3_fraction,user_acceptance
+own,100,0,1,0,99,0.99,accepted_partial_k_and_statistics_only
+mismatched,100,3,0,1,96,0.96,accepted_partial_k_and_statistics_only
+artunit,100,2,0,0,98,0.98,accepted_partial_k_and_statistics_only
+all,300,5,1,1,293,0.9766666666666667,accepted_partial_k_and_statistics_only

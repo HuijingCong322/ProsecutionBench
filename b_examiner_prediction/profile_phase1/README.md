@@ -1,3 +1,13 @@
+# B examiner profiles — reviewed v4 update
+
+Latest handoff: [reviewed_v4/README.md](reviewed_v4/README.md). The D/C-scope technical review requested by the user is complete; it is attributed to Codex, not a new human signature from D/C. The reviewed snapshot has 300 profiles with actual k recorded (293 k3, one k2, one k1, five statistics-only), source-card hashes unchanged, contact/handling-examiner attribution corrected, and censoring-tail interpretation qualified.
+
+Use [reviewed_v4/RELEASE_MANIFEST.json](reviewed_v4/RELEASE_MANIFEST.json) and [reviewed_v4/profile_manifest.csv](reviewed_v4/profile_manifest.csv) to identify the exact team-only payload. Raw source texts, extractive profile JSONs and complete review ZIPs are intentionally not published in this public repository. Next step: 3–5 task-specific dev format checks; production phase 2 has not started.
+
+The sections below document the earlier provisional builder. Their pending-D/C status describes that older draft, not the reviewed v4 handoff. The new integration entry point is `b_profile_integrate_v4.py`, with source data and team candidate paths passed explicitly using its command-line options.
+
+---
+
 # B phase 1 examiner profile drafts
 
 Builds own-examiner, same-art-unit mismatched-examiner, and available-art-unit reference profiles from A's profile_corpus_v2 and the original data_v1_share benchmark.
@@ -42,3 +52,4 @@ The output directory must not already exist. The tokenizer vocabulary must be av
 Regenerate the full eligible episode pool and retrieval after D delivers adjudicated episodes, rather than treating the rejection-only drafts as final by simply adding statistics. C must review and freeze the final prompt before phase 2.
 
 The accompanying b_prediction.py supplies shared serialization and safe-path helpers from the original B pilot. Upload source: capstonetest commit 2515ba1a93101b51d12476b2dadd9dc75781dc5d.
+
