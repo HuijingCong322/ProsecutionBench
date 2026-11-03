@@ -52,13 +52,13 @@
     },
     {
       "path": "b_examiner_prediction/phase2_reviewed_v4/eligibility.csv",
-      "bytes": 6681,
-      "sha256": "0ec44e16afbe83f6281c14acd5a2331db5a4af5b51797125e991601456bba66c"
+      "bytes": 6580,
+      "sha256": "2fa4fe28cf23ddd6d07b9fcebb48436d77e37a66524400b0d16410eb379af8db"
     },
     {
       "path": "b_examiner_prediction/phase2_reviewed_v4/metrics.csv",
-      "bytes": 521,
-      "sha256": "67340f7d31efd7fc08e679181e610cf0d40620cd2326c1d2ccc3ee98a6c31238"
+      "bytes": 514,
+      "sha256": "8750aa539439bedfcdb98113d0491f2d54fa91898d62ad53270f023c4c38f883"
     },
     {
       "path": "b_examiner_prediction/phase2_reviewed_v4/profile_token_summary.json",
@@ -110,5 +110,6 @@
     "per-case predictions",
     "credentials",
     "team ZIP"
-  ]
+  ],
+  "text_encoding": "UTF-8 with LF newlines"
 }
