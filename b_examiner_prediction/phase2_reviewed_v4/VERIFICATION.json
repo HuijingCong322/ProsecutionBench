@@ -1,0 +1,16 @@
+{
+  "status": "PASS_COMPLETED",
+  "recomputed_all_six_contrasts": {
+    "gpt": true,
+    "qwen": true
+  },
+  "original_request_and_profile_provenance_verified": true,
+  "live_dev_success_n_per_model": 3,
+  "final_success_n_per_new_condition": 100,
+  "comparison_matches_fresh_bootstrap": true,
+  "tests_passed": 43,
+  "test_command": ".venv/bin/python -m pytest week10_11/B/tests/test_prediction.py week10_11/B/tests/test_qwen.py week10_11/B/tests/test_pacing.py week10_11/B/tests/test_phase2_prediction.py week10_11/B/tests/test_qwen_phase2_concurrent.py -q",
+  "verification_api_calls": 0,
+  "production_status": "completed",
+  "public_payload_source_free": true
+}

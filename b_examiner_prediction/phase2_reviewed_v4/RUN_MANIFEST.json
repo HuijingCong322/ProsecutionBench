@@ -1,0 +1,139 @@
+{
+  "release_id": "B_prediction_phase2_v4_reviewed_2026_11_02",
+  "profile_release_id": "B_D_C_v4_reviewed_2026_11_02",
+  "phase1_commit": "f72452cfa9b02bcf4a220802814481437008dc2f",
+  "status": "completed_all_400_new_predictions_successful",
+  "scope": [
+    "no_profile_reused",
+    "own",
+    "mismatched"
+  ],
+  "artunit": "not_run",
+  "models": {
+    "gpt": {
+      "content_attempt_limit": 2,
+      "deployment": "gpt-5-mini",
+      "deployment_type": "Global Standard",
+      "expected_model": "gpt-5-mini-2025-08-07",
+      "implementation_hash": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d",
+      "initial_max_completion_tokens": 8192,
+      "reasoning_effort": "low",
+      "response_format": {
+        "type": "json_object"
+      },
+      "retry_max_completion_tokens": 16384,
+      "task": "prediction",
+      "temperature": "omitted",
+      "transport_retries": 0
+    },
+    "qwen": {
+      "content_attempt_limit": 2,
+      "deployment": "qwen--qwen36-27b",
+      "deployment_type": "not_verified_Qwen_Azure_deployment",
+      "expected_model": "qwen--qwen3.6-27b",
+      "implementation_hash": "4e77238bd49d6085e6ec6337c08617f69b06bbde54253444eebd1c10f5c94d35",
+      "initial_max_tokens": 8192,
+      "reasoning_effort": "omitted_provider_default",
+      "response_format": "omitted_JSON_prompt_only",
+      "retry_max_tokens": 16384,
+      "state_provider": "fixed_previously_generated_GPT5mini_states",
+      "task": "prediction",
+      "temperature": "omitted_provider_default",
+      "thinking": "provider_default_not_claimed_equivalent_to_GPT_low",
+      "transport_retries": 0
+    }
+  },
+  "bootstrap": {
+    "n": 1000,
+    "seed": 20261010,
+    "unit": "family_id",
+    "ci": "paired_percentile_95"
+  },
+  "Occ_Type_n": 99,
+  "Grnd_n": 62,
+  "gold_status": "automatic_unreviewed; taxonomy_conflict_pending_review for 14012315_t1",
+  "core_input_sha256": "92626e3cbf6d9994e525eb01781d2591fb5d0dbddb6880a20ed818ff89d0ad2b",
+  "scoring_ground_sha256": "0f402a462772fbd8560da903d4b42c7f3eba71d089665581b18ad21c3045649b",
+  "profile_manifest_sha256": "33441c94fe1f1aaa243420bb8b05ef4f85cb5235209d7aeeffa552a16257f986",
+  "frozen_prompt_sha256": "0b4fdad0247b698e6efeaa4c3cb705733f8784ab26df48f1ecc44feaaab703b6",
+  "comparison_sha256": "135b4961558ffbf9d3a3ba1702f26b1f0790067cca8f66c7ea89659ccd62f240",
+  "run_summary": [
+    {
+      "model": "gpt",
+      "condition": "own",
+      "final_success_n": 100,
+      "final_failed_n": 0,
+      "logged_attempt_n": 102,
+      "failed_attempt_n": 2,
+      "attempts_without_usage_n": 1,
+      "reported_usage_totals": {
+        "prompt_tokens": 4503711,
+        "completion_tokens": 46257,
+        "total_tokens": 4549968
+      },
+      "attempt_log_sha256": "f3cb47ef95ef6934a34a937a527141d01cbe4aa09626bad8f375bbbeaac42e3a",
+      "final_output_sha256": "5e1692407bd376e4fd816eb6f252d5bf5031634038bba933eac3e2d086c43d8a",
+      "request_provenance_sha256": "edcf5eac2071726f2de0a385d47794009cad83e787b54a946325b4b100550b91"
+    },
+    {
+      "model": "gpt",
+      "condition": "mismatched",
+      "final_success_n": 100,
+      "final_failed_n": 0,
+      "logged_attempt_n": 102,
+      "failed_attempt_n": 2,
+      "attempts_without_usage_n": 2,
+      "reported_usage_totals": {
+        "prompt_tokens": 4466970,
+        "completion_tokens": 44478,
+        "total_tokens": 4511448
+      },
+      "attempt_log_sha256": "61a5c83befe8c13003ecf93f8e34ef7a5300fe3785e87f648b409de3947c051b",
+      "final_output_sha256": "4265ea520e0e34c0c2c99a6dfdb291fc039ac1232f6ed4f31ec1cc5ddf7dd264",
+      "request_provenance_sha256": "35db27f93b6cd2c895bb39475ae402a62e30153ad070270aea2770c26213405f"
+    },
+    {
+      "model": "qwen",
+      "condition": "own",
+      "final_success_n": 100,
+      "final_failed_n": 0,
+      "logged_attempt_n": 115,
+      "failed_attempt_n": 15,
+      "attempts_without_usage_n": 15,
+      "reported_usage_totals": {
+        "prompt_tokens": 4860330,
+        "completion_tokens": 240924,
+        "total_tokens": 5101254
+      },
+      "attempt_log_sha256": "1e4bc0a3903b00261c8b5a39abe162187baf8f19109be8283a7f4cebfd455260",
+      "final_output_sha256": "8c8badc201d6a0d0e2c2b8351a860fcdc76236fc61e15a19eb955e9da4a7c1d2",
+      "request_provenance_sha256": "13ce79a9866eacc4d2b42955222bae3f2b8af5da9f7aea113683d4b64bd1ace8"
+    },
+    {
+      "model": "qwen",
+      "condition": "mismatched",
+      "final_success_n": 100,
+      "final_failed_n": 0,
+      "logged_attempt_n": 128,
+      "failed_attempt_n": 28,
+      "attempts_without_usage_n": 27,
+      "reported_usage_totals": {
+        "prompt_tokens": 4911214,
+        "completion_tokens": 247290,
+        "total_tokens": 5158504
+      },
+      "attempt_log_sha256": "2477aae6e4b17f655111f2f4b12114262b1282fd2fa966139629e1d769d01927",
+      "final_output_sha256": "1ecd6a132d34423b12ccd066cb9648ed1313acaf61658179443ff1f15dcd09f2",
+      "request_provenance_sha256": "6de83e40ca2c44133d0dfa3505fe4a7a2a218c61d88b69cf3297ff8c40204d20"
+    }
+  ],
+  "limits": [
+    "No independent deployment hardware/template verification; returned model identity and request configurations checked.",
+    "GPT and Qwen inference budgets are not strictly matched.",
+    "Family completeness limited by A manifest.",
+    "No multiplicity correction; intervals do not include repeated-model-run randomness.",
+    "Statistics and retrieved cases are not separated by ablation.",
+    "Missing-usage attempts do not establish zero billing; totals are API-reported usage only."
+  ],
+  "publication_boundary": "No source text, profile_text, input messages, raw model responses, per-case predictions, credentials or complete team ZIP included."
+}

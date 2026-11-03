@@ -1,5 +1,9 @@
 # ProsecutionBench — weekly classification pilot
 
+## Completed B Examiner Prediction phase 2 — November 2, 2026
+
+[Results, paired intervals and source archive](b_examiner_prediction/phase2_reviewed_v4/README.md): both models completed all 100 own-profile and 100 mismatched-profile predictions, reusing verified no-profile baselines. Occ./Type use 99 cases; Grnd. uses 62. Own-profile Occ. improves for both models; Type and Grnd. benefits vary by model. All labels remain automatic-review drafts. Family-paired bootstrap uses 1,000 draws, seed=20261010. Raw documents, extractive profiles and API outputs remain team-only.
+
 ## Reviewed examiner profiles — November 2, 2026
 
 The latest B/D/C shared-profile technical handoff is indexed at [B reviewed v4](b_examiner_prediction/profile_phase1/reviewed_v4/README.md). It records 300 per-case/variant profile hashes, actual retrieval coverage, D-card provenance, contact-examiner attribution and user-delegated technical review scope. This repository keeps the source-free code, prompt, manifests and audit summaries; raw text/extracts and the full review ZIP remain team-only. Start with dev format checks before any production phase-2 run.

@@ -1,0 +1,84 @@
+{
+  "token_summary": {
+    "no_profile": {
+      "Occ_Type": {
+        "n": 99,
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "min": 0,
+        "max": 0,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {}
+      },
+      "Grnd": {
+        "n": 62,
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "min": 0,
+        "max": 0,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {}
+      }
+    },
+    "own": {
+      "Occ_Type": {
+        "n": 99,
+        "mean": 1259.878787878788,
+        "median": 1270.0,
+        "p95": 1439.0,
+        "min": 927,
+        "max": 1537,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {
+          "3": 98,
+          "1": 1
+        }
+      },
+      "Grnd": {
+        "n": 62,
+        "mean": 1279.9032258064517,
+        "median": 1296.0,
+        "p95": 1477.8999999999999,
+        "min": 927,
+        "max": 1537,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {
+          "3": 61,
+          "1": 1
+        }
+      }
+    },
+    "mismatched": {
+      "Occ_Type": {
+        "n": 99,
+        "mean": 1216.5050505050506,
+        "median": 1246.0,
+        "p95": 1409.3,
+        "min": 549,
+        "max": 1469,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {
+          "3": 95,
+          "0": 3,
+          "2": 1
+        }
+      },
+      "Grnd": {
+        "n": 62,
+        "mean": 1225.3548387096773,
+        "median": 1252.0,
+        "p95": 1418.5,
+        "min": 549,
+        "max": 1469,
+        "tokenizer": "o200k_base",
+        "retrieved_k_counts": {
+          "3": 59,
+          "0": 3
+        }
+      }
+    }
+  },
+  "interpretation": "Descriptive o200k_base counts; not Qwen-native token counts or a length-controlled causal analysis."
+}

@@ -1,0 +1,114 @@
+{
+  "files": [
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/README.md",
+      "bytes": 4530,
+      "sha256": "b34e5ede21691d0d5623b609c0168586738d49853bfa071f84ce6be09209fdfe"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/RESULTS_ANALYSIS.md",
+      "bytes": 5687,
+      "sha256": "c94e1623db9691d78035551e1d40a1cc973724dd8c50c7e5fa06dc4d80661268"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/RUN_MANIFEST.json",
+      "bytes": 5682,
+      "sha256": "f731599384d3c2fff49b6623ba4c6a7e370fbf06e432aef2a1eaaccf128fdd4c"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/VERIFICATION.json",
+      "bytes": 667,
+      "sha256": "27f19844b0d1c9db91b96b57c27a2a236a097737f1e5091cc2110cd0a58c7999"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/code/b_phase2_prediction.py",
+      "bytes": 28348,
+      "sha256": "b2556099071cb25adc27bd0977200bfb6b5ddbf1ed839b3efa961945eceed9d2"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/code/b_prediction.py",
+      "bytes": 24791,
+      "sha256": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/code/b_qwen.py",
+      "bytes": 13004,
+      "sha256": "317422d020fb9ba1fe801599e10ab61bcb2297aa6da61d60ffd612484d97dd1c"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/code/b_qwen_phase2_concurrent.py",
+      "bytes": 10194,
+      "sha256": "01f802f3f4c4d93d8779021e0dd95dc56b4e4e56e382e11375d594043244067c"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/code/b_run_paced.py",
+      "bytes": 2117,
+      "sha256": "77654dce66323c0d06fd433d7bbc9e50aa71acec6e4f2edfb080ee94036812d4"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/comparison.json",
+      "bytes": 33324,
+      "sha256": "135b4961558ffbf9d3a3ba1702f26b1f0790067cca8f66c7ea89659ccd62f240"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/eligibility.csv",
+      "bytes": 6681,
+      "sha256": "0ec44e16afbe83f6281c14acd5a2331db5a4af5b51797125e991601456bba66c"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/metrics.csv",
+      "bytes": 521,
+      "sha256": "67340f7d31efd7fc08e679181e610cf0d40620cd2326c1d2ccc3ee98a6c31238"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/profile_token_summary.json",
+      "bytes": 1807,
+      "sha256": "b506bcee078510d80f15dca491fa134027ddf13c0bf56a4a44c338cafca89e37"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/prompts/examiner_prediction.FROZEN.txt",
+      "bytes": 2870,
+      "sha256": "0b4fdad0247b698e6efeaa4c3cb705733f8784ab26df48f1ecc44feaaab703b6"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/prompts/profile_block.txt",
+      "bytes": 1113,
+      "sha256": "27393372a5c52e4f7abb88f8573d41b55c2ff98a66e9c5de361d92f8bda84e24"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/tests/test_pacing.py",
+      "bytes": 950,
+      "sha256": "3d83c3f574a8275ba5b0a6275aff3385efa1818223b603878b545475378d6f6e"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/tests/test_phase2_prediction.py",
+      "bytes": 4719,
+      "sha256": "3c99068e9b842df34519a9480c7d107c2ae0c65a9457adf75d78043d5fb4bc6b"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/tests/test_prediction.py",
+      "bytes": 11439,
+      "sha256": "9fb90c6ea9bae2c8e9c78a9819f43ac5d5c181bd0f5a034f63abdab3af530207"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/tests/test_qwen.py",
+      "bytes": 4140,
+      "sha256": "8c5c03152620b80f65c8a0ff2d6d54496afc1a768eedb11db10c54ec67d0ac09"
+    },
+    {
+      "path": "b_examiner_prediction/phase2_reviewed_v4/tests/test_qwen_phase2_concurrent.py",
+      "bytes": 4569,
+      "sha256": "fb5fcc7f409305e3537293cb3c687d7fff8df4e0fe2c3bd9a60c6fe368d32224"
+    }
+  ],
+  "source_free": true,
+  "omitted": [
+    "profile JSON/text",
+    "source excerpts",
+    "input messages",
+    "raw API responses",
+    "per-case predictions",
+    "credentials",
+    "team ZIP"
+  ]
+}
