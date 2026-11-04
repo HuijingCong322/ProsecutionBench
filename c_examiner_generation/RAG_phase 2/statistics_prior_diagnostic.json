@@ -1,0 +1,8 @@
+{
+  "task": "supplemental next-action type only",
+  "release": "B_D_C_v4_reviewed_2026_11_02",
+  "eligible_n": 50,
+  "predicted_n": 49,
+  "accuracy_on_predicted": 0.7346938775510204,
+  "office_action_text_metrics": "not applicable"
+}
