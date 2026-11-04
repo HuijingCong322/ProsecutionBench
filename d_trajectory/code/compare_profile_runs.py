@@ -11,6 +11,8 @@ Reads the prediction files already in outputs/D (nothing is re-run, no API):
 For each model it scores all 3 tasks on the same 100 test_core cases and the frozen paired differences
 (1,000 paired bootstraps, seed 20261010, cases where both methods have an answer), then the planned splits:
 retrieved_k (3 vs < 3), RCE in the true path (0 vs 1+), and the 6 all-censored cards.
+Addendum A (protocol section 9) adds the examples-only runs ({M}_state_profile_{own,mismatched}_exonly) and the
+examples lookup baseline (exlookup_{own,mismatched}, from examples_lookup.py).
 Writes metrics/D/profile_phase2_metrics.json and results/profile_phase2_table.csv.
 """
 import argparse, json, os, sys
@@ -33,7 +35,12 @@ def comparisons(m):
     return [(f"{m}_state_profile_own", f"{m}_state", "primary: does the own profile help the LLM?"),
             (f"{m}_state_profile_own", f"{m}_state_profile_mismatched", "is it this examiner (vs another examiner)?"),
             (f"{m}_state_profile_own", "prior_own", "new bar: does the LLM beat the examiner numbers alone?"),
-            (f"{m}_state_profile_mismatched", f"{m}_state", "control: does any profile help?")]
+            (f"{m}_state_profile_mismatched", f"{m}_state", "control: does any profile help?"),
+            # Addendum A (protocol section 9): examples only, no examiner statistics to copy
+            (f"{m}_state_profile_own_exonly", f"{m}_state", "A1: do the examiner's past cases help without the numbers?"),
+            (f"{m}_state_profile_own_exonly", f"{m}_state_profile_mismatched_exonly", "A2: is it this examiner's cases?"),
+            (f"{m}_state_profile_own_exonly", "exlookup_own", "A3: does the LLM beat copying the example days?"),
+            (f"{m}_state_profile_own_exonly", f"{m}_state_profile_own", "A4 (descriptive): cost of removing the numbers")]
 
 
 def main():
@@ -135,9 +142,10 @@ def main():
         out["n_disp"], out["n_rn"] = len(it), len(iq)
         return out
 
-    names = {"km", "prior_own", "prior_mismatched"}
+    names = {"km", "prior_own", "prior_mismatched", "exlookup_own", "exlookup_mismatched"}
     for m in a.models.split(","):
-        names |= {f"{m}_state", f"{m}_state_profile_own", f"{m}_state_profile_mismatched"}
+        names |= {f"{m}_state", f"{m}_state_profile_own", f"{m}_state_profile_mismatched",
+                  f"{m}_state_profile_own_exonly", f"{m}_state_profile_mismatched_exonly"}
     runs = {n: r for n in sorted(names) if (r := load(n)) is not None}
     missing = sorted(names - set(runs))
     print("found:", ", ".join(sorted(runs)))
@@ -160,7 +168,7 @@ def main():
 
     splits = {}
     for n in runs:
-        v = "own" if n.endswith("own") else "mismatched" if n.endswith("mismatched") else None
+        v = "own" if ("_own" in n or n.endswith("own")) else "mismatched" if "mismatched" in n else None
         groups = {"rce_0": [s for s in ids_all if rces[s] == 0], "rce_1plus": [s for s in ids_all if rces[s] > 0]}
         if v:
             groups["retrieved_k_3"] = [s for s in ids_all if kmap.get((s, v), 3) == 3]

@@ -149,13 +149,13 @@ def main():
     recs = rtl.select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
-    profiles, pinfo = (rtl.pi.load_profiles(a.profile_pkg, a.profile_setting) if a.profile_pkg else ({}, None))
+    profiles, pinfo = (rtl.pi.load_profiles(a.profile_pkg, a.profile_setting, a.profile_mode) if a.profile_pkg else ({}, None))
     states = {}
     if a.state:
         for x in open(a.state):
             o = json.loads(x)
             states.setdefault(str(o.get("sample_id", o.get("app_id"))).split("_")[0], []).append(o)
-    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" if pinfo else "")
+    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly") if pinfo else "")
     model_label = "Qwen3.6-27B" if a.provider == "qwen" else model
     if a.provider == "qwen" and not a.tag:
         a.tag = "qwen3.6-27b"
@@ -163,7 +163,7 @@ def main():
     if a.state:
         tag += "_state"
     if pinfo:
-        tag += f"_profile_{a.profile_setting}"
+        tag += f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly")
     cache_dir = os.path.join(a.root, "outputs", "D", "raw", "rounds_next_" + tag)
     log_dir = os.path.join(a.root, "logs", "D")
     os.makedirs(cache_dir, exist_ok=True); os.makedirs(log_dir, exist_ok=True)
@@ -194,6 +194,8 @@ def main():
         kparts = [model, P, prompt_hash, rec["input_hash"], a.state_version, json.dumps(state, sort_keys=True)]
         if pf:  # no-profile runs keep their old cache key unchanged
             kparts += [pf["profile_release"], pf["profile_setting"], pf["profile_sha1"], pf["profile_text_sha1"]]
+            if "profile_mode" in pf:  # full-profile runs keep their keys unchanged
+                kparts += [pf["profile_mode"], pf["sent_text_sha1"]]
         key = hashlib.sha1(json.dumps(kparts).encode()).hexdigest()[:16]
         cpath = os.path.join(cache_dir, f"{sid}.json")
         if os.path.exists(cpath):

@@ -118,3 +118,57 @@ cases both methods answered, and the n is reported.
 - The profile shows raw rates; the numbers-only baseline uses rates shrunk toward the art-unit pool (k = 5). Say this
   when comparing the two.
 - Profiles are cut at the A1 cutoff, the same cutoff as all three D tasks.
+
+## 8. Observation from the full-profile GPT runs (2026-11-03, after the runs)
+
+**The profile already contains the answer.** The phase 1 statistics were built with the same rules as our answer keys, so each
+statistic is defined exactly like a task target:
+
+| Task asks | Card line (case 13060040) |
+| --- | --- |
+| Days from the reply (cutoff) to the next letter | "Days from a reply to the next letter: median 33" |
+| P(0, 1, 2, 3, 4+ further rejections after the reply) | "Further rejections after the first reply: 0: 26%, 1: 43%, 2: 8%, 3+: 23%" |
+| F_allowance / F_abandonment, months 1–24 after the reply | "allowed within 12 months 48%, within 24 months 65%; abandoned within 24 months 26%" |
+
+The model does not need to be told to copy: it sees a number that matches the question exactly, and taking it is the
+sensible move (for an MAE score, a median is the best single guess when the record adds little). GPT-5-mini + own profile
+gave exactly the card's median days in 86/100 cases (88/100 with the wrong examiner's card), its 24-month allowance follows
+the card (rank correlation 0.97), and it ties with "numbers only" on every metric. So the full-profile runs measure a
+**lookup**, not reading. The prompt wording does not ask for this ("the documents above are the record of this
+application"; "grounding the prediction in the current application's record").
+
+## 9. Addendum A: examples only (decided 2026-11-03, after the GPT full-profile results; before any examples-only run)
+
+**Question.** Can the LLM use the examiner's history when no target-shaped number is given?
+
+**Change (the only one).** `--profile-mode examples_only` (code: `profile_inject.derive_text`): from each `profile_text`
+remove the whole "Historical statistics" section and the one sentence "Read each statistic with its stated denominator,
+time window, and raw or adjusted definition." The header, the 3 retrieved past cases, and every other sentence stay
+byte-identical. The code stops if any of "Statistics for this examiner", "median", "within 24 months", "Further rejections
+after" is left in the examiner block. Prompts, cases, state, models, settings, scoring: unchanged (section 1).
+Coverage: own 99 cases with 3 examples, 1 with 1; mismatched 96 / 1 with 2 / **3 with no example at all** (those 3 get only
+the header and "No reviewed comparable examples are supplied").
+
+**What can still be copied, and the control for it.** The examples still show "N days after reply" for each past case, so
+Next action can still be copied (from 3 numbers instead of a median of about 25). The baseline `examples_lookup.py`
+(no LLM) does exactly that: Next action = median of the example days; Disposition and Rounds = KM, because the examples
+show no 12/24-month outcome or round count to copy. Computed at freeze (free, no LLM): own Next MAE 30.8 days,
+C-index 0.687; mismatched 41.1 days, 0.551. So the 3 example days alone carry most of the timing signal.
+
+**Runs.** GPT-5-mini, own and mismatched, both prompts (tags `gpt-5-mini_state_profile_{own,mismatched}_exonly`); format
+check first on the same 5 cases (section 3) with the extra rule that the examiner block has no statistics. Qwen the same
+way if the deployment is up. Expected cost about $5 for GPT.
+
+**Comparisons (fixed now; `compare_profile_runs.py`, same bootstrap):**
+- A1: LLM + own examples − LLM no profile. Do the examiner's past cases help without the numbers?
+- A2: LLM + own examples − LLM + mismatched examples. Is it this examiner's cases?
+- A3: LLM + own examples − examples lookup (own). Does the LLM beat copying the example days?
+- A4 (descriptive): LLM + own examples − LLM + full own profile. What removing the numbers costs.
+Plus the copy check (`code/copy_check_cell.py`): share of answers equal to one of the example days or to their median.
+
+**How to read it (fixed now):**
+- Disposition and Rounds are a clean test (nothing target-shaped to copy). A1 clear there → the model learned something
+  from the past cases themselves.
+- Next action is judged by A3. Beating the examples lookup → the model reads more than the 3 numbers. Tying with it →
+  copying again, from the examples.
+- A2 not clear → the help is generic (any examples), not examiner-specific.

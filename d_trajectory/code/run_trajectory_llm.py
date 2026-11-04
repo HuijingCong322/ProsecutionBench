@@ -224,6 +224,8 @@ def add_profile_args(ap):
     ap.add_argument("--profile-pkg", default=None,
                     help="unzipped B_D_C_phase1_v4_reviewed folder; adds the examiner profile to the prompt")
     ap.add_argument("--profile-setting", default="own", choices=list(pi.SETTINGS))
+    ap.add_argument("--profile-mode", default="full", choices=list(pi.MODES),
+                    help="full = the team profile_text; examples_only = statistics removed (protocol addendum A)")
     ap.add_argument("--ids", default=None, help="comma-separated sample_ids (format check on a few cases)")
     ap.add_argument("--dump-prompts", default=None, help="folder: write the exact messages sent, one file per case")
 
@@ -293,14 +295,14 @@ def main():
     recs = select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
-    profiles, pinfo = (pi.load_profiles(a.profile_pkg, a.profile_setting) if a.profile_pkg else ({}, None))
+    profiles, pinfo = (pi.load_profiles(a.profile_pkg, a.profile_setting, a.profile_mode) if a.profile_pkg else ({}, None))
     states = {}
     if a.state:
         # A's file may hold states at both the O1 and the A1 cutoff; keep the one whose cutoff is the A1 cutoff.
         for x in open(a.state):
             o = json.loads(x)
             states.setdefault(str(o.get("sample_id", o.get("app_id"))).split("_")[0], []).append(o)
-    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" if pinfo else "")
+    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly") if pinfo else "")
     model_label = "Qwen3.6-27B" if PROVIDER == "qwen" else model
     if PROVIDER == "qwen" and not a.tag:
         a.tag = "qwen3.6-27b"
@@ -308,7 +310,7 @@ def main():
     if a.state:
         tag += "_state"
     if pinfo:
-        tag += f"_profile_{a.profile_setting}"
+        tag += f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly")
     cache_dir = os.path.join(a.root, "outputs", "D", "raw", tag)
     log_dir = os.path.join(a.root, "logs", "D")
     os.makedirs(cache_dir, exist_ok=True); os.makedirs(log_dir, exist_ok=True)
@@ -335,6 +337,8 @@ def main():
         kparts = [model, params(), prompt_hash, rec["input_hash"], a.state_version, json.dumps(state, sort_keys=True)]
         if pf:  # no-profile runs keep their old cache key unchanged
             kparts += [pf["profile_release"], pf["profile_setting"], pf["profile_sha1"], pf["profile_text_sha1"]]
+            if "profile_mode" in pf:  # full-profile runs keep their keys unchanged
+                kparts += [pf["profile_mode"], pf["sent_text_sha1"]]
         key = hashlib.sha1(json.dumps(kparts).encode()).hexdigest()[:16]
         cpath = os.path.join(cache_dir, f"{sid}.json")
         if os.path.exists(cpath):
