@@ -44,9 +44,9 @@ The supplemental statistics-only prior predicts the next action type without gen
 
 | File | Use |
 |---|---|
-| [`submissions/C_metrics.csv`](submissions/C_metrics.csv) | Correct-profile R-L, MET. and Judge rows for both models, including coverage and failures. |
-| [`gpt5mini/comparison.json`](gpt5mini/comparison.json) | GPT-5-mini condition means, paired contrasts, failure counts and retrieval coverage. |
-| [`qwen36_27b/comparison.json`](qwen36_27b/comparison.json) | Qwen condition means, paired contrasts, failure counts and retrieval coverage. |
+| [`C_metrics.csv`](C_metrics.csv) | Correct-profile R-L, MET. and Judge rows for both models, including coverage and failures. |
+| [`gpt5mini_comparison.json`](gpt5mini_comparison.json) | GPT-5-mini condition means, paired contrasts, failure counts and retrieval coverage. |
+| [`qwen_comparison.json`](qwen_comparison.json) | Qwen condition means, paired contrasts, failure counts and retrieval coverage. |
 | [`statistics_prior_diagnostic.json`](statistics_prior_diagnostic.json) | Supplemental statistics-only action prediction summary. |
 
 For Table 3's **ΔR-L**, use `paired.prof_minus_noprof["R-L"]` in each comparison report. Subtracting the displayed condition means can give a different value because the sets of scored cases differ. Keep the original no-profile rows and the `state_with_history+profile` label on the new correct-profile rows.
