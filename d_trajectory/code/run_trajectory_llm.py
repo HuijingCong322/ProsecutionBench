@@ -33,6 +33,7 @@ Qwen3.6-27B (team-wide Qwen setting, 2026-10-14; same as C and B):
 """
 import argparse, concurrent.futures as cf, hashlib, json, os, random, re, sys, time
 from traj_common import GRID_MONTHS, validate_curves
+import profile_inject as pi
 
 PARAMS = dict(max_completion_tokens="8192->16384->32768 on cut-off", reasoning_effort="low")
 # Team decision 2026-10-10: reasoning_effort "low" (not "minimal") for all tasks. The plan's 4096-token limit counts
@@ -74,14 +75,14 @@ def final_text(content):
     return text, notes
 
 
-def load_prompt(root):
-    txt = open(os.path.join(root, "prompts", "trajectory_forecast.txt"), encoding="utf-8").read()
+def load_prompt(root, fname="trajectory_forecast.txt"):
+    txt = open(os.path.join(root, "prompts", fname), encoding="utf-8").read()
     system = txt.split("### SYSTEM", 1)[1].split("### USER", 1)[0].strip()
     user = txt.split("### USER", 1)[1].strip()
     return system, user, hashlib.sha1(txt.encode()).hexdigest()[:12]
 
 
-def build_messages(rec, data_root, system, user_tpl, state):
+def build_messages(rec, data_root, system, user_tpl, state, profile=None):
     parts = []
     for d in rec["documents"]:
         with open(os.path.join(data_root, d["text_path"]), encoding="utf-8", errors="replace") as f:
@@ -91,6 +92,10 @@ def build_messages(rec, data_root, system, user_tpl, state):
     fill = {"{cutoff_date}": rec["cutoff"], "{filing_date}": rec["filing_date"], "{art_unit}": rec["art_unit"],
             "{o1_code}": rec["o1"]["code"], "{o1_date}": rec["o1"]["mail_date"], "{state}": state_txt,
             "{history}": "\n\n".join(parts)}
+    if ("{profile}" in user_tpl) != (profile is not None):
+        raise ValueError("profile prompt needs a profile, and a profile needs the profile prompt")
+    if profile is not None:
+        fill["{profile}"] = profile.strip()
     user = user_tpl
     for k, v in fill.items():
         user = user.replace(k, v)
@@ -214,6 +219,35 @@ def parse_any(content):
     return parse(text) + (notes,)
 
 
+# ------------------------------------------------------------------ phase 2 profile options (shared with run_rounds_next_llm.py)
+def add_profile_args(ap):
+    ap.add_argument("--profile-pkg", default=None,
+                    help="unzipped B_D_C_phase1_v4_reviewed folder; adds the examiner profile to the prompt")
+    ap.add_argument("--profile-setting", default="own", choices=list(pi.SETTINGS))
+    ap.add_argument("--ids", default=None, help="comma-separated sample_ids (format check on a few cases)")
+    ap.add_argument("--dump-prompts", default=None, help="folder: write the exact messages sent, one file per case")
+
+
+def select_ids(recs, a):
+    if not a.ids:
+        return recs
+    want = [x.strip() for x in a.ids.split(",") if x.strip()]
+    have = {r["sample_id"]: r for r in recs}
+    miss = [x for x in want if x not in have]
+    if miss:
+        raise SystemExit(f"--ids not in this split: {miss}")
+    return [have[x] for x in want]
+
+
+def dump_prompt(a, sid, msgs):
+    if not a.dump_prompts:
+        return
+    os.makedirs(a.dump_prompts, exist_ok=True)
+    with open(os.path.join(a.dump_prompts, f"{sid}.txt"), "w", encoding="utf-8") as f:
+        for m in msgs:
+            f.write(f"===== {m['role'].upper()} =====\n{m['content']}\n\n")
+
+
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser()
@@ -231,6 +265,7 @@ def main():
                     help="azure = GPT-5-mini setting (default); qwen = team Qwen3.6-27B setting")
     ap.add_argument("--retry-failed", action="store_true",
                     help="Qwen: re-call cases whose earlier call failed (default: keep the failure, as C does)")
+    add_profile_args(ap)
     a = ap.parse_args()
     global PROVIDER
     PROVIDER = a.provider
@@ -251,25 +286,29 @@ def main():
         print("connection ok:", r.choices[0].message.content, "| model:", getattr(r, "model", None))
         return
 
-    system, user_tpl, prompt_hash = load_prompt(a.root)
+    system, user_tpl, prompt_hash = load_prompt(a.root, "trajectory_forecast_profile.txt" if a.profile_pkg else "trajectory_forecast.txt")
     fname = {"dev": "trajectory_inputs_dev.jsonl", "core": "trajectory_inputs.jsonl",
              "test300": "trajectory_inputs_test300.jsonl"}[a.split]
     recs = [json.loads(x) for x in open(os.path.join(a.root, "inputs", fname))]
+    recs = select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
+    profiles, pinfo = (pi.load_profiles(a.profile_pkg, a.profile_setting) if a.profile_pkg else ({}, None))
     states = {}
     if a.state:
         # A's file may hold states at both the O1 and the A1 cutoff; keep the one whose cutoff is the A1 cutoff.
         for x in open(a.state):
             o = json.loads(x)
             states.setdefault(str(o.get("sample_id", o.get("app_id"))).split("_")[0], []).append(o)
-    setting = "state_with_history" if a.state else "history_only"
+    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" if pinfo else "")
     model_label = "Qwen3.6-27B" if PROVIDER == "qwen" else model
     if PROVIDER == "qwen" and not a.tag:
         a.tag = "qwen3.6-27b"
     tag = (a.tag or model).replace("/", "_") + ("_mock" if a.mock and "mock" not in (a.tag or model) else "")
     if a.state:
         tag += "_state"
+    if pinfo:
+        tag += f"_profile_{a.profile_setting}"
     cache_dir = os.path.join(a.root, "outputs", "D", "raw", tag)
     log_dir = os.path.join(a.root, "logs", "D")
     os.makedirs(cache_dir, exist_ok=True); os.makedirs(log_dir, exist_ok=True)
@@ -283,9 +322,20 @@ def main():
         if a.state and state is None:
             return dict(sample_id=sid, status="failed", error="no unique A1-cutoff state for this case", repairs=[],
                         method=f"llm_{setting}", model=model_label, deployment=model, input_setting=setting)
-        msgs = build_messages(rec, a.data, system, user_tpl, state)
-        key = hashlib.sha1(json.dumps([model, params(), prompt_hash, rec["input_hash"], a.state_version,
-                                       json.dumps(state, sort_keys=True)]).encode()).hexdigest()[:16]
+        prof, pf = None, {}
+        if pinfo:
+            prof = profiles.get(sid)
+            bad = pi.check_case(prof, rec)
+            if bad:
+                return dict(sample_id=sid, status="failed", error=bad, repairs=[], method=f"llm_{setting}",
+                            model=model_label, deployment=model, input_setting=setting)
+            pf = pi.fields(prof, pinfo)
+        msgs = build_messages(rec, a.data, system, user_tpl, state, prof["text"] if prof else None)
+        dump_prompt(a, sid, msgs)
+        kparts = [model, params(), prompt_hash, rec["input_hash"], a.state_version, json.dumps(state, sort_keys=True)]
+        if pf:  # no-profile runs keep their old cache key unchanged
+            kparts += [pf["profile_release"], pf["profile_setting"], pf["profile_sha1"], pf["profile_text_sha1"]]
+        key = hashlib.sha1(json.dumps(kparts).encode()).hexdigest()[:16]
         cpath = os.path.join(cache_dir, f"{sid}.json")
         if os.path.exists(cpath):
             c = json.load(open(cpath))
@@ -326,7 +376,7 @@ def main():
         if out is None:
             out = dict(sample_id=sid, status="failed", error=err, repairs=[])
         out.update(method=f"llm_{setting}", model=model_label, deployment=model, input_setting=setting, state_version=a.state_version,
-                   prompt_hash=prompt_hash, input_hash=rec["input_hash"], cache_key=key, params=params(),
+                   **pf, prompt_hash=prompt_hash, input_hash=rec["input_hash"], cache_key=key, params=params(),
                    provider=PROVIDER, api_models=sorted({str(x.get("api_model")) for x in attempts}),
                    seconds=round(sum(x.get("seconds") or 0 for x in attempts), 1),
                    n_attempts=len(attempts), raw_responses=[x["content"] for x in attempts],
@@ -358,6 +408,8 @@ def main():
     results.sort(key=lambda r: order[r["sample_id"]])
     suffix = {"dev": "_dev", "core": "", "test300": "_test300"}[a.split]
     sub = "dev" if a.split == "dev" else ""
+    if a.ids:  # format check on a few cases: never written where the scorer looks
+        suffix, sub = suffix + "_formatcheck", "dev"
     out_path = os.path.join(a.root, "outputs", "D", sub, f"trajectory_predictions_{tag}{suffix}.jsonl")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
@@ -383,6 +435,7 @@ def main():
     with open(os.path.join(a.root, "outputs", "D", "model_manifest.jsonl"), "a") as mf:
         mf.write(json.dumps(dict(time=time.strftime("%Y-%m-%dT%H:%M:%S"), tag=tag, model=model_label, deployment=model, split=a.split,
                                  input_setting=setting, state_version=a.state_version, prompt_hash=prompt_hash,
+                                 **(pinfo or {}), ids=a.ids,
                                  params=params(), provider=PROVIDER, n=len(results), ok=ok, tokens_in=pin,
                                  tokens_out=pout, est_cost_usd=None if cost is None else round(cost, 4), output=os.path.relpath(out_path, a.root))) + "\n")
 
