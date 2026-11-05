@@ -1,0 +1,7 @@
+method,compared_with,n,days_exactly_equal,days_within_3,days_rank_corr_with_ref,days_rank_corr_with_truth,allow24_rank_corr_with_card
+gpt-5-mini + own card,card median days,100,0.86,0.91,0.983,0.601,0.971
+gpt-5-mini + mismatched card,card median days,100,0.88,0.91,0.989,-0.04,0.921
+gpt-5-mini + own histories,math median of the 3 histories,100,0.0,0.09,0.275,0.219,
+gpt-5-mini + mismatched histories,math median of the 3 histories,97,0.021,0.093,0.11,0.196,
+prior_own (no LLM),,100,,,,0.592,
+history_math_own (no LLM),,100,,,,0.565,

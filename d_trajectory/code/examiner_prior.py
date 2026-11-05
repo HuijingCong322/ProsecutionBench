@@ -1,20 +1,25 @@
-"""Examiner-prior baselines (no LLM) for the 3 trajectory tasks, from D's stats cards.
+"""Numbers only (no LLM): the examiner's statistics card turned into a prediction for the 3 trajectory tasks.
 
-    python examiner_prior.py --root path/to/D_trajectory --cards profile_phase1/stats_cards.jsonl
+    python examiner_prior.py --root path/to/D_trajectory --cards path/to/stats_cards.jsonl --k-file metrics/D/credibility_k.json
 
-For each test_core case and each profile version (own, mismatched, artunit):
+Credibility blend. Each examiner number is blended with the art-unit pool number:
+    estimate = Z * examiner + (1 - Z) * pool,   Z = n / (n + K)
+K is estimated from the data per statistic (credibility_k.py, Buhlmann-Straub K = EPV / VHM): next-letter days (on the
+log scale), allowed within 24 months, abandoned within 24 months, rounds (used for every rounds share).
+
+For each test_core case and each version (own, mismatched, artunit):
   Disposition   the training KM/Aalen-Johansen curves (the KM baseline every case gets), stretched so that month 24
                 hits the examiner's numbers: F_allow(t) * a24 / F_allow_train(24), F_aband(t) * b24 / F_aband_train(24),
                 then the frozen repair rules (validate_curves). a24 / b24 = allowed / abandoned within 24 months after
-                the first reply, shrunk toward the art-unit pool (k = 5); the art-unit version uses the pool itself.
-  Rounds        P(N = 0..3, 4+) after the first reply, each share shrunk toward the pool, renormalized;
-                the point guess is the median (as for KM and Cox).
-  Next action   the examiner's median days from a reply (to a non-final rejection) to the next letter, shrunk on the
-                log scale; risk = minus the days.
+                the first reply, blended with the pool (n = first-reply episodes); the art-unit version uses the pool.
+  Rounds        P(N = 0..3, 4+) after the first reply, each share blended with the pool, renormalized;
+                n = first-reply episodes; the point guess is the median (as for KM and Cox).
+  Next action   the examiner's median days from a reply (to a non-final rejection) to the next letter, blended on the
+                log scale (n = those reply episodes); risk = minus the days.
 Writes outputs/D/{trajectory,rounds_next}_predictions_prior_{own,mismatched,artunit}.jsonl and
 metrics/D/examiner_prior_metrics.json (scores + paired differences against KM, same cases, seed 20261010).
 """
-import argparse, json, os, sys
+import argparse, json, math, os, sys
 import numpy as np
 import pandas as pd
 
@@ -23,23 +28,40 @@ sys.path.insert(0, HERE)
 from traj_common import GRID_DAYS, HORIZON_DAYS, load_gold, load_predictions, load_train, score, surv_array, validate_curves  # noqa
 from score_rounds_next import score_file, cindex  # noqa
 
-K = 5
 BINS = ["0", "1", "2", "3", "4+"]
+STAT_KEYS = ("next_log_days", "allowed_24", "abandoned_24", "rounds")
 
 
-def shrink(x, n, p):
+def z(n, k):
+    """Credibility weight. k None/inf = no detectable examiner difference -> 0 (pool only)."""
+    return 0.0 if k is None or not math.isfinite(k) else n / (n + k)
+
+
+def shrink(x, n, p, k):
     if x is None:
         return p
     if p is None:
         return x
-    return (n * x + K * p) / (n + K)
+    w = z(n, k)
+    return w * x + (1 - w) * p
+
+
+def shrink_log(x, n, p, k):
+    if x is None or p is None:
+        return x if p is None else p
+    w = z(n, k)
+    return math.exp(w * math.log(max(x, 1)) + (1 - w) * math.log(max(p, 1)))
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     ap.add_argument("--cards", required=True)
+    ap.add_argument("--k-file", required=True, help="metrics/D/credibility_k.json from credibility_k.py")
     a = ap.parse_args()
+    KS = {s: json.load(open(a.k_file))["k_used"][s] for s in STAT_KEYS}
+    prefix = "prior"
+    print("K used:", KS)
     R = a.root
     cards = [json.loads(l) for l in open(a.cards)]
     by = {(c["sample_id"], c["variant"]): c for c in cards}
@@ -62,16 +84,17 @@ def main():
                 dist = fr["rounds_dist_km"]
                 days = nl["median_days_km"]
             else:
-                sh = c["shrunk"]
-                a24, b24, days = sh["allowed_by_24m"], sh["abandoned_by_24m"], sh["median_days_next_letter"]
                 n = fr["n_episodes"]
+                a24 = shrink(fr["allowed_by_24m"], n, pf["allowed_by_24m"], KS["allowed_24"])
+                b24 = shrink(fr["abandoned_by_24m"], n, pf["abandoned_by_24m"], KS["abandoned_24"])
+                days = shrink_log(nl["median_days_km"], nl["n_episodes"], pn["median_days_km"], KS["next_log_days"])
                 dist = {b: shrink(fr["rounds_dist_km"][b] if fr["rounds_dist_km"] else None, n,
-                                  pf["rounds_dist_km"][b] if pf["rounds_dist_km"] else None) for b in BINS}
+                                  pf["rounds_dist_km"][b] if pf["rounds_dist_km"] else None, KS["rounds"]) for b in BINS}
             # disposition
             FA = FA0 * (a24 / FA0[-1]) if a24 is not None else FA0
             FB = FB0 * (b24 / FB0[-1]) if b24 is not None else FB0
             FA, FB, S, rep = validate_curves(FA.tolist(), FB.tolist())
-            traj.append(dict(sample_id=sid, method=f"examiner_prior_{v}", model="none (examiner numbers)",
+            traj.append(dict(sample_id=sid, method=f"examiner_{prefix}_{v}", k_used=KS, model="none (examiner numbers)",
                              input_setting=f"{v} profile numbers", status="ok", repairs=rep,
                              F_allowance=list(map(float, FA)), F_abandonment=list(map(float, FB)), S=list(map(float, S)),
                              card_sha1=c["card_sha1"], a24=a24, b24=b24))
@@ -80,12 +103,12 @@ def main():
             p = p / p.sum()
             med = int(np.argmax(np.cumsum(p) >= 0.5))
             d = float(round(days)) if days else km_rn[sid]["next_days_pred"]
-            rn.append(dict(sample_id=sid, method=f"examiner_prior_{v}", model="none (examiner numbers)",
+            rn.append(dict(sample_id=sid, method=f"examiner_{prefix}_{v}", k_used=KS, model="none (examiner numbers)",
                            input_setting=f"{v} profile numbers", status="ok", p_rounds=p.round(6).tolist(),
                            rounds_pred=med, rounds_pred_dist_median=med, next_days_pred=d, next_risk=-d,
                            card_sha1=c["card_sha1"]))
         for name, recs in [("trajectory", traj), ("rounds_next", rn)]:
-            f = os.path.join(out_dir, f"{name}_predictions_prior_{v}.jsonl")
+            f = os.path.join(out_dir, f"{name}_predictions_{prefix}_{v}.jsonl")
             with open(f, "w") as fh:
                 for r in recs:
                     fh.write(json.dumps(r) + "\n")
@@ -118,7 +141,7 @@ def main():
 
     comps = {"km": (list(km.values()), list(km_rn.values()))}
     for v, (t, r) in written.items():
-        comps["prior_" + v] = (t, r)
+        comps[f"{prefix}_{v}"] = (t, r)
     for name in ["cox", "gpt-5-mini", "qwen3.6-27b_state"]:
         ft = os.path.join(out_dir, f"trajectory_predictions_{name}.jsonl")
         fr_ = os.path.join(out_dir, f"rounds_next_predictions_{name}.jsonl")
@@ -136,8 +159,8 @@ def main():
     rng = np.random.default_rng(20261010)
     draws = [rng.integers(0, len(ids), len(ids)) for _ in range(1000)]
     paired = {}
-    for k in [x for x in A if x.startswith("prior_")]:
-        for base in ["km"] + [x for x in A if not x.startswith("prior_") and x != "km"]:
+    for k in [x for x in A if x.startswith(prefix + "_")]:
+        for base in ["km"] + [x for x in A if not x.startswith(prefix + "_") and x != "km"]:
             Sa, ra, na, nra = A[k]
             Sb, rb, nb, nrb = A[base]
             dd = {m: [] for m in ["disp_c_index", "disp_ibs", "rounds_mae", "rounds_acc", "next_c_index", "next_mae_days"]}
@@ -163,10 +186,11 @@ def main():
     os.makedirs(os.path.join(R, "metrics", "D"), exist_ok=True)
     out = dict(note="examiner-prior baselines (no LLM), test_core 100; deltas = prior minus comparison on the same cases; "
                     "C-index and accuracy higher is better, IBS / MAE lower is better; 1000 paired bootstraps, seed 20261010",
-               cards_file=os.path.basename(a.cards), k_shrink=K, scores=res, paired=paired)
-    json.dump(out, open(os.path.join(R, "metrics", "D", "examiner_prior_metrics.json"), "w"), indent=1)
+               cards_file=os.path.basename(a.cards), k_used=KS, k_file=os.path.basename(a.k_file),
+               scores=res, paired=paired)
+    json.dump(out, open(os.path.join(R, "metrics", "D", f"examiner_{prefix}_metrics.json"), "w"), indent=1)
     rows = [dict(method=k, **{m: v for m, v in r.items() if not isinstance(v, dict)}) for k, r in res.items()]
-    pd.DataFrame(rows).to_csv(os.path.join(R, "metrics", "D", "examiner_prior_metrics.csv"), index=False)
+    pd.DataFrame(rows).to_csv(os.path.join(R, "metrics", "D", f"examiner_{prefix}_metrics.csv"), index=False)
     pd.set_option("display.width", 200)
     print(pd.DataFrame(rows).round(3).to_string(index=False))
     for k, v in paired.items():

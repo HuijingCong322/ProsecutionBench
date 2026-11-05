@@ -1,174 +1,194 @@
-# D phase 2 protocol: LLM + examiner profile (trajectory tasks)
+# D phase 2 protocol: can the LLM use an examiner's past applications?
 
-Owner: D (Nancy Hu). Written 2026-11-03, **before any profile run**. Status: **FROZEN** once committed to the repo.
-Tasks: Disposition, Remaining Rounds, Time to Next Action. Cases: the same 100 test_core cases as all earlier D tables.
+Owner: D (Nancy Hu). Tasks: Disposition, Remaining Rounds, Time to Next Action. Cases: the same 100 test_core cases as
+all D tables, each cut at its A1 cutoff (the applicant's first reply). Nothing dated after the cutoff is used anywhere.
 
-## 1. What is frozen
+## 1. Question
+
+Two ways to tell the LLM about the examiner, each against a baseline without an LLM that uses exactly the same
+information:
+
+| What the examiner block holds | LLM setup | Baseline without an LLM (same information) |
+| --- | --- | --- |
+| **Full card**: the examiner's statistics from **all** past applications + 3 short past episodes | LLM + full card | **Numbers only**: the card's numbers, blended with the art-unit pool (K estimated from the data) |
+| **3 full histories**: the dated event lists of 3 past applications, **no numbers calculated** | LLM + 3 histories | **Math on the 3 histories**: medians and shares computed from the same events |
+
+Each LLM setup is also run with **another examiner of the same art unit** (blind control, identical wording), and
+compared with the LLM given no examiner block.
+
+## 2. Setups and status
+
+| # | Setup (output tag) | Status |
+| --- | --- | --- |
+| 1 | LLM, no examiner block (`{M}_state`) | done (October), reused |
+| 2 | LLM + own examiner's full card (`{M}_state_profile_own`) | done 2026-11-03, reused |
+| 3 | LLM + wrong examiner's full card (`{M}_state_profile_mismatched`) | done 2026-11-03, reused |
+| 4 | **LLM + own examiner's 3 full histories** (`{M}_state_history_own`) | new run |
+| 5 | **LLM + wrong examiner's 3 full histories** (`{M}_state_history_mismatched`) | new run |
+| 6 | Numbers only (`prior_own`, `prior_mismatched`), no LLM | computed (section 6) |
+| 7 | Math on the 3 histories (`history_math_own`, `history_math_mismatched`), no LLM | computed (section 5) |
+| 8 | KM (plain average), no LLM | done (October) |
+
+M = GPT-5-mini (reasoning_effort low; 8192 → 16384 → 32768 token retry rule). Qwen3.6-27B (team setting) the same way
+if the team decides to run it. All LLM setups use the same prompts, case documents, A state (A_v1), answer rules and
+scoring; only the examiner block differs.
+
+## 3. What is frozen
 
 | Item | Value |
 | --- | --- |
-| Profile package | `B_D_C_phase1_v4_reviewed.zip`, sha256 `d1e6e358757ba758a17373f14894449284253da1cfe4d775a0bbac6a7b207d8f` |
-| Release id | `B_D_C_v4_reviewed_2026_11_02` (`RELEASE_MANIFEST.json`) |
-| `profile_manifest.csv` | sha256 `33441c94fe1f1aaa243420bb8b05ef4f85cb5235209d7aeeffa552a16257f986` |
-| Profile block template | sha1 `28cae91a24298803fd84c8e932f4d010e63f938a` |
-| D stats cards inside it | `stats_cards.jsonl` sha1 `5d165efb31b444277eab3fced47807863b149d04` (= D's own file; all 300 card_text, card_sha1 and numbers identical, checked 2026-11-03) |
-| Disposition prompt with profile | `prompts/trajectory_forecast_profile.txt`, prompt_hash `d7e75c380ac8` |
-| Rounds + Next prompt with profile | `prompts/rounds_next_forecast_profile.txt`, prompt_hash `8656a89b9b39` |
-| Baseline prompts (unchanged) | `trajectory_forecast.txt` `8fa99d848c11`, `rounds_next_forecast.txt` `2e8f78f097b3` |
-| Code | `profile_inject.py`, `run_trajectory_llm.py`, `run_rounds_next_llm.py`, `compare_profile_runs.py`, `D_phase2_profile_run.ipynb` (sha1 in `PHASE2_CODE_SHA1.txt`) |
+| Profile package (full cards; which 3 past applications) | `B_D_C_phase1_v4_reviewed.zip`, sha256 `d1e6e358757ba758a17373f14894449284253da1cfe4d775a0bbac6a7b207d8f`, release `B_D_C_v4_reviewed_2026_11_02` |
+| Event source for the histories | A's `profile_corpus_v2.zip`, `apps/<app_id>/transactions.csv` |
+| Examiner histories | `inputs/examiner_histories_v1.jsonl`, sha1 `5e5eaaa9c839787c01895f48b0c3bb314df44fba` (200 histories = 100 cases × own/mismatched; 588 past applications; 3,437 events; 156 applications still pending at the cutoff). Built by `code/build_examiner_histories.py`; deterministic |
+| Prompts | `prompts/trajectory_forecast_profile.txt` (prompt_hash `d7e75c380ac8`), `prompts/rounds_next_forecast_profile.txt` (`8656a89b9b39`); baseline prompts `trajectory_forecast.txt` `8fa99d848c11`, `rounds_next_forecast.txt` `2e8f78f097b3` |
+| Credibility constants | `metrics/D/credibility_k.json`: K = 1.8 / 3.3 / 8.4 / 4.5 (section 6) |
+| Code | `examiner_history.py`, `build_examiner_histories.py`, `run_trajectory_llm.py`, `run_rounds_next_llm.py`, `history_math.py`, `credibility_k.py`, `examiner_prior.py`, `compare_history_runs.py`, `copy_check_cell.py`, `D_phase2_run.ipynb` (sha1 in `PHASE2_CODE_SHA1.txt`) |
 
-**The only change to the prompt** is one new input item after the record, then the profile text, before "Task":
+Before any API call the code checks the package release id and manifest sha256, each profile file's and profile text's
+sha1, and for the histories the file's sha1 and, per case, the cutoff and that the past applications are exactly the
+package's, in the same order. Any mismatch stops the run. The card setting (`--examiner-input card`) rebuilds exactly
+the prompts and cache keys of the 2026-11-03 card runs (checked for all 200 cases), so those results are reused as run.
+
+## 4. What the LLM sees
+
+One input item after the case record, before "Task" (same wording for every setup with an examiner block):
 
 ```
 - Examiner history reference for this application's examiner, built only from the examiner's other applications
   and only from events before the cutoff. It is background about the examiner; the documents above are the record
   of this application.
 
-{profile_text}
+{examiner block}
 ```
 
-The wording is the same for own and mismatched, so the model cannot tell which one it got (blind control).
-Only `profile_text` from `candidate_profiles/<setting>/<sample_id>.json` goes in. Every file and text hash is checked
-against `profile_manifest.csv` before any call; one mismatch stops the run.
+**Full card** (the team's v4 profile text). Case 13060040, own examiner:
 
-**Everything else is the same as the no-profile runs:** same 100 cases, same A1 cutoff, same history documents, same
-A state (`inputs/state_predictions_A.jsonl`, state_version `A_v1`), same models and settings (GPT-5-mini with
-reasoning_effort low and the 8192 → 16384 → 32768 retry rule; Qwen3.6-27B team setting), same answer rules, same
-scoring code. The no-profile code path was checked to give the same cache keys as before, so the old runs stay valid.
+```
+Historical statistics
+Statistics for this examiner, other applications, events before 2014-09-26:
+- 30 applications; 26 replies to a non-final rejection.
+- Next letter after such a reply (25 seen, 1 still waiting): allowance 32%, final rejection 64%, ...
+- Days from a reply to the next letter: median 33 (allowances 59, rejections 31).
+- After the first reply (20 applications): 11 allowed, 4 abandoned, 5 still pending; estimated allowed within
+  12 months 48%, within 24 months 65%; abandoned within 24 months 26%.
+- Further rejections after the first reply: 0: 26%, 1: 43%, 2: 8%, 3+: 23%; RCE filed in 25%.
+- Grounds in 54 rejections ...: 103 in 93%, 102 in 54%, 112 in 50%, 101 in 24%.
+(reading notes)
+Retrieved historical episodes
+Example 1: application 12109224. Reply 2013-03-07 ... Next communication 2013-04-01: notice of allowance; 25 days
+after reply; (short excerpt)
+Example 2, Example 3: the same form (one reply and the next letter only)
+```
 
-## 2. Runs
+**3 full histories** (no statistics, no document text): the same 3 past applications as the card's examples, with
+every examiner letter (non-final MCTNF, final MCTFR, advisory MCTAV, restriction MCTRS, Ex parte Quayle MCTEQ, notice
+of allowance MN/=.), abandonment notice (MABN*) and applicant action (reply to non-final A..., reply to final A.NE, RCE
+RCEX) dated strictly before the case's cutoff, and the application's status at the cutoff. 13060040, own, past
+application 1:
 
-| # | Model | Profile | Prompts | Output tag |
+```
+Past application 1: 12109224
+- 2012-06-18 examiner mailed a restriction requirement
+- 2012-08-13 examiner mailed a non-final rejection
+- 2012-12-13 applicant filed a reply to a non-final rejection
+- 2013-01-03 examiner mailed a final rejection
+- 2013-03-07 applicant filed a reply to a final rejection
+- 2013-04-01 examiner mailed a notice of allowance
+Status on 2014-09-26: allowed (notice of allowance mailed 2013-04-01).
+```
+
+**How the 3 past applications are chosen** (team retrieval in the v4 package, reviewed by C): from the examiner's past
+episodes before the cutoff, the 3 whose text (the examiner's office action + the applicant's reply) is most similar to
+this case's documents by TF-IDF cosine similarity (single words and 2-word phrases, English stop words removed), at most
+one per application and per patent family. Coverage: own 99 cases with 3 applications, 1 with 1; mismatched 96 with 3,
+1 with 2, 3 with none.
+
+## 5. Baseline: math on the 3 histories (`history_math.py`, no LLM)
+
+Per past application, from exactly the events the LLM sees:
+- first reply = the first applicant reply after the application's first rejection (the same point as our cutoff A1);
+- next days = days from that reply to the examiner's next letter;
+- rounds = non-final + final rejections after that reply, up to allowance or abandonment;
+- allowed_24 / abandoned_24 = allowed / abandoned within 730 days of that reply.
+A still-pending application counts with what is known so far (a lower bound); one with no first reply is skipped.
+Prediction: Next action = **median** of the next days; Rounds = **median** of the rounds (rounded); Disposition = the
+training KM curves stretched so month 24 equals the share allowed_24 and the share abandoned_24. No usable application →
+KM. The median is used because the scores are absolute errors and the median minimizes the expected absolute error.
+
+Example 13060040 (own): next days 21, 31, 25 → **25**; rounds 1, 3, 1 → **1**; 2 of 3 allowed, 1 of 3 abandoned within
+24 months → curves reach 67% / 33% at month 24.
+
+## 6. Baseline: numbers only (`examiner_prior.py`, no LLM)
+
+The card's numbers, each blended with the case's art-unit pool:
+
+    estimate = Z × examiner number + (1 − Z) × pool number,   Z = n / (n + K)
+
+n = the examiner's number of episodes behind that number; medians are blended on the log scale. **K is estimated from
+the data** with Bühlmann–Straub credibility (`credibility_k.py`), which gives the K with the smallest expected squared
+error of the blend: K = EPV / VHM. EPV (expected process variance) = how much single episodes of the same examiner
+scatter; VHM (variance of hypothetical means) = how much true examiner averages differ around their art-unit average.
+Data: the phase-1 episodes in the frozen package (`source_D/case_episodes.csv`), each cut at its case's cutoff; one group
+= one case (its own examiner + its art-unit pool examiners). No test answer is used. 95% intervals from 1,000 bootstrap
+draws of the cases (seed 20261010).
+
+| Statistic | EPV | VHM | K (95% interval) | Z at n = 20 |
 | --- | --- | --- | --- | --- |
-| 1 | GPT-5-mini | own | both | `gpt-5-mini_state_profile_own` |
-| 2 | GPT-5-mini | mismatched | both | `gpt-5-mini_state_profile_mismatched` |
-| 3 | Qwen3.6-27B | own | both | `qwen3.6-27b_state_profile_own` |
-| 4 | Qwen3.6-27B | mismatched | both | `qwen3.6-27b_state_profile_mismatched` |
+| Days to next letter (log) | 0.373 | 0.210 | 1.8 (1.4–2.3) | 0.92 |
+| Allowed within 24 months | 0.120 | 0.037 | 3.3 (2.4–4.5) | 0.86 |
+| Abandoned within 24 months | 0.094 | 0.011 | 8.4 (6.0–13.2) | 0.70 |
+| Rounds (used for every rounds share) | 0.788 | 0.177 | 4.5 (3.3–6.5) | 0.82 |
 
-Reused, not re-run: `gpt-5-mini_state`, `qwen3.6-27b_state` (no profile), `prior_own`, `prior_mismatched` (numbers only), `km`.
+Tasks from the blended numbers: Next action = blended median days; Rounds = median of the blended shares (0, 1, 2, 3,
+4+); Disposition = training KM curves stretched to the blended 24-month allowed / abandoned shares.
 
-**Not run: art-unit profile with the LLM.** The art-unit pool is the same single other examiner as the mismatched
-profile in 81 of 100 cases, so it would mostly repeat run 2/4. The art-unit row stays in the numbers-only table, with
-that caveat.
+## 7. Format check (before the history run)
 
-Expected cost: GPT about $1.3–1.5 per 100 cases per prompt, so about $6 for runs 1–2. Qwen: the October runs took
-1.2–3 hours per 100 cases per prompt, so about 5–12 GPU-hours for runs 3–4 (4 runs of 100); delete the endpoint after.
-GPT route: Azure, as for the baselines (`gpt-5-mini-2025-08-07`). If only OpenAI's own API is available, the same
-model is used and the route is recorded in every output row and reported.
+5 fixed test_core cases, chosen for edge cases, not outcomes: 13060040 (normal, 3 applications), 13484627 (own: 1
+application), 13627444 (mismatched: 2), 13577408 (mismatched: none), 14031839 (own: thin history). Own and mismatched ×
+both prompts = 20 calls per model, written to `outputs/D/dev/*_formatcheck.jsonl` (never scored). **Pass** = all 20
+answers parse, none cut off, the saved prompt shows the history block before "Task" with the case's cutoff date, the
+block holds event lists and no statistics, and no hash error. Accuracy on these 5 is not looked at.
 
-## 3. Format check (before the full runs)
+## 8. Comparisons (`compare_history_runs.py`)
 
-There are no profiles for the 3 dev cases, so the check uses **5 fixed test_core cases**, chosen for their edge
-cases, not for their outcomes:
+Metrics: Disposition C-index (IPCW, τ = 730 days) and IBS; Remaining Rounds MAE and exact accuracy; Next Action C-index
+and MAE in days. Paired bootstrap, 1,000 draws, seed 20261010, cases where both methods answered. "Clear" = the 95%
+interval excludes 0.
 
-| Case | Why |
-| --- | --- |
-| 13060040 | normal profile (k = 3); the example followed in the week report |
-| 13484627 | own profile with only 1 retrieved example; all first-reply cases still pending |
-| 13627444 | mismatched profile with 2 examples; all-censored card |
-| 13577408 | mismatched profile with statistics only (k = 0) |
-| 14031839 | thin own profile ("Few cases: treat these numbers as rough"); all-censored card |
+| # | Comparison | Question |
+| --- | --- | --- |
+| 1 | LLM + own card − LLM, no examiner block | Does the card help the LLM? |
+| 2 | LLM + own card − LLM + wrong card | Is it about this examiner? |
+| 3 | LLM + own card − numbers only | Does the LLM add anything beyond the card's numbers? |
+| 4 | LLM + own histories − LLM, no examiner block | Do the 3 histories help the LLM? |
+| 5 | LLM + own histories − LLM + wrong histories | Is it about this examiner? |
+| 6 | **LLM + own histories − math on the same 3 histories** | **Does the LLM reason better than plain math on the same information?** |
+| 7 | LLM + own histories − LLM + own card (descriptive) | 3 histories vs the full card |
 
-For each model: own and mismatched × both prompts (20 calls). Written to `outputs/D/dev/*_formatcheck.jsonl`, which
-the scorers never read. **Pass** = all 20 answers parse (status ok), no answer cut off, the saved prompt shows the
-profile block in the right place with the case's cutoff date, and no hash error. Accuracy on these 5 is **not looked at**.
-These calls are cached and reused by the full run (same inputs, same key).
+Plus the copy check (`copy_check_cell.py`): how often the LLM's days equal the card's median (card runs) or the math
+median of the same histories (history runs).
 
-If the check fails because of format, fix only the format, re-hash, re-run the check, and write the change here.
-After the check passes, nothing in section 1 changes.
+**How to read 3 and 6:** clear in the LLM's favour → it gets more out of the examiner block than the numbers / the math.
+Not clear → it does about what the numbers / the math do. Clear against the LLM → the numbers / the math are the better
+use of the same information. 2 or 5 not clear → the effect is not examiner-specific.
 
-## 4. Comparisons (fixed now)
+## 9. Splits (descriptive, no new tests)
 
-Metrics: Disposition C-index (IPCW, τ = 730 days) and IBS; Remaining Rounds MAE and exact accuracy; Next Action C-index and
-MAE in days. Paired bootstrap, 1,000 draws, seed 20261010, on the cases where both methods have an answer.
-"Clear" = the 95% interval does not include 0.
+RCE in the true path (0 vs 1+); number of past applications shown (3 vs fewer).
 
-For each model M:
+## 10. Failures
 
-1. **Primary:** M + own profile − M without profile. Does the profile help the LLM?
-2. M + own profile − M + mismatched profile. Is the gain about *this* examiner?
-3. **New bar:** M + own profile − examiner numbers only (`prior_own`). Does the LLM add anything beyond copying the
-   examiner's averages? (The paper's shortcut warning.)
-4. Control: M + mismatched profile − M without profile.
+A broken answer is retried once with the same prompt, then listed as failed and never filled with defaults. Qwen API
+failures are kept (`--retry-failed` only as an explicit, logged resume). Paired tests use the cases both methods
+answered, and the n is reported.
 
-How to read it (fixed now):
-- Profile helps and beats the numbers-only row → the LLM uses the profile *and* the case record.
-- Profile helps but does not beat numbers-only → the gain is mostly the examiner's base rate (shortcut); say so.
-- Mismatched helps about as much as own → the gain is not examiner-specific (format or "any statistics" effect).
+## 11. Limits
 
-## 5. Planned splits (descriptive, no new tests)
-
-- retrieved_k = 3 vs < 3 (own: 1 case below 3; mismatched: 4).
-- RCE in the true path: 0 vs 1+ (the known weak spot for Remaining Rounds).
-- The 6 all-censored cards (5 own, 1 mismatched) vs the rest. Their "3+ rounds 100%" is leftover survival tail mass,
-  not an observed frequency. For numbers-only, these 5 own cards predict 4+ rounds.
-
-## 6. Failures
-
-Same rules as before: a broken answer is retried once with the same prompt, then listed as failed and never filled
-with defaults. Qwen API failures are kept (`--retry-failed` only as an explicit, logged resume). Paired tests use the
-cases both methods answered, and the n is reported.
-
-## 7. Reporting
-
-- Report the real coverage: own 99 with k = 3 and 1 with k = 1; mismatched 96 k = 3, 1 k = 2, 3 statistics only. Do not
-  write "k = 3 for all".
-- Examiner = the handling examiner in the contact paragraph ("should be directed to …"); the letter may be co-signed
-  by a primary examiner or SPE. Not "signature verified".
-- The profile shows raw rates; the numbers-only baseline uses rates shrunk toward the art-unit pool (k = 5). Say this
-  when comparing the two.
-- Profiles are cut at the A1 cutoff, the same cutoff as all three D tasks.
-
-## 8. Observation from the full-profile GPT runs (2026-11-03, after the runs)
-
-**The profile already contains the answer.** The phase 1 statistics were built with the same rules as our answer keys, so each
-statistic is defined exactly like a task target:
-
-| Task asks | Card line (case 13060040) |
-| --- | --- |
-| Days from the reply (cutoff) to the next letter | "Days from a reply to the next letter: median 33" |
-| P(0, 1, 2, 3, 4+ further rejections after the reply) | "Further rejections after the first reply: 0: 26%, 1: 43%, 2: 8%, 3+: 23%" |
-| F_allowance / F_abandonment, months 1–24 after the reply | "allowed within 12 months 48%, within 24 months 65%; abandoned within 24 months 26%" |
-
-The model does not need to be told to copy: it sees a number that matches the question exactly, and taking it is the
-sensible move (for an MAE score, a median is the best single guess when the record adds little). GPT-5-mini + own profile
-gave exactly the card's median days in 86/100 cases (88/100 with the wrong examiner's card), its 24-month allowance follows
-the card (rank correlation 0.97), and it ties with "numbers only" on every metric. So the full-profile runs measure a
-**lookup**, not reading. The prompt wording does not ask for this ("the documents above are the record of this
-application"; "grounding the prediction in the current application's record").
-
-## 9. Addendum A: examples only (decided 2026-11-03, after the GPT full-profile results; before any examples-only run)
-
-**Question.** Can the LLM use the examiner's history when no target-shaped number is given?
-
-**Change (the only one).** `--profile-mode examples_only` (code: `profile_inject.derive_text`): from each `profile_text`
-remove the whole "Historical statistics" section and the one sentence "Read each statistic with its stated denominator,
-time window, and raw or adjusted definition." The header, the 3 retrieved past cases, and every other sentence stay
-byte-identical. The code stops if any of "Statistics for this examiner", "median", "within 24 months", "Further rejections
-after" is left in the examiner block. Prompts, cases, state, models, settings, scoring: unchanged (section 1).
-Coverage: own 99 cases with 3 examples, 1 with 1; mismatched 96 / 1 with 2 / **3 with no example at all** (those 3 get only
-the header and "No reviewed comparable examples are supplied").
-
-**What can still be copied, and the control for it.** The examples still show "N days after reply" for each past case, so
-Next action can still be copied (from 3 numbers instead of a median of about 25). The baseline `examples_lookup.py`
-(no LLM) does exactly that: Next action = median of the example days; Disposition and Rounds = KM, because the examples
-show no 12/24-month outcome or round count to copy. Computed at freeze (free, no LLM): own Next MAE 30.8 days,
-C-index 0.687; mismatched 41.1 days, 0.551. So the 3 example days alone carry most of the timing signal.
-
-**Runs.** GPT-5-mini, own and mismatched, both prompts (tags `gpt-5-mini_state_profile_{own,mismatched}_exonly`); format
-check first on the same 5 cases (section 3) with the extra rule that the examiner block has no statistics. Qwen the same
-way if the deployment is up. Expected cost about $5 for GPT.
-
-**Comparisons (fixed now; `compare_profile_runs.py`, same bootstrap):**
-- A1: LLM + own examples − LLM no profile. Do the examiner's past cases help without the numbers?
-- A2: LLM + own examples − LLM + mismatched examples. Is it this examiner's cases?
-- A3: LLM + own examples − examples lookup (own). Does the LLM beat copying the example days?
-- A4 (descriptive): LLM + own examples − LLM + full own profile. What removing the numbers costs.
-Plus the copy check (`code/copy_check_cell.py`): share of answers equal to one of the example days or to their median.
-
-**How to read it (fixed now):**
-- Disposition and Rounds are a clean test (nothing target-shaped to copy). A1 clear there → the model learned something
-  from the past cases themselves.
-- Next action is judged by A3. Beating the examples lookup → the model reads more than the 3 numbers. Tying with it →
-  copying again, from the examples.
-- A2 not clear → the help is generic (any examples), not examiner-specific.
+- 3 applications per examiner, chosen by text similarity, not at random; 100 cases; one run per setting.
+- In 81 of 100 cases the art-unit pool (numbers only, and the wrong examiner) is one other examiner.
+- The math baseline counts pending applications as lower bounds.
+- Credibility estimate: several episodes of one application are treated as independent; the pool value is treated as
+  exact; the 24-month and rounds outcomes are estimated on episodes with a known outcome.
+- Examiner = the handling examiner in the contact paragraph of the office action ("should be directed to …"), not a
+  verified signature.

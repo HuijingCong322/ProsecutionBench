@@ -126,7 +126,7 @@ def main():
     ap.add_argument("--ping", action="store_true")
     ap.add_argument("--provider", default="azure", choices=["azure", "qwen"])
     ap.add_argument("--retry-failed", action="store_true")
-    rtl.add_profile_args(ap)
+    rtl.eh.add_args(ap)
     a = ap.parse_args()
     rtl.PROVIDER = a.provider
     # which service actually answers: Azure OpenAI, OpenAI's own API (same GPT-5-mini model), or the Qwen deployment
@@ -149,21 +149,21 @@ def main():
     recs = rtl.select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
-    profiles, pinfo = (rtl.pi.load_profiles(a.profile_pkg, a.profile_setting, a.profile_mode) if a.profile_pkg else ({}, None))
+    hists, hinfo = (rtl.eh.load(a.profile_pkg, a.examiner_input, a.examiner_setting, rtl.eh.history_path(a)) if a.profile_pkg else ({}, None))
     states = {}
     if a.state:
         for x in open(a.state):
             o = json.loads(x)
             states.setdefault(str(o.get("sample_id", o.get("app_id"))).split("_")[0], []).append(o)
-    setting = ("state_with_history" if a.state else "history_only") + (f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly") if pinfo else "")
+    setting = ("state_with_history" if a.state else "history_only") + (rtl.eh.suffix(hinfo) if hinfo else "")
     model_label = "Qwen3.6-27B" if a.provider == "qwen" else model
     if a.provider == "qwen" and not a.tag:
         a.tag = "qwen3.6-27b"
     tag = (a.tag or model).replace("/", "_") + ("_mock" if a.mock and "mock" not in (a.tag or model) else "")
     if a.state:
         tag += "_state"
-    if pinfo:
-        tag += f"_profile_{a.profile_setting}" + ("" if a.profile_mode == "full" else "_exonly")
+    if hinfo:
+        tag += rtl.eh.suffix(hinfo)
     cache_dir = os.path.join(a.root, "outputs", "D", "raw", "rounds_next_" + tag)
     log_dir = os.path.join(a.root, "logs", "D")
     os.makedirs(cache_dir, exist_ok=True); os.makedirs(log_dir, exist_ok=True)
@@ -182,20 +182,18 @@ def main():
         base = dict(method=f"llm_{setting}", model=model_label, deployment=model, input_setting=setting)
         if a.state and state is None:
             return dict(sample_id=sid, status="failed", error="no unique A1-cutoff state for this case", repairs=[], **base)
-        prof, pf = None, {}
-        if pinfo:
-            prof = profiles.get(sid)
-            bad = rtl.pi.check_case(prof, rec)
+        h, hf = None, {}
+        if hinfo:
+            h = hists.get(sid)
+            bad = rtl.eh.check_case(h, rec)
             if bad:
                 return dict(sample_id=sid, status="failed", error=bad, repairs=[], **base)
-            pf = rtl.pi.fields(prof, pinfo)
-        msgs = rtl.build_messages(rec, a.data, system, user_tpl, state, prof["text"] if prof else None)
+            hf = rtl.eh.fields(h, hinfo)
+        msgs = rtl.build_messages(rec, a.data, system, user_tpl, state, h["text"] if h else None)
         rtl.dump_prompt(a, sid, msgs)
         kparts = [model, P, prompt_hash, rec["input_hash"], a.state_version, json.dumps(state, sort_keys=True)]
-        if pf:  # no-profile runs keep their old cache key unchanged
-            kparts += [pf["profile_release"], pf["profile_setting"], pf["profile_sha1"], pf["profile_text_sha1"]]
-            if "profile_mode" in pf:  # full-profile runs keep their keys unchanged
-                kparts += [pf["profile_mode"], pf["sent_text_sha1"]]
+        if hf:  # runs without an examiner block keep their cache key unchanged
+            kparts += rtl.eh.cache_parts(hf, hinfo)
         key = hashlib.sha1(json.dumps(kparts).encode()).hexdigest()[:16]
         cpath = os.path.join(cache_dir, f"{sid}.json")
         if os.path.exists(cpath):
@@ -229,7 +227,7 @@ def main():
                 err = str(e)
         if out is None:
             out = dict(sample_id=sid, status="failed", error=err, repairs=[])
-        out.update(base, **pf, state_version=a.state_version, prompt_hash=prompt_hash, input_hash=rec["input_hash"],
+        out.update(base, **hf, state_version=a.state_version, prompt_hash=prompt_hash, input_hash=rec["input_hash"],
                    cache_key=key, params=P, provider=route,
                    api_models=sorted({str(x.get("api_model")) for x in attempts}),
                    seconds=round(sum(x.get("seconds") or 0 for x in attempts), 1), n_attempts=len(attempts),
@@ -283,7 +281,7 @@ def main():
     with open(os.path.join(a.root, "outputs", "D", "model_manifest.jsonl"), "a") as mf:
         mf.write(json.dumps(dict(time=time.strftime("%Y-%m-%dT%H:%M:%S"), task="rounds_next", tag=tag, model=model_label,
                                  deployment=model, split=a.split, input_setting=setting, state_version=a.state_version,
-                                 prompt_hash=prompt_hash, **(pinfo or {}), ids=a.ids,
+                                 prompt_hash=prompt_hash, **(hinfo or {}), ids=a.ids,
                                  params=P, provider=route, n=len(results), ok=ok,
                                  tokens_in=pin, tokens_out=pout, est_cost_usd=None if cost is None else round(cost, 4),
                                  output=os.path.relpath(out_path, a.root))) + "\n")

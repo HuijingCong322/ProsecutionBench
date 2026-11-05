@@ -230,6 +230,461 @@
    "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state.jsonl"
   },
   {
+   "method": "llm_state_with_history_history_mismatched",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_history_mismatched",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.98,
+    "acc": 0.43,
+    "acc_within1": 0.78,
+    "mean_pred": 0.77,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 24,
+     "1": 75,
+     "2": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.175371875,
+    "mean_p_by_bin": [
+     0.2756,
+     0.4902,
+     0.1615,
+     0.0508,
+     0.0219
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.96,
+    "acc_dist_median": 0.45,
+    "mae_ci95": [
+     0.75,
+     1.24
+    ],
+    "acc_ci95": [
+     0.33975000000000005,
+     0.53
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5572853072853072,
+    "mae_days": 36.12,
+    "median_ae_days": 32.0,
+    "mean_pred_days": 61.36,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     29.29975,
+     45.54449999999999
+    ],
+    "c_index_ci95": [
+     0.504311517953107,
+     0.6100145099249582
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_history_mismatched.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_history_own",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_history_own",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.98,
+    "acc": 0.42,
+    "acc_within1": 0.79,
+    "mean_pred": 0.81,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 19,
+     "1": 81
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.17197849999999998,
+    "mean_p_by_bin": [
+     0.2379,
+     0.5047,
+     0.1751,
+     0.0571,
+     0.0252
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.97,
+    "acc_dist_median": 0.43,
+    "mae_ci95": [
+     0.74,
+     1.23
+    ],
+    "acc_ci95": [
+     0.32,
+     0.51
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5677655677655677,
+    "mae_days": 35.57,
+    "median_ae_days": 30.0,
+    "mean_pred_days": 64.15,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     28.099500000000003,
+     45.032
+    ],
+    "c_index_ci95": [
+     0.5077020925728751,
+     0.6283004185666986
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_history_own.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_mismatched",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_mismatched",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.1,
+    "acc": 0.34,
+    "acc_within1": 0.75,
+    "mean_pred": 0.53,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 54,
+     "1": 43,
+     "3": 2,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.1837197025,
+    "mean_p_by_bin": [
+     0.4746,
+     0.3441,
+     0.0851,
+     0.0645,
+     0.0317
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.08,
+    "acc_dist_median": 0.35,
+    "mae_ci95": [
+     0.87,
+     1.31
+    ],
+    "acc_ci95": [
+     0.25,
+     0.44
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.48514448514448516,
+    "mae_days": 42.61,
+    "median_ae_days": 35.5,
+    "mean_pred_days": 58.11,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     35.059000000000005,
+     52.271
+    ],
+    "c_index_ci95": [
+     0.4243700505479288,
+     0.5488763235663267
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_mismatched.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_own",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_own",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.96,
+    "acc": 0.45,
+    "acc_within1": 0.81,
+    "mean_pred": 0.75,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 40,
+     "1": 51,
+     "2": 4,
+     "3": 4,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.17142305657568685,
+    "mean_p_by_bin": [
+     0.3844,
+     0.3895,
+     0.1042,
+     0.0774,
+     0.0445
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.94,
+    "acc_dist_median": 0.47,
+    "mae_ci95": [
+     0.71975,
+     1.21
+    ],
+    "acc_ci95": [
+     0.36,
+     0.55
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.7274114774114774,
+    "mae_days": 26.54,
+    "median_ae_days": 14.5,
+    "mean_pred_days": 62.4,
+    "mean_true_days": 69.02,
+    "median_pred_days": 63.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     19.2385,
+     36.723
+    ],
+    "c_index_ci95": [
+     0.6668966372737345,
+     0.7823402480807422
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_own.jsonl"
+  },
+  {
+   "method": "history_math_mismatched",
+   "model": "none (math on the 3 past applications)",
+   "input_setting": "mismatched past-application histories",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.17,
+    "acc": 0.32,
+    "acc_within1": 0.69,
+    "mean_pred": 1.06,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 24,
+     "1": 54,
+     "2": 14,
+     "3": 8
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.22337262544842576,
+    "mean_p_by_bin": [
+     0.3254,
+     0.392,
+     0.1469,
+     0.0667,
+     0.0689
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.17,
+    "acc_dist_median": 0.32,
+    "mae_ci95": [
+     0.93,
+     1.4002499999999998
+    ],
+    "acc_ci95": [
+     0.23,
+     0.4102499999999997
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5493487993487993,
+    "mae_days": 40.05,
+    "median_ae_days": 34.5,
+    "mean_pred_days": 59.95,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     32.897,
+     48.55175
+    ],
+    "c_index_ci95": [
+     0.4825411293788908,
+     0.6142549585926086
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_history_math_mismatched.jsonl"
+  },
+  {
+   "method": "history_math_own",
+   "model": "none (math on the 3 past applications)",
+   "input_setting": "own past-application histories",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.04,
+    "acc": 0.35,
+    "acc_within1": 0.8,
+    "mean_pred": 1.05,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 26,
+     "1": 51,
+     "2": 16,
+     "3": 6,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.20000000000000004,
+    "mean_p_by_bin": [
+     0.29,
+     0.4367,
+     0.14,
+     0.07,
+     0.0633
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.04,
+    "acc_dist_median": 0.35,
+    "mae_ci95": [
+     0.81,
+     1.28
+    ],
+    "acc_ci95": [
+     0.25,
+     0.45
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.7038054538054538,
+    "mae_days": 28.86,
+    "median_ae_days": 16.0,
+    "mean_pred_days": 61.64,
+    "mean_true_days": 69.02,
+    "median_pred_days": 61.5,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     21.81825,
+     38.30124999999999
+    ],
+    "c_index_ci95": [
+     0.645359408991565,
+     0.761814850724844
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_history_math_own.jsonl"
+  },
+  {
    "method": "km_marginal",
    "model": "none (train KM)",
    "input_setting": "no covariates",
@@ -297,6 +752,237 @@
     ]
    },
    "predictions_file": "outputs/D/rounds_next_predictions_km.jsonl"
+  },
+  {
+   "method": "examiner_prior_artunit",
+   "model": "none (examiner numbers)",
+   "input_setting": "artunit profile numbers",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.12,
+    "acc": 0.34,
+    "acc_within1": 0.71,
+    "mean_pred": 0.73,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 43,
+     "1": 44,
+     "2": 11,
+     "3": 1,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.18388529700891,
+    "mean_p_by_bin": [
+     0.4569,
+     0.3133,
+     0.0932,
+     0.0519,
+     0.0847
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.12,
+    "acc_dist_median": 0.34,
+    "mae_ci95": [
+     0.9,
+     1.33
+    ],
+    "acc_ci95": [
+     0.25,
+     0.43
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5013227513227513,
+    "mae_days": 41.13,
+    "median_ae_days": 33.0,
+    "mean_pred_days": 58.79,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.5,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     33.5995,
+     51.02325
+    ],
+    "c_index_ci95": [
+     0.436818480705622,
+     0.5673736618051813
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_prior_artunit.jsonl"
+  },
+  {
+   "method": "examiner_prior_mismatched",
+   "model": "none (examiner numbers)",
+   "input_setting": "mismatched profile numbers",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.15,
+    "acc": 0.32,
+    "acc_within1": 0.72,
+    "mean_pred": 0.78,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 43,
+     "1": 43,
+     "2": 10,
+     "3": 1,
+     "4": 3
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.18687241498501247,
+    "mean_p_by_bin": [
+     0.4609,
+     0.3034,
+     0.091,
+     0.0489,
+     0.0958
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.15,
+    "acc_dist_median": 0.32,
+    "mae_ci95": [
+     0.93,
+     1.36025
+    ],
+    "acc_ci95": [
+     0.23,
+     0.41
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.4956247456247456,
+    "mae_days": 41.98,
+    "median_ae_days": 34.0,
+    "mean_pred_days": 58.68,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.5,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     34.3795,
+     51.8215
+    ],
+    "c_index_ci95": [
+     0.43340348686193036,
+     0.5570706006854654
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_prior_mismatched.jsonl"
+  },
+  {
+   "method": "examiner_prior_own",
+   "model": "none (examiner numbers)",
+   "input_setting": "own profile numbers",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.94,
+    "acc": 0.44,
+    "acc_within1": 0.78,
+    "mean_pred": 1.09,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 32,
+     "1": 45,
+     "2": 13,
+     "3": 2,
+     "4": 8
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.1535830865235,
+    "mean_p_by_bin": [
+     0.3849,
+     0.3093,
+     0.1072,
+     0.0569,
+     0.1416
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.94,
+    "acc_dist_median": 0.44,
+    "mae_ci95": [
+     0.73,
+     1.16
+    ],
+    "acc_ci95": [
+     0.35,
+     0.54
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.7211029711029711,
+    "mae_days": 27.21,
+    "median_ae_days": 16.0,
+    "mean_pred_days": 61.81,
+    "mean_true_days": 69.02,
+    "median_pred_days": 63.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     20.229,
+     37.440749999999994
+    ],
+    "c_index_ci95": [
+     0.6618553147393956,
+     0.7760565470436358
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_prior_own.jsonl"
   },
   {
    "method": "llm_history_only",

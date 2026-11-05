@@ -1,0 +1,103 @@
+{
+ "method": "Buhlmann-Straub nonparametric credibility, K = EPV / VHM",
+ "data": "case_episodes.csv",
+ "groups": "one per test case: own examiner + art-unit pool examiners, all cut at the case's A1 cutoff",
+ "bootstrap": "1000 draws of cases, seed 20261010",
+ "stats": {
+  "next_log_days": {
+   "epv": 0.3725770422200551,
+   "vhm": 0.21021171933100727,
+   "k": 1.7723894909654456,
+   "n_groups": 100,
+   "n_examiner_rows": 218,
+   "n_episodes": 6006,
+   "k_ci95": [
+    1.39462237481638,
+    2.324527906511567
+   ],
+   "share_draws_vhm_le_0": 0.0,
+   "k_boot_median": 1.7824179251962278,
+   "sensitivity_vs_overall_mean": {
+    "epv": 0.37789283912760074,
+    "vhm": 0.21747424699680148,
+    "k": 1.7376440858910462,
+    "n_groups": 1,
+    "n_examiner_rows": 100,
+    "n_episodes": 2860
+   }
+  },
+  "allowed_24": {
+   "epv": 0.119563229772811,
+   "vhm": 0.036775930362464494,
+   "k": 3.251127261619021,
+   "n_groups": 100,
+   "n_examiner_rows": 211,
+   "n_episodes": 4150,
+   "k_ci95": [
+    2.4478464891620932,
+    4.512796528054939
+   ],
+   "share_draws_vhm_le_0": 0.0,
+   "k_boot_median": 3.2704414404290327,
+   "sensitivity_vs_overall_mean": {
+    "epv": 0.13395097439607853,
+    "vhm": 0.037125922831828674,
+    "k": 3.608017368425927,
+    "n_groups": 1,
+    "n_examiner_rows": 95,
+    "n_episodes": 1870
+   }
+  },
+  "abandoned_24": {
+   "epv": 0.09434212278061384,
+   "vhm": 0.011198598577321037,
+   "k": 8.424457947057038,
+   "n_groups": 100,
+   "n_examiner_rows": 211,
+   "n_episodes": 4150,
+   "k_ci95": [
+    6.026471492004673,
+    13.209001650036997
+   ],
+   "share_draws_vhm_le_0": 0.0,
+   "k_boot_median": 8.385802419521237,
+   "sensitivity_vs_overall_mean": {
+    "epv": 0.1092073496708257,
+    "vhm": 0.013785686214374756,
+    "k": 7.921792790913219,
+    "n_groups": 1,
+    "n_examiner_rows": 95,
+    "n_episodes": 1870
+   }
+  },
+  "rounds": {
+   "epv": 0.78796054084524,
+   "vhm": 0.17657736741961433,
+   "k": 4.462409607527725,
+   "n_groups": 100,
+   "n_examiner_rows": 210,
+   "n_episodes": 4023,
+   "k_ci95": [
+    3.297635659672817,
+    6.511650663834027
+   ],
+   "share_draws_vhm_le_0": 0.0,
+   "k_boot_median": 4.45401765088892,
+   "sensitivity_vs_overall_mean": {
+    "epv": 0.8436264824567733,
+    "vhm": 0.24311414614854338,
+    "k": 3.470083891956313,
+    "n_groups": 1,
+    "n_examiner_rows": 95,
+    "n_episodes": 1809
+   }
+  }
+ },
+ "k_used": {
+  "next_log_days": 1.8,
+  "allowed_24": 3.3,
+  "abandoned_24": 8.4,
+  "rounds": 4.5
+ },
+ "note": "k_used None = no detectable examiner difference: Z = 0 (pool only)"
+}
