@@ -1,0 +1,15 @@
+outputs/
+shared/
+prepared/
+prepared_dev/
+review/
+human_review/
+support_review/
+*.zip
+*.safetensors
+*.bin
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+.env.*
