@@ -1,0 +1,16 @@
+{
+  "zip_sha256": "ef3b631f94a505deb1800b089cf5b3fdde65ca4720417c43931b8f37b02e817f",
+  "zip_bytes": 7870344,
+  "core_inputs_per_condition": 100,
+  "dev_n": 3,
+  "api_calls": 0,
+  "private_inputs_sha256": {
+    "own": "186e47a82da9bd86ece8d0a206ee806331b60f9570a34cfd0cc4f0b155f8e0fc",
+    "mismatched": "3260626bb3973ce2998c251cd860e05210bb3b39f7e519a633ee5b0a4509eb78",
+    "dev": "e1340812f62157b04872eb107a672db2adec6d4fe95d047802b29d854e539a06"
+  },
+  "package_filename": "GPT_TEAMMATE_BGE_M3_v1_2026_11_06.zip",
+  "private_team_only": true,
+  "immutable_manifest_sha256": "ab5aa9d8b106a7e709fcff421206ace6e9f6123d940794144095f121ce04a9e6",
+  "public_source_only": true
+}
