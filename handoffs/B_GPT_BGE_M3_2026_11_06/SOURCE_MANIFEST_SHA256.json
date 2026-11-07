@@ -1,0 +1,68 @@
+{
+  "scope": "source-only public GPT teammate handoff; no private artifacts",
+  "files": [
+    {
+      "path": "code/b_prediction.py",
+      "original_project_path": "week10_11/B/b_prediction.py",
+      "original_sha256": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d",
+      "published_sha256": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d",
+      "adjustment": "unchanged"
+    },
+    {
+      "path": "code/b_run_paced.py",
+      "original_project_path": "week10_11/B/b_run_paced.py",
+      "original_sha256": "77654dce66323c0d06fd433d7bbc9e50aa71acec6e4f2edfb080ee94036812d4",
+      "published_sha256": "77654dce66323c0d06fd433d7bbc9e50aa71acec6e4f2edfb080ee94036812d4",
+      "adjustment": "unchanged"
+    },
+    {
+      "path": "code/b_phase2_prediction.py",
+      "original_project_path": "week10_11/B/b_phase2_prediction.py",
+      "original_sha256": "b2556099071cb25adc27bd0977200bfb6b5ddbf1ed839b3efa961945eceed9d2",
+      "published_sha256": "b2556099071cb25adc27bd0977200bfb6b5ddbf1ed839b3efa961945eceed9d2",
+      "adjustment": "unchanged"
+    },
+    {
+      "path": "code/b_qwen.py",
+      "original_project_path": "week10_11/B/b_qwen.py",
+      "original_sha256": "317422d020fb9ba1fe801599e10ab61bcb2297aa6da61d60ffd612484d97dd1c",
+      "published_sha256": "771930001d583050ccc4309f702395edf3c8467ad078d506286f4509054bc540",
+      "adjustment": "Qwen CLI default endpoint replaced with example.invalid"
+    },
+    {
+      "path": "tests/test_prediction.py",
+      "original_project_path": "week10_11/B/tests/test_prediction.py",
+      "original_sha256": "9fb90c6ea9bae2c8e9c78a9819f43ac5d5c181bd0f5a034f63abdab3af530207",
+      "published_sha256": "9ca7b8e6edb150eae4babd6b0c7b0a919d46464ddf8ff5bd0a33d440d56c1746",
+      "adjustment": "test import path points to code subdirectory"
+    },
+    {
+      "path": "tests/test_pacing.py",
+      "original_project_path": "week10_11/B/tests/test_pacing.py",
+      "original_sha256": "3d83c3f574a8275ba5b0a6275aff3385efa1818223b603878b545475378d6f6e",
+      "published_sha256": "4aa47338650d555195993203c98640284465a5335c682659e478be1037e67722",
+      "adjustment": "test import path points to code subdirectory"
+    },
+    {
+      "path": "tests/test_qwen.py",
+      "original_project_path": "week10_11/B/tests/test_qwen.py",
+      "original_sha256": "8c5c03152620b80f65c8a0ff2d6d54496afc1a768eedb11db10c54ec67d0ac09",
+      "published_sha256": "b6bf44397062a3f50508052d7bcef403cd29a459ad04360e458f92a19e735346",
+      "adjustment": "test import path points to code subdirectory"
+    },
+    {
+      "path": "prompts/examiner_prediction.FROZEN.txt",
+      "original_project_path": "week10_11/B/prompts/examiner_prediction.FROZEN.txt",
+      "original_sha256": "0b4fdad0247b698e6efeaa4c3cb705733f8784ab26df48f1ecc44feaaab703b6",
+      "published_sha256": "0b4fdad0247b698e6efeaa4c3cb705733f8784ab26df48f1ecc44feaaab703b6",
+      "adjustment": "unchanged"
+    },
+    {
+      "path": "requirements.txt",
+      "original_project_path": "week10_11/B/requirements.txt",
+      "original_sha256": "15a494b4a3540db6da023d880d49b31263e3df9e1604723298fc612623f77bf1",
+      "published_sha256": "15a494b4a3540db6da023d880d49b31263e3df9e1604723298fc612623f77bf1",
+      "adjustment": "unchanged"
+    }
+  ]
+}
