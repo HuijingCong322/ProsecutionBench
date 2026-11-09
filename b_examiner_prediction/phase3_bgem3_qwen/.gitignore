@@ -1,0 +1,10 @@
+outputs/
+prepared/
+prepared_dev/
+data/
+raw/
+cache/
+*.zip
+.env*
+__pycache__/
+.pytest_cache/

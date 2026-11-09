@@ -1,0 +1,115 @@
+{
+  "as_of": "2026-11-09",
+  "release_id": "B_shared_BGE_M3_dense_v1_2026_11_05",
+  "source_layout": "week10_11/B",
+  "public_scope": [
+    "code",
+    "prompts",
+    "synthetic_or_private_fixture_guarded_tests",
+    "aggregate_metrics",
+    "documentation"
+  ],
+  "excluded": [
+    "profiles",
+    "patent_source_texts",
+    "review_materials",
+    "per_case_source_links_and_prediction_records",
+    "prediction_inputs",
+    "raw_API_outputs",
+    "API_logs",
+    "credentials",
+    "team_ZIP",
+    "vector_cache"
+  ],
+  "runtime_files_exact_copies": true,
+  "test_adaptation": "Explicitly skip7 private-corpus integration tests when private core is absent; no private fixture uploaded",
+  "public_test_result": {
+    "passed": 33,
+    "skipped": 7
+  },
+  "private_focused_test_result": {
+    "passed": 27
+  },
+  "files": [
+    {
+      "path": "code/b_bgem3_qwen_prediction.py",
+      "bytes": 11995,
+      "sha256": "c53690faf78e903be57b15c7411300fd5050f56bdf887e730cc1b5586908e653"
+    },
+    {
+      "path": "code/b_phase2_prediction.py",
+      "bytes": 28348,
+      "sha256": "b2556099071cb25adc27bd0977200bfb6b5ddbf1ed839b3efa961945eceed9d2"
+    },
+    {
+      "path": "code/b_prediction.py",
+      "bytes": 24791,
+      "sha256": "ae7c7f2c370d58464104bbe8121b7846aca19773ec107d8cacf8e4e5865d161d"
+    },
+    {
+      "path": "code/b_qwen.py",
+      "bytes": 13004,
+      "sha256": "317422d020fb9ba1fe801599e10ab61bcb2297aa6da61d60ffd612484d97dd1c"
+    },
+    {
+      "path": "code/b_qwen_phase2_concurrent.py",
+      "bytes": 10194,
+      "sha256": "01f802f3f4c4d93d8779021e0dd95dc56b4e4e56e382e11375d594043244067c"
+    },
+    {
+      "path": "code/b_run_paced.py",
+      "bytes": 2117,
+      "sha256": "77654dce66323c0d06fd433d7bbc9e50aa71acec6e4f2edfb080ee94036812d4"
+    },
+    {
+      "path": "code/tests/test_bgem3_qwen_prediction.py",
+      "bytes": 6974,
+      "sha256": "35a5b4f2488b852d2ecc399e755e19e63313e7097bf0830f724a3b2dd6a416c9"
+    },
+    {
+      "path": "code/tests/test_pacing.py",
+      "bytes": 950,
+      "sha256": "3d83c3f574a8275ba5b0a6275aff3385efa1818223b603878b545475378d6f6e"
+    },
+    {
+      "path": "code/tests/test_prediction.py",
+      "bytes": 11439,
+      "sha256": "9fb90c6ea9bae2c8e9c78a9819f43ac5d5c181bd0f5a034f63abdab3af530207"
+    },
+    {
+      "path": "code/tests/test_qwen.py",
+      "bytes": 4140,
+      "sha256": "8c5c03152620b80f65c8a0ff2d6d54496afc1a768eedb11db10c54ec67d0ac09"
+    },
+    {
+      "path": "prompts/examiner_prediction.FROZEN.txt",
+      "bytes": 2870,
+      "sha256": "0b4fdad0247b698e6efeaa4c3cb705733f8784ab26df48f1ecc44feaaab703b6"
+    },
+    {
+      "path": "prompts/profile_block.txt",
+      "bytes": 1113,
+      "sha256": "27393372a5c52e4f7abb88f8573d41b55c2ff98a66e9c5de361d92f8bda84e24"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7814,
+      "sha256": "df8ca07ba5ba3a98327c1a4225f354478ab36262ec69eb3673bb3fc54e78e4fa"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 91,
+      "sha256": "549bcd6ed3305dcb4418d011bdff7a730e7d9fd15c2d9e339d798807c09c1aa5"
+    },
+    {
+      "path": "requirements.public-tests.txt",
+      "bytes": 55,
+      "sha256": "c1b162d0d58cf10220ef3328ec19408f8f183b541a433a1b9ad8883be016da33"
+    },
+    {
+      "path": "aggregate_comparison.json",
+      "bytes": 4094,
+      "sha256": "c6e0876d6a9826481e41643f513288bd7933b9aca080ae24b0a86783bef8a6d1"
+    }
+  ]
+}

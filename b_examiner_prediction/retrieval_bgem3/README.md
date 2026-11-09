@@ -45,3 +45,7 @@ The `code/` directory mirrors the local implementation originally at `week10_11/
 The ordered workflow is: prepare a new root; measure tokenizer lengths and runtime; freeze a new contract; encode/build/review the three precheck cases; encode/build/review the original ten; encode/build all; validate; construct the local handoff; seal once. Use the isolated pinned runtime for model operations and offline loading flags (`HF_HUB_OFFLINE=1`, `TRANSFORMERS_OFFLINE=1`, `TOKENIZERS_PARALLELISM=false`, `PYTORCH_ENABLE_MPS_FALLBACK=0`). Different runtime/hardware needs a distinct contract/cache namespace. Existing sealed outputs must not be overwritten.
 
 `embedding_tools/download_pinned_model.py` downloads the pinned model; other encoding is local. `add_handoff_materials.py` builds private team materials and must be used only in that private workspace. No data files or private outputs are needed to inspect the public implementation.
+
+## Subsequent Qwen experiment (2026-11-09)
+
+The no-prediction statement above describes the completed retrieval/handoff phase. Subsequently, the isolated [BGE-M3 Qwen experiment](../phase3_bgem3_qwen/README.md) completed own100 and mismatched100, reusing the audited no-profile100 baseline. Its public update contains exact runner sources, tests and aggregate comparisons only; profiles, original texts, source/link tables, review materials and per-case predictions remain private. The old snapshot, frozen inputs/prompts/settings and results were preserved. No new GPT or art-unit prediction run is included.
