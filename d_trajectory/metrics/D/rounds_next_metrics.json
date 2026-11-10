@@ -81,6 +81,160 @@
    "predictions_file": "outputs/D/rounds_next_predictions_cox.jsonl"
   },
   {
+   "method": "emb_top3_math_mismatched",
+   "model": "none (math on past applications)",
+   "input_setting": "mismatched: top-3 of B's BGE-M3 search",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.14,
+    "acc": 0.34,
+    "acc_within1": 0.74,
+    "mean_pred": 0.67,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 47,
+     "1": 44,
+     "2": 6,
+     "3": 1,
+     "4": 2
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.22472222222222224,
+    "mean_p_by_bin": [
+     0.4767,
+     0.35,
+     0.0933,
+     0.04,
+     0.04
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.14,
+    "acc_dist_median": 0.34,
+    "mae_ci95": [
+     0.92,
+     1.38
+    ],
+    "acc_ci95": [
+     0.25,
+     0.43
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.4873829873829874,
+    "mae_days": 44.76,
+    "median_ae_days": 40.0,
+    "mean_pred_days": 59.6,
+    "mean_true_days": 69.02,
+    "median_pred_days": 56.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     37.63975,
+     53.00075
+    ],
+    "c_index_ci95": [
+     0.4226399144592519,
+     0.5496110115759825
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_emb_top3_math_mismatched.jsonl"
+  },
+  {
+   "method": "emb_top3_math_own",
+   "model": "none (math on past applications)",
+   "input_setting": "own: top-3 of B's BGE-M3 search",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.05,
+    "acc": 0.38,
+    "acc_within1": 0.78,
+    "mean_pred": 0.86,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 28,
+     "1": 61,
+     "2": 9,
+     "3": 1,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.2025,
+    "mean_p_by_bin": [
+     0.3533,
+     0.4367,
+     0.12,
+     0.0467,
+     0.0433
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.05,
+    "acc_dist_median": 0.38,
+    "mae_ci95": [
+     0.83,
+     1.31
+    ],
+    "acc_ci95": [
+     0.28975,
+     0.48
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.717948717948718,
+    "mae_days": 28.28,
+    "median_ae_days": 19.0,
+    "mean_pred_days": 63.08,
+    "mean_true_days": 69.02,
+    "median_pred_days": 56.5,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     21.10975,
+     37.9515
+    ],
+    "c_index_ci95": [
+     0.6558596074511138,
+     0.7724952843554556
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_emb_top3_math_own.jsonl"
+  },
+  {
    "method": "llm_history_only",
    "model": "gpt-5-mini",
    "input_setting": "history_only",
@@ -530,6 +684,456 @@
     ]
    },
    "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_own.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_card_mismatched",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_card_mismatched",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.04,
+    "acc": 0.4,
+    "acc_within1": 0.78,
+    "mean_pred": 0.53,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 51,
+     "1": 47,
+     "2": 1,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.1810458836347809,
+    "mean_p_by_bin": [
+     0.459,
+     0.3702,
+     0.0911,
+     0.055,
+     0.0248
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.08,
+    "acc_dist_median": 0.35,
+    "mae_ci95": [
+     0.8,
+     1.2702499999999999
+    ],
+    "acc_ci95": [
+     0.31,
+     0.5
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.4967439967439967,
+    "mae_days": 41.96,
+    "median_ae_days": 34.0,
+    "mean_pred_days": 58.52,
+    "mean_true_days": 69.02,
+    "median_pred_days": 59.5,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     34.279250000000005,
+     51.802749999999996
+    ],
+    "c_index_ci95": [
+     0.43376921710555066,
+     0.5584529501263701
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_card_mismatched.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_card_own",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_card_own",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.96,
+    "acc": 0.43,
+    "acc_within1": 0.81,
+    "mean_pred": 0.71,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 36,
+     "1": 60,
+     "2": 2,
+     "3": 1,
+     "4": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.154219574546368,
+    "mean_p_by_bin": [
+     0.3803,
+     0.4199,
+     0.1032,
+     0.0618,
+     0.0348
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.88,
+    "acc_dist_median": 0.48,
+    "mae_ci95": [
+     0.73,
+     1.2002499999999998
+    ],
+    "acc_ci95": [
+     0.33,
+     0.53
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.7233414733414734,
+    "mae_days": 26.73,
+    "median_ae_days": 14.0,
+    "mean_pred_days": 62.55,
+    "mean_true_days": 69.02,
+    "median_pred_days": 63.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     19.4085,
+     36.82225
+    ],
+    "c_index_ci95": [
+     0.664601394696732,
+     0.7755840188135316
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_card_own.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_fulldoc_mismatched",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_fulldoc_mismatched",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.07,
+    "acc": 0.34,
+    "acc_within1": 0.78,
+    "mean_pred": 0.78,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 22,
+     "1": 78
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.1944115625,
+    "mean_p_by_bin": [
+     0.2497,
+     0.4962,
+     0.1702,
+     0.0581,
+     0.0257
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.07,
+    "acc_dist_median": 0.34,
+    "mae_ci95": [
+     0.84,
+     1.31
+    ],
+    "acc_ci95": [
+     0.25,
+     0.43
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5194342694342694,
+    "mae_days": 37.96,
+    "median_ae_days": 33.0,
+    "mean_pred_days": 62.26,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     30.849,
+     47.19974999999999
+    ],
+    "c_index_ci95": [
+     0.46115267115396535,
+     0.5784785452336646
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_fulldoc_mismatched.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_fulldoc_own",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_fulldoc_own",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.0,
+    "acc": 0.4,
+    "acc_within1": 0.79,
+    "mean_pred": 0.81,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 19,
+     "1": 81
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.1685550025,
+    "mean_p_by_bin": [
+     0.2457,
+     0.4858,
+     0.1795,
+     0.0624,
+     0.0266
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.98,
+    "acc_dist_median": 0.41,
+    "mae_ci95": [
+     0.77,
+     1.2502499999999999
+    ],
+    "acc_ci95": [
+     0.31,
+     0.5
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.597985347985348,
+    "mae_days": 33.26,
+    "median_ae_days": 25.5,
+    "mean_pred_days": 63.64,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     26.037499999999998,
+     42.83025
+    ],
+    "c_index_ci95": [
+     0.5413265147398021,
+     0.6520146316102199
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_fulldoc_own.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_paths_mismatched",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_paths_mismatched",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 0.99,
+    "acc": 0.45,
+    "acc_within1": 0.76,
+    "mean_pred": 0.64,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 37,
+     "1": 62,
+     "2": 1
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.17801743750000004,
+    "mean_p_by_bin": [
+     0.345,
+     0.4495,
+     0.1402,
+     0.0458,
+     0.0195
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 0.98,
+    "acc_dist_median": 0.45,
+    "mae_ci95": [
+     0.75,
+     1.24
+    ],
+    "acc_ci95": [
+     0.36,
+     0.55
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.5411070411070411,
+    "mae_days": 35.93,
+    "median_ae_days": 31.0,
+    "mean_pred_days": 59.65,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     28.58575,
+     46.64
+    ],
+    "c_index_ci95": [
+     0.4754074850963731,
+     0.6013661549740495
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_paths_mismatched.jsonl"
+  },
+  {
+   "method": "llm_state_with_history_profile_with_embedding_paths_own",
+   "model": "gpt-5-mini",
+   "input_setting": "state_with_history_profile_with_embedding_paths_own",
+   "remaining_rounds": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "mae": 1.02,
+    "acc": 0.38,
+    "acc_within1": 0.79,
+    "mean_pred": 0.75,
+    "mean_true": 1.27,
+    "pred_counts": {
+     "0": 25,
+     "1": 75
+    },
+    "true_counts": {
+     "0": 36,
+     "1": 37,
+     "2": 7,
+     "3": 11,
+     "4": 4,
+     "5": 4,
+     "7": 1
+    },
+    "rps": 0.17380606499999998,
+    "mean_p_by_bin": [
+     0.275,
+     0.4917,
+     0.1585,
+     0.052,
+     0.0228
+    ],
+    "obs_share_by_bin": [
+     0.36,
+     0.37,
+     0.07,
+     0.11,
+     0.09
+    ],
+    "mae_dist_median": 1.01,
+    "acc_dist_median": 0.39,
+    "mae_ci95": [
+     0.79,
+     1.27
+    ],
+    "acc_ci95": [
+     0.29,
+     0.47
+    ]
+   },
+   "time_to_next_action": {
+    "eligible_n": 100,
+    "scored_n": 100,
+    "failed_ids": [],
+    "c_index": 0.6394993894993894,
+    "mae_days": 31.58,
+    "median_ae_days": 24.5,
+    "mean_pred_days": 63.02,
+    "mean_true_days": 69.02,
+    "median_pred_days": 60.0,
+    "median_true_days": 65.0,
+    "mae_days_ci95": [
+     24.599,
+     41.57449999999999
+    ],
+    "c_index_ci95": [
+     0.5811271105505125,
+     0.6972736408671207
+    ]
+   },
+   "predictions_file": "outputs/D/rounds_next_predictions_gpt-5-mini_state_profile_with_embedding_paths_own.jsonl"
   },
   {
    "method": "history_math_mismatched",

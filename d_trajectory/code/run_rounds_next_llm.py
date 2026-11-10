@@ -142,14 +142,14 @@ def main():
         sys.argv = [sys.argv[0], "--root", a.root, "--data", a.data, "--provider", a.provider, "--ping"]
         return rtl.main()
 
-    system, user_tpl, prompt_hash = load_prompt(a.root, "rounds_next_forecast_profile.txt" if a.profile_pkg else PROMPT_FILE)
+    system, user_tpl, prompt_hash = load_prompt(a.root, "rounds_next_forecast_profile.txt" if rtl.eh.active(a) else PROMPT_FILE)
     fname = {"dev": "trajectory_inputs_dev.jsonl", "core": "trajectory_inputs.jsonl",
              "test300": "trajectory_inputs_test300.jsonl"}[a.split]
     recs = [json.loads(x) for x in open(os.path.join(a.root, "inputs", fname))]
     recs = rtl.select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
-    hists, hinfo = (rtl.eh.load(a.profile_pkg, a.examiner_input, a.examiner_setting, rtl.eh.history_path(a)) if a.profile_pkg else ({}, None))
+    hists, hinfo = (rtl.eh.load(a.examiner_input, a.examiner_setting, rtl.eh.blocks_path(a)) if rtl.eh.active(a) else ({}, None))
     states = {}
     if a.state:
         for x in open(a.state):

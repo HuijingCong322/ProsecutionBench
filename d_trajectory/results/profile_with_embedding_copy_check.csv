@@ -1,0 +1,7 @@
+method,compared_with,n,days_exactly_equal,days_within_3,days_rank_corr_with_ref,days_rank_corr_with_truth
+gpt-5-mini_state_profile_with_embedding_card_own,card median days,100,0.92,0.93,0.986,0.597
+gpt-5-mini_state_profile_with_embedding_paths_own,emb_top3_math_own days,100,0.01,0.1,0.284,0.424
+gpt-5-mini_state_profile_with_embedding_fulldoc_own,emb_top3_math_own days,100,0.04,0.11,0.232,0.306
+gpt-5-mini_state_profile_with_embedding_card_mismatched,card median days,100,0.92,0.95,0.993,-0.004
+gpt-5-mini_state_profile_with_embedding_paths_mismatched,emb_top3_math_mismatched days,100,0.01,0.04,0.213,0.128
+gpt-5-mini_state_profile_with_embedding_fulldoc_mismatched,emb_top3_math_mismatched days,100,0.05,0.09,0.309,0.064

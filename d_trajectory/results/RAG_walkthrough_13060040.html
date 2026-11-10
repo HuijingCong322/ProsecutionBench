@@ -1,0 +1,490 @@
+<title>Examiner RAG Walkthrough</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column (~70ch) with full-width step cards; pipeline drawn as stacked boxes so it reads on a phone. */
+:root{
+  --bg:#f6f8fb; --surface:#ffffff; --ink:#18212f; --muted:#5a6678; --line:#d8dfe8;
+  --blue:#1d4f91; --blue-soft:#e6eef9; --amber:#9a5b00; --amber-soft:#fbefd9;
+  --green:#2c6e49; --green-soft:#e3f2e8; --red:#a33a2b; --red-soft:#f8e5e2; --code:#eef2f7;
+  --f-display:"Literata", Georgia, "Times New Roman", serif;
+  --f-body:"Public Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161e; --surface:#18202b; --ink:#e3e8ef; --muted:#9aa7b8; --line:#2b3644;
+  --blue:#8fb6ec; --blue-soft:#1b2c44; --amber:#f0bb6a; --amber-soft:#3a2b14;
+  --green:#86cfa3; --green-soft:#16301f; --red:#f0a091; --red-soft:#3b1d18; --code:#1f2935; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161e; --surface:#18202b; --ink:#e3e8ef; --muted:#9aa7b8; --line:#2b3644;
+  --blue:#8fb6ec; --blue-soft:#1b2c44; --amber:#f0bb6a; --amber-soft:#3a2b14;
+  --green:#86cfa3; --green-soft:#16301f; --red:#f0a091; --red-soft:#3b1d18; --code:#1f2935; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:2.1rem;font-weight:650}
+h2{font-size:1.5rem;font-weight:650;margin-top:8px}
+h3{font-size:1.15rem;font-weight:650}
+p{margin:0;max-width:70ch}
+.lede{color:var(--muted);font-size:1.02rem}
+section{display:flex;flex-direction:column;gap:14px}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--code);padding:.08em .35em;border-radius:4px}
+pre{font-family:var(--f-mono);font-size:.8rem;line-height:1.55;background:var(--code);border:1px solid var(--line);
+  border-radius:8px;padding:12px 14px;margin:0;overflow-x:auto;white-space:pre}
+pre .c{color:var(--muted)}
+pre .hl{color:var(--blue);font-weight:600}
+pre .am{color:var(--amber);font-weight:600}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:8px 12px;border-bottom:1px solid var(--line)}
+th{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.note{border-left:3px solid var(--blue);background:var(--blue-soft);padding:12px 16px;border-radius:0 8px 8px 0}
+.note.warn{border-color:var(--amber);background:var(--amber-soft)}
+.note p+p{margin-top:8px}
+ul,ol{margin:0;padding-left:1.3em;max-width:70ch}
+li+li{margin-top:4px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.t-no{background:var(--blue-soft);color:var(--blue)}
+.t-yes{background:var(--amber-soft);color:var(--amber)}
+.t-ok{background:var(--green-soft);color:var(--green)}
+.t-todo{background:var(--red-soft);color:var(--red)}
+/* pipeline */
+.pipe{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
+.box>b{display:block;font-size:.95rem}
+.box>span{display:block;color:var(--muted);font-size:.85rem}
+.box .mono{color:var(--ink);font-size:.82rem}
+.box.prog{border-color:var(--blue)}
+.box.llm{border-color:var(--amber);background:var(--amber-soft)}
+.box .who{margin-top:6px}
+.arrow{text-align:center;color:var(--muted);font-size:1.2rem;line-height:1;padding:6px 0}
+.arrow small{display:block;font-size:.75rem}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+/* step cards */
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 20px 22px;display:flex;flex-direction:column;gap:14px}
+.step header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.step .num{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.facts div{background:var(--bg);padding:8px 10px;min-width:0}
+.facts dt{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.facts dd{margin:2px 0 0;font-size:.88rem}
+@media (max-width:640px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cmp>div{border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.cmp .old{background:var(--bg)}
+.cmp .new{background:var(--green-soft);border-color:transparent}
+.cmp h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:640px){.cmp{grid-template-columns:1fr}}
+blockquote{margin:0;padding:10px 14px;border-left:3px solid var(--line);color:var(--ink);font-style:italic;background:var(--surface);border-radius:0 6px 6px 0}
+a{color:var(--blue)}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.88rem}
+footer{color:var(--muted);font-size:.85rem}
+</style>
+
+<main>
+<header style="display:flex;flex-direction:column;gap:10px">
+  <span class="mono" style="color:var(--muted);font-size:.8rem">ExaminerBench · team D · updated 2026-11-09</span>
+  <h1>How our examiner RAG works, one case at a time</h1>
+  <p class="lede">We follow one real patent application, <b>13060040</b>, from the raw download to a prediction. Every file name, text excerpt, number and score here is real, taken from A's data, B's new BGE-M3 package and D's code. The mentor asked that we can say, for every step, what goes in, what comes out, where it lives and why. This page does that.</p>
+  <div class="note"><p><b>Which tasks this example uses.</b> The example predicts D's three trajectory tasks: <b>Disposition, Remaining Rounds and Time to Next Action</b>. The other tasks (B's next action and grounds, C's examination generation) use the <b>same setup</b>. Steps 1 to 4 (the query, the library, the search, the top 3) are shared by everyone. Only Steps 5 and 6 change: what we read from the 3 past applications, and what the prompt asks. The table in <a href="#other-tasks">Part 5</a> shows the differences.</p></div>
+  <nav class="toc" aria-label="Contents"><a href="#basics">1 · Basic ideas</a><a href="#pipeline">2 · The pipeline</a><a href="#steps">3 · Step by step</a><a href="#summary">4 · Summary</a><a href="#other-tasks">5 · Other tasks</a><a href="#next">6 · Next runs</a><a href="#files">7 · Files</a></nav>
+</header>
+
+<!-- ================= PART 1 ================= -->
+<section id="basics">
+  <h2>1 · Basic ideas first</h2>
+
+  <h3>What are we predicting?</h3>
+  <p>We take one application and stop the clock on a fixed day, the <b>cutoff</b>. For us the cutoff is the day the applicant filed the first reply to the examiner's first rejection. For 13060040 that is <b>2014-09-26</b>. Then we ask what happens next.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Task</th><th>Question</th><th>Real answer for 13060040 (hidden from every method)</th></tr></thead>
+    <tbody>
+      <tr><td>Disposition</td><td>Will it be allowed or abandoned, and when? Probabilities for months 1–24</td><td>Abandoned on day 766, so <b>still pending at month 24</b></td></tr>
+      <tr><td>Remaining Rounds</td><td>How many more rejections before it ends?</td><td><b>4</b></td></tr>
+      <tr><td>Time to Next Action</td><td>How many days until the examiner's next letter?</td><td><b>73</b> (a final rejection on 2014-12-08)</td></tr>
+    </tbody></table></div>
+  <p>Anything dated after the cutoff is the answer and is never used as input. This is the <b>cutoff rule</b>.</p>
+
+  <h3>What is a prompt?</h3>
+  <p>A prompt is <b>one long text message</b> we send to the LLM (GPT-5-mini). The LLM reads it and writes an answer back. It cannot open folders or search anything; it only sees what we paste into that message.</p>
+
+  <h3>What is RAG?</h3>
+  <p>RAG means <b>Retrieval-Augmented Generation</b>. Before we ask the LLM, a separate program searches a library and picks the few documents most relevant to the question. We paste those documents into the prompt, and then the LLM answers. It works like an open-book exam where a librarian hands you the three most useful books first. The librarian is an ordinary program; the student is the LLM.</p>
+  <p>So RAG always has two separate parts:</p>
+  <ol>
+    <li><b>Retrieval (the search).</b> A Python program with no LLM. It takes a question text and a library, and returns a short list of the most similar items.</li>
+    <li><b>Generation (the answer).</b> The LLM call. The items found by the search are pasted into the prompt.</li>
+  </ol>
+  <p>For us, the library is <b>the examiner's own past applications</b> and the question is <b>what this new case is about</b>. The idea is that an examiner may treat similar inventions in a similar way, so how their similar past cases went may hint at how this one will go. That is what "personalization" means here.</p>
+
+  <h3>What are an embedding and a similarity score?</h3>
+  <ul>
+    <li>An <b>embedding model</b> turns a piece of text into a fixed list of numbers. We use <b>BGE-M3</b>, which gives 1,024 numbers per text. Texts about similar things get similar lists. The model does nothing else; it does not answer questions.</li>
+    <li>The <b>similarity score</b> (cosine) compares two lists and gives one number. Higher means the two texts are about more similar things. Between our patents it lands roughly between 0.5 and 0.8.</li>
+    <li><b>TF-IDF</b> is an older method that only checks which words two texts share. We used it before; the mentor asked us to replace it with embeddings, and B has done that.</li>
+  </ul>
+
+  <h3>Words we use</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Word</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><b>Query</b></td><td>The text that describes <b>the case we predict</b>. It is used <b>only inside the search program</b>, to search with. It is not the prompt.</td></tr>
+      <tr><td><b>Library</b></td><td>The examiner's past applications that the search program looks through.</td></tr>
+      <tr><td><b>Top 3</b></td><td>The 3 past applications with the highest similarity scores.</td></tr>
+      <tr><td><b>Abstract</b></td><td>The one-paragraph summary of an invention, as published.</td></tr>
+      <tr><td><b>Claims</b></td><td>The numbered sentences that define exactly what is protected.</td></tr>
+      <tr><td><b>Prosecution letters</b></td><td>The back-and-forth between examiner and applicant: the rejection letters (code CTNF = non-final, CTFR = final) and the applicant's replies (REM = remarks, CLM = amended claims).</td></tr>
+      <tr><td><b>Event log</b></td><td><code>transactions.csv</code>: the USPTO's list of every event in an application, one line per event, with a date and a code.</td></tr>
+      <tr><td><b>Patent family</b></td><td>Applications that are versions of the same invention. We never use two from the same family, and never the case's own family.</td></tr>
+      <tr><td><b>Pending</b></td><td>The application had not ended yet on the date we look. Its outcome is unknown, not "no".</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- ================= PART 2 ================= -->
+<section id="pipeline">
+  <h2>2 · The whole pipeline in one picture</h2>
+  <p>Every box except the amber one is an ordinary program or folder, with no LLM. The amber box is the only place the LLM appears.</p>
+  <div class="pipe" role="img" aria-label="Pipeline: case files and the examiner's past applications feed a search program, then a lookup program, then either simple math or a GPT prompt, and both are scored.">
+    <div class="row">
+      <div class="box"><b>The case we predict</b><span class="mono">data_v1_share/apps/13060040/</span><span>Step 1–2: take its abstract + claims → the <b>query</b></span><span class="who"><span class="tag t-no">A data · B query</span></span></div>
+      <div class="box"><b>The examiner's past applications</b><span class="mono">profile_corpus/apps/&lt;id&gt;/</span><span>Step 3: 30 applications, each one's abstract + claims → the <b>library</b></span><span class="who"><span class="tag t-no">A data · B texts</span></span></div>
+    </div>
+    <div class="arrow">↓ ↓</div>
+    <div class="box prog"><b>Step 4 · Search program</b><span>Python + BGE-M3, no LLM. Compares the query with each library item and keeps the top 3.</span><span>Output: table <span class="mono">ranking_top3_links_before_review.csv</span>, for example "13060040 → 11528154, 12110183, 12343838"</span><span class="who"><span class="tag t-no">B · no LLM</span></span></div>
+    <div class="arrow">↓</div>
+    <div class="box prog"><b>Step 5 · Lookup program</b><span>Python, no LLM. Reads the event log of each of the 3 and records what happened after its first reply.</span><span>Output: a small outcome table</span><span class="who"><span class="tag t-no">D · no LLM</span></span></div>
+    <div class="arrow">↓ ↓</div>
+    <div class="row">
+      <div class="box prog"><b>Step 6a · Prediction without LLM</b><span>Simple math on the 3 outcomes: the "top-3 average"</span><span class="who"><span class="tag t-no">D · no LLM</span></span></div>
+      <div class="box llm"><b>Step 6b · Prompt → GPT</b><span>The case's own documents + one examiner block: the statistics card, or the 3 past applications (dated events, or in full)</span><span class="who"><span class="tag t-yes">D / B · LLM</span></span></div>
+    </div>
+    <div class="arrow">↓ ↓</div>
+    <div class="box prog"><b>Step 7 · Scoring</b><span>Compare each prediction with the hidden answer, on the same 100 cases for every method.</span><span class="who"><span class="tag t-no">D · no LLM</span></span></div>
+  </div>
+</section>
+
+<!-- ================= PART 3 ================= -->
+<section id="steps">
+  <h2>3 · Step by step, with case 13060040</h2>
+
+  <!-- STEP 1 -->
+  <article class="step">
+    <header><span class="num">STEP 1</span><h3>Download the case</h3><span class="tag t-ok">Done</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>Folder <span class="mono">data_v1_share/apps/13060040/</span></dd></div>
+      <div><dt>LLM?</dt><dd>No</dd></div>
+      <div><dt>Who</dt><dd>A</dd></div>
+      <div><dt>Output</dt><dd>Text files + CSV tables</dd></div>
+    </dl>
+    <p><b>Purpose:</b> get everything the USPTO has about this application, as text a computer can read.</p>
+    <p>At the USPTO the application has a list of <b>191 documents</b> (<code>catalog.csv</code>), and each one is a <b>PDF</b>: fee worksheets, forms, the abstract and claims, the examiner's letters, the applicant's replies. A did not download the 191 PDFs. For the ~20 documents that matter, the USPTO also publishes a <b>text version with the same words</b>, and A downloaded those. Three small scanned pages had no text version and were read from the image (OCR). The ~170 others (fees, forms, transmittals) say nothing about the case and were skipped.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>File</th><th>What it is</th><th>What is inside (real)</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">transactions.csv</td><td>Event log, a table</td><td class="mono">2014-03-19, MCTNF, Mail Non-Final Rejection<br>2014-09-26, A..., Response after Non-Final Action<br>2016-10-31, MABN2, Mail Abandonment</td></tr>
+        <tr><td class="mono">text/pgpub_abstract.txt</td><td>Abstract from the published application (2011-09-22)</td><td><i>"Described here are devices, systems, and kits for delivering substances to tissues. The devices generally include one or more chambers and a reservoir within each chamber. The reservoir may locally deliver a microdose amount of a substance to a target tissue…"</i></td></tr>
+        <tr><td class="mono">text/pgpub_claims.json</td><td>Claims from the published application, one entry per claim</td><td>Claim 343: <i>"A microarray comprising: An array of reservoirs and means for administering a therapeutic or diagnostic agent in tissue…"</i></td></tr>
+        <tr><td class="mono">text/2014-03-19_CTNF_….txt</td><td>The examiner's first rejection letter</td><td><i>"DETAILED ACTION … Claims 343-372 are pending for examination … interpreted under 35 U.S.C. 112(f)…"</i></td></tr>
+        <tr><td class="mono">text/2014-09-26_REM_….txt</td><td>The applicant's reply (remarks)</td><td><i>"Remarks. The Interview. The undersigned and applicants greatly appreciate the telephone interview on May 7, 2014… Claims 357-366 and 372 were rejected under 35 U.S.C. § 112…"</i></td></tr>
+        <tr><td class="mono">text/grant_*.txt</td><td>The 2018 patent</td><td><b>After the cutoff: never used</b></td></tr>
+      </tbody></table></div>
+    <div class="note"><p><b>"Should we feed the raw PDF?"</b> The PDF and its text version contain the same words, and an LLM reads text anyway; a PDF is converted to text before the model sees it. So feeding the document text is feeding the raw document. The mentor's real point was: <b>give the model the actual content of the past cases, not a summary we made.</b> Feeding whole files is not practical either: three past applications run to hundreds of pages, much of it forms and boilerplate.</p></div>
+  </article>
+
+  <!-- STEP 2 -->
+  <article class="step">
+    <header><span class="num">STEP 2</span><h3>The query: describe the case we predict</h3><span class="tag t-ok">Fixed by B on 11-05</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>A text variable inside B's search program (saved in <span class="mono">queries.jsonl</span>)</dd></div>
+      <div><dt>LLM?</dt><dd>No. Never sent to the LLM</dd></div>
+      <div><dt>Who</dt><dd>B</dd></div>
+      <div><dt>Input → output</dt><dd>The case's files → one text</dd></div>
+    </dl>
+    <p><b>Purpose:</b> one piece of text that says <b>what this case is about</b>, so the search program can look for similar past applications. It describes the case we predict, not the examiner.</p>
+    <div class="cmp">
+      <div class="old"><h4>Old (TF-IDF): our 11-03 and 11-05 runs</h4><p>The case's <b>prosecution letters</b>: the 2014 rejection letter, the replies and the amended claims. The search found past applications whose <b>letters looked alike</b> (the same rejection wording), even when the inventions were different.</p></div>
+      <div class="new"><h4>New (BGE-M3), as the mentor asked</h4><p>The case's <b>abstract + claims</b> that existed before the cutoff, from the 2011-09-22 publication. The title is not used because no dated title was available. The search looks for past applications about <b>the same kind of invention</b>.</p></div>
+    </div>
+    <p>The exact new query for 13060040 is 6,796 characters long. Its beginning and end:</p>
+    <pre>Abstract: Described here are devices, systems, and kits for delivering substances to tissues. The devices
+generally include one or more chambers (102) and a reservoir (108) within each chamber. The reservoir may locally
+deliver a microdose amount of a substance to a target tissue ...
+Claims: ... 343. A microarray comprising: An array of reservoirs and means for administering a therapeutic or
+diagnostic agent ... 372. A method for extracting tissue or cells comprising Providing the microarray of claim 357
+and extracting cells or tissue at the site of each means for separately extracting tissue or cells ...</pre>
+  </article>
+
+  <!-- STEP 3 -->
+  <article class="step">
+    <header><span class="num">STEP 3</span><h3>The library: the examiner's past applications</h3><span class="tag t-ok">Done</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>Folder <span class="mono">profile_corpus/apps/</span> + table <span class="mono">profile_index.csv</span></dd></div>
+      <div><dt>LLM?</dt><dd>No. Not in the prompt</dd></div>
+      <div><dt>Who</dt><dd>A (files), B (texts)</dd></div>
+      <div><dt>Output</dt><dd>One text per past application</dd></div>
+    </dl>
+    <p><b>Purpose:</b> the collection we search in. It must be this examiner's own work, so that what we find tells us something about this examiner.</p>
+    <p>The table has one row per past application. This case's examiner (<code>ex_7657097da7</code>) has <b>30</b>. One real row:</p>
+    <pre>examiner_id    app_id    filing_date  cpc            title                                       pgpub_date
+ex_7657097da7  12880303  2010-09-13   G06T11/26;...  Determination Of A Physiological Parameter  2011-03-24</pre>
+    <p>Each past application has its own folder with the same kinds of files as Step 1: an event log, a published abstract, published claims and the letters. Only things dated before our cutoff are included, and no application shares a family with our 1,000 cases.</p>
+    <p>For each past application, B builds a text the same way as the query: <b>its abstract + claims</b>, dated no later than its first usable reply. B also fixes one moment in each past application: its earliest usable "reply → examiner's next letter". This moment is chosen without looking at how the application ended. <b>19 of the 30</b> have such a moment before our cutoff, so 19 can be searched.</p>
+    <div class="note warn"><p><b>What this examiner works on.</b> Some of the 30 titles: <i>Multi-wavelength physiological monitor</i>, <i>Pulse oximeter probe-off detector</i>, <i>Noninvasive apparatus for measuring blood sugar</i>, <i>Tissue hydration estimation</i>. All 30 are optical body sensors. <b>None is a drug-delivery device like our case.</b> Keep this in mind for Step 4.</p></div>
+  </article>
+
+  <!-- STEP 4 -->
+  <article class="step">
+    <header><span class="num">STEP 4</span><h3>The search: pick the 3 most similar</h3><span class="tag t-ok">Fixed by B on 11-05</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>B's Python program; runs once, before any LLM call</dd></div>
+      <div><dt>LLM?</dt><dd>No</dd></div>
+      <div><dt>Who</dt><dd>B</dd></div>
+      <div><dt>Input → output</dt><dd>Query + 19 texts → table <span class="mono">ranking_top3_links_before_review.csv</span></dd></div>
+    </dl>
+    <p><b>Purpose:</b> out of the 19 searchable past applications, find the 3 whose inventions are most like our case.</p>
+    <p><b>What the program does:</b></p>
+    <ol>
+      <li>BGE-M3 turns each text into 1,024 numbers. A long text is cut into pieces the model can read (up to 8,190 tokens each); each piece becomes numbers, and the pieces are averaged. Nothing is thrown away.</li>
+      <li>It computes the similarity score of each past application with the query.</li>
+      <li>It sorts by score, keeps at most one application per patent family, and takes the top 3.</li>
+    </ol>
+    <pre><span class="c"># the core of it</span>
+model  = SentenceTransformer("BAAI/bge-m3")                     <span class="c"># fixed version 5617a9f6…</span>
+q      = model.encode(query_text, normalize_embeddings=True)    <span class="c"># our case → 1,024 numbers</span>
+P      = model.encode(past_texts,  normalize_embeddings=True)    <span class="c"># 19 past applications → 19 × 1,024</span>
+scores = P @ q                                                   <span class="c"># 19 similarity scores</span>
+top3   = pick_top(scores, k=3, one_per_family=True)</pre>
+    <p><b>Output for 13060040</b> (real rows from <code>ranking_top3_links_before_review.csv</code>, B's top 3 for every case. B also hand-reviewed 10 cases into <code>historical_links.csv</code>; D uses the unreviewed list so that all 100 cases follow one rule):</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Rank</th><th>Past application</th><th>Title</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="mono">11528154</td><td>Tissue hydration estimation by spectral absorption bandwidth measurement</td><td>0.708</td></tr>
+        <tr><td>2</td><td class="mono">12110183</td><td>Channeled tissue sample probe method and apparatus</td><td>0.704</td></tr>
+        <tr><td>3</td><td class="mono">12343838</td><td>System and method for estimating physiological parameters by deconvolving artifacts</td><td>0.668</td></tr>
+      </tbody></table></div>
+    <p>12109224 (<i>coupling a channeled sample probe to tissue</i>, 0.695) was skipped because it is the same family as rank 2. The least similar of the 19 scored 0.552.</p>
+    <div class="cmp">
+      <div class="old"><h4>Old top 3 (TF-IDF on letters)</h4><p><span class="mono">12109224</span> probe coupling · <span class="mono">12495545</span> ear sensor · <span class="mono">12345537</span> pulse oximeter</p></div>
+      <div class="new"><h4>New top 3 (BGE-M3 on abstract + claims)</h4><p><span class="mono">11528154</span> tissue hydration · <span class="mono">12110183</span> tissue sample probe · <span class="mono">12343838</span> deconvolving artifacts</p></div>
+    </div>
+    <p>None of the three is the same. The old and new scores use different scales and cannot be compared with each other.</p>
+    <div class="note warn">
+      <p><b>"Most similar" is not the same as "similar".</b> All 19 past applications score between 0.55 and 0.71. They are all medical sensing devices, roughly as close to a drug-delivery device as each other.</p>
+      <p>The <b>wrong examiner's</b> top 3 (another examiner of the same art unit) score 0.70, 0.70 and 0.69, as high as our own examiner's. Across all 100 cases, the best match has a median score of 0.75 and the worst a median of 0.58.</p>
+      <p>So for this case the top 3 is only slightly better than any 3 of this examiner's applications.</p>
+    </div>
+  </article>
+
+  <!-- STEP 5 -->
+  <article class="step">
+    <header><span class="num">STEP 5</span><h3>Look up what happened to those 3</h3><span class="tag t-ok">Done</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>D's Python program (<span class="mono">topk_math.py</span>, same rules as <span class="mono">history_math.py</span>)</dd></div>
+      <div><dt>LLM?</dt><dd>No</dd></div>
+      <div><dt>Who</dt><dd>D (for the trajectory tasks)</dd></div>
+      <div><dt>Input → output</dt><dd>3 event logs → small outcome table</dd></div>
+    </dl>
+    <p><b>Purpose:</b> for each of the 3, find out how it went <b>after its first reply</b>, the same moment as our cutoff. That is what the examiner's similar past cases can tell us about our three tasks.</p>
+    <p><b>Input</b>, for example the real event lines of 12343838 (only events before our cutoff):</p>
+    <pre>2012-07-06  MCTNF  Mail Non-Final Rejection
+2012-10-09  A...   Response after Non-Final Action     <span class="hl">← its first reply: start the clock</span>
+2012-11-06  MCTFR  Mail Final Rejection                <span class="hl">← next letter, 28 days later</span>
+2013-01-07  A.NE   Response after Final Action
+2013-01-18  MN/=.  Mail Notice of Allowance            <span class="hl">← ended: allowed, 101 days after the first reply</span></pre>
+    <p><b>Output:</b></p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Past application</th><th>First reply</th><th>Days to next letter</th><th>Rejections after</th><th>How it ended</th><th>Days to end</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">11528154</td><td>2011-07-13</td><td>64</td><td>1</td><td>allowed</td><td>183</td></tr>
+        <tr><td class="mono">12110183</td><td>2012-12-21</td><td>40</td><td>4 so far</td><td>still pending on our cutoff</td><td>at least 644 (unknown)</td></tr>
+        <tr><td class="mono">12343838</td><td>2012-10-09</td><td>28</td><td>1</td><td>allowed</td><td>101</td></tr>
+      </tbody></table></div>
+  </article>
+
+  <!-- STEP 6a -->
+  <article class="step">
+    <header><span class="num">STEP 6a</span><h3>Predict without an LLM: the "top-3 average"</h3><span class="tag t-ok">Done</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>Same Python program, simple arithmetic</dd></div>
+      <div><dt>LLM?</dt><dd>No</dd></div>
+      <div><dt>Who</dt><dd>D</dd></div>
+      <div><dt>Output</dt><dd>One prediction per task</dd></div>
+    </dl>
+    <p><b>Purpose:</b> the mentor's first baseline. If the examiner's similar past cases are informative, this simple math should already do well, and any LLM has to beat it.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>Math</th><th>Prediction</th><th>Truth</th></tr></thead>
+      <tbody>
+        <tr><td>Time to Next Action</td><td>middle value of 64, 40, 28</td><td><b>40 days</b></td><td>73</td></tr>
+        <tr><td>Remaining Rounds</td><td>middle value of 1, 4, 1</td><td><b>1</b></td><td>4</td></tr>
+        <tr><td>Disposition (month 24)</td><td>2 of 3 allowed within 24 months, none abandoned, 1 unknown</td><td><b>67% allowed, 0% abandoned</b></td><td>still pending</td></tr>
+      </tbody></table></div>
+    <p>The other baselines without an LLM, on the same case:</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Method</th><th>Which past cases</th><th>Allowed by month 24</th><th>Abandoned by month 24</th></tr></thead>
+      <tbody>
+        <tr><td>Everyone average (Kaplan–Meier)</td><td>All 478 training cases, all examiners</td><td>64%</td><td>15%</td></tr>
+        <tr><td>This examiner's statistics card ("full-history numbers")</td><td>All of this examiner's past applications (30)</td><td>64%</td><td>25%</td></tr>
+        <tr><td>Top 3, old search (letters)</td><td>12109224, 12495545, 12345537</td><td>67%</td><td>33%</td></tr>
+        <tr><td><b>Top 3, new search (invention)</b></td><td>11528154, 12110183, 12343838</td><td><b>67%</b></td><td><b>0%</b></td></tr>
+      </tbody></table></div>
+    <p>One case proves nothing: every method thought this case would be over by month 24, and it was not. The comparison is made on all 100 cases.</p>
+  </article>
+
+  <!-- STEP 6b -->
+  <article class="step">
+    <header><span class="num">STEP 6b</span><h3>Predict with the LLM: build the prompt</h3><span class="tag t-todo">Ready to run</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>Template file + Python that fills it and calls GPT</dd></div>
+      <div><dt>LLM?</dt><dd><b>Yes</b>, the only step with an LLM</dd></div>
+      <div><dt>Who</dt><dd>D (trajectory), B (B's tasks), C (generation)</dd></div>
+      <div><dt>Output</dt><dd>GPT's answer as JSON</dd></div>
+    </dl>
+    <p><b>Purpose:</b> see whether an LLM that reads the case <b>and</b> the examiner's similar past cases does better than the simple math.</p>
+    <p>Our template (<code>prompts/trajectory_forecast_profile.txt</code>), shortened. The prompt has <b>two separate parts</b>:</p>
+    <pre>### SYSTEM
+You forecast how U.S. patent prosecution will continue. ... return calibrated probabilities as a json object only.
+
+### USER
+Estimate how the prosecution of this U.S. utility application will continue after the cutoff date 2014-09-26.
+Inputs
+- Filing date ... Art unit ...
+- Prosecution state at the cutoff: {A's predicted state}
+- Prosecution record through the cutoff, oldest first.
+<span class="hl">{history}</span>    <span class="c">← PART 1: THE CASE WE PREDICT. Its own documents in full (Step 1). Same with or without RAG.</span>
+- Examiner history reference ... built only from the examiner's other applications ...
+<span class="am">{profile}</span>    <span class="c">← PART 2: THE EXAMINER. The retrieved past applications go here. This is the "RAG" part.</span>
+Task
+For each month m = 1..24, the probability that by the end of month m the application is allowed / abandoned ...
+Output
+{"F_allowance": [24 numbers], "F_abandonment": [24 numbers], "rationale": "..."}</pre>
+
+    <p><b>What goes into <code>{profile}</code></b>: three examiner blocks. Each is run with this case's own examiner and, as a control, with a wrong examiner of the same art unit (same wording, so the model cannot tell). This week's run is called <b>profile_with_embedding</b>.</p>
+
+    <h3 style="font-size:1rem">(a) card: statistics only, from the examiner's full history</h3>
+    <pre>Examiner history reference available before 2014-09-26
+
+Historical statistics
+Statistics for this examiner, other applications, events before 2014-09-26:
+- 30 applications; 26 replies to a non-final rejection.
+- Next letter after such a reply (25 seen, 1 still waiting): allowance 32%, final rejection 64%, ...
+- Days from a reply to the next letter: median 33 (allowances 59, rejections 31).
+- After the first reply (20 applications): 11 allowed, 4 abandoned, 5 still pending; ... within 24 months 65%; abandoned within 24 months 26%.
+- Further rejections after the first reply: 0: 26%, 1: 43%, 2: 8%, 3+: 23%; RCE filed in 25%.
+- Grounds in 54 rejections ...: 103 in 93%, 102 in 54%, 112 in 50%, 101 in 24%.
+
+Reading convention: (how each number is defined) ...</pre>
+    <p>Numbers computed from <b>all 30</b> of the examiner's past applications before the cutoff. It does not use the search, and it holds no past-application examples. (The 11-03 version also carried 3 short "reply → next letter" excerpts picked by the old TF-IDF search. They are dropped: the past applications are now picked by B's search and shown in full in (b) and (c), and the 11-04 test showed the excerpts added nothing.)</p>
+
+    <h3 style="font-size:1rem">(b) paths: the 3 most similar past applications, dated events only</h3>
+    <pre>Past application 3: 12343838
+- 2012-07-06 examiner mailed a non-final rejection
+- 2012-10-09 applicant filed a reply to a non-final rejection
+- 2012-11-06 examiner mailed a final rejection
+- 2013-01-07 applicant filed a reply to a final rejection
+- 2013-01-18 examiner mailed a notice of allowance
+Status on 2014-09-26: allowed (notice of allowance mailed 2013-01-18).</pre>
+    <p>The same 3 applications as Step 4 (11528154, 12110183, 12343838). No statistics.</p>
+
+    <h3 style="font-size:1rem">(c) fulldoc: the same 3 past applications in full (the standard RAG)</h3>
+    <pre>=== Past application 3: 12343838 ===
+Documents:
+[FP4AB5CEPPOPPY4 | CLM | 2008-12-24 | applicant | uspto_xml]
+<span class="c">(the claims as filed, full text)</span>
+[pgpub_abstract | ABST | 2009-07-23 | pre_grant_publication | pgpub_xml]
+There is disclosed a system and methods to estimate physiological parameters ...
+[pgpub_claims | CLM | 2009-07-23 | pre_grant_publication | pgpub_xml]
+[H46Z41BJPXXIFW4 | CTNF | 2012-07-06 | examiner | uspto_xml]     <span class="c">non-final rejection, full text</span>
+[H83HWKC5PXXIFW3 | CLM | 2012-10-09 | applicant | uspto_xml]     <span class="c">amended claims, full text</span>
+[H91EWNUXPXXIFW4 | CTFR | 2012-11-06 | examiner | uspto_xml]     <span class="c">final rejection, full text</span>
+[HBO4BXWBPXXIFW3 | CLM | 2013-01-07 | applicant | uspto_xml]
+[HC0RDOUUPXXIFW4 | NOA | 2013-01-18 | examiner | uspto_xml]     <span class="c">notice of allowance, full text</span>
+Dated events:
+- 2012-07-06 examiner mailed a non-final rejection
+...
+Status on 2014-09-26: allowed (notice of allowance mailed 2013-01-18).</pre>
+    <p>Every document A downloaded for each past application, dated before the cutoff, in raw USPTO text with the same header line as the case's own record. Nothing summarized or shortened, and no statistics. The LLM can see <b>what each past invention was</b>, judge whether it is really comparable to a drug-delivery device, and read <b>what happened to it</b>. Whole prompt at most about 240k tokens, under GPT-5-mini's 272k limit.</p>
+  </article>
+
+  <!-- STEP 7 -->
+  <article class="step">
+    <header><span class="num">STEP 7</span><h3>Score</h3><span class="tag t-ok">Done</span></header>
+    <dl class="facts">
+      <div><dt>Where it lives</dt><dd>D's scoring programs</dd></div>
+      <div><dt>LLM?</dt><dd>No</dd></div>
+      <div><dt>Who</dt><dd>D</dd></div>
+      <div><dt>Output</dt><dd>Score tables with intervals</dd></div>
+    </dl>
+    <p>GPT returns, for example, <code>{"F_allowance": [0.01, …, 0.30], "F_abandonment": [0.00, …, 0.20], "rationale": "…"}</code>. This is the real answer from our 11-05 history run: 30% allowed and 20% abandoned by month 24. A scoring program compares every method's predictions with the hidden answers on <b>the same 100 cases</b>. It reports C-index and IBS for Disposition, MAE and accuracy for Rounds, and C-index and MAE in days for Next Action.</p>
+  </article>
+</section>
+
+<!-- ================= PART 4 ================= -->
+<section id="summary">
+  <h2>4 · Summary: what lives where, who does it, status</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Step</th><th>What it physically is</th><th>LLM?</th><th>Who</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>1 Case files</td><td>Text files + CSV tables in <span class="mono">data_v1_share/apps/&lt;id&gt;/</span></td><td>No</td><td>A</td><td><span class="tag t-ok">Done</span></td></tr>
+      <tr><td>2 Query</td><td>A text variable in B's search program: the case's abstract + claims before the cutoff</td><td>No</td><td>B</td><td><span class="tag t-ok">Fixed 11-05</span> (was: letters)</td></tr>
+      <tr><td>3 Library</td><td>Folder <span class="mono">profile_corpus/apps/</span> + <span class="mono">profile_index.csv</span>; each past application's abstract + claims</td><td>No</td><td>A, B</td><td><span class="tag t-ok">Done</span></td></tr>
+      <tr><td>4 Search</td><td>B's Python + BGE-M3 → <span class="mono">ranking_top3_links_before_review.csv</span> (top 3 + scores)</td><td>No</td><td>B</td><td><span class="tag t-ok">Fixed 11-05</span> (was: TF-IDF on letters)</td></tr>
+      <tr><td>5 Lookup</td><td>Python reads the 3 event logs → outcome table</td><td>No</td><td>D (B, C: their own version)</td><td><span class="tag t-ok">Done</span></td></tr>
+      <tr><td>6a Top-3 average</td><td>Arithmetic</td><td>No</td><td>D</td><td><span class="tag t-ok">Done</span> (set against the full-history numbers)</td></tr>
+      <tr><td>6b Prompt</td><td>Template: <span class="mono">{history}</span> = this case's documents, <span class="mono">{profile}</span> = card, paths or fulldoc</td><td><b>Yes</b></td><td>D, B, C</td><td><span class="tag t-todo">Ready to run</span> (D: run profile_with_embedding)</td></tr>
+      <tr><td>7 Scoring</td><td>Python</td><td>No</td><td>D</td><td><span class="tag t-ok">Done</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- ================= PART 5 ================= -->
+<section id="other-tasks">
+  <h2>5 · Other tasks use the same setup</h2>
+  <p>Steps 1 to 4 are the same for every task: the same query, the same library, the same search and the same top 3. Only what we read from the 3 past applications (Step 5) and what the prompt asks (Step 6) change.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Task (owner)</th><th>Step 5: what matters in each past application</th><th>Step 6a: baseline without an LLM</th><th>Step 6b: what the prompt asks</th></tr></thead>
+    <tbody>
+      <tr><td>Disposition, Rounds, Next Action (D)</td><td>How it went after its first reply: days to the next letter, number of rejections, how and when it ended</td><td>Top-3 average of those outcomes</td><td>Probabilities for months 1–24, a rejection count, days to the next letter</td></tr>
+      <tr><td>Next action and claim grounds (B)</td><td>Which letter the examiner sent after a similar reply, and on which grounds (101 / 102 / 103 / 112)</td><td>Most common next action and grounds among the 3</td><td>The type of the next letter and the grounds per claim</td></tr>
+      <tr><td>Examination generation (C)</td><td>The text of the examiner's next letter after a similar reply, with form pages removed</td><td>The nearest past letter, reused as is</td><td>Write the next Office action in full</td></tr>
+    </tbody></table></div>
+  <p>For the trajectory tasks the LLM sees what the whole past applications went through (paths, fulldoc), and separately the examiner's statistics card.</p>
+</section>
+
+<!-- ================= PART 6 ================= -->
+<section id="next">
+  <h2>6 · What D runs this week (profile_with_embedding), and why</h2>
+  <ol>
+    <li><b>No LLM first</b> (free), on the same 100 cases:
+      <ul>
+        <li>the <b>top-3 average</b> (Step 6a) against the examiner's <b>full-history numbers</b> (the statistics card): are the 3 most similar past applications better than the examiner's whole history? This is the mentor's hypothesis.</li>
+        <li>the same top-3 average with the wrong examiner: is it about this examiner?</li>
+      </ul></li>
+    <li><b>Then the LLM,</b> with the three blocks of Step 6b (card, paths, fulldoc), each for the own and the wrong examiner. The main question: does the LLM given the 3 applications in full beat the top-3 average of the same 3? It must, to show that it reads the cases rather than repeating numbers.</li>
+    <li><b>Next meeting:</b> this page, the code, and this one case run live.</li>
+  </ol>
+  <div class="note"><p><b>If similar cases do not help, we will say why.</b> Case 13060040 is a drug-delivery device, and its examiner's history holds only optical sensors, so no truly similar past case exists. The mentor asked for exactly this: if it doesn't work, explain why it doesn't.</p></div>
+</section>
+
+<!-- ================= PART 7 ================= -->
+<section id="files">
+  <h2>7 · Where the files are</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>What</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>Case files</td><td><span class="mono">data_v1_share/apps/13060040/</span> (A's data zip)</td></tr>
+      <tr><td>Examiner library</td><td><span class="mono">profile_corpus_v2.zip → profile_corpus/</span> (A)</td></tr>
+      <tr><td>B's new search: query texts, scores, top 3</td><td><span class="mono">B_shared_BGE_M3_dense_v1_2026_11_05_TEAM_ONLY.zip</span> → <span class="mono">queries.jsonl</span>, <span class="mono">full_ranking.csv</span> (all scores), <span class="mono">ranking_top3_links_before_review.csv</span> (top 3, used by D), <span class="mono">old_vs_new_topk.csv</span>, <span class="mono">embedding_contract.json</span> (exact model and rules), <span class="mono">code/</span></td></tr>
+      <tr><td>The statistics card text</td><td>Same zip → <span class="mono">candidate_profiles/own/13060040.json</span>, field <span class="mono">statistics_text</span> (the team's frozen card)</td></tr>
+      <tr><td>D's lookup, baselines, prompts, scoring</td><td><span class="mono">D_trajectory/code/</span> (<span class="mono">build_examiner_blocks_emb.py</span> builds the three blocks, <span class="mono">topk_math.py</span>, <span class="mono">run_trajectory_llm.py</span>, <span class="mono">run_rounds_next_llm.py</span>, <span class="mono">compare_profile_with_embedding.py</span>, notebook <span class="mono">D_profile_with_embedding_run.ipynb</span>), <span class="mono">D_trajectory/prompts/</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<footer>Numbers checked against A's data, B's package <span class="mono">B_shared_BGE_M3_dense_v1_2026_11_05</span> (sha256 ff3db404…) and D's blocks file of 2026-11-09.</footer>
+</main>

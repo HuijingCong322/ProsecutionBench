@@ -180,7 +180,7 @@ def _call_once(client, model, messages, max_tokens):
             raise QwenStop(f"Unexpected model identity: {getattr(resp, 'model', None)} (expected Qwen3.6-27B)")
         return resp, 0
     last_err = None
-    for attempt in range(4):  # transport retries (rate limit / 5xx)
+    for attempt in range(6):  # transport retries (rate limit / 5xx); long prompts may wait out a tokens-per-minute limit
         try:
             resp = client.chat.completions.create(model=model, messages=messages,
                                                   response_format={"type": "json_object"},
@@ -192,7 +192,7 @@ def _call_once(client, model, messages, max_tokens):
             msg = str(e)
             if "mock" in model or any(c in msg for c in ("401", "403", "404", "DeploymentNotFound")):
                 raise  # wrong key / endpoint / deployment: retrying will not help
-            time.sleep(min(60, 5 * 2 ** attempt))
+            time.sleep(min(90, 5 * 2 ** attempt))
     raise RuntimeError(f"API failed after retries: {last_err}")
 
 
@@ -279,14 +279,14 @@ def main():
         print("connection ok:", r.choices[0].message.content, "| model:", getattr(r, "model", None))
         return
 
-    system, user_tpl, prompt_hash = load_prompt(a.root, "trajectory_forecast_profile.txt" if a.profile_pkg else "trajectory_forecast.txt")
+    system, user_tpl, prompt_hash = load_prompt(a.root, "trajectory_forecast_profile.txt" if eh.active(a) else "trajectory_forecast.txt")
     fname = {"dev": "trajectory_inputs_dev.jsonl", "core": "trajectory_inputs.jsonl",
              "test300": "trajectory_inputs_test300.jsonl"}[a.split]
     recs = [json.loads(x) for x in open(os.path.join(a.root, "inputs", fname))]
     recs = select_ids(recs, a)
     if a.limit:
         recs = recs[: a.limit]
-    hists, hinfo = (eh.load(a.profile_pkg, a.examiner_input, a.examiner_setting, eh.history_path(a)) if a.profile_pkg else ({}, None))
+    hists, hinfo = (eh.load(a.examiner_input, a.examiner_setting, eh.blocks_path(a)) if eh.active(a) else ({}, None))
     states = {}
     if a.state:
         # A's file may hold states at both the O1 and the A1 cutoff; keep the one whose cutoff is the A1 cutoff.

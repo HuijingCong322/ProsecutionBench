@@ -1,0 +1,1080 @@
+{
+ "note": "profile_with_embedding, test_core 100; delta = first minus second on the same cases; C-index / accuracy higher is better, IBS / MAE lower is better; clear = 95% CI excludes 0",
+ "seed": 20261010,
+ "n_boot": 1000,
+ "scores": {
+  "km": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.5,
+   "disp_ibs": 0.18821612664651416,
+   "rounds_mae": 0.99,
+   "rounds_acc": 0.37,
+   "next_mae_days": 36.26,
+   "next_c_index": 0.5
+  },
+  "prior_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6915372035977105,
+   "disp_ibs": 0.15619952637066556,
+   "rounds_mae": 0.94,
+   "rounds_acc": 0.44,
+   "next_mae_days": 27.21,
+   "next_c_index": 0.7211029711029711
+  },
+  "emb_top3_math_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6208094848732625,
+   "disp_ibs": 0.184808825051117,
+   "rounds_mae": 1.05,
+   "rounds_acc": 0.38,
+   "next_mae_days": 28.28,
+   "next_c_index": 0.717948717948718
+  },
+  "emb_top3_math_mismatched": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.5546811120196239,
+   "disp_ibs": 0.20090579362978792,
+   "rounds_mae": 1.14,
+   "rounds_acc": 0.34,
+   "next_mae_days": 44.76,
+   "next_c_index": 0.4873829873829874
+  },
+  "history_math_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6255110384300899,
+   "disp_ibs": 0.2108320380398327,
+   "rounds_mae": 1.04,
+   "rounds_acc": 0.35,
+   "next_mae_days": 28.86,
+   "next_c_index": 0.7038054538054538
+  },
+  "gpt-5-mini_state": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.4933565004088307,
+   "disp_ibs": 0.24843204997692858,
+   "rounds_mae": 0.99,
+   "rounds_acc": 0.41,
+   "next_mae_days": 37.32,
+   "next_c_index": 0.5598290598290598
+  },
+  "gpt-5-mini_state_history_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6405355682747342,
+   "disp_ibs": 0.18780549769904217,
+   "rounds_mae": 0.98,
+   "rounds_acc": 0.42,
+   "next_mae_days": 35.57,
+   "next_c_index": 0.5677655677655677
+  },
+  "gpt-5-mini_state_profile_with_embedding_card_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6802943581357318,
+   "disp_ibs": 0.1592873461518121,
+   "rounds_mae": 0.96,
+   "rounds_acc": 0.43,
+   "next_mae_days": 26.73,
+   "next_c_index": 0.7233414733414734
+  },
+  "gpt-5-mini_state_profile_with_embedding_card_mismatched": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.5605069501226492,
+   "disp_ibs": 0.20107839910901074,
+   "rounds_mae": 1.04,
+   "rounds_acc": 0.4,
+   "next_mae_days": 41.96,
+   "next_c_index": 0.4967439967439967
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6037408013082584,
+   "disp_ibs": 0.192996647765159,
+   "rounds_mae": 1.02,
+   "rounds_acc": 0.38,
+   "next_mae_days": 31.58,
+   "next_c_index": 0.6394993894993894
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_mismatched": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.5911692559280458,
+   "disp_ibs": 0.19341057137282872,
+   "rounds_mae": 0.99,
+   "rounds_acc": 0.45,
+   "next_mae_days": 35.93,
+   "next_c_index": 0.5411070411070411
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6124284546197875,
+   "disp_ibs": 0.20187038738264282,
+   "rounds_mae": 1.0,
+   "rounds_acc": 0.4,
+   "next_mae_days": 33.26,
+   "next_c_index": 0.597985347985348
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_mismatched": {
+   "n_disp": 100,
+   "n_rn": 100,
+   "disp_c_index": 0.6026165167620605,
+   "disp_ibs": 0.1958597484255668,
+   "rounds_mae": 1.07,
+   "rounds_acc": 0.34,
+   "next_mae_days": 37.96,
+   "next_c_index": 0.5194342694342694
+  }
+ },
+ "paired": {
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own_vs_gpt-5-mini_state": {
+   "question": "A1: does the full RAG help the LLM?",
+   "disp_c_index": {
+    "delta": 0.11907195421095673,
+    "ci95": [
+     0.030297625761335413,
+     0.20240066206444052
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "disp_ibs": {
+    "delta": -0.04656166259428576,
+    "ci95": [
+     -0.08511257626767145,
+     -0.007225137770705297
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "rounds_mae": {
+    "delta": 0.010000000000000009,
+    "ci95": [
+     -0.06999999999999995,
+     0.09999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.009999999999999953,
+    "ci95": [
+     -0.08999999999999997,
+     0.06
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.03815628815628813,
+    "ci95": [
+     -0.04759644467513718,
+     0.1150484203957084
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": -4.060000000000002,
+    "ci95": [
+     -8.442499999999997,
+     0.6102499999999993
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own_vs_gpt-5-mini_state_profile_with_embedding_fulldoc_mismatched": {
+   "question": "A2: is it about this examiner?",
+   "disp_c_index": {
+    "delta": 0.009811937857726938,
+    "ci95": [
+     -0.08898497544588721,
+     0.10066250762901402
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.006010638957076014,
+    "ci95": [
+     -0.027255078918828633,
+     0.046701534343444005
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.07000000000000006,
+    "ci95": [
+     -0.16999999999999993,
+     0.020000000000000018
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.06,
+    "ci95": [
+     -0.02999999999999997,
+     0.15999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.07855107855107857,
+    "ci95": [
+     0.0013252850567331367,
+     0.14900949469298502
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -4.700000000000003,
+    "ci95": [
+     -8.150749999999999,
+     -1.1487500000000033
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own_vs_emb_top3_math_own": {
+   "question": "A3 (main): does the LLM beat the top-3 average of the same 3 applications?",
+   "disp_c_index": {
+    "delta": -0.00838103025347503,
+    "ci95": [
+     -0.07868102301524368,
+     0.061036500990665536
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.01706156233152581,
+    "ci95": [
+     -0.01701346700228823,
+     0.05329850908959567
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.050000000000000044,
+    "ci95": [
+     -0.18000000000000005,
+     0.07999999999999985
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.020000000000000018,
+    "ci95": [
+     -0.08000000000000002,
+     0.12024999999999977
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.11996336996336998,
+    "ci95": [
+     -0.20046666241691888,
+     -0.03592636155613352
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": 4.979999999999997,
+    "ci95": [
+     -0.38050000000000245,
+     10.14125
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own_vs_gpt-5-mini_state_profile_with_embedding_paths_own": {
+   "question": "A4: do the documents add anything beyond the dated events?",
+   "disp_c_index": {
+    "delta": 0.008687653311529098,
+    "ci95": [
+     -0.05449865757494708,
+     0.0818214885766036
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.008873739617483806,
+    "ci95": [
+     -0.015921726593930707,
+     0.0330258042508512
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.020000000000000018,
+    "ci95": [
+     -0.10000000000000009,
+     0.06000000000000005
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.020000000000000018,
+    "ci95": [
+     -0.06,
+     0.10000000000000003
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.04151404151404148,
+    "ci95": [
+     -0.09951848620413775,
+     0.012997676583186554
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": 1.6799999999999997,
+    "ci95": [
+     -1.0502500000000006,
+     4.681249999999999
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_fulldoc_own_vs_gpt-5-mini_state_profile_with_embedding_card_own": {
+   "question": "A5: full RAG vs the statistics card",
+   "disp_c_index": {
+    "delta": -0.06786590351594435,
+    "ci95": [
+     -0.14086863230874697,
+     0.0026663987704886494
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.04258304123083073,
+    "ci95": [
+     0.009893187511981642,
+     0.07702086798634745
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "rounds_mae": {
+    "delta": 0.040000000000000036,
+    "ci95": [
+     -0.08000000000000007,
+     0.15000000000000013
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.02999999999999997,
+    "ci95": [
+     -0.13,
+     0.07024999999999978
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.1253561253561254,
+    "ci95": [
+     -0.1997870394312823,
+     -0.046734640769652294
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": 6.529999999999998,
+    "ci95": [
+     2.009249999999998,
+     10.910499999999999
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_own_vs_gpt-5-mini_state_profile_with_embedding_paths_mismatched": {
+   "question": "B1: paths, is it about this examiner?",
+   "disp_c_index": {
+    "delta": 0.012571545380212545,
+    "ci95": [
+     -0.06480173976440153,
+     0.08095421020282725
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": -0.0004139236076697028,
+    "ci95": [
+     -0.030631016981262107,
+     0.033330665741394344
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": 0.030000000000000027,
+    "ci95": [
+     -0.08000000000000007,
+     0.1499999999999999
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.07,
+    "ci95": [
+     -0.18,
+     0.03999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.09839234839234834,
+    "ci95": [
+     0.026759387854402728,
+     0.17564617766134796
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -4.350000000000001,
+    "ci95": [
+     -8.270000000000003,
+     -0.8687500000000021
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_own_vs_emb_top3_math_own": {
+   "question": "B2: paths, LLM vs the top-3 average of the same 3",
+   "disp_c_index": {
+    "delta": -0.017068683565004128,
+    "ci95": [
+     -0.08148398648108025,
+     0.04451108422162627
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.008187822714042003,
+    "ci95": [
+     -0.018373573693275393,
+     0.03501674691835466
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.030000000000000027,
+    "ci95": [
+     -0.17000000000000004,
+     0.10999999999999999
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.0,
+    "ci95": [
+     -0.10999999999999999,
+     0.09999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.0784493284493285,
+    "ci95": [
+     -0.1537779090649373,
+     0.0033968964301856037
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": 3.299999999999997,
+    "ci95": [
+     -1.4902500000000019,
+     8.431499999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_own_vs_gpt-5-mini_state_profile_with_embedding_card_own": {
+   "question": "B3: paths vs the statistics card",
+   "disp_c_index": {
+    "delta": -0.07655355682747345,
+    "ci95": [
+     -0.1395214227723234,
+     -0.016770776386404958
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "disp_ibs": {
+    "delta": 0.033709301613346926,
+    "ci95": [
+     0.004338167395091028,
+     0.061763136499855945
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "rounds_mae": {
+    "delta": 0.06000000000000005,
+    "ci95": [
+     -0.06000000000000005,
+     0.18000000000000005
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.04999999999999999,
+    "ci95": [
+     -0.15999999999999998,
+     0.06
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.08384208384208391,
+    "ci95": [
+     -0.15343844279021837,
+     -0.011508143700993196
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": 4.849999999999998,
+    "ci95": [
+     0.7792499999999942,
+     8.814999999999994
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_paths_own_vs_gpt-5-mini_state_history_own": {
+   "question": "B4: paths, new search vs old TF-IDF search",
+   "disp_c_index": {
+    "delta": -0.03679476696647588,
+    "ci95": [
+     -0.11795076115561084,
+     0.042107741688139855
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.00519115006611684,
+    "ci95": [
+     -0.02196629724706429,
+     0.0346247451489537
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": 0.040000000000000036,
+    "ci95": [
+     -0.040000000000000036,
+     0.1200000000000001
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.03999999999999998,
+    "ci95": [
+     -0.12,
+     0.03999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.0717338217338217,
+    "ci95": [
+     0.008079356236427842,
+     0.1313968350254369
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -3.990000000000002,
+    "ci95": [
+     -7.1709999999999985,
+     -0.778000000000003
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_card_own_vs_gpt-5-mini_state": {
+   "question": "C1: does the statistics card help the LLM?",
+   "disp_c_index": {
+    "delta": 0.18693785772690108,
+    "ci95": [
+     0.10415915621734584,
+     0.26805609596481234
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "disp_ibs": {
+    "delta": -0.0891447038251165,
+    "ci95": [
+     -0.1340431140920229,
+     -0.044784627385608476
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "rounds_mae": {
+    "delta": -0.030000000000000027,
+    "ci95": [
+     -0.16000000000000003,
+     0.09999999999999998
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.020000000000000018,
+    "ci95": [
+     -0.08999999999999997,
+     0.13
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.16351241351241352,
+    "ci95": [
+     0.08388667831413466,
+     0.24567394245151145
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -10.59,
+    "ci95": [
+     -15.56125,
+     -5.656500000000003
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_card_own_vs_gpt-5-mini_state_profile_with_embedding_card_mismatched": {
+   "question": "C2: card, is it about this examiner?",
+   "disp_c_index": {
+    "delta": 0.11978740801308263,
+    "ci95": [
+     0.020952803935697067,
+     0.20934876774845207
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "disp_ibs": {
+    "delta": -0.04179105295719865,
+    "ci95": [
+     -0.08157111713330438,
+     0.0022306022990475362
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.08000000000000007,
+    "ci95": [
+     -0.2500000000000001,
+     0.09000000000000008
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.02999999999999997,
+    "ci95": [
+     -0.08000000000000002,
+     0.15000000000000002
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.22659747659747664,
+    "ci95": [
+     0.12900798344440162,
+     0.3162736524029166
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -15.23,
+    "ci95": [
+     -21.001,
+     -8.683500000000004
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "gpt-5-mini_state_profile_with_embedding_card_own_vs_prior_own": {
+   "question": "C3: card, does the LLM add anything beyond the card's numbers (no LLM)?",
+   "disp_c_index": {
+    "delta": -0.011242845461978734,
+    "ci95": [
+     -0.043573434724986385,
+     0.020683498484343053
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": 0.003087819781146528,
+    "ci95": [
+     -0.0122113875116182,
+     0.018330350283739607
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": 0.020000000000000018,
+    "ci95": [
+     -0.13,
+     0.18024999999999983
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.010000000000000009,
+    "ci95": [
+     -0.08999999999999997,
+     0.06
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.0022385022385023046,
+    "ci95": [
+     -0.010423960049423356,
+     0.01800804605639648
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": -0.4800000000000004,
+    "ci95": [
+     -1.5899999999999999,
+     0.4002499999999985
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "emb_top3_math_own_vs_prior_own": {
+   "question": "N1: top-3 average vs the examiner's full-history numbers",
+   "disp_c_index": {
+    "delta": -0.07072771872444805,
+    "ci95": [
+     -0.12603471515569117,
+     -0.01774010171219128
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "disp_ibs": {
+    "delta": 0.02860929868045145,
+    "ci95": [
+     0.005373826370268413,
+     0.05117495815242057
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "rounds_mae": {
+    "delta": 0.1100000000000001,
+    "ci95": [
+     -0.07025000000000005,
+     0.30999999999999994
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": -0.06,
+    "ci95": [
+     -0.15999999999999998,
+     0.030000000000000027
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": -0.003154253154253106,
+    "ci95": [
+     -0.05554502323749085,
+     0.04644932768252491
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": 1.0700000000000003,
+    "ci95": [
+     -2.3405,
+     4.7505
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "emb_top3_math_own_vs_emb_top3_math_mismatched": {
+   "question": "N2: top-3 average, is it about this examiner?",
+   "disp_c_index": {
+    "delta": 0.0661283728536386,
+    "ci95": [
+     -0.033980037832637804,
+     0.15833286633490196
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": -0.016096968578670906,
+    "ci95": [
+     -0.06450948490633736,
+     0.0316899577010491
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": -0.08999999999999986,
+    "ci95": [
+     -0.26,
+     0.10999999999999999
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.03999999999999998,
+    "ci95": [
+     -0.06,
+     0.14999999999999997
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.23056573056573054,
+    "ci95": [
+     0.14085084813018972,
+     0.31585635937592516
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "next_mae_days": {
+    "delta": -16.479999999999997,
+    "ci95": [
+     -23.140249999999998,
+     -9.388499999999999
+    ],
+    "n_boot": 1000,
+    "clear": true
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  },
+  "emb_top3_math_own_vs_history_math_own": {
+   "question": "N3: top-3 average, new search vs old TF-IDF search",
+   "disp_c_index": {
+    "delta": -0.0047015535568274425,
+    "ci95": [
+     -0.061863716489705706,
+     0.0529626809032356
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "disp_ibs": {
+    "delta": -0.026023212988715683,
+    "ci95": [
+     -0.05348053332065305,
+     0.00392833942266377
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_mae": {
+    "delta": 0.010000000000000009,
+    "ci95": [
+     -0.1499999999999999,
+     0.18000000000000016
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "rounds_acc": {
+    "delta": 0.030000000000000027,
+    "ci95": [
+     -0.08000000000000002,
+     0.13
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_c_index": {
+    "delta": 0.014143264143264167,
+    "ci95": [
+     -0.054833782855705754,
+     0.08557694011025418
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "next_mae_days": {
+    "delta": -0.5799999999999983,
+    "ci95": [
+     -5.612749999999999,
+     4.261999999999996
+    ],
+    "n_boot": 1000,
+    "clear": false
+   },
+   "n_disp": 100,
+   "n_rn": 100
+  }
+ },
+ "copy_check": [
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_card_own",
+   "compared_with": "card median days",
+   "n": 100,
+   "days_exactly_equal": 0.92,
+   "days_within_3": 0.93,
+   "days_rank_corr_with_ref": 0.986,
+   "days_rank_corr_with_truth": 0.597
+  },
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_paths_own",
+   "compared_with": "emb_top3_math_own days",
+   "n": 100,
+   "days_exactly_equal": 0.01,
+   "days_within_3": 0.1,
+   "days_rank_corr_with_ref": 0.284,
+   "days_rank_corr_with_truth": 0.424
+  },
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_fulldoc_own",
+   "compared_with": "emb_top3_math_own days",
+   "n": 100,
+   "days_exactly_equal": 0.04,
+   "days_within_3": 0.11,
+   "days_rank_corr_with_ref": 0.232,
+   "days_rank_corr_with_truth": 0.306
+  },
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_card_mismatched",
+   "compared_with": "card median days",
+   "n": 100,
+   "days_exactly_equal": 0.92,
+   "days_within_3": 0.95,
+   "days_rank_corr_with_ref": 0.993,
+   "days_rank_corr_with_truth": -0.004
+  },
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_paths_mismatched",
+   "compared_with": "emb_top3_math_mismatched days",
+   "n": 100,
+   "days_exactly_equal": 0.01,
+   "days_within_3": 0.04,
+   "days_rank_corr_with_ref": 0.213,
+   "days_rank_corr_with_truth": 0.128
+  },
+  {
+   "method": "gpt-5-mini_state_profile_with_embedding_fulldoc_mismatched",
+   "compared_with": "emb_top3_math_mismatched days",
+   "n": 100,
+   "days_exactly_equal": 0.05,
+   "days_within_3": 0.09,
+   "days_rank_corr_with_ref": 0.309,
+   "days_rank_corr_with_truth": 0.064
+  }
+ ]
+}
